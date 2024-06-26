@@ -1,0 +1,83 @@
+@import "../../../styles/normalize.scss";
+
+.tag{
+  color: var(--bth-app-blue);
+  text-decoration: none;
+
+  &:hover{
+    color: var(--bth-app-blue-dark-10);
+  }
+
+  > *{
+    padding: 0 4px;
+  }
+  
+  &__item {
+    display: inline-block;
+    margin: 2px;
+    padding: 4px 8px;
+    font-size: 12px;
+    line-height: 1;
+    vertical-align: middle;
+    white-space: nowrap;
+    border-radius: 50px;
+    background-color: var(--bth-app-gray-light-30);
+    border: .5px solid var(--bth-app-gray-light-10);
+
+    &.tag--active {
+      color: #ffffff !important;
+      background-color: var(--bth-app-blue);
+      border-color: var(--bth-app-blue);
+    }
+  }
+  
+  &__folder {
+    display: flex;
+    align-items: center;
+    min-height: 36px;
+    padding: 4px 0;
+    border-bottom: .5px solid var(--bth-app-gray-light-10);
+
+    &.tag--active {
+      font-weight: bold;
+    }
+
+    &:hover{
+      text-decoration: underline;
+    }
+    
+    .actions{
+      margin-left: auto;
+    }
+
+  }
+  
+  &__link {
+    display: inline-block;
+    margin: 2px;
+    padding: 4px 8px;
+    font-size: 12px;
+
+    &:hover{
+      text-decoration: underline;
+    }
+  }
+  
+  &--lock {
+    cursor: default;
+    color: var(--bth-app-gray-dark-30) !important;
+
+    &:focus{
+      outline: none;
+    }
+  }
+
+  &:focus{
+    outline: none;
+  }
+  
+  &:focus-visible{
+    outline: 1px dotted var(--bth-app-gray-dark-30);
+  }
+
+}

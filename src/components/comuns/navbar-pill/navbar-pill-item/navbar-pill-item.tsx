@@ -39,6 +39,12 @@ export class NavbarPillItem implements ComponentInterface {
   @Prop() readonly showTotalizador: boolean = true;
 
   /**
+   * Exibir descrição?
+   */
+  @Prop() readonly showDescricao: boolean = false;
+
+
+  /**
    * É emitido ao clicar no filtro
    */
   @Event() navbarPillItemClicked: EventEmitter;
@@ -55,7 +61,7 @@ export class NavbarPillItem implements ComponentInterface {
       <div role="menuitem" class={`navbar-pill-item ${this.ativo ? 'navbar-pill-item--active' : ''}`}>
         <a href="" title={this.descricao} onClick={this.onClick}>
           <bth-icone icone={this.icone}></bth-icone>
-          <span class={`descricao ${this.ativo ? 'descricao--show' : ''}`}>{this.descricao}</span>
+          <span class={`descricao ${this.ativo || this.showDescricao ? 'descricao--show' : ''}`}>{this.descricao}</span>
           {this.showTotalizador && this.totalizador !== 0 && (<span class="totalizador">({this.totalizador})</span>)}
         </a>
       </div>

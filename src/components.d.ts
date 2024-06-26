@@ -6,9 +6,10 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { Banner, ConteudoSinalizadoEvent, IdentificadorOpcaoMenu, MenuBannerAlteradoEvent, OpcaoMenu, OpcaoMenuSelecionadaEvent } from "./components/app/app.interfaces";
+import { AuthorizationConfig } from "./global/interfaces";
+import { Tag } from "./components/assistente/assistente.interfaces";
 import { Tamanho } from "./components/comuns/avatar/avatar.interfaces";
 import { LogoutEvent } from "./components/conta-usuario/conta-usuario.interfaces";
-import { AuthorizationConfig } from "./global/interfaces";
 import { MenuHorizontalSelecionadoEvent } from "./components/app/menu-horizontal-item/menu-horizontal-item.interfaces";
 import { PainelLateralShowEvent } from "./components/app/menu-painel-lateral/menu-painel-lateral.interfaces";
 import { MenuVerticalSelecionadoEvent } from "./components/app/menu-vertical-item/menu-vertical-item.interfaces";
@@ -59,6 +60,70 @@ export namespace Components {
          */
         "setMenuAtivo": (identificador: IdentificadorOpcaoMenu) => Promise<void>;
     }
+    interface BthAssistente {
+        /**
+          * URL para a api de notificações. Por padrão irá obter do env.js
+         */
+        "assistenteApi"?: string;
+        /**
+          * Configuração de autorização. É necessária para o componente poder realizar autentizar com os serviços.
+         */
+        "authorization": AuthorizationConfig;
+    }
+    interface BthAssistenteFav {
+        /**
+          * Ativo?
+         */
+        "ativo": boolean;
+        /**
+          * Identificador É enviado no evento de click.
+         */
+        "identificador": string;
+    }
+    interface BthAssistenteItem {
+        /**
+          * Descrição
+         */
+        "descricao": string;
+        /**
+          * Favorito
+         */
+        "favorito": boolean;
+        /**
+          * Ícone
+         */
+        "icone": string;
+        /**
+          * Identificador
+         */
+        "identificador": string;
+        /**
+          * Tags
+         */
+        "tags": Tag[];
+    }
+    interface BthAssistenteTag {
+        /**
+          * Está ativo?
+         */
+        "ativo": boolean;
+        /**
+          * Descrição
+         */
+        "descricao": string;
+        /**
+          * É link?
+         */
+        "link": boolean;
+        /**
+          * Desativar click
+         */
+        "lock": boolean;
+        /**
+          * Visualizar como pasta/folder?
+         */
+        "pasta": boolean;
+    }
     interface BthAvatar {
         /**
           * Define se o avatar possui borda
@@ -108,6 +173,12 @@ export namespace Components {
           * Define o tamanho conforme dimensões pre-definidas para o avatar.  Opções disponíveis: menor (24x24), pequeno (28x28), medio (48x48) e grande (94x94)
          */
         "tamanho"?: Tamanho;
+    }
+    interface BthBusca {
+        /**
+          * Delay
+         */
+        "delay": number;
     }
     interface BthContaUsuario {
         /**
@@ -357,6 +428,10 @@ export namespace Components {
          */
         "identificador": any;
         /**
+          * Exibir descrição?
+         */
+        "showDescricao": boolean;
+        /**
           * Exibir totalizador?
          */
         "showTotalizador": boolean;
@@ -564,11 +639,41 @@ declare global {
         prototype: HTMLBthAppElement;
         new (): HTMLBthAppElement;
     };
+    interface HTMLBthAssistenteElement extends Components.BthAssistente, HTMLStencilElement {
+    }
+    var HTMLBthAssistenteElement: {
+        prototype: HTMLBthAssistenteElement;
+        new (): HTMLBthAssistenteElement;
+    };
+    interface HTMLBthAssistenteFavElement extends Components.BthAssistenteFav, HTMLStencilElement {
+    }
+    var HTMLBthAssistenteFavElement: {
+        prototype: HTMLBthAssistenteFavElement;
+        new (): HTMLBthAssistenteFavElement;
+    };
+    interface HTMLBthAssistenteItemElement extends Components.BthAssistenteItem, HTMLStencilElement {
+    }
+    var HTMLBthAssistenteItemElement: {
+        prototype: HTMLBthAssistenteItemElement;
+        new (): HTMLBthAssistenteItemElement;
+    };
+    interface HTMLBthAssistenteTagElement extends Components.BthAssistenteTag, HTMLStencilElement {
+    }
+    var HTMLBthAssistenteTagElement: {
+        prototype: HTMLBthAssistenteTagElement;
+        new (): HTMLBthAssistenteTagElement;
+    };
     interface HTMLBthAvatarElement extends Components.BthAvatar, HTMLStencilElement {
     }
     var HTMLBthAvatarElement: {
         prototype: HTMLBthAvatarElement;
         new (): HTMLBthAvatarElement;
+    };
+    interface HTMLBthBuscaElement extends Components.BthBusca, HTMLStencilElement {
+    }
+    var HTMLBthBuscaElement: {
+        prototype: HTMLBthBuscaElement;
+        new (): HTMLBthBuscaElement;
     };
     interface HTMLBthContaUsuarioElement extends Components.BthContaUsuario, HTMLStencilElement {
     }
@@ -693,7 +798,12 @@ declare global {
     interface HTMLElementTagNameMap {
         "bth-ajuda": HTMLBthAjudaElement;
         "bth-app": HTMLBthAppElement;
+        "bth-assistente": HTMLBthAssistenteElement;
+        "bth-assistente-fav": HTMLBthAssistenteFavElement;
+        "bth-assistente-item": HTMLBthAssistenteItemElement;
+        "bth-assistente-tag": HTMLBthAssistenteTagElement;
         "bth-avatar": HTMLBthAvatarElement;
+        "bth-busca": HTMLBthBuscaElement;
         "bth-conta-usuario": HTMLBthContaUsuarioElement;
         "bth-empty-state": HTMLBthEmptyStateElement;
         "bth-icone": HTMLBthIconeElement;
@@ -753,6 +863,78 @@ declare namespace LocalJSX {
          */
         "opcoes"?: Array<OpcaoMenu>;
     }
+    interface BthAssistente {
+        /**
+          * URL para a api de notificações. Por padrão irá obter do env.js
+         */
+        "assistenteApi"?: string;
+        /**
+          * Configuração de autorização. É necessária para o componente poder realizar autentizar com os serviços.
+         */
+        "authorization"?: AuthorizationConfig;
+    }
+    interface BthAssistenteFav {
+        /**
+          * Ativo?
+         */
+        "ativo"?: boolean;
+        /**
+          * Identificador É enviado no evento de click.
+         */
+        "identificador"?: string;
+        /**
+          * É emitido ao clicar
+         */
+        "onFavClicked"?: (event: CustomEvent<any>) => void;
+    }
+    interface BthAssistenteItem {
+        /**
+          * Descrição
+         */
+        "descricao"?: string;
+        /**
+          * Favorito
+         */
+        "favorito"?: boolean;
+        /**
+          * Ícone
+         */
+        "icone"?: string;
+        /**
+          * Identificador
+         */
+        "identificador"?: string;
+        /**
+          * Tags
+         */
+        "tags"?: Tag[];
+    }
+    interface BthAssistenteTag {
+        /**
+          * Está ativo?
+         */
+        "ativo"?: boolean;
+        /**
+          * Descrição
+         */
+        "descricao"?: string;
+        /**
+          * É link?
+         */
+        "link"?: boolean;
+        /**
+          * Desativar click
+         */
+        "lock"?: boolean;
+        /**
+          * É emitido ao clicar na tag
+         */
+        "onTagClicked"?: (event: CustomEvent<any>) => void;
+        /**
+          * Visualizar como pasta/folder?
+         */
+        "pasta"?: boolean;
+    }
     interface BthAvatar {
         /**
           * Define se o avatar possui borda
@@ -806,6 +988,16 @@ declare namespace LocalJSX {
           * Define o tamanho conforme dimensões pre-definidas para o avatar.  Opções disponíveis: menor (24x24), pequeno (28x28), medio (48x48) e grande (94x94)
          */
         "tamanho"?: Tamanho;
+    }
+    interface BthBusca {
+        /**
+          * Delay
+         */
+        "delay"?: number;
+        /**
+          * É emitido ao realizar busca
+         */
+        "onBuscaSubmit"?: (event: CustomEvent<any>) => void;
     }
     interface BthContaUsuario {
         /**
@@ -1059,6 +1251,10 @@ declare namespace LocalJSX {
          */
         "onNavbarPillItemClicked"?: (event: CustomEvent<any>) => void;
         /**
+          * Exibir descrição?
+         */
+        "showDescricao"?: boolean;
+        /**
           * Exibir totalizador?
          */
         "showTotalizador"?: boolean;
@@ -1282,7 +1478,12 @@ declare namespace LocalJSX {
     interface IntrinsicElements {
         "bth-ajuda": BthAjuda;
         "bth-app": BthApp;
+        "bth-assistente": BthAssistente;
+        "bth-assistente-fav": BthAssistenteFav;
+        "bth-assistente-item": BthAssistenteItem;
+        "bth-assistente-tag": BthAssistenteTag;
         "bth-avatar": BthAvatar;
+        "bth-busca": BthBusca;
         "bth-conta-usuario": BthContaUsuario;
         "bth-empty-state": BthEmptyState;
         "bth-icone": BthIcone;
@@ -1311,7 +1512,12 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "bth-ajuda": LocalJSX.BthAjuda & JSXBase.HTMLAttributes<HTMLBthAjudaElement>;
             "bth-app": LocalJSX.BthApp & JSXBase.HTMLAttributes<HTMLBthAppElement>;
+            "bth-assistente": LocalJSX.BthAssistente & JSXBase.HTMLAttributes<HTMLBthAssistenteElement>;
+            "bth-assistente-fav": LocalJSX.BthAssistenteFav & JSXBase.HTMLAttributes<HTMLBthAssistenteFavElement>;
+            "bth-assistente-item": LocalJSX.BthAssistenteItem & JSXBase.HTMLAttributes<HTMLBthAssistenteItemElement>;
+            "bth-assistente-tag": LocalJSX.BthAssistenteTag & JSXBase.HTMLAttributes<HTMLBthAssistenteTagElement>;
             "bth-avatar": LocalJSX.BthAvatar & JSXBase.HTMLAttributes<HTMLBthAvatarElement>;
+            "bth-busca": LocalJSX.BthBusca & JSXBase.HTMLAttributes<HTMLBthBuscaElement>;
             "bth-conta-usuario": LocalJSX.BthContaUsuario & JSXBase.HTMLAttributes<HTMLBthContaUsuarioElement>;
             "bth-empty-state": LocalJSX.BthEmptyState & JSXBase.HTMLAttributes<HTMLBthEmptyStateElement>;
             "bth-icone": LocalJSX.BthIcone & JSXBase.HTMLAttributes<HTMLBthIconeElement>;

@@ -1,0 +1,41 @@
+@import "../../../styles/normalize.scss";
+
+:host {
+  display: block;
+}
+
+.assistente__list-item {
+  display: flex;
+  align-items: center;
+  min-height: 36px;
+  padding: 4px 0;
+  border-bottom: .5px solid var(--bth-app-gray-light-10);
+
+  &:hover{
+    background-color: var(--bth-app-gray-light-30);
+  }
+
+  a {
+    color: var(--bth-app-blue); 
+    text-decoration: none;
+
+    &:hover{
+      color: var(--bth-app-blue-dark-10);
+      text-decoration: underline;
+    }
+  }
+
+  >div {
+    padding: 0 4px;
+  }
+
+  .actions {
+    margin-left: auto;
+    white-space: nowrap;
+
+    a {
+      padding: 0 4px;
+    }
+
+  }
+}

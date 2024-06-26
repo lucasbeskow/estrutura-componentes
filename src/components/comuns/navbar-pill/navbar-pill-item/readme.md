@@ -13,6 +13,7 @@
 | `descricao`       | `descricao`        | Descrição                                           | `string`  | `undefined`        |
 | `icone`           | `icone`            | Ícone conforme biblioteca `"Material Design Icons"` | `string`  | `'cloud-question'` |
 | `identificador`   | `identificador`    | Identificador. É enviado no evento de click.        | `any`     | `undefined`        |
+| `showDescricao`   | `show-descricao`   | Exibir descrição?                                   | `boolean` | `false`            |
 | `showTotalizador` | `show-totalizador` | Exibir totalizador?                                 | `boolean` | `true`             |
 | `totalizador`     | `totalizador`      | Totalizador                                         | `number`  | `0`                |
 
@@ -28,6 +29,7 @@
 
 ### Used by
 
+ - [bth-assistente](../../../assistente)
  - [bth-notificacoes](../../../notificacoes)
  - [bth-novidades](../../../novidades)
 
@@ -39,6 +41,7 @@
 ```mermaid
 graph TD;
   bth-navbar-pill-item --> bth-icone
+  bth-assistente --> bth-navbar-pill-item
   bth-notificacoes --> bth-navbar-pill-item
   bth-novidades --> bth-navbar-pill-item
   style bth-navbar-pill-item fill:#f9f,stroke:#333,stroke-width:4px

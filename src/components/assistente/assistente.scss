@@ -1,0 +1,88 @@
+@import "../../styles/normalize.scss";
+@import "../../styles/buttons";
+
+:host {
+  display: block;
+}
+
+
+.assistente{
+  
+  min-height: 400px;
+
+  &__filtros{
+    display: flex;
+    justify-content: space-between;
+
+    bth-navbar-pill-group{
+      flex-grow: 1;
+    }
+  }
+
+  &__tags{
+
+    &.pasta-selected{  
+      bth-assistente-tag{
+        display:none;
+      }
+
+      bth-assistente-tag[ativo]{
+        display:block;
+      }
+    }
+  }
+
+  &__list{
+    display: flex;
+    flex-direction: column;
+    padding: 8px 4px;
+  }
+
+  // &__detalhes{
+  //   background-color: var(--bth-app-gray-light-30);
+  // }
+
+  &__pagination{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    gap: 0 .25rem;
+    padding: .5rem 0;
+  }
+
+  &__empty {
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+    justify-content: center;
+    align-items: center;
+    height: 95%;
+    text-align: center;
+
+    &-records {
+      background-image: url("https://cdn.betha.cloud/plataforma/design/kare/framework/0.1.6/assets/images/records.svg");
+      background-repeat: no-repeat;
+      background-position-x: center;
+      background-size: 130px;
+      height: 110px;
+      width: 130px;
+    }
+
+    &-inconsistency {
+      background-image: url("https://cdn.betha.cloud/plataforma/design/kare/framework/0.1.6/assets/images/list.svg");
+      background-repeat: no-repeat;
+      background-position-x: center;
+      background-size: 130px;
+      height: 110px;
+      width: 130px;
+    }
+
+    h4 {
+      font-size: 20px;
+      font-weight: var(--bth-app-font-weight-regular);
+      margin: 24px 0px;
+    }
+  }
+
+
+}

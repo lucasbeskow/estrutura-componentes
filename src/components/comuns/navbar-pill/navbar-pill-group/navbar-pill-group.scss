@@ -19,3 +19,7 @@
 ::slotted(bth-navbar-pill-item[ativo]) {
   flex: 2;
 }
+
+::slotted(bth-navbar-pill-item[show-descricao]) {
+  flex: 1;
+}
