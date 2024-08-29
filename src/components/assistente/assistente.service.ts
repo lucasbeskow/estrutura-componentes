@@ -14,23 +14,23 @@ export class AssistenteService {
     return this.api.request('GET', `api/extensao?filter=${params.filter}&limit=${params.limit}&offset=${params.offset}&sort=${params.sort}`)
       .then(res => res.json());
   }
-  
+
   async tags(params: PaginationParams): Promise<any> {
     return this.api.request('GET', `api/tag/${params.filter}?limit=${params.limit}&offset=${params.offset}&sort=${params.sort}`)
       .then(res => res.json());
   }
-  
-  async favorito(tipo: string, id: string, favorito: boolean ): Promise<any> {
+
+  async favorito(tipo: string, id: string, favorito: boolean): Promise<any> {
     const method = favorito ? 'DELETE' : 'PUT';
     return this.api.request(method, `api/extensao/${tipo}/${id}/favoritos`);
   }
 
-  async execucoes(filter: string, params: PaginationParams): Promise<any> {
+  async execucoes(filter: string, params: PaginationParams = {limit: 20, offset: 0}): Promise<any> {
     return this.api.request('GET', `v1/api/execucoes/f4?filter=${filter}&limit=${params.limit}&offset=${params.offset}`)
       .then(res => res.json());
   }
 
-  async execucoesUsuario(filter: string, params: PaginationParams): Promise<any> {
+  async execucoesUsuario(filter: string, params: PaginationParams = {limit: 20, offset: 0}): Promise<any> {
     return this.api.request('GET', `v1/api/execucoes/f4/minhas?filter=${filter}&limit=${params.limit}&offset=${params.offset}`)
       .then(res => res.json());
   }
