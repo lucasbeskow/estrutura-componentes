@@ -45,7 +45,12 @@ A configuração pode ser feita via _markup_.
 
  - [bth-ajuda](../../ajuda)
  - [bth-app](../../app)
+ - [bth-assistente](../../assistente)
+ - [bth-assistente-fav](../../assistente/assistente-fav)
+ - [bth-assistente-item](../../assistente/assistente-item)
+ - [bth-assistente-tag](../../assistente/assistente-tag)
  - [bth-avatar](../avatar)
+ - [bth-busca](../busca)
  - [bth-conta-usuario](../../conta-usuario)
  - [bth-marca-produto](../../marca-produto)
  - [bth-menu-ferramenta-icone](../../app/menu-ferramenta-icone)
@@ -62,7 +67,12 @@ A configuração pode ser feita via _markup_.
 graph TD;
   bth-ajuda --> bth-icone
   bth-app --> bth-icone
+  bth-assistente --> bth-icone
+  bth-assistente-fav --> bth-icone
+  bth-assistente-item --> bth-icone
+  bth-assistente-tag --> bth-icone
   bth-avatar --> bth-icone
+  bth-busca --> bth-icone
   bth-conta-usuario --> bth-icone
   bth-marca-produto --> bth-icone
   bth-menu-ferramenta-icone --> bth-icone

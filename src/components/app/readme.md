@@ -108,6 +108,7 @@ As opções do menu podem ser configuradas através de algumas propriedades
 | Event                  | Description                                                                       | Type                                     |
 | ---------------------- | --------------------------------------------------------------------------------- | ---------------------------------------- |
 | `bannerAlterado`       | É emitido quando o componente de menu possuir alterações na propriedade de banner | `CustomEvent<MenuBannerAlteradoEvent>`   |
+| `botaoBannerAcionado`  | É emitido quando o botão do banner é clicado                                      | `CustomEvent<void>`                      |
 | `opcaoMenuSelecionada` | É emitido quando alguma opção do menu for selecionada                             | `CustomEvent<OpcaoMenuSelecionadaEvent>` |
 
 

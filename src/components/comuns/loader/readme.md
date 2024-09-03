@@ -35,6 +35,7 @@ O componente possui duas variações, sendo uma centralizada ao centro do bloco 
 
 ### Used by
 
+ - [bth-assistente](../../assistente)
  - [bth-marca-produto](../../marca-produto)
  - [bth-notificacoes](../../notificacoes)
  - [bth-novidades](../../novidades)
@@ -43,6 +44,7 @@ O componente possui duas variações, sendo uma centralizada ao centro do bloco 
 ### Graph
 ```mermaid
 graph TD;
+  bth-assistente --> bth-loader
   bth-marca-produto --> bth-loader
   bth-notificacoes --> bth-loader
   bth-novidades --> bth-loader

@@ -267,14 +267,18 @@ export class BthAssistente implements ComponentInterface {
     this.extensoes = [];
     this.resetPagination();
 
+    if (this.isApiIndisponivel) {
+      return;
+    }
+
     if (!this.isFiltroFavoritos()) {
       this.getTags();
     }
-    
+
     if (!this.isVisualizacaoPastas()) {
       this.getExtensoes();
     }
-    
+
   }
 
   private getOpcaoFiltroAtivo(): OpcaoFiltro {
@@ -328,11 +332,11 @@ export class BthAssistente implements ComponentInterface {
   private isFiltroFavoritos(): boolean {
     return this.getOpcaoFiltroAtivo().id === TipoExtensao.all;
   }
-  
+
   private isVisualizacaoPastas(): boolean {
     return this.getOpcaoVisualizacaoAtivo().id === TipoVisualizacao.pasta;
   }
-  
+
   private isPastaSelected(): boolean {
     return this.isVisualizacaoPastas() && this.getOpcaoTagAtiva();
   }
@@ -342,7 +346,7 @@ export class BthAssistente implements ComponentInterface {
   }
 
   private nextPage = () => {
-    
+
     if (!this.paginationControl.hasNext) return;
 
     this.paginationControl.offset++;
@@ -350,7 +354,7 @@ export class BthAssistente implements ComponentInterface {
   }
 
   private prevPage = () => {
-    
+
     if (this.paginationControl.offset === 1) return;
 
     this.paginationControl.offset--;
