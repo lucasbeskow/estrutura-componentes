@@ -1,0 +1,51 @@
+@import "../../../../styles/buttons";
+
+:host {
+  display: block;
+}
+
+
+a{
+  color: var(--bth-app-blue);
+  text-decoration: none;
+
+  &:hover{
+    color: var(--bth-app-blue-dark-10);
+    text-decoration: underline;
+  }
+}
+
+.execucao{
+  padding: 8px;
+  font-size: smaller;
+
+  &__list{
+    display: flex;
+    flex-direction: column;
+    padding: 8px 4px;
+  }
+
+  &__list-item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 24px;
+    padding: 4px 0;
+    border-bottom: .5px solid var(--bth-app-gray-light-10);
+
+    > div{
+      padding: 0 4px;
+      flex: 1;
+      &:first-child{
+        flex-grow: 2;
+      }
+    }
+
+    .actions{
+      text-align: right;
+      margin-left: auto;
+      white-space: nowrap;
+    }
+
+  }
+}

@@ -41,7 +41,19 @@ graph TD;
   bth-assistente-item --> bth-assistente-fav
   bth-assistente-item --> bth-icone
   bth-assistente-item --> bth-assistente-tag
+  bth-assistente-item --> bth-execucoes
   bth-assistente-fav --> bth-icone
+  bth-execucoes --> bth-execucoes-item
+  bth-execucoes --> bth-icone
+  bth-execucoes --> bth-loader
+  bth-execucoes-item --> bth-execucoes-status
+  bth-execucoes-item --> bth-icone
+  bth-execucoes-item --> bth-execucoes-download
+  bth-execucoes-status --> bth-icone
+  bth-execucoes-download --> bth-icone
+  bth-execucoes-download --> bth-popover
+  bth-popover --> bth-icone
+  bth-popover --> bth-loader
   style bth-assistente fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

@@ -268,7 +268,10 @@ export class BthAssistente implements ComponentInterface {
     this.resetPagination();
 
     if (this.isApiIndisponivel) {
-      return;
+      this.inicializarServices();
+      if (this.isApiIndisponivel) {
+        return;
+      }
     }
 
     if (!this.isFiltroFavoritos()) {
@@ -420,7 +423,9 @@ export class BthAssistente implements ComponentInterface {
                   descricao={extensao.titulo}
                   icone={this.icones[extensao.tipo]}
                   favorito={extensao.favorita}
-                  tags={extensao.tags}>
+                  tags={extensao.tags}
+                  extensaoId={extensao.referencia.id}
+                  authorization={this.authorization}>
                 </bth-assistente-item>
               ))}
 

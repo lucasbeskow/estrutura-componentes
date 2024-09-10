@@ -36,18 +36,22 @@ O componente possui duas variações, sendo uma centralizada ao centro do bloco 
 ### Used by
 
  - [bth-assistente](../../assistente)
+ - [bth-execucoes](../../assistente/execucoes)
  - [bth-marca-produto](../../marca-produto)
  - [bth-notificacoes](../../notificacoes)
  - [bth-novidades](../../novidades)
+ - [bth-popover](../../popover)
  - [bth-selecao-contexto](../selecao-contexto)
 
 ### Graph
 ```mermaid
 graph TD;
   bth-assistente --> bth-loader
+  bth-execucoes --> bth-loader
   bth-marca-produto --> bth-loader
   bth-notificacoes --> bth-loader
   bth-novidades --> bth-loader
+  bth-popover --> bth-loader
   bth-selecao-contexto --> bth-loader
   style bth-loader fill:#f9f,stroke:#333,stroke-width:4px
 ```

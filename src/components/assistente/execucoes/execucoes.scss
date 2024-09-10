@@ -1,49 +1,28 @@
-@import "../../styles/normalize.scss";
-@import "../../styles/buttons";
+@import "../../../styles/buttons";
 
 :host {
   display: block;
 }
 
 
-.assistente{
+a{
+  color: var(--bth-app-blue);
+  text-decoration: none;
 
-  min-height: 400px;
-
-  &__filtros{
-    display: flex;
-    justify-content: space-between;
-
-    bth-navbar-pill-group{
-      flex-grow: 1;
-    }
+  &:hover{
+    color: var(--bth-app-blue-dark-10);
+    text-decoration: underline;
   }
+}
 
-  &__tags{
-
-    &.pasta-selected{
-      bth-assistente-tag{
-        display:none;
-      }
-
-      bth-assistente-tag[ativo]{
-        display:block;
-      }
-    }
-  }
+.execucao{
+  padding: 8px;
+  font-size: smaller;
 
   &__list{
     display: flex;
     flex-direction: column;
     padding: 8px 4px;
-  }
-
-  &__pagination{
-    display: flex;
-    justify-content: end;
-    align-items: center;
-    gap: 0 .25rem;
-    padding: .5rem 0;
   }
 
   &__empty {
@@ -79,6 +58,5 @@
       margin: 24px 0px;
     }
   }
-
 
 }

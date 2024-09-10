@@ -52,6 +52,10 @@ A configuração pode ser feita via _markup_.
  - [bth-avatar](../avatar)
  - [bth-busca](../busca)
  - [bth-conta-usuario](../../conta-usuario)
+ - [bth-execucoes](../../assistente/execucoes)
+ - [bth-execucoes-download](../../assistente/execucoes/execucoes-download)
+ - [bth-execucoes-item](../../assistente/execucoes/execucoes-item)
+ - [bth-execucoes-status](../../assistente/execucoes/execucoes-status)
  - [bth-marca-produto](../../marca-produto)
  - [bth-menu-ferramenta-icone](../../app/menu-ferramenta-icone)
  - [bth-menu-painel-lateral](../../app/menu-painel-lateral)
@@ -59,6 +63,7 @@ A configuração pode ser feita via _markup_.
  - [bth-navbar-pill-item](../navbar-pill/navbar-pill-item)
  - [bth-notificacao-item](../../notificacoes/notificacao-item)
  - [bth-novidade-item](../../novidades/novidade-item)
+ - [bth-popover](../../popover)
  - [bth-suporte](../../suporte)
  - [bth-utilitarios](../../utilitarios)
 
@@ -74,6 +79,10 @@ graph TD;
   bth-avatar --> bth-icone
   bth-busca --> bth-icone
   bth-conta-usuario --> bth-icone
+  bth-execucoes --> bth-icone
+  bth-execucoes-download --> bth-icone
+  bth-execucoes-item --> bth-icone
+  bth-execucoes-status --> bth-icone
   bth-marca-produto --> bth-icone
   bth-menu-ferramenta-icone --> bth-icone
   bth-menu-painel-lateral --> bth-icone
@@ -81,6 +90,7 @@ graph TD;
   bth-navbar-pill-item --> bth-icone
   bth-notificacao-item --> bth-icone
   bth-novidade-item --> bth-icone
+  bth-popover --> bth-icone
   bth-suporte --> bth-icone
   bth-utilitarios --> bth-icone
   style bth-icone fill:#f9f,stroke:#333,stroke-width:4px

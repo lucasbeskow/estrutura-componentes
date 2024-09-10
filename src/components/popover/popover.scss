@@ -1,0 +1,148 @@
+@import "../../styles/normalize.scss";
+@import "../../styles/buttons";
+
+:host {
+  //all: initial;
+}
+
+.popover-container {
+  position: relative;
+  display: inline-block;
+
+}
+
+.popover-trigger {
+  cursor: pointer;
+}
+
+.popover-content {
+  all: initial;
+  position: absolute;
+  background-color: #F5F5F5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 5px 10px 10px 10px;
+  z-index: 100;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  min-height: 80px;
+  max-height: 200px;
+  width: 360px;
+  word-break: break-all;
+  word-wrap: break-word;
+}
+
+.popover-content::before {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: #F5F5F5;
+  border: 1px solid;
+  transform: rotate(45deg);
+}
+
+
+
+/* Posição inferior (default) */
+.popover-bottom {
+  top: calc(100% + 10px); /* Adiciona distância entre o botão e o popover */
+  left: 50%;
+  transform: translateX(-50%);
+
+
+}
+
+.popover-bottom::before {
+  top: -6px; /* Ajusta a posição da seta */
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  border-color: #ccc transparent transparent #ccc;
+}
+
+/* Posição superior */
+.popover-top {
+  bottom: calc(100% + 10px); /* Adiciona distância entre o botão e o popover */
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.popover-top::before {
+  bottom: -6px; /* Ajusta a posição da seta */
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  border-color: transparent #ccc #ccc transparent;
+}
+
+/* Posição à esquerda */
+.popover-left {
+  right: calc(100% + 10px);
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.popover-left::before {
+  right: -6px; /* Ajusta a posição da seta */
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+  border-color: #ccc #ccc transparent transparent;
+}
+
+/* Posição à direita */
+.popover-right {
+  left: calc(100% + 10px); /* Adiciona distância entre o botão e o popover */
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.popover-right::before {
+  left: -6px; /* Ajusta a posição da seta */
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+  // background-color: #F5F5F5;
+  border-color: transparent transparent #ccc #ccc;
+}
+
+.popover-header {
+  font-size: 12px;
+  color: #777;
+}
+
+.close-button {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: none;
+  border: none;
+  color: #777;
+  cursor: pointer;
+}
+
+.close-button:hover {
+  color: #242424;
+}
+
+.popover-body {
+  display: block;
+  padding: 0px 20px 20px 20px;
+  margin-top: 10px;
+  font-size: 11px;
+  max-height: 120px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.popover-footer {
+  padding-top: 8px;
+  bottom: 0px;
+}
+
+button {
+  font-size: 9px;
+  padding: 2px 3px;
+}
+
+button i {
+  margin-right: 3px;
+}
+
+

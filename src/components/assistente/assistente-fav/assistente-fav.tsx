@@ -33,7 +33,7 @@ export class BthAssistenteFav {
 
   render() {
     return (
-      <bth-icone 
+      <bth-icone
         onClick={this.onClick}
         cor={this.ativo ? getCssVariableValue('--bth-app-yellow') : getCssVariableValue('--bth-app-gray-dark-10')}
         icone={this.ativo ? 'star' : 'star-outline' }>

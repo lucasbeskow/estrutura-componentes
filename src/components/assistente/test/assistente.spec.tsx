@@ -1,11 +1,10 @@
-import { newE2EPage, newSpecPage, SpecPage } from '@stencil/core/testing';
+import { newSpecPage, SpecPage } from '@stencil/core/testing';
 
 import { getMockAuthorization } from '../../../global/test/helper/api.helper';
 import { BthAssistente } from '../assistente';
 import { TipoExtensao, TipoVisualizacao } from '../assistente.interfaces';
 import { AssistenteService } from '../assistente.service';
 import { API_HOST, tagsMock, extensoesMock } from './helper/assistente.helper';
-import { setupFetchMock, setupLocalStorage, setupTestingEnvs, setFetchMockData, setFetchMockStatus, getFetchMockData } from '../../../../test/utils/spec.helper';
 
 function getAuthorization(page: SpecPage) {
   let assistente: HTMLBthAssistenteElement = page.body.querySelector('bth-assistente');
@@ -60,7 +59,7 @@ describe('BthAssistente', () => {
 
     // Assert
     const assistente: HTMLBthNovidadesElement = page.body.querySelector('bth-assistente');
-    //expect(assistente.assis).toEqual(API_HOST);
+
     expect(assistente.authorization).toBeUndefined();
     expect(assistente.shadowRoot.textContent).toMatch(/O assistente está temporariamente indisponível/);
   });

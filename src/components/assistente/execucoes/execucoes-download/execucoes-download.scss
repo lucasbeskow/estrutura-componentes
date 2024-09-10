@@ -1,0 +1,13 @@
+:host {
+  display: block;
+}
+
+a{
+  color: var(--bth-app-blue);
+  text-decoration: none;
+
+  &:hover{
+    color: var(--bth-app-blue-dark-10);
+    text-decoration: underline;
+  }
+}

@@ -82,9 +82,17 @@ export namespace Components {
     }
     interface BthAssistenteItem {
         /**
+          * Configuração de autorização. É necessária para o componente de execucoes poder realizar autentizar com os serviços.
+         */
+        "authorization": AuthorizationConfig;
+        /**
           * Descrição
          */
         "descricao": string;
+        /**
+          * Identificador da extensão
+         */
+        "extensaoId"?: string;
         /**
           * Favorito
          */
@@ -227,6 +235,186 @@ export namespace Components {
           * Define se o empty state está visível
          */
         "show": boolean;
+    }
+    interface BthExecucoes {
+        /**
+          * URL para a api do assinador. Por padrão irá obter do env.js
+         */
+        "assinadorApi"?: string;
+        /**
+          * Configuração de autorização. É necessária para o componente poder realizar autentizar com os serviços.
+         */
+        "authorization": AuthorizationConfig;
+        /**
+          * URL para a api de consulta. Por padrão irá obter do env.js
+         */
+        "consultaApi"?: string;
+        /**
+          * Identificador da extensão
+         */
+        "execucaoId"?: string;
+        /**
+          * URL para a api de execucoes. Por padrão irá obter do env.js
+         */
+        "execucoesApi"?: string;
+    }
+    interface BthExecucoesDownload {
+        /**
+          * Tipo do artefato
+         */
+        "artefatoTipo": string;
+        /**
+          * base url do assinador
+         */
+        "assinadorApi": string;
+        /**
+          * Data em que a execução foi concluída
+         */
+        "concluidaEm": Date;
+        /**
+          * Tipo de conclusão da execução
+         */
+        "conclusaoTipoValor": string;
+        /**
+          * ID da execução
+         */
+        "execucaoId": string;
+        /**
+          * base url de execucoes
+         */
+        "execucoesApi": string;
+        /**
+          * Indica se a execução gerou um resultado
+         */
+        "gerouResultado": boolean;
+        /**
+          * Mensagem de conclusão da execução
+         */
+        "mensagemConclusao": string;
+        /**
+          * Propriedades da execução
+         */
+        "propriedades": any;
+        /**
+          * Protocolo associado à execução
+         */
+        "protocolo": string;
+        /**
+          * Status atual da execução
+         */
+        "statusDescricao": string;
+        /**
+          * Status atual da execução
+         */
+        "statusValor": string;
+    }
+    interface BthExecucoesItem {
+        /**
+          * Tipo do artefato
+         */
+        "artefatoTipo": string;
+        /**
+          * Versão do artefato
+         */
+        "artefatoVersao": string;
+        /**
+          * base url do assinador
+         */
+        "assinadorApi": string;
+        /**
+          * Autor da execução
+         */
+        "autor": string;
+        /**
+          * Data em que a execução foi concluída
+         */
+        "concluidaEm": Date;
+        /**
+          * Tipo de conclusão da execução
+         */
+        "conclusaoTipoValor": string;
+        /**
+          * base url de consulta
+         */
+        "consultaApi": string;
+        /**
+          * Duração da execução em milissegundos
+         */
+        "duracaoValor": number;
+        /**
+          * objeto contendo a informação da execucao
+         */
+        "execucao": any;
+        /**
+          * ID da execução
+         */
+        "execucaoId": string;
+        /**
+          * base url de execucoes
+         */
+        "execucoesApi": string;
+        /**
+          * Indica se a execução gerou um resultado
+         */
+        "gerouResultado": boolean;
+        /**
+          * Data em que a execução foi iniciada
+         */
+        "iniciadaEm": Date;
+        /**
+          * Mensagem de conclusão da execução
+         */
+        "mensagemConclusao": string;
+        /**
+          * Propriedades da execução
+         */
+        "propriedades": any;
+        /**
+          * Protocolo associado à execução
+         */
+        "protocolo": string;
+        /**
+          * Status atual da execução
+         */
+        "statusDescricao": string;
+        /**
+          * Status atual da execução
+         */
+        "statusValor": string;
+        /**
+          * Visibilidade da execução
+         */
+        "visibilidadeValor": string;
+    }
+    interface BthExecucoesStatus {
+        /**
+          * Versão do artefato gerado pela execução
+         */
+        "artefatoVersao": string;
+        /**
+          * Autor da execução
+         */
+        "autor": string;
+        /**
+          * Tipo de conclusão da execução
+         */
+        "conclusaoTipoValor": string;
+        /**
+          * Propriedades da execução
+         */
+        "propriedades": any;
+        /**
+          * Status atual da execução
+         */
+        "statusDescricao": string;
+        /**
+          * Status atual da execução
+         */
+        "statusValor": string;
+        /**
+          * Visibilidade da execução
+         */
+        "visibilidadeValor": string;
     }
     interface BthIcone {
         /**
@@ -558,6 +746,16 @@ export namespace Components {
          */
         "pesquisaApi"?: string;
     }
+    interface BthPopover {
+        /**
+          * Conteudo do popover
+         */
+        "content": string;
+        /**
+          * Posição do popover em relação ao trigger
+         */
+        "position": string;
+    }
     interface BthSelecaoContexto {
         /**
           * Método para buscar os itens de seleção
@@ -687,6 +885,30 @@ declare global {
         prototype: HTMLBthEmptyStateElement;
         new (): HTMLBthEmptyStateElement;
     };
+    interface HTMLBthExecucoesElement extends Components.BthExecucoes, HTMLStencilElement {
+    }
+    var HTMLBthExecucoesElement: {
+        prototype: HTMLBthExecucoesElement;
+        new (): HTMLBthExecucoesElement;
+    };
+    interface HTMLBthExecucoesDownloadElement extends Components.BthExecucoesDownload, HTMLStencilElement {
+    }
+    var HTMLBthExecucoesDownloadElement: {
+        prototype: HTMLBthExecucoesDownloadElement;
+        new (): HTMLBthExecucoesDownloadElement;
+    };
+    interface HTMLBthExecucoesItemElement extends Components.BthExecucoesItem, HTMLStencilElement {
+    }
+    var HTMLBthExecucoesItemElement: {
+        prototype: HTMLBthExecucoesItemElement;
+        new (): HTMLBthExecucoesItemElement;
+    };
+    interface HTMLBthExecucoesStatusElement extends Components.BthExecucoesStatus, HTMLStencilElement {
+    }
+    var HTMLBthExecucoesStatusElement: {
+        prototype: HTMLBthExecucoesStatusElement;
+        new (): HTMLBthExecucoesStatusElement;
+    };
     interface HTMLBthIconeElement extends Components.BthIcone, HTMLStencilElement {
     }
     var HTMLBthIconeElement: {
@@ -777,6 +999,12 @@ declare global {
         prototype: HTMLBthPesquisaElement;
         new (): HTMLBthPesquisaElement;
     };
+    interface HTMLBthPopoverElement extends Components.BthPopover, HTMLStencilElement {
+    }
+    var HTMLBthPopoverElement: {
+        prototype: HTMLBthPopoverElement;
+        new (): HTMLBthPopoverElement;
+    };
     interface HTMLBthSelecaoContextoElement extends Components.BthSelecaoContexto, HTMLStencilElement {
     }
     var HTMLBthSelecaoContextoElement: {
@@ -806,6 +1034,10 @@ declare global {
         "bth-busca": HTMLBthBuscaElement;
         "bth-conta-usuario": HTMLBthContaUsuarioElement;
         "bth-empty-state": HTMLBthEmptyStateElement;
+        "bth-execucoes": HTMLBthExecucoesElement;
+        "bth-execucoes-download": HTMLBthExecucoesDownloadElement;
+        "bth-execucoes-item": HTMLBthExecucoesItemElement;
+        "bth-execucoes-status": HTMLBthExecucoesStatusElement;
         "bth-icone": HTMLBthIconeElement;
         "bth-loader": HTMLBthLoaderElement;
         "bth-marca-produto": HTMLBthMarcaProdutoElement;
@@ -821,6 +1053,7 @@ declare global {
         "bth-novidade-item": HTMLBthNovidadeItemElement;
         "bth-novidades": HTMLBthNovidadesElement;
         "bth-pesquisa": HTMLBthPesquisaElement;
+        "bth-popover": HTMLBthPopoverElement;
         "bth-selecao-contexto": HTMLBthSelecaoContextoElement;
         "bth-suporte": HTMLBthSuporteElement;
         "bth-utilitarios": HTMLBthUtilitariosElement;
@@ -889,9 +1122,17 @@ declare namespace LocalJSX {
     }
     interface BthAssistenteItem {
         /**
+          * Configuração de autorização. É necessária para o componente de execucoes poder realizar autentizar com os serviços.
+         */
+        "authorization"?: AuthorizationConfig;
+        /**
           * Descrição
          */
         "descricao"?: string;
+        /**
+          * Identificador da extensão
+         */
+        "extensaoId"?: string;
         /**
           * Favorito
          */
@@ -1050,6 +1291,190 @@ declare namespace LocalJSX {
           * Define se o empty state está visível
          */
         "show"?: boolean;
+    }
+    interface BthExecucoes {
+        /**
+          * URL para a api do assinador. Por padrão irá obter do env.js
+         */
+        "assinadorApi"?: string;
+        /**
+          * Configuração de autorização. É necessária para o componente poder realizar autentizar com os serviços.
+         */
+        "authorization"?: AuthorizationConfig;
+        /**
+          * URL para a api de consulta. Por padrão irá obter do env.js
+         */
+        "consultaApi"?: string;
+        /**
+          * Identificador da extensão
+         */
+        "execucaoId"?: string;
+        /**
+          * URL para a api de execucoes. Por padrão irá obter do env.js
+         */
+        "execucoesApi"?: string;
+    }
+    interface BthExecucoesDownload {
+        /**
+          * Tipo do artefato
+         */
+        "artefatoTipo"?: string;
+        /**
+          * base url do assinador
+         */
+        "assinadorApi"?: string;
+        /**
+          * Data em que a execução foi concluída
+         */
+        "concluidaEm"?: Date;
+        /**
+          * Tipo de conclusão da execução
+         */
+        "conclusaoTipoValor"?: string;
+        /**
+          * ID da execução
+         */
+        "execucaoId"?: string;
+        /**
+          * base url de execucoes
+         */
+        "execucoesApi"?: string;
+        /**
+          * Indica se a execução gerou um resultado
+         */
+        "gerouResultado"?: boolean;
+        /**
+          * Mensagem de conclusão da execução
+         */
+        "mensagemConclusao"?: string;
+        /**
+          * É emitido ao clicar
+         */
+        "onErrorClicked"?: (event: CustomEvent<any>) => void;
+        /**
+          * Propriedades da execução
+         */
+        "propriedades"?: any;
+        /**
+          * Protocolo associado à execução
+         */
+        "protocolo"?: string;
+        /**
+          * Status atual da execução
+         */
+        "statusDescricao"?: string;
+        /**
+          * Status atual da execução
+         */
+        "statusValor"?: string;
+    }
+    interface BthExecucoesItem {
+        /**
+          * Tipo do artefato
+         */
+        "artefatoTipo"?: string;
+        /**
+          * Versão do artefato
+         */
+        "artefatoVersao"?: string;
+        /**
+          * base url do assinador
+         */
+        "assinadorApi"?: string;
+        /**
+          * Autor da execução
+         */
+        "autor"?: string;
+        /**
+          * Data em que a execução foi concluída
+         */
+        "concluidaEm"?: Date;
+        /**
+          * Tipo de conclusão da execução
+         */
+        "conclusaoTipoValor"?: string;
+        /**
+          * base url de consulta
+         */
+        "consultaApi"?: string;
+        /**
+          * Duração da execução em milissegundos
+         */
+        "duracaoValor"?: number;
+        /**
+          * objeto contendo a informação da execucao
+         */
+        "execucao"?: any;
+        /**
+          * ID da execução
+         */
+        "execucaoId"?: string;
+        /**
+          * base url de execucoes
+         */
+        "execucoesApi"?: string;
+        /**
+          * Indica se a execução gerou um resultado
+         */
+        "gerouResultado"?: boolean;
+        /**
+          * Data em que a execução foi iniciada
+         */
+        "iniciadaEm"?: Date;
+        /**
+          * Mensagem de conclusão da execução
+         */
+        "mensagemConclusao"?: string;
+        /**
+          * Propriedades da execução
+         */
+        "propriedades"?: any;
+        /**
+          * Protocolo associado à execução
+         */
+        "protocolo"?: string;
+        /**
+          * Status atual da execução
+         */
+        "statusDescricao"?: string;
+        /**
+          * Status atual da execução
+         */
+        "statusValor"?: string;
+        /**
+          * Visibilidade da execução
+         */
+        "visibilidadeValor"?: string;
+    }
+    interface BthExecucoesStatus {
+        /**
+          * Versão do artefato gerado pela execução
+         */
+        "artefatoVersao"?: string;
+        /**
+          * Autor da execução
+         */
+        "autor"?: string;
+        /**
+          * Tipo de conclusão da execução
+         */
+        "conclusaoTipoValor"?: string;
+        /**
+          * Propriedades da execução
+         */
+        "propriedades"?: any;
+        /**
+          * Status atual da execução
+         */
+        "statusDescricao"?: string;
+        /**
+          * Status atual da execução
+         */
+        "statusValor"?: string;
+        /**
+          * Visibilidade da execução
+         */
+        "visibilidadeValor"?: string;
     }
     interface BthIcone {
         /**
@@ -1413,6 +1838,16 @@ declare namespace LocalJSX {
          */
         "pesquisaApi"?: string;
     }
+    interface BthPopover {
+        /**
+          * Conteudo do popover
+         */
+        "content"?: string;
+        /**
+          * Posição do popover em relação ao trigger
+         */
+        "position"?: string;
+    }
     interface BthSelecaoContexto {
         /**
           * Método para buscar os itens de seleção
@@ -1486,6 +1921,10 @@ declare namespace LocalJSX {
         "bth-busca": BthBusca;
         "bth-conta-usuario": BthContaUsuario;
         "bth-empty-state": BthEmptyState;
+        "bth-execucoes": BthExecucoes;
+        "bth-execucoes-download": BthExecucoesDownload;
+        "bth-execucoes-item": BthExecucoesItem;
+        "bth-execucoes-status": BthExecucoesStatus;
         "bth-icone": BthIcone;
         "bth-loader": BthLoader;
         "bth-marca-produto": BthMarcaProduto;
@@ -1501,6 +1940,7 @@ declare namespace LocalJSX {
         "bth-novidade-item": BthNovidadeItem;
         "bth-novidades": BthNovidades;
         "bth-pesquisa": BthPesquisa;
+        "bth-popover": BthPopover;
         "bth-selecao-contexto": BthSelecaoContexto;
         "bth-suporte": BthSuporte;
         "bth-utilitarios": BthUtilitarios;
@@ -1520,6 +1960,10 @@ declare module "@stencil/core" {
             "bth-busca": LocalJSX.BthBusca & JSXBase.HTMLAttributes<HTMLBthBuscaElement>;
             "bth-conta-usuario": LocalJSX.BthContaUsuario & JSXBase.HTMLAttributes<HTMLBthContaUsuarioElement>;
             "bth-empty-state": LocalJSX.BthEmptyState & JSXBase.HTMLAttributes<HTMLBthEmptyStateElement>;
+            "bth-execucoes": LocalJSX.BthExecucoes & JSXBase.HTMLAttributes<HTMLBthExecucoesElement>;
+            "bth-execucoes-download": LocalJSX.BthExecucoesDownload & JSXBase.HTMLAttributes<HTMLBthExecucoesDownloadElement>;
+            "bth-execucoes-item": LocalJSX.BthExecucoesItem & JSXBase.HTMLAttributes<HTMLBthExecucoesItemElement>;
+            "bth-execucoes-status": LocalJSX.BthExecucoesStatus & JSXBase.HTMLAttributes<HTMLBthExecucoesStatusElement>;
             "bth-icone": LocalJSX.BthIcone & JSXBase.HTMLAttributes<HTMLBthIconeElement>;
             "bth-loader": LocalJSX.BthLoader & JSXBase.HTMLAttributes<HTMLBthLoaderElement>;
             "bth-marca-produto": LocalJSX.BthMarcaProduto & JSXBase.HTMLAttributes<HTMLBthMarcaProdutoElement>;
@@ -1535,6 +1979,7 @@ declare module "@stencil/core" {
             "bth-novidade-item": LocalJSX.BthNovidadeItem & JSXBase.HTMLAttributes<HTMLBthNovidadeItemElement>;
             "bth-novidades": LocalJSX.BthNovidades & JSXBase.HTMLAttributes<HTMLBthNovidadesElement>;
             "bth-pesquisa": LocalJSX.BthPesquisa & JSXBase.HTMLAttributes<HTMLBthPesquisaElement>;
+            "bth-popover": LocalJSX.BthPopover & JSXBase.HTMLAttributes<HTMLBthPopoverElement>;
             "bth-selecao-contexto": LocalJSX.BthSelecaoContexto & JSXBase.HTMLAttributes<HTMLBthSelecaoContextoElement>;
             "bth-suporte": LocalJSX.BthSuporte & JSXBase.HTMLAttributes<HTMLBthSuporteElement>;
             "bth-utilitarios": LocalJSX.BthUtilitarios & JSXBase.HTMLAttributes<HTMLBthUtilitariosElement>;
