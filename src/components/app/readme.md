@@ -93,6 +93,11 @@ As opções do menu podem ser configuradas através de algumas propriedades
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+Permite configurar opções de navegação nos modelos de menu horizontal e vertical.
+Possui áreas pré-definidas que permite compor as aplicações.
+
 ## Properties
 
 | Property       | Attribute       | Description                                                                                                                                                | Type          | Default     |

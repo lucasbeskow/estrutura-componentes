@@ -30,7 +30,7 @@ export class Icone implements ComponentInterface {
    * Especifica o label a ser utilizado para acessibilidade.
    * Por padrão irá assumir o nome do ícone.
    */
-  @Prop({ reflect: true, mutable: true }) ariaLabel?: string;
+  @Prop({ reflect: true, mutable: true }) ariaLabel: string | null;
 
   connectedCallback() {
     this.carregarIcone();

@@ -45,6 +45,12 @@ contaUsuario.addEventListener('logout', function logout() {
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+Este componente exibe informações relacionadas ao usuário/conta logada
+
+Este componente foi elaborado para comportar o slot "menu_ferramentas"
+
 ## Properties
 
 | Property             | Attribute              | Description                                                           | Type     | Default     |

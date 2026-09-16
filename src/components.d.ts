@@ -24,6 +24,10 @@ export namespace Components {
          */
         "centralAjudaHome"?: string;
     }
+    /**
+     * Permite configurar opções de navegação nos modelos de menu horizontal e vertical.
+     * Possui áreas pré-definidas que permite compor as aplicações.
+     */
     interface BthApp {
         /**
           * Permite definir um banner que é exibido acima do menu
@@ -63,6 +67,9 @@ export namespace Components {
          */
         "setMenuAtivo": (identificador: IdentificadorOpcaoMenu) => Promise<void>;
     }
+    /**
+     * Este componente exibe um avatar
+     */
     interface BthAvatar {
         /**
           * Define se o avatar possui borda
@@ -113,6 +120,10 @@ export namespace Components {
          */
         "tamanho"?: Tamanho;
     }
+    /**
+     * Este componente exibe informações relacionadas ao usuário/conta logada
+     * Este componente foi elaborado para comportar o slot "menu_ferramentas"
+     */
     interface BthContaUsuario {
         /**
           * URL para home da Central de Usuários. Por padrão irá obter do env.js.
@@ -165,7 +176,7 @@ export namespace Components {
         /**
           * Especifica o label a ser utilizado para acessibilidade. Por padrão irá assumir o nome do ícone.
          */
-        "ariaLabel"?: string;
+        "ariaLabel": string | null;
         /**
           * Cor de preenchimento, no mesmo formato do `"color"` em CSS. Por padrão irá herdar do contexto inserido.
          */
@@ -179,12 +190,19 @@ export namespace Components {
          */
         "tamanho": string;
     }
+    /**
+     * Loader padrão com efeitos de animações
+     */
     interface BthLoader {
         /**
           * Define se o loader é inline
          */
         "inline": boolean;
     }
+    /**
+     * Este componente exibe o logo da Betha e o nome do produto
+     * Este componente foi elaborado para comportar o slot de "menu_marca_produto"
+     */
     interface BthMarcaProduto {
         /**
           * Define a área de produtos.
@@ -215,6 +233,9 @@ export namespace Components {
          */
         "userAccountsApi"?: string;
     }
+    /**
+     * Facilita a criação de Ferramentas para o menu. Abstrai comportamentos responsivos e controle do painel lateral.
+     */
     interface BthMenuFerramenta {
         /**
           * Descrição
@@ -229,6 +250,10 @@ export namespace Components {
          */
         "tituloPainelLateral": string;
     }
+    /**
+     * Abstrai a estilização de um ícone para menu-ferramenta.
+     * Também implementa a possibilidade de exibição de um `badge` ao lado do ícone, através da propriedade `contador`.
+     */
     interface BthMenuFerramentaIcone {
         /**
           * Valor que será exibido em uma "badge" próximo ao ícone
@@ -247,6 +272,9 @@ export namespace Components {
          */
         "status": 'online' | 'offline' | undefined;
     }
+    /**
+     * Item que representa uma opção do menu para navegação horizontal
+     */
     interface BthMenuHorizontalItem {
         /**
           * Está ativo?
@@ -269,6 +297,9 @@ export namespace Components {
          */
         "possuiPermissao": boolean;
     }
+    /**
+     * Possibilita incluir conteúdo dinâmico em um painel lateral que sobrepõe o conteúdo da tela pela direita
+     */
     interface BthMenuPainelLateral {
         /**
           * Cancela o timeout de interação ativo caso exista
@@ -291,6 +322,9 @@ export namespace Components {
          */
         "titulo": string;
     }
+    /**
+     * Item que representa uma opção do menu para navegação vertical
+     */
     interface BthMenuVerticalItem {
         /**
           * Está ativo?
@@ -491,6 +525,9 @@ export namespace Components {
          */
         "pesquisaApi"?: string;
     }
+    /**
+     * Este componente permite compor uma lista de seleção de contexto.
+     */
     interface BthSelecaoContexto {
         /**
           * Método para buscar os itens de seleção
@@ -505,6 +542,11 @@ export namespace Components {
          */
         "selecionar": (item: ItemSelecaoContexto) => Promise<any> | void;
     }
+    /**
+     * Componente do menu Suporte com Blip Chat
+     * @see https://gitlab.services.betha.cloud/ped/tecnologia/nlp/blip-webchat-loader
+     * @see https://gitlab.services.betha.cloud/ped/suite/atendimento/components/suite-atendimento
+     */
     interface BthSuporte {
         /**
           * Habilita ou desabilita o botão de abrir um chamado no atendimento
@@ -559,6 +601,54 @@ export namespace Components {
         "utilitarios": Array<Utilitario>;
     }
 }
+export interface BthAppCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBthAppElement;
+}
+export interface BthAvatarCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBthAvatarElement;
+}
+export interface BthContaUsuarioCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBthContaUsuarioElement;
+}
+export interface BthMenuHorizontalItemCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBthMenuHorizontalItemElement;
+}
+export interface BthMenuPainelLateralCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBthMenuPainelLateralElement;
+}
+export interface BthMenuVerticalItemCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBthMenuVerticalItemElement;
+}
+export interface BthNavbarPillItemCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBthNavbarPillItemElement;
+}
+export interface BthNotificacaoItemCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBthNotificacaoItemElement;
+}
+export interface BthNotificacoesCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBthNotificacoesElement;
+}
+export interface BthNovidadeItemCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBthNovidadeItemElement;
+}
+export interface BthNovidadesCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBthNovidadesElement;
+}
+export interface BthUtilitariosCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBthUtilitariosElement;
+}
 declare global {
     interface HTMLBthAjudaElement extends Components.BthAjuda, HTMLStencilElement {
     }
@@ -566,18 +656,29 @@ declare global {
         prototype: HTMLBthAjudaElement;
         new (): HTMLBthAjudaElement;
     };
+    /**
+     * Permite configurar opções de navegação nos modelos de menu horizontal e vertical.
+     * Possui áreas pré-definidas que permite compor as aplicações.
+     */
     interface HTMLBthAppElement extends Components.BthApp, HTMLStencilElement {
     }
     var HTMLBthAppElement: {
         prototype: HTMLBthAppElement;
         new (): HTMLBthAppElement;
     };
+    /**
+     * Este componente exibe um avatar
+     */
     interface HTMLBthAvatarElement extends Components.BthAvatar, HTMLStencilElement {
     }
     var HTMLBthAvatarElement: {
         prototype: HTMLBthAvatarElement;
         new (): HTMLBthAvatarElement;
     };
+    /**
+     * Este componente exibe informações relacionadas ao usuário/conta logada
+     * Este componente foi elaborado para comportar o slot "menu_ferramentas"
+     */
     interface HTMLBthContaUsuarioElement extends Components.BthContaUsuario, HTMLStencilElement {
     }
     var HTMLBthContaUsuarioElement: {
@@ -596,42 +697,65 @@ declare global {
         prototype: HTMLBthIconeElement;
         new (): HTMLBthIconeElement;
     };
+    /**
+     * Loader padrão com efeitos de animações
+     */
     interface HTMLBthLoaderElement extends Components.BthLoader, HTMLStencilElement {
     }
     var HTMLBthLoaderElement: {
         prototype: HTMLBthLoaderElement;
         new (): HTMLBthLoaderElement;
     };
+    /**
+     * Este componente exibe o logo da Betha e o nome do produto
+     * Este componente foi elaborado para comportar o slot de "menu_marca_produto"
+     */
     interface HTMLBthMarcaProdutoElement extends Components.BthMarcaProduto, HTMLStencilElement {
     }
     var HTMLBthMarcaProdutoElement: {
         prototype: HTMLBthMarcaProdutoElement;
         new (): HTMLBthMarcaProdutoElement;
     };
+    /**
+     * Facilita a criação de Ferramentas para o menu. Abstrai comportamentos responsivos e controle do painel lateral.
+     */
     interface HTMLBthMenuFerramentaElement extends Components.BthMenuFerramenta, HTMLStencilElement {
     }
     var HTMLBthMenuFerramentaElement: {
         prototype: HTMLBthMenuFerramentaElement;
         new (): HTMLBthMenuFerramentaElement;
     };
+    /**
+     * Abstrai a estilização de um ícone para menu-ferramenta.
+     * Também implementa a possibilidade de exibição de um `badge` ao lado do ícone, através da propriedade `contador`.
+     */
     interface HTMLBthMenuFerramentaIconeElement extends Components.BthMenuFerramentaIcone, HTMLStencilElement {
     }
     var HTMLBthMenuFerramentaIconeElement: {
         prototype: HTMLBthMenuFerramentaIconeElement;
         new (): HTMLBthMenuFerramentaIconeElement;
     };
+    /**
+     * Item que representa uma opção do menu para navegação horizontal
+     */
     interface HTMLBthMenuHorizontalItemElement extends Components.BthMenuHorizontalItem, HTMLStencilElement {
     }
     var HTMLBthMenuHorizontalItemElement: {
         prototype: HTMLBthMenuHorizontalItemElement;
         new (): HTMLBthMenuHorizontalItemElement;
     };
+    /**
+     * Possibilita incluir conteúdo dinâmico em um painel lateral que sobrepõe o conteúdo da tela pela direita
+     */
     interface HTMLBthMenuPainelLateralElement extends Components.BthMenuPainelLateral, HTMLStencilElement {
     }
     var HTMLBthMenuPainelLateralElement: {
         prototype: HTMLBthMenuPainelLateralElement;
         new (): HTMLBthMenuPainelLateralElement;
     };
+    /**
+     * Item que representa uma opção do menu para navegação vertical
+     */
     interface HTMLBthMenuVerticalItemElement extends Components.BthMenuVerticalItem, HTMLStencilElement {
     }
     var HTMLBthMenuVerticalItemElement: {
@@ -680,12 +804,20 @@ declare global {
         prototype: HTMLBthPesquisaElement;
         new (): HTMLBthPesquisaElement;
     };
+    /**
+     * Este componente permite compor uma lista de seleção de contexto.
+     */
     interface HTMLBthSelecaoContextoElement extends Components.BthSelecaoContexto, HTMLStencilElement {
     }
     var HTMLBthSelecaoContextoElement: {
         prototype: HTMLBthSelecaoContextoElement;
         new (): HTMLBthSelecaoContextoElement;
     };
+    /**
+     * Componente do menu Suporte com Blip Chat
+     * @see https://gitlab.services.betha.cloud/ped/tecnologia/nlp/blip-webchat-loader
+     * @see https://gitlab.services.betha.cloud/ped/suite/atendimento/components/suite-atendimento
+     */
     interface HTMLBthSuporteElement extends Components.BthSuporte, HTMLStencilElement {
     }
     var HTMLBthSuporteElement: {
@@ -731,6 +863,10 @@ declare namespace LocalJSX {
          */
         "centralAjudaHome"?: string;
     }
+    /**
+     * Permite configurar opções de navegação nos modelos de menu horizontal e vertical.
+     * Possui áreas pré-definidas que permite compor as aplicações.
+     */
     interface BthApp {
         /**
           * Permite definir um banner que é exibido acima do menu
@@ -747,15 +883,15 @@ declare namespace LocalJSX {
         /**
           * É emitido quando o componente de menu possuir alterações na propriedade de banner
          */
-        "onBannerAlterado"?: (event: CustomEvent<MenuBannerAlteradoEvent>) => void;
+        "onBannerAlterado"?: (event: BthAppCustomEvent<MenuBannerAlteradoEvent>) => void;
         /**
           * É emitido quando o botão do banner é clicado
          */
-        "onBotaoBannerAcionado"?: (event: CustomEvent<void>) => void;
+        "onBotaoBannerAcionado"?: (event: BthAppCustomEvent<void>) => void;
         /**
           * É emitido quando alguma opção do menu for selecionada
          */
-        "onOpcaoMenuSelecionada"?: (event: CustomEvent<OpcaoMenuSelecionadaEvent>) => void;
+        "onOpcaoMenuSelecionada"?: (event: BthAppCustomEvent<OpcaoMenuSelecionadaEvent>) => void;
         /**
           * Opções de navegação do menu
          */
@@ -765,6 +901,9 @@ declare namespace LocalJSX {
          */
         "opcoesHeader"?: Array<OpcaoMenu>;
     }
+    /**
+     * Este componente exibe um avatar
+     */
     interface BthAvatar {
         /**
           * Define se o avatar possui borda
@@ -797,7 +936,7 @@ declare namespace LocalJSX {
         /**
           * É emitido quando houver erro ao carregar a imagem
          */
-        "onImageLoadError"?: (event: CustomEvent<any>) => void;
+        "onImageLoadError"?: (event: BthAvatarCustomEvent<any>) => void;
         /**
           * Define se o avatar terá suas bordas no formato quadrado.  Por padrão é redondo
          */
@@ -819,6 +958,10 @@ declare namespace LocalJSX {
          */
         "tamanho"?: Tamanho;
     }
+    /**
+     * Este componente exibe informações relacionadas ao usuário/conta logada
+     * Este componente foi elaborado para comportar o slot "menu_ferramentas"
+     */
     interface BthContaUsuario {
         /**
           * URL para home da Central de Usuários. Por padrão irá obter do env.js.
@@ -835,7 +978,7 @@ declare namespace LocalJSX {
         /**
           * É emitido ao clicar em Sair ("logout")
          */
-        "onLogout"?: (event: CustomEvent<LogoutEvent>) => void;
+        "onLogout"?: (event: BthContaUsuarioCustomEvent<LogoutEvent>) => void;
         /**
           * Usuário ("username" ou "email")
          */
@@ -875,7 +1018,7 @@ declare namespace LocalJSX {
         /**
           * Especifica o label a ser utilizado para acessibilidade. Por padrão irá assumir o nome do ícone.
          */
-        "ariaLabel"?: string;
+        "ariaLabel"?: string | null;
         /**
           * Cor de preenchimento, no mesmo formato do `"color"` em CSS. Por padrão irá herdar do contexto inserido.
          */
@@ -889,12 +1032,19 @@ declare namespace LocalJSX {
          */
         "tamanho"?: string;
     }
+    /**
+     * Loader padrão com efeitos de animações
+     */
     interface BthLoader {
         /**
           * Define se o loader é inline
          */
         "inline"?: boolean;
     }
+    /**
+     * Este componente exibe o logo da Betha e o nome do produto
+     * Este componente foi elaborado para comportar o slot de "menu_marca_produto"
+     */
     interface BthMarcaProduto {
         /**
           * Define a área de produtos.
@@ -925,6 +1075,9 @@ declare namespace LocalJSX {
          */
         "userAccountsApi"?: string;
     }
+    /**
+     * Facilita a criação de Ferramentas para o menu. Abstrai comportamentos responsivos e controle do painel lateral.
+     */
     interface BthMenuFerramenta {
         /**
           * Descrição
@@ -935,6 +1088,10 @@ declare namespace LocalJSX {
          */
         "tituloPainelLateral"?: string;
     }
+    /**
+     * Abstrai a estilização de um ícone para menu-ferramenta.
+     * Também implementa a possibilidade de exibição de um `badge` ao lado do ícone, através da propriedade `contador`.
+     */
     interface BthMenuFerramentaIcone {
         /**
           * Valor que será exibido em uma "badge" próximo ao ícone
@@ -953,6 +1110,9 @@ declare namespace LocalJSX {
          */
         "status"?: 'online' | 'offline' | undefined;
     }
+    /**
+     * Item que representa uma opção do menu para navegação horizontal
+     */
     interface BthMenuHorizontalItem {
         /**
           * Está ativo?
@@ -973,17 +1133,20 @@ declare namespace LocalJSX {
         /**
           * É emitido quando o menu é selecionado
          */
-        "onMenuHorizontalSelecionado"?: (event: CustomEvent<MenuHorizontalSelecionadoEvent>) => void;
+        "onMenuHorizontalSelecionado"?: (event: BthMenuHorizontalItemCustomEvent<MenuHorizontalSelecionadoEvent>) => void;
         /**
           * Possui permissão?
          */
         "possuiPermissao"?: boolean;
     }
+    /**
+     * Possibilita incluir conteúdo dinâmico em um painel lateral que sobrepõe o conteúdo da tela pela direita
+     */
     interface BthMenuPainelLateral {
         /**
           * É toda vez em que o estado de exibição ("show") for alterado
          */
-        "onPainelLateralShow"?: (event: CustomEvent<PainelLateralShowEvent>) => void;
+        "onPainelLateralShow"?: (event: BthMenuPainelLateralCustomEvent<PainelLateralShowEvent>) => void;
         /**
           * Estado de visibilidade
          */
@@ -993,6 +1156,9 @@ declare namespace LocalJSX {
          */
         "titulo"?: string;
     }
+    /**
+     * Item que representa uma opção do menu para navegação vertical
+     */
     interface BthMenuVerticalItem {
         /**
           * Está ativo?
@@ -1025,7 +1191,7 @@ declare namespace LocalJSX {
         /**
           * É emitido quando o menu é selecionado
          */
-        "onMenuVerticalSelecionado"?: (event: CustomEvent<MenuVerticalSelecionadoEvent>) => void;
+        "onMenuVerticalSelecionado"?: (event: BthMenuVerticalItemCustomEvent<MenuVerticalSelecionadoEvent>) => void;
         /**
           * Indica se deve aparecer um badge no ícone.
          */
@@ -1073,7 +1239,7 @@ declare namespace LocalJSX {
         /**
           * É emitido ao clicar no filtro
          */
-        "onNavbarPillItemClicked"?: (event: CustomEvent<any>) => void;
+        "onNavbarPillItemClicked"?: (event: BthNavbarPillItemCustomEvent<any>) => void;
         /**
           * Exibir totalizador?
          */
@@ -1107,11 +1273,11 @@ declare namespace LocalJSX {
         /**
           * É emitido quando uma notificação é marcada como lida
          */
-        "onNotificacaoLida"?: (event: CustomEvent<any>) => void;
+        "onNotificacaoLida"?: (event: BthNotificacaoItemCustomEvent<any>) => void;
         /**
           * É emitido quando uma notificação é marcada como não lida
          */
-        "onNotificacaoNaoLida"?: (event: CustomEvent<any>) => void;
+        "onNotificacaoNaoLida"?: (event: BthNotificacaoItemCustomEvent<any>) => void;
         /**
           * Origem
          */
@@ -1161,15 +1327,15 @@ declare namespace LocalJSX {
         /**
           * É emitido quando houver notificações lidas ou não lidas a ser sinalizadas ao menu
          */
-        "onConteudoSinalizado"?: (event: CustomEvent<ConteudoSinalizadoEvent>) => void;
+        "onConteudoSinalizado"?: (event: BthNotificacoesCustomEvent<ConteudoSinalizadoEvent>) => void;
         /**
           * É emitido quando alguma notificação for recebida
          */
-        "onNovaNotificacao"?: (event: CustomEvent<NotificacaoEvent>) => void;
+        "onNovaNotificacao"?: (event: BthNotificacoesCustomEvent<NotificacaoEvent>) => void;
         /**
           * É emitido quando alguma notificação do tipo mensagem for recebida
          */
-        "onNovaNotificacaoComLink"?: (event: CustomEvent<NotificacaoComLinkEvent>) => void;
+        "onNovaNotificacaoComLink"?: (event: BthNotificacoesCustomEvent<NotificacaoComLinkEvent>) => void;
     }
     interface BthNovidadeItem {
         /**
@@ -1191,11 +1357,11 @@ declare namespace LocalJSX {
         /**
           * É emitido quando uma novidade é marcada como lida
          */
-        "onNovidadeLida"?: (event: CustomEvent<NovidadeLeituraEvent>) => void;
+        "onNovidadeLida"?: (event: BthNovidadeItemCustomEvent<NovidadeLeituraEvent>) => void;
         /**
           * É emitido quando uma novidade é marcada como não lida
          */
-        "onNovidadeNaoLida"?: (event: CustomEvent<NovidadeLeituraEvent>) => void;
+        "onNovidadeNaoLida"?: (event: BthNovidadeItemCustomEvent<NovidadeLeituraEvent>) => void;
         /**
           * Título
          */
@@ -1217,7 +1383,7 @@ declare namespace LocalJSX {
         /**
           * É emitido quando houver novidades lidas ou não lidas a ser sinalizadas ao menu
          */
-        "onConteudoSinalizado"?: (event: CustomEvent<ConteudoSinalizadoEvent>) => void;
+        "onConteudoSinalizado"?: (event: BthNovidadesCustomEvent<ConteudoSinalizadoEvent>) => void;
     }
     interface BthPesquisa {
         /**
@@ -1233,6 +1399,9 @@ declare namespace LocalJSX {
          */
         "pesquisaApi"?: string;
     }
+    /**
+     * Este componente permite compor uma lista de seleção de contexto.
+     */
     interface BthSelecaoContexto {
         /**
           * Método para buscar os itens de seleção
@@ -1247,6 +1416,11 @@ declare namespace LocalJSX {
          */
         "selecionar"?: (item: ItemSelecaoContexto) => Promise<any> | void;
     }
+    /**
+     * Componente do menu Suporte com Blip Chat
+     * @see https://gitlab.services.betha.cloud/ped/tecnologia/nlp/blip-webchat-loader
+     * @see https://gitlab.services.betha.cloud/ped/suite/atendimento/components/suite-atendimento
+     */
     interface BthSuporte {
         /**
           * Habilita ou desabilita o botão de abrir um chamado no atendimento
@@ -1289,7 +1463,7 @@ declare namespace LocalJSX {
         /**
           * É emitido quando algum utilitário for selecionado
          */
-        "onOpcaoUtilitarioSelecionada"?: (event: CustomEvent<OpcaoUtilitarioSelecionadaEvent>) => void;
+        "onOpcaoUtilitarioSelecionada"?: (event: BthUtilitariosCustomEvent<OpcaoUtilitarioSelecionadaEvent>) => void;
         /**
           * Utilitarios
          */
@@ -1326,17 +1500,51 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "bth-ajuda": LocalJSX.BthAjuda & JSXBase.HTMLAttributes<HTMLBthAjudaElement>;
+            /**
+             * Permite configurar opções de navegação nos modelos de menu horizontal e vertical.
+             * Possui áreas pré-definidas que permite compor as aplicações.
+             */
             "bth-app": LocalJSX.BthApp & JSXBase.HTMLAttributes<HTMLBthAppElement>;
+            /**
+             * Este componente exibe um avatar
+             */
             "bth-avatar": LocalJSX.BthAvatar & JSXBase.HTMLAttributes<HTMLBthAvatarElement>;
+            /**
+             * Este componente exibe informações relacionadas ao usuário/conta logada
+             * Este componente foi elaborado para comportar o slot "menu_ferramentas"
+             */
             "bth-conta-usuario": LocalJSX.BthContaUsuario & JSXBase.HTMLAttributes<HTMLBthContaUsuarioElement>;
             "bth-empty-state": LocalJSX.BthEmptyState & JSXBase.HTMLAttributes<HTMLBthEmptyStateElement>;
             "bth-icone": LocalJSX.BthIcone & JSXBase.HTMLAttributes<HTMLBthIconeElement>;
+            /**
+             * Loader padrão com efeitos de animações
+             */
             "bth-loader": LocalJSX.BthLoader & JSXBase.HTMLAttributes<HTMLBthLoaderElement>;
+            /**
+             * Este componente exibe o logo da Betha e o nome do produto
+             * Este componente foi elaborado para comportar o slot de "menu_marca_produto"
+             */
             "bth-marca-produto": LocalJSX.BthMarcaProduto & JSXBase.HTMLAttributes<HTMLBthMarcaProdutoElement>;
+            /**
+             * Facilita a criação de Ferramentas para o menu. Abstrai comportamentos responsivos e controle do painel lateral.
+             */
             "bth-menu-ferramenta": LocalJSX.BthMenuFerramenta & JSXBase.HTMLAttributes<HTMLBthMenuFerramentaElement>;
+            /**
+             * Abstrai a estilização de um ícone para menu-ferramenta.
+             * Também implementa a possibilidade de exibição de um `badge` ao lado do ícone, através da propriedade `contador`.
+             */
             "bth-menu-ferramenta-icone": LocalJSX.BthMenuFerramentaIcone & JSXBase.HTMLAttributes<HTMLBthMenuFerramentaIconeElement>;
+            /**
+             * Item que representa uma opção do menu para navegação horizontal
+             */
             "bth-menu-horizontal-item": LocalJSX.BthMenuHorizontalItem & JSXBase.HTMLAttributes<HTMLBthMenuHorizontalItemElement>;
+            /**
+             * Possibilita incluir conteúdo dinâmico em um painel lateral que sobrepõe o conteúdo da tela pela direita
+             */
             "bth-menu-painel-lateral": LocalJSX.BthMenuPainelLateral & JSXBase.HTMLAttributes<HTMLBthMenuPainelLateralElement>;
+            /**
+             * Item que representa uma opção do menu para navegação vertical
+             */
             "bth-menu-vertical-item": LocalJSX.BthMenuVerticalItem & JSXBase.HTMLAttributes<HTMLBthMenuVerticalItemElement>;
             "bth-navbar-pill-group": LocalJSX.BthNavbarPillGroup & JSXBase.HTMLAttributes<HTMLBthNavbarPillGroupElement>;
             "bth-navbar-pill-item": LocalJSX.BthNavbarPillItem & JSXBase.HTMLAttributes<HTMLBthNavbarPillItemElement>;
@@ -1345,7 +1553,15 @@ declare module "@stencil/core" {
             "bth-novidade-item": LocalJSX.BthNovidadeItem & JSXBase.HTMLAttributes<HTMLBthNovidadeItemElement>;
             "bth-novidades": LocalJSX.BthNovidades & JSXBase.HTMLAttributes<HTMLBthNovidadesElement>;
             "bth-pesquisa": LocalJSX.BthPesquisa & JSXBase.HTMLAttributes<HTMLBthPesquisaElement>;
+            /**
+             * Este componente permite compor uma lista de seleção de contexto.
+             */
             "bth-selecao-contexto": LocalJSX.BthSelecaoContexto & JSXBase.HTMLAttributes<HTMLBthSelecaoContextoElement>;
+            /**
+             * Componente do menu Suporte com Blip Chat
+             * @see https://gitlab.services.betha.cloud/ped/tecnologia/nlp/blip-webchat-loader
+             * @see https://gitlab.services.betha.cloud/ped/suite/atendimento/components/suite-atendimento
+             */
             "bth-suporte": LocalJSX.BthSuporte & JSXBase.HTMLAttributes<HTMLBthSuporteElement>;
             "bth-utilitarios": LocalJSX.BthUtilitarios & JSXBase.HTMLAttributes<HTMLBthUtilitariosElement>;
         }

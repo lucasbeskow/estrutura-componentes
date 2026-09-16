@@ -25,6 +25,10 @@ painelLateralEl.toggleAttribute('show');
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+Possibilita incluir conteúdo dinâmico em um painel lateral que sobrepõe o conteúdo da tela pela direita
+
 ## Properties
 
 | Property | Attribute | Description                          | Type      | Default     |

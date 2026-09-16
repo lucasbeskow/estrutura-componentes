@@ -63,6 +63,12 @@ marcaProduto.authorization = authorization;
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+Este componente exibe o logo da Betha e o nome do produto
+
+Este componente foi elaborado para comportar o slot de "menu_marca_produto"
+
 ## Properties
 
 | Property               | Attribute           | Description                                                                                                            | Type                  | Default     |

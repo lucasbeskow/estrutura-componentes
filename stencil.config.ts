@@ -5,6 +5,9 @@ export const config: Config = {
   namespace: 'estrutura-componentes',
   globalStyle: 'src/styles/global.css',
   taskQueue: 'async',// 'congestionAsync',
+  // Mantém o bundle `nomodule` (ES5) documentado no README. Stencil 4 remove
+  // esta opção: decidir sobre suporte a IE11 antes daquela migração.
+  buildEs5: 'prod',
   plugins: [
     sass(),
   ],

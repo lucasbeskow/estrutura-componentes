@@ -5,6 +5,10 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+Componente do menu Suporte com Blip Chat
+
 ## Properties
 
 | Property                 | Attribute                    | Description                                                                                   | Type                  | Default     |

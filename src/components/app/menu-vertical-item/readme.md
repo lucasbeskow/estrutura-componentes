@@ -5,6 +5,10 @@ Item que representa uma opção do menu para navegação vertical
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+Item que representa uma opção do menu para navegação vertical
+
 ## Properties
 
 | Property               | Attribute                | Description                                                                                                                       | Type               | Default            |

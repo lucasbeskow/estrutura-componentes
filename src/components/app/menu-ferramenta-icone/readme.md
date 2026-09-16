@@ -18,6 +18,11 @@ Também implementa a possibilidade de exibição de um `badge` ao lado do ícone
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+Abstrai a estilização de um ícone para menu-ferramenta.
+Também implementa a possibilidade de exibição de um `badge` ao lado do ícone, através da propriedade `contador`.
+
 ## Properties
 
 | Property   | Attribute  | Description                                                 | Type                    | Default     |

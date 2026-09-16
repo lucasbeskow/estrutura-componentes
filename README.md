@@ -49,7 +49,7 @@ yarn add @betha-plataforma/estrutura-componentes
 
 <!-- ... ou caso queira suportar somente navegadores modernos -->
 <script type="module">
-  import { defineCustomElements } from 'https://unpkg.com/@betha-plataforma/estrutura-componentes/loader/index.es2017.mjs';
+  import { defineCustomElements } from 'https://unpkg.com/@betha-plataforma/estrutura-componentes/loader/index.es2017.js';
   defineCustomElements();
 </script>
 ```

@@ -57,6 +57,10 @@ selecaoContexto.selecionar = function selecionar(item) {
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+Este componente permite compor uma lista de seleção de contexto.
+
 ## Properties
 
 | Property              | Attribute              | Description                                        | Type                                                  | Default     |
