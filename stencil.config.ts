@@ -35,7 +35,7 @@ export const config: Config = {
       type: 'www',
       serviceWorker: null,
       copy: [
-        { src: 'comuns.html', dest: 'comuns.html' }
+        { src: 'componentes.html', dest: 'componentes.html' }
       ]
     }
   ],
