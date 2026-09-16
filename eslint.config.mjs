@@ -95,4 +95,21 @@ export default [
       ],
     },
   },
+
+  {
+    // Componentes reutilizaveis fora do shell nao podem depender do pacote
+    // `app`. O contrato entre eles vive em src/global e nos nomes de evento
+    // do DOM, nunca em um import relativo para dentro de components/app.
+    files: ['src/components/**/*.ts', 'src/components/**/*.tsx'],
+    ignores: ['src/components/app/**'],
+
+    rules: {
+      'no-restricted-imports': [
+        'error',
+        {
+          patterns: ['../app/**', '../../app/**', '../../../app/**'],
+        },
+      ],
+    },
+  },
 ];
