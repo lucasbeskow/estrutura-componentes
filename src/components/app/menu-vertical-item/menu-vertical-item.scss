@@ -14,7 +14,7 @@
 
   &--active {
     background-color: var(--bth-app-gray-light-10);
-    > a {
+    > button {
       bth-icone,
       span {
         color: var(--bth-app-blue-dark-10);
@@ -48,7 +48,7 @@
   &--floating {
     background-color: var(--bth-app-gray-light-20);
     border-top: 0;
-    > a {
+    > button {
       > span {
         opacity: 0;
       }
@@ -69,8 +69,14 @@
     }
   }
 
-  a {
+  button {
     align-items: center;
+    border: 0;
+    background-color: transparent;
+    font-family: inherit;
+    font-size: inherit;
+    cursor: pointer;
+    text-align: left;
     display: flex;
     width: 100%;
     color: var(--bth-app-gray-dark-20);
@@ -126,7 +132,7 @@
 }
 
 .menu-vertical__submenu {
-  a {
+  button {
     height: 36px;
     padding: 12px 10px 12px 53px;
     cursor: pointer;
@@ -174,7 +180,7 @@
 
 @media (max-width: 991px) {
   .menu-vertical__item {
-    a {
+    button {
       height: 54px;
       font-size: 18px;
 

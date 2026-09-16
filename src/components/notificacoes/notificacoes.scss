@@ -10,6 +10,12 @@
 }
 
 .link {
+  border: 0;
+  background-color: transparent;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+  padding: 0;
   text-decoration: none;
   color: var(--bth-app-blue-dark-20);
   &:hover {

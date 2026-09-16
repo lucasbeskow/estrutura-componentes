@@ -63,8 +63,8 @@ export class MenuHorizontalItem {
   render() {
     return (
       <div class={`menu-horizontal__item ${this.ativo ? 'menu-horizontal__item--active' : ''}`}>
-        <a
-          href=""
+        <button
+          type="button"
           class={`${!this.possuiPermissao ? 'menu-horizontal__item--disabled' : ''}`}
           title={`${!this.possuiPermissao ? MSG_SEM_PERMISSAO_RECURSO : this.descricao}`}
           onClick={this.onClick}
@@ -75,7 +75,7 @@ export class MenuHorizontalItem {
 
           <span>{this.descricao}</span>
           <BadgeContador valor={this.contador}></BadgeContador>
-        </a>
+        </button>
       </div>
     );
   }

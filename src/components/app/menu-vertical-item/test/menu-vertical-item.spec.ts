@@ -39,7 +39,7 @@ describe('bth-menu-vertical-item', () => {
     const icone: HTMLBthIconeElement = menuVerticalItem.shadowRoot.querySelector('bth-icone');
     expect(icone.getAttribute('icone')).toBe(opcaoMenu.icone);
 
-    const link: HTMLAnchorElement = menuVerticalItem.shadowRoot.querySelector('a');
+    const link: HTMLButtonElement = menuVerticalItem.shadowRoot.querySelector('button');
     expect(link.getAttribute('aria-haspopup')).toBe('false');
     expect(link.getAttribute('aria-expanded')).toBe('false');
     expect(link.getAttribute('aria-disabled')).toBe('false');
@@ -73,7 +73,7 @@ describe('bth-menu-vertical-item', () => {
     // Assert
     expect(menuVerticalItem.possuiPermissao).toBe(false);
 
-    const link: HTMLAnchorElement = menuVerticalItem.shadowRoot.querySelector('a');
+    const link: HTMLButtonElement = menuVerticalItem.shadowRoot.querySelector('button');
     expect(link.classList.contains('menu-vertical__item--disabled')).toBeTruthy();
     expect(link.title).toBe(MSG_SEM_PERMISSAO_RECURSO);
     expect(link.getAttribute('aria-disabled')).toBe('true');
@@ -145,7 +145,7 @@ describe('bth-menu-vertical-item', () => {
     const menuBlock: HTMLDivElement = menuVerticalItem.shadowRoot.querySelector('.menu-vertical__item');
     expect(menuBlock.classList.contains('menu-vertical__item--has-children')).toBeTruthy();
 
-    const menuLink: HTMLAnchorElement = menuVerticalItem.shadowRoot.querySelector('a');
+    const menuLink: HTMLButtonElement = menuVerticalItem.shadowRoot.querySelector('button');
     expect(menuLink.getAttribute('aria-haspopup')).toBe('true');
     expect(menuLink.getAttribute('aria-expanded')).toBe('true');
     expect(menuLink.getAttribute('aria-label')).toBe(`Expandir ${menuVerticalItem.descricao}`);
@@ -173,7 +173,7 @@ describe('bth-menu-vertical-item', () => {
     await page.waitForChanges();
 
     // Act
-    const link: HTMLAnchorElement = menuVerticalItem.shadowRoot.querySelector('a');
+    const link: HTMLButtonElement = menuVerticalItem.shadowRoot.querySelector('button');
     link.click();
 
     await page.waitForChanges();
@@ -201,7 +201,7 @@ describe('bth-menu-vertical-item', () => {
     await page.waitForChanges();
 
     // Act
-    const link: HTMLAnchorElement = menuVerticalItem.shadowRoot.querySelector('a');
+    const link: HTMLButtonElement = menuVerticalItem.shadowRoot.querySelector('button');
     link.click();
 
     await page.waitForChanges();

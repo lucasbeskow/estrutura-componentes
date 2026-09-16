@@ -8,8 +8,13 @@
     cursor: not-allowed;
   }
 
-  a {
+  button {
     align-items: center;
+    border: 0;
+    background-color: transparent;
+    font-family: inherit;
+    font-size: inherit;
+    cursor: pointer;
     color: var(--bth-app-gray-light-40);
     display: flex;
     padding: 10px 14px 10px 14px;
@@ -35,7 +40,7 @@
 
   &--active {
     background-color: rgba(255, 255, 255, 0.2);
-    > a {
+    > button {
       color: var(--bth-app-gray-light-40);
       font-weight: var(--bth-app-font-weight-regular);
     }

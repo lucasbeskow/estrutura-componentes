@@ -154,7 +154,7 @@ describe('bth-novidades', () => {
     await page.waitForChanges();
 
     // Act
-    const marcarTodas: HTMLLinkElement = novidades.shadowRoot.querySelector('.marcar-todas > a');
+    const marcarTodas: HTMLButtonElement = novidades.shadowRoot.querySelector('.marcar-todas > button');
 
     const onNaoPossuiConteudoSinalizado = jest.fn();
     novidades.addEventListener('conteudoSinalizado', onNaoPossuiConteudoSinalizado);
@@ -179,7 +179,7 @@ describe('bth-novidades', () => {
     await page.waitForChanges();
 
     // Act
-    const marcarTodas: HTMLLinkElement = novidades.shadowRoot.querySelector('.marcar-todas > a');
+    const marcarTodas: HTMLButtonElement = novidades.shadowRoot.querySelector('.marcar-todas > button');
     marcarTodas.click();
 
     await page.waitForChanges();

@@ -652,7 +652,7 @@ export class Notificacoes implements ComponentInterface {
 
           {!this.isApiIndisponivel && this.hasNotificacoes() && this.isFiltroPorNaoLidas() && !this.isBuscandoNotificacoes && (
             <div class="text-right">
-              <a class="link" href="" title="Marcar todas como lidas" onClick={this.onClickMarcarTodasComoLidas}>Marcar todas como lidas</a>
+              <button type="button" class="link" title="Marcar todas como lidas" onClick={this.onClickMarcarTodasComoLidas}>Marcar todas como lidas</button>
             </div>
           )}
 

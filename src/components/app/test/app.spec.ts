@@ -661,8 +661,8 @@ describe('app', () => {
     // Assert antes
     expect(descritorFixar.textContent).toBe('Desafixar');
 
-    const linkFixar: HTMLAnchorElement = app.shadowRoot.querySelector('.menu-vertical__item--floating a');
-    linkFixar.click();
+    const botaoFixar: HTMLButtonElement = app.shadowRoot.querySelector('.menu-vertical__item--floating button');
+    botaoFixar.click();
 
     await page.waitForChanges();
 

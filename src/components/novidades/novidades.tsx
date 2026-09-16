@@ -283,7 +283,7 @@ export class Novidades implements ComponentInterface {
 
           {totalNaoLida !== 0 && this.isFiltroPorNaoLidas() && (
             <div class="marcar-todas">
-              <a href="" onClick={this.onClickMarcarTodasComoLidas}>Marcar todas como lidas</a>
+              <button type="button" onClick={this.onClickMarcarTodasComoLidas}>Marcar todas como lidas</button>
             </div>
           )}
 

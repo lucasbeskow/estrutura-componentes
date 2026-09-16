@@ -267,7 +267,7 @@ describe('notificacoes', () => {
     await page.waitForChanges();
 
     // Act
-    const marcarTodasLida: HTMLAnchorElement = notificacoes.shadowRoot.querySelector('a.link');
+    const marcarTodasLida: HTMLButtonElement = notificacoes.shadowRoot.querySelector('button.link');
     marcarTodasLida.click();
     await page.waitForChanges();
 

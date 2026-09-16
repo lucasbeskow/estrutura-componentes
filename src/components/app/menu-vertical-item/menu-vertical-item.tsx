@@ -110,8 +110,8 @@ export class MenuVerticalItem implements ComponentInterface {
           ${this.submenu ? 'menu-vertical__submenu' : ''}
         `}>
 
-        <a
-          href=""
+        <button
+          type="button"
           onClick={this.onClick}
           class={`${!possuiSubmenus && !this.possuiPermissao ? 'menu-vertical__item--disabled' : ''}`}
           title={`${!this.possuiPermissao ? MSG_SEM_PERMISSAO_RECURSO : this.descricao}`}
@@ -134,7 +134,7 @@ export class MenuVerticalItem implements ComponentInterface {
           <BadgeContador valor={this.contador} customClass={this.menuLateralRecolhido ? 'badge-vertical-floating' : ''}></BadgeContador>
 
           {possuiSubmenus && (<bth-icone icone="chevron-up"></bth-icone>)}
-        </a>
+        </button>
 
         {possuiSubmenus && (
           <ul class="menu-vertical__list">

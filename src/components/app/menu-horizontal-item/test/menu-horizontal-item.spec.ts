@@ -81,7 +81,7 @@ describe('bth-menu-horizontal-item', () => {
     // Assert
     expect(menuHorizontalItem.possuiPermissao).toBe(possuiPermissao);
 
-    const link: HTMLAnchorElement = menuHorizontalItem.shadowRoot.querySelector('a');
+    const link: HTMLButtonElement = menuHorizontalItem.shadowRoot.querySelector('button');
     expect(link.classList.contains('menu-horizontal__item--disabled')).toBeTruthy();
     expect(link.title).toBe(MSG_SEM_PERMISSAO_RECURSO);
     expect(link.getAttribute('aria-disabled')).toBe('true');
@@ -119,7 +119,7 @@ describe('bth-menu-horizontal-item', () => {
     menuHorizontalItem.addEventListener('menuHorizontalSelecionado', onMenuHorizontalSelecionado);
 
     // Act
-    const link: HTMLAnchorElement = menuHorizontalItem.shadowRoot.querySelector('a');
+    const link: HTMLButtonElement = menuHorizontalItem.shadowRoot.querySelector('button');
     link.click();
 
     await page.waitForChanges();
@@ -142,7 +142,7 @@ describe('bth-menu-horizontal-item', () => {
     menuHorizontalItem.addEventListener('menuHorizontalSelecionado', onMenuHorizontalSelecionado);
 
     // Act
-    const link: HTMLAnchorElement = menuHorizontalItem.shadowRoot.querySelector('a');
+    const link: HTMLButtonElement = menuHorizontalItem.shadowRoot.querySelector('button');
     link.click();
 
     await page.waitForChanges();

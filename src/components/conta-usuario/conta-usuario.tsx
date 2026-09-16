@@ -158,9 +158,9 @@ export class ContaUsuario implements ComponentInterface {
             </a>
           </li>
           <li>
-            <a href="" title="Sair" onClick={this.onLogout}>
+            <button type="button" title="Sair" onClick={this.onLogout}>
               <bth-icone icone="login-variant"></bth-icone> Sair
-            </a>
+            </button>
           </li>
         </ul>
       </section>

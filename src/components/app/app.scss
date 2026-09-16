@@ -54,7 +54,8 @@ slot[name="container_contexto"] {
     line-height: 1.5;
     margin: 0 4px;
     max-width: 95%;
-    > a {
+    > a,
+    > button {
       color: var(--bth-app-gray-dark-40);
       text-decoration: underline;
       margin-left: 24px;
@@ -308,8 +309,15 @@ slot[name="container_contexto"] {
   &__item {
     position: relative;
 
-    > a {
+    > a,
+    > button {
       align-items: center;
+      border: 0;
+      background-color: transparent;
+      font-family: inherit;
+      font-size: inherit;
+      text-align: left;
+      cursor: pointer;
       display: flex;
       width: 100%;
       color: var(--bth-app-gray-dark-20);
@@ -356,7 +364,8 @@ slot[name="container_contexto"] {
     }
     &--active {
       background-color: var(--bth-app-gray-light-10);
-      > a {
+      > a,
+      > button {
         bth-icone,
         span {
           color: var(--bth-app-blue-dark-10);
@@ -383,7 +392,8 @@ slot[name="container_contexto"] {
     &--floating {
       background-color: var(--bth-app-gray-light-20);
       border-top: 0;
-      > a {
+      > a,
+      > button {
         > span {
           opacity: 0;
         }
@@ -437,7 +447,8 @@ slot[name="container_contexto"] {
   .menu-vertical {
     &__item {
       &--floating {
-        > a {
+        > a,
+        > button {
           > bth-icone:last-of-type {
             transform: rotate(0.1turn);
             transition: transform var(--bth-app-transition-delay) cubic-bezier(0.5, 0, 0.1, 1);
@@ -484,14 +495,16 @@ slot[name="container_contexto"] {
     &__item {
       .menu-vertical__list {
         .menu-vertical__item {
-          > a {
+          > a,
+          > button {
             height: 48px;
             font-size: 16px;
           }
         }
       }
 
-      > a {
+      > a,
+      > button {
         height: 54px;
         font-size: 18px;
         > bth-icone {
@@ -507,7 +520,8 @@ slot[name="container_contexto"] {
         &--floating {
           display: none;
         }
-        &--has-children > a {
+        &--has-children > a,
+        &--has-children > button {
           font-weight: var(--bth-app-font-weight-regular);
         }
       }
@@ -550,7 +564,8 @@ slot[name="container_contexto"] {
         white-space: unset;
       }
 
-      > a {
+      > a,
+      > button {
         vertical-align: top;
       }
     }
@@ -612,7 +627,8 @@ slot[name="container_contexto"] {
             align-items: center;
             display: flex;
             justify-content: center;
-            > a {
+            > a,
+            > button {
               > bth-icone {
                 color: var(--bth-app-gray-light-40);
                 font-size: 18px;

@@ -747,10 +747,10 @@ export class App implements ComponentInterface {
         <div class={`menu-vertical__footer ${this.isDispositivoMovel ? '' : 'menu-vertical__footer--show'}`}>
           <ul class="menu-vertical__list">
             <li class="menu-vertical__item menu-vertical__item--floating">
-              <a href="" onClick={this.onClickBotaoFixar}>
+              <button type="button" onClick={this.onClickBotaoFixar}>
                 <bth-icone icone="pin"></bth-icone>
                 <span>{this.isMenuVerticalFlutuando ? 'Fixar' : 'Desafixar'}</span>
-              </a>
+              </button>
             </li>
           </ul>
         </div>
