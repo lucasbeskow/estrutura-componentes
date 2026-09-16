@@ -71,14 +71,14 @@ Caso não utilize o framework acima, é possível obter as definições nos arqu
 
 Deve conter a fonte [**Material Design Icons**](http://materialdesignicons.com/) instalada
 
-- A versão suportada é a [**5.0.45**](https://github.com/Templarian/MaterialDesign)
-- [Neste link](http://materialdesignicons.com/cdn/5.0.45/) está a tabela de referência de ícones disponíveis
+- A versão suportada é a [**7.4.47**](https://github.com/Templarian/MaterialDesign)
+- [Neste link](https://pictogrammers.com/library/mdi/) está a tabela de referência de ícones disponíveis
 
 ```html
-<link rel="stylesheet" href="https://unpkg.com/@mdi/font@5.0.45/css/materialdesignicons.min.css">
+<link rel="stylesheet" href="https://unpkg.com/@mdi/font@7.4.47/css/materialdesignicons.min.css">
 ```
 
-*Essa biblioteca de ícones pode ser instalada através de um gerenciador de pacotes `npm install @mdi/font@5.0.45`*
+*Essa biblioteca de ícones pode ser instalada através de um gerenciador de pacotes `npm install @mdi/font@7.4.47`*
 
 ### Estilos
 
