@@ -196,8 +196,8 @@ slot[name="container_contexto"] {
           text-decoration: none;
         }
 
-        &:focus {
-          outline: 1px dotted var(--bth-app-gray-light-10);
+        &:focus-visible {
+          outline: 2px solid var(--bth-app-gray-light-10);
           outline-offset: -2px;
         }
       }
@@ -238,8 +238,8 @@ slot[name="container_contexto"] {
             text-decoration: none;
           }
 
-          &:focus {
-            outline: 1px dotted var(--bth-app-gray-dark-30);
+          &:focus-visible {
+            outline: 2px solid var(--bth-app-gray-light-40);
             outline-offset: -1px;
           }
         }
@@ -258,7 +258,7 @@ slot[name="container_contexto"] {
   text-align: center;
 
   &.badge-danger {
-    background-color: var(--bth-app-red);
+    background-color: var(--bth-app-red-dark-20);
     color: var(--bth-app-gray-light-40);
     &--notificacao-small {
       padding: 0 2px;
@@ -319,8 +319,8 @@ slot[name="container_contexto"] {
       overflow: hidden;
       padding: 0px 9px 0px 0px;
 
-      &:focus {
-        outline: 1px dotted var(--bth-app-gray-dark-30);
+      &:focus-visible {
+        outline: 2px solid var(--bth-app-gray-dark-30);
         outline-offset: -1px;
       }
 

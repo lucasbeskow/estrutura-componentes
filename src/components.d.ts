@@ -205,7 +205,7 @@ export namespace Components {
     }
     interface BthIcone {
         /**
-          * Especifica o label a ser utilizado para acessibilidade. Por padrão irá assumir o nome do ícone.
+          * Especifica o label a ser utilizado para acessibilidade.  Sem este atributo o ícone é tratado como decorativo e fica fora da árvore de acessibilidade, para não ser anunciado com o nome técnico do ícone. Informe um label apenas quando o ícone carregar informação que não está disponível no texto ao redor.
          */
         "ariaLabel": string | null;
         /**
@@ -1224,7 +1224,7 @@ declare namespace LocalJSX {
     }
     interface BthIcone {
         /**
-          * Especifica o label a ser utilizado para acessibilidade. Por padrão irá assumir o nome do ícone.
+          * Especifica o label a ser utilizado para acessibilidade.  Sem este atributo o ícone é tratado como decorativo e fica fora da árvore de acessibilidade, para não ser anunciado com o nome técnico do ícone. Informe um label apenas quando o ícone carregar informação que não está disponível no texto ao redor.
          */
         "ariaLabel"?: string | null;
         /**

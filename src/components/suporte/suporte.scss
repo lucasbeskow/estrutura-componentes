@@ -29,17 +29,17 @@
     border-radius: 50px;
     font-size: 12px;
     padding: 3px 6px;
-    background-color: var(--bth-app-red);
+    background-color: var(--bth-app-red-dark-20);
     color: var(--bth-app-gray-light-40);
   }
 
   .status {
 
     &--success {
-      background-color: var(--bth-app-green-dark-10);
+      background-color: var(--bth-app-green-dark-20);
     }
     &--danger {
-      background-color: var(--bth-app-red);
+      background-color: var(--bth-app-red-dark-20);
     }
   }
 }

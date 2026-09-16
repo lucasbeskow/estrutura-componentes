@@ -55,8 +55,8 @@
       background-color: rgba(255, 255, 255, 0.15);
       --bth-app-menu-item-hover-color: #2E3741;
     }
-    &:focus {
-      outline: 1px dotted var(--bth-app-gray-light-10);
+    &:focus-visible {
+      outline: 2px solid var(--bth-app-gray-light-10);
       outline-offset: -2px;
     }
   }

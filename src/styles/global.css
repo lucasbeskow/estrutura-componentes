@@ -36,6 +36,8 @@
 
   --bth-app-blue: #3374db;
   --bth-app-blue-dark-10: hsl(from var(--bth-app-blue) h s calc(l - 10));
+  /* Escurecida o suficiente para texto branco sobre ela atingir 7:1 (WCAG AAA) */
+  --bth-app-blue-dark-20: hsl(from var(--bth-app-blue) h s calc(l - 14));
   --bth-app-blue-dark-30: hsl(from var(--bth-app-blue) h s calc(l - 28));
   --bth-app-blue-light-20: hsl(from var(--bth-app-blue) h s calc(l + 20));
 
@@ -60,10 +62,14 @@
   --bth-app-green: #3ec18f;
   --bth-app-green-light-20: hsl(from var(--bth-app-green) h s calc(l + 20));
   --bth-app-green-dark-10: hsl(from var(--bth-app-green) h s calc(l - 10));
+  /* Escurecida o suficiente para texto branco sobre ela atingir 7:1 (WCAG AAA) */
+  --bth-app-green-dark-20: hsl(from var(--bth-app-green) h s calc(l - 24));
   --bth-app-green-dark-30: hsl(from var(--bth-app-green) h s calc(l - 28));
 
   --bth-app-red: #dd413c;
   --bth-app-red-light-20: hsl(from var(--bth-app-red) h s calc(l + 20));
+  /* Escurecida o suficiente para texto branco sobre ela atingir 7:1 (WCAG AAA) */
+  --bth-app-red-dark-20: hsl(from var(--bth-app-red) h s calc(l - 16));
 
   --bth-app-aqua: #46afd2;
   --bth-app-aqua-light-20: hsl(from var(--bth-app-aqua) h s calc(l + 20));

@@ -64,7 +64,7 @@ export class Utilitarios implements ComponentInterface {
                       aria-disabled={`${!utilitario.possuiPermissao}`}
                       disabled={!utilitario.possuiPermissao}>
 
-                      <bth-icone icone={utilitario.icone} title={utilitario.nome}></bth-icone>
+                      <bth-icone icone={utilitario.icone}></bth-icone>
 
                       <span class="descricao twoline-ellipsis">{utilitario.nome}</span>
                     </button>

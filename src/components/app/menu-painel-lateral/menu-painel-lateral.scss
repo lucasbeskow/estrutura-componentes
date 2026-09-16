@@ -57,9 +57,8 @@
 
   .btn-close {
     display: none;
-    color: #767676;
     cursor: pointer;
-    color: silver !important;
+    color: var(--bth-app-gray-dark-20);
     border-radius: 2px;
     border: none;
     padding: 0px 8px;

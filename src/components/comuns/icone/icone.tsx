@@ -1,4 +1,4 @@
-import { Component, h, Prop, ComponentInterface, Host, Watch } from '@stencil/core';
+import { Component, h, Prop, ComponentInterface, Host } from '@stencil/core';
 
 import { isNill } from '../../../utils/functions';
 
@@ -28,25 +28,28 @@ export class Icone implements ComponentInterface {
 
   /**
    * Especifica o label a ser utilizado para acessibilidade.
-   * Por padrão irá assumir o nome do ícone.
+   *
+   * Sem este atributo o ícone é tratado como decorativo e fica fora da árvore
+   * de acessibilidade, para não ser anunciado com o nome técnico do ícone.
+   * Informe um label apenas quando o ícone carregar informação que não está
+   * disponível no texto ao redor.
    */
-  @Prop({ reflect: true, mutable: true }) ariaLabel: string | null;
+  @Prop({ reflect: true }) readonly ariaLabel: string | null;
 
-  connectedCallback() {
-    this.carregarIcone();
-  }
-
-  @Watch('icone')
-  carregarIcone() {
-    if (isNill(this.icone)) {
-      return;
-    }
-
-    const label = this.icone.replace(/-/, ' ');
-    this.ariaLabel = this.ariaLabel || label;
+  private isDecorativo(): boolean {
+    return isNill(this.ariaLabel) || this.ariaLabel.trim() === '';
   }
 
   render() {
+    if (this.isDecorativo()) {
+      return (
+        <Host aria-hidden="true">
+          <i class={`mdi mdi-${this.icone}`} style={{ 'font-size': this.tamanho, 'color': this.cor }}>
+          </i>
+        </Host>
+      );
+    }
+
     return (
       <Host role="img">
         <i class={`mdi mdi-${this.icone}`} style={{ 'font-size': this.tamanho, 'color': this.cor }}>

@@ -210,7 +210,7 @@ export class Avatar implements ComponentInterface {
 
             {this.iniciais && (<span>{this.getSiglaIniciais(this.iniciais)}</span>)}
           </figure>
-          {this.subIcone && (<bth-icone class="subicone" icone={this.subIcone} title={this.subIconeTitle}></bth-icone>)}
+          {this.subIcone && (<bth-icone class="subicone" icone={this.subIcone} title={this.subIconeTitle} ariaLabel={this.subIconeTitle}></bth-icone>)}
         </div>
       </Host>
     );

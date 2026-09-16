@@ -62,8 +62,8 @@
           transition: opacity var(--bth-app-transition-delay) cubic-bezier(0.5, 0, 0.1, 1);
         }
       }
-      &:focus {
-        outline: 1px dotted var(--bth-app-gray-dark-30);
+      &:focus-visible {
+        outline: 2px solid var(--bth-app-gray-dark-30);
         outline-offset: -1px;
       }
     }
@@ -87,8 +87,8 @@
       color: var(--bth-app-gray-dark-30);
     }
 
-    &:focus {
-      outline: 1px dotted var(--bth-app-gray-dark-30);
+    &:focus-visible {
+      outline: 2px solid var(--bth-app-gray-dark-30);
       outline-offset: -1px;
     }
 
@@ -131,8 +131,8 @@
     padding: 12px 10px 12px 53px;
     cursor: pointer;
 
-    &:focus {
-      outline: 1px dotted var(--bth-app-gray-dark-30);
+    &:focus-visible {
+      outline: 2px solid var(--bth-app-gray-dark-30);
       outline-offset: -1px;
     }
   }
@@ -150,7 +150,7 @@
 
 .badge-vertical-floating {
   position: absolute;
-  background-color: var(--bth-app-red);
+  background-color: var(--bth-app-red-dark-20);
   color: var(--bth-app-gray-light-40);
   font-size: 10px;
   right: 5px;
@@ -162,7 +162,7 @@
 }
 .badge-icon {
   border-radius: 50%!important;
-  background-color: #dc3545!important;
+  background-color: var(--bth-app-red-dark-20) !important;
   padding: 0.25rem!important;
   border-color: #f8f9fa!important;
   border: 1px solid #dee2e6!important;

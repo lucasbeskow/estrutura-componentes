@@ -12,8 +12,8 @@
 }
 
 a {
-  &:focus {
-    outline: 1px dotted var(--bth-app-gray-dark-30);
+  &:focus-visible {
+    outline: 2px solid var(--bth-app-gray-dark-30);
   }
 }
 

@@ -219,8 +219,8 @@ export class NotificacaoItem implements ComponentInterface {
 
           <div class="icon">
             {this.isOrigemUsuario() ?
-              <bth-icone icone="account"></bth-icone> :
-              <bth-icone icone={this.getClassIcone()} title={getIconeTitle(this.getSistema())}></bth-icone>}
+              <bth-icone icone="account" ariaLabel="Notificação de usuário"></bth-icone> :
+              <bth-icone icone={this.getClassIcone()} ariaLabel={getIconeTitle(this.getSistema())}></bth-icone>}
           </div>
 
           <p class="mensagem">{this.texto}</p>

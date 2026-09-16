@@ -31,12 +31,12 @@ A configuração pode ser feita via _markup_.
 
 ## Properties
 
-| Property             | Attribute    | Description                                                                                              | Type     | Default     |
-| -------------------- | ------------ | -------------------------------------------------------------------------------------------------------- | -------- | ----------- |
-| `ariaLabel`          | `aria-label` | Especifica o label a ser utilizado para acessibilidade. Por padrão irá assumir o nome do ícone.          | `string` | `undefined` |
-| `cor`                | `cor`        | Cor de preenchimento, no mesmo formato do `"color"` em CSS. Por padrão irá herdar do contexto inserido.  | `string` | `'inherit'` |
-| `icone` _(required)_ | `icone`      | Identificador do ícone conforme biblioteca `"Material Design Icons"`                                     | `string` | `undefined` |
-| `tamanho`            | `tamanho`    | Tamanho em pixels, no mesmo formato do `"font-size"` em CSS. Por padrão irá herdar do contexto inserido. | `string` | `'inherit'` |
+| Property             | Attribute    | Description                                                                                                                                                                                                                                                                                                     | Type     | Default     |
+| -------------------- | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------- |
+| `ariaLabel`          | `aria-label` | Especifica o label a ser utilizado para acessibilidade.  Sem este atributo o ícone é tratado como decorativo e fica fora da árvore de acessibilidade, para não ser anunciado com o nome técnico do ícone. Informe um label apenas quando o ícone carregar informação que não está disponível no texto ao redor. | `string` | `undefined` |
+| `cor`                | `cor`        | Cor de preenchimento, no mesmo formato do `"color"` em CSS. Por padrão irá herdar do contexto inserido.                                                                                                                                                                                                         | `string` | `'inherit'` |
+| `icone` _(required)_ | `icone`      | Identificador do ícone conforme biblioteca `"Material Design Icons"`                                                                                                                                                                                                                                            | `string` | `undefined` |
+| `tamanho`            | `tamanho`    | Tamanho em pixels, no mesmo formato do `"font-size"` em CSS. Por padrão irá herdar do contexto inserido.                                                                                                                                                                                                        | `string` | `'inherit'` |
 
 
 ## Dependencies
