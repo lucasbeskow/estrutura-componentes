@@ -568,8 +568,7 @@ export class App implements ComponentInterface {
       <header
         role="banner"
         class={`banner ${this.possuiBanner() ? ` banner--show banner--${this.banner.tipo}` : ''}`}
-        aria-hidden={`${!this.possuiBanner()}`}
-        aria-expanded={`${this.possuiBanner()}`}>
+        aria-hidden={`${!this.possuiBanner()}`}>
 
         {this.possuiBanner() && ([
           <div class="banner__icon">

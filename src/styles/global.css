@@ -39,6 +39,7 @@
   /* Escurecida o suficiente para texto branco sobre ela atingir 7:1 (WCAG AAA) */
   --bth-app-blue-dark-20: hsl(from var(--bth-app-blue) h s calc(l - 14));
   --bth-app-blue-dark-30: hsl(from var(--bth-app-blue) h s calc(l - 28));
+  --bth-app-blue-dark-40: hsl(from var(--bth-app-blue) h s calc(l - 40));
   --bth-app-blue-light-20: hsl(from var(--bth-app-blue) h s calc(l + 20));
 
   --bth-app-gray: #bfbfc0;
@@ -54,10 +55,12 @@
   --bth-app-pink: #cb528f;
   --bth-app-pink-light-20: hsl(from var(--bth-app-pink) h s calc(l + 20));
   --bth-app-pink-dark-30: hsl(from var(--bth-app-pink) h s calc(l - 28));
+  --bth-app-pink-dark-40: hsl(from var(--bth-app-pink) h s calc(l - 40));
 
   --bth-app-purple: #9f62b2;
   --bth-app-purple-light-20: hsl(from var(--bth-app-purple) h s calc(l + 20));
   --bth-app-purple-dark-30: hsl(from var(--bth-app-purple) h s calc(l - 28));
+  --bth-app-purple-dark-40: hsl(from var(--bth-app-purple) h s calc(l - 40));
 
   --bth-app-green: #3ec18f;
   --bth-app-green-light-20: hsl(from var(--bth-app-green) h s calc(l + 20));
@@ -65,6 +68,7 @@
   /* Escurecida o suficiente para texto branco sobre ela atingir 7:1 (WCAG AAA) */
   --bth-app-green-dark-20: hsl(from var(--bth-app-green) h s calc(l - 24));
   --bth-app-green-dark-30: hsl(from var(--bth-app-green) h s calc(l - 28));
+  --bth-app-green-dark-40: hsl(from var(--bth-app-green) h s calc(l - 40));
 
   --bth-app-red: #dd413c;
   --bth-app-red-light-20: hsl(from var(--bth-app-red) h s calc(l + 20));
@@ -74,14 +78,17 @@
   --bth-app-aqua: #46afd2;
   --bth-app-aqua-light-20: hsl(from var(--bth-app-aqua) h s calc(l + 20));
   --bth-app-aqua-dark-30: hsl(from var(--bth-app-aqua) h s calc(l - 28));
+  --bth-app-aqua-dark-40: hsl(from var(--bth-app-aqua) h s calc(l - 40));
 
   --bth-app-orange: #e87d30;
   --bth-app-orange-light-20: hsl(from var(--bth-app-orange) h s calc(l + 20));
   --bth-app-orange-dark-30: hsl(from var(--bth-app-orange) h s calc(l - 28));
+  --bth-app-orange-dark-40: hsl(from var(--bth-app-orange) h s calc(l - 40));
 
   --bth-app-yellow: #e8b730;
   --bth-app-yellow-light-10: hsl(from var(--bth-app-yellow) h s calc(l + 10));
   --bth-app-yellow-light-20: hsl(from var(--bth-app-yellow) h s calc(l + 20));
   --bth-app-yellow-light-40: hsl(from var(--bth-app-yellow) h s calc(l + 30));
   --bth-app-yellow-dark-30: hsl(from var(--bth-app-yellow) h s calc(l - 28));
+  --bth-app-yellow-dark-40: hsl(from var(--bth-app-yellow) h s calc(l - 40));
 }

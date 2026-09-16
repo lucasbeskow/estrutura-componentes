@@ -3,6 +3,7 @@ import stencil from '@stencil/eslint-plugin';
 import tsPlugin from '@typescript-eslint/eslint-plugin';
 import tsParser from '@typescript-eslint/parser';
 import importHelpers from 'eslint-plugin-import-helpers';
+import jsxA11y from 'eslint-plugin-jsx-a11y';
 import globals from 'globals';
 
 export default [
@@ -38,6 +39,7 @@ export default [
     plugins: {
       '@typescript-eslint': tsPlugin,
       'import-helpers': importHelpers,
+      'jsx-a11y': jsxA11y,
     },
 
     rules: {
@@ -81,6 +83,28 @@ export default [
       // componentes. Ficam como aviso ate serem tratados separadamente.
       'stencil/ban-exported-const-enums': 'warn',
       'stencil/reserved-member-names': 'warn',
+
+      // Acessibilidade. Cobrem as falhas levantadas na auditoria WCAG: acionador
+      // sem foco de teclado, tabindex positivo, aria invalido e alternativa
+      // textual ausente. Ver AUDITORIA_A11Y_WCAG_AAA.md.
+      'jsx-a11y/alt-text': 'error',
+      'jsx-a11y/anchor-has-content': 'error',
+      'jsx-a11y/anchor-is-valid': ['error', { aspects: ['invalidHref', 'preferButton'] }],
+      'jsx-a11y/aria-props': 'error',
+      // Desligada: a regra espera booleanos do React, enquanto Stencil escreve
+      // atributos do DOM, onde aria-expanded e afins sao as strings "true" e
+      // "false". Todo `aria-*={`${valor}`}` do projeto vira falso positivo.
+      'jsx-a11y/aria-proptypes': 'off',
+      'jsx-a11y/aria-role': 'error',
+      'jsx-a11y/aria-unsupported-elements': 'error',
+      'jsx-a11y/click-events-have-key-events': 'warn',
+      'jsx-a11y/iframe-has-title': 'error',
+      'jsx-a11y/no-noninteractive-element-to-interactive-role': 'error',
+      'jsx-a11y/no-noninteractive-tabindex': 'error',
+      'jsx-a11y/no-redundant-roles': 'error',
+      'jsx-a11y/role-has-required-aria-props': 'error',
+      'jsx-a11y/role-supports-aria-props': 'error',
+      'jsx-a11y/tabindex-no-positive': 'error',
 
       'import-helpers/order-imports': [
         'warn',
