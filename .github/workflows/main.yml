@@ -13,16 +13,17 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v5
 
+      - name: Enable Corepack
+        run: corepack enable
+
       - name: Setup Node.js
         uses: actions/setup-node@v5
         with:
           node-version: '22'
           cache: 'yarn'
-          registry-url: 'https://registry.npmjs.org'
-          scope: '@betha-plataforma'
 
       - name: Install
-        run: yarn install --frozen-lockfile
+        run: yarn install --immutable
 
       - name: Test
         run: yarn test
@@ -31,6 +32,6 @@ jobs:
         run: yarn build
 
       - name: Publish
-        run: yarn publish --access public --non-interactive
+        run: yarn npm publish --access public
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          YARN_NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
