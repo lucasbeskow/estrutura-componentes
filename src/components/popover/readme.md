@@ -13,6 +13,14 @@
 | `position` | `position` | Posição do popover em relação ao trigger | `string` | `'bottom'`  |
 
 
+## Slots
+
+| Slot        | Description |
+| ----------- | ----------- |
+| `"title"`   |             |
+| `"trigger"` |             |
+
+
 ## Dependencies
 
 ### Used by

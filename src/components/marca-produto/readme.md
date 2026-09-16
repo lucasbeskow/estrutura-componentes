@@ -63,10 +63,17 @@ marcaProduto.authorization = authorization;
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+Este componente exibe o logo da Betha e o nome do produto
+
+Este componente foi elaborado para comportar o slot de "menu_marca_produto"
+
 ## Properties
 
 | Property               | Attribute           | Description                                                                                                            | Type                  | Default     |
 | ---------------------- | ------------------- | ---------------------------------------------------------------------------------------------------------------------- | --------------------- | ----------- |
+| `area`                 | `area`              | Define a área de produtos.                                                                                             | `string`              | `undefined` |
 | `authorization`        | --                  | Configuração de autorização. É necessária para o componente poder se autentizar com os serviços.                       | `AuthorizationConfig` | `undefined` |
 | `exibirProdutos`       | `exibir-produtos`   | Define se o componente exibirá os produtos, condicionando a busca. Caso informado `false` não irá buscar por produtos. | `boolean`             | `false`     |
 | `produto` _(required)_ | `produto`           | Nome do produto                                                                                                        | `string`              | `undefined` |

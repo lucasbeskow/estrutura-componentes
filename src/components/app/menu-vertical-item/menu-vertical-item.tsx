@@ -95,7 +95,7 @@ export class MenuVerticalItem implements ComponentInterface {
       identificador: this.identificador,
       identificadorPai: this.identificadorPai
     });
-  }
+  };
 
   render() {
     const possuiSubmenus = !isNill(this.submenus) && this.submenus.length > 0;
@@ -110,14 +110,15 @@ export class MenuVerticalItem implements ComponentInterface {
           ${this.submenu ? 'menu-vertical__submenu' : ''}
         `}>
 
-        <a
-          href=""
+        <button
+          type="button"
           onClick={this.onClick}
           class={`${!possuiSubmenus && !this.possuiPermissao ? 'menu-vertical__item--disabled' : ''}`}
           title={`${!this.possuiPermissao ? MSG_SEM_PERMISSAO_RECURSO : this.descricao}`}
           aria-haspopup={`${possuiSubmenus}`}
           aria-expanded={`${possuiSubmenus && !(this.recolhido || this.menuLateralRecolhido)}`}
           aria-disabled={`${!this.possuiPermissao}`}
+          aria-current={this.ativo && !possuiSubmenus ? 'page' : null}
           aria-label={possuiSubmenus ? `Expandir ${this.descricao}` : `Navegar para ${this.descricao}`}
           tabindex={this.possuiPermissao ? 0 : -1}>
           <div class="icon-container">
@@ -133,7 +134,7 @@ export class MenuVerticalItem implements ComponentInterface {
           <BadgeContador valor={this.contador} customClass={this.menuLateralRecolhido ? 'badge-vertical-floating' : ''}></BadgeContador>
 
           {possuiSubmenus && (<bth-icone icone="chevron-up"></bth-icone>)}
-        </a>
+        </button>
 
         {possuiSubmenus && (
           <ul class="menu-vertical__list">

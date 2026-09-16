@@ -1,4 +1,4 @@
-@import "../../../styles/normalize.scss";
+@use "../../../styles/normalize.scss";
 
 .notificacao {
   display: flex;
@@ -33,10 +33,22 @@
       margin: 2px 12px 8px 0px;
     }
 
+    .marcar-leitura {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 0;
+      background-color: transparent;
+      cursor: pointer;
+      // WCAG 2.5.5: alvo minimo de 44x44
+      min-width: 44px;
+      min-height: 44px;
+      padding: 0px;
+    }
+
     .marcar-leitura__toggler {
       font-size: 16px;
       color: var(--bth-app-gray-dark-20);
-      margin-top: 4px;
     }
   }
 
@@ -108,7 +120,7 @@
     }
 
     a {
-      color: var(--bth-app-blue);
+      color: var(--bth-app-blue-dark-20);
       text-decoration: none;
       &:hover {
         color: var(--bth-app-blue-dark-10);

@@ -8,28 +8,30 @@ on:
 jobs:
   release:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
-    
+        uses: actions/checkout@v5
+
+      - name: Enable Corepack
+        run: corepack enable
+
       - name: Setup Node.js
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v5
         with:
-          node-version: '12.17'
-          registry-url: 'https://registry.npmjs.org'
-          scope: '@betha-plataforma'
-    
+          node-version: '22'
+          cache: 'yarn'
+
       - name: Install
-        run: yarn install --frozen-lockfile
-      
+        run: yarn install --immutable
+
       - name: Test
         run: yarn test
 
       - name: Build
         run: yarn build
-      
+
       - name: Publish
-        run: yarn publish --access public --non-interactive
+        run: yarn npm publish --access public
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          YARN_NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

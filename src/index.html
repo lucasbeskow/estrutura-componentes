@@ -10,7 +10,7 @@
 
     <!-- Bootstrap 4 e Material Design Icons -->
     <!-- <link rel="stylesheet" href="https://unpkg.com/bootstrap@4.5.2/dist/css/bootstrap.min.css"> -->
-    <link rel="stylesheet" href="https://unpkg.com/@mdi/font@5.0.45/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/@mdi/font@7.4.47/css/materialdesignicons.min.css">
 
     <!-- Open Sans -->
     <link href="assets/fonts.css" rel="stylesheet" rel="preload">
@@ -37,6 +37,11 @@
         display: flex;
         align-items: center;
       }
+
+      /*bth-app {*/
+      /*  --bth-app-carta-servicos-display: none;*/
+      /*  --bth-app-carta-servicos-visibility: hidden;*/
+      /*}*/
     </style>
 
   </head>
@@ -112,7 +117,7 @@
         > central-usuario-home="https://e-gov.betha.com.br/centraldousuario"
       -->
       <bth-conta-usuario slot="menu_ferramentas" usuario="lorem.ipsum" nome="Lorem Ipsum"
-        foto-url="https://placeimg.com/80/80/animals">
+        foto-url="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%237FAADC'/%3E%3Ccircle cx='32' cy='24' r='12' fill='%23fff'/%3E%3Cpath d='M8 64c0-13 11-20 24-20s24 7 24 20z' fill='%23fff'/%3E%3C/svg%3E">
       </bth-conta-usuario>
 
       <section slot="container_contexto">
@@ -136,8 +141,8 @@
         <h2>Bagde em ícones de Menu</h2>
         <p>Nas opções dos menus, há a possibilidade de adicionar um badge no  <a href="#" class="link" id="linkBadge">ícone</a> para indicar uma novidade ou pendência</p>
 
-        <h2>Comuns</h2>
-        <p>Há outros <a href="/comuns.html">componentes comuns</a> que serão logo separados deste projeto.
+        <h2>Componentes</h2>
+        <p>O <a href="/componentes.html">guia de componentes</a> documenta cada um com código de exemplo e demonstração, usados fora do <code>bth-app</code>.</p>
       </section>
 
       <bth-pesquisa slot="container_aplicacao"></bth-pesquisa>
@@ -146,11 +151,10 @@
 
     <!-- Exemplo importando env.js -->
 <!--    <script src="https://suite.cloud.betha.com.br/env.js" rel="noreferrer"></script>-->
-    <script src="https://suite.test.bethacloud.com.br/env.js" rel="noreferrer"></script>
+    <script src="https://variaveis.test.plataforma.betha.cloud/env.js" rel="noreferrer"></script>
 
     <!-- Coleção componentes menu -->
     <script type="module" src="/build/estrutura-componentes.esm.js"></script>
-    <script nomodule src="/build/estrutura-componentes.js"></script>
 
     <!-- Autenticação -->
     <script>
@@ -195,6 +199,13 @@
             { id: 'extensoes-por-clientes', descricao: 'Extensões por cliente', rota: '/extensoes-por-clientes', possuiPermissao: false }
           ]
         },
+      ];
+
+      app.opcoesHeader = [
+        { id: 'relatorios', descricao: 'Relatórios', rota: '' },
+        { id: 'script', descricao: 'Scripts', rota: '' },
+        { id: 'campo', descricao: 'Campo', rota: '' },
+        { id: 'bpm', descricao: 'BPM', rota: '', isAtivo: true }
       ];
 
       var banner = {

@@ -113,36 +113,33 @@ export class Suporte implements ComponentInterface {
         <div slot="conteudo_painel_lateral" class="suporte">
           <ul>
             { this.blipChat && (<li>
-              <a onClick={this.onSuporteViaChatClick}
+              <button type="button" class="bth__card bth__card--clickable" onClick={this.onSuporteViaChatClick}
                 title="Suporte via chat"
-                aria-label="Acessar o chat do suporte"
-                aria-disabled="false">
+                aria-label="Acessar o chat do suporte">
                 <div class="chat-status">
-                  <bth-icone icone="message-outline" title="Chat"></bth-icone>
+                  <bth-icone icone="message-outline"></bth-icone>
                   { this.blipChatStatus == 'online' && this.blipChatCounter == 0
                   && (<span class="badge status status--success">Online</span>)}
                   { this.blipChatCounter > 0
                   && (<span class="badge status status--danger">Novas mensagens</span>) }
                 </div>
-                <span>Suporte via chat</span>
-              </a>
+                <span class="descricao twoline-ellipsis">Suporte via chat</span>
+              </button>
             </li>)}
             <li>
-              <a href={this.getCentralAjudaHome()} target="_blank" rel="noreferrer" title="Central de ajuda"
-                aria-label="Acessar a Central de ajuda"
-                aria-disabled="false">
-                <bth-icone icone="help-circle-outline" title="Chat"></bth-icone>
-                <span>Central de ajuda</span>
+              <a class="bth__card bth__card--clickable" href={this.getCentralAjudaHome()} target="_blank" rel="noreferrer" title="Central de ajuda"
+                aria-label="Acessar a Central de ajuda">
+                <bth-icone icone="help-circle-outline"></bth-icone>
+                <span class="descricao twoline-ellipsis">Central de ajuda</span>
               </a>
             </li>
             { this.atendimento && (<li>
-              <a onClick={this.onAtendimentoClick}
+              <button type="button" class="bth__card bth__card--clickable" onClick={this.onAtendimentoClick}
                 title="Abrir um chamado"
-                aria-label="Abrir um chamado"
-                aria-disabled="false">
-                <bth-icone icone="plus-thick" title="Plus"></bth-icone>
-                <span>Abrir um chamado</span>
-              </a>
+                aria-label="Abrir um chamado">
+                <bth-icone icone="plus-thick"></bth-icone>
+                <span class="descricao twoline-ellipsis">Abrir um chamado</span>
+              </button>
             </li>)}
           </ul>
         </div>
@@ -171,12 +168,12 @@ export class Suporte implements ComponentInterface {
     if (!isNill(blipChatElement)) {
       blipChatElement.click();
     }
-  }
+  };
 
   private initBlipChat = () => {
     this.setupBlipChat(this.blipChatUserInfo);
     window.addEventListener('message', this.handleBlipChatEvents);
-  }
+  };
 
   private checkBlipChat() {
     this.blipChatStatus = this.isBlipChatOnline() ? 'online' : 'offline';
@@ -187,7 +184,7 @@ export class Suporte implements ComponentInterface {
     if (this.blipChatCustomStyle) {
       this.setupBlipChatStyles();
     }
-  }
+  };
 
   private setupBlipChatScript = (blipChatUserInfo: BlipChatUserInfo) => {
     const script = document.createElement('script');
@@ -204,7 +201,7 @@ export class Suporte implements ComponentInterface {
       }
     };
     script.onload = () => window.postMessage(JSON.stringify({ event: 'BLIP_WEBCHAT', userInfo }), '*');
-  }
+  };
 
   private setupBlipChatStyles = () => {
     const style = document.createElement('style');
@@ -236,7 +233,7 @@ export class Suporte implements ComponentInterface {
     style.setAttribute('type', 'text/css');
     style.appendChild(textCss);
     document.head.appendChild(style);
-  }
+  };
 
   private handleBlipChatEvents = (event) => {
     if (!event.data || typeof event.data !== 'string' || !event.data.startsWith('{')) {
@@ -253,7 +250,7 @@ export class Suporte implements ComponentInterface {
     } catch (err) {
       console.error(err);
     }
-  }
+  };
 
   private isBlipChatOnline = () => {
     if (this.blipChat) {
@@ -265,7 +262,7 @@ export class Suporte implements ComponentInterface {
       }
     }
     return false;
-  }
+  };
 
   private isBetween8h30mAnd12h = (hours, minutes) => (((hours == 8 && minutes >= 30) || (hours >= 9)) && hours <= 11);
   private isBetween13h30mAnd18h = (hours, minutes) => (((hours == 13 && minutes >= 30) || (hours >= 14)) && hours <= 17);
@@ -286,7 +283,7 @@ export class Suporte implements ComponentInterface {
       }
     });
 
-  }
+  };
 
   private getLicencasApi(): string {
     if (!isNill(this.licencasApi)) {

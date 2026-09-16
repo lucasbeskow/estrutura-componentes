@@ -12,6 +12,13 @@
 | `descricao` | `descricao` | Descrição   | `string` | `undefined` |
 
 
+## Slots
+
+| Slot | Description      |
+| ---- | ---------------- |
+|      | The default slot |
+
+
 ## Dependencies
 
 ### Used by

@@ -30,7 +30,7 @@ export class NotificacaoItem implements ComponentInterface {
   /**
    * Data e hora
    */
-  @Prop() readonly dataHora: number;
+  @Prop() readonly dataHora: number | string;
 
   /**
    * Origem
@@ -93,7 +93,7 @@ export class NotificacaoItem implements ComponentInterface {
     }
 
     return this.onClick(event);
-  }
+  };
 
   private onClick = (event: UIEvent) => {
     event.preventDefault();
@@ -114,7 +114,7 @@ export class NotificacaoItem implements ComponentInterface {
     }
 
     this.notificacaoLida.emit(payload);
-  }
+  };
 
   private isLida(): boolean {
     return this.tipo === TipoNotificacao.Lida;
@@ -219,16 +219,21 @@ export class NotificacaoItem implements ComponentInterface {
 
           <div class="icon">
             {this.isOrigemUsuario() ?
-              <bth-icone icone="account"></bth-icone> :
-              <bth-icone icone={this.getClassIcone()} title={getIconeTitle(this.getSistema())}></bth-icone>}
+              <bth-icone icone="account" ariaLabel="Notificação de usuário"></bth-icone> :
+              <bth-icone icone={this.getClassIcone()} ariaLabel={getIconeTitle(this.getSistema())}></bth-icone>}
           </div>
 
           <p class="mensagem">{this.texto}</p>
 
           {!this.isProgressoEmAndamento() && (
-            <a href="" title={`Marcar como ${!this.isLida() ? 'lido' : 'não lido'}`} onClick={this.onClick}>
+            <button
+              type="button"
+              class="marcar-leitura"
+              title={`Marcar como ${!this.isLida() ? 'lido' : 'não lido'}`}
+              aria-label={`Marcar como ${!this.isLida() ? 'lida' : 'não lida'} a notificação: ${this.texto}`}
+              onClick={this.onClick}>
               <bth-icone class="marcar-leitura__toggler" icone={!this.isLida() ? 'email-open-outline' : 'email-outline'}></bth-icone>
-            </a>
+            </button>
           )}
 
         </div>
@@ -248,6 +253,7 @@ export class NotificacaoItem implements ComponentInterface {
               href={this.resultadoLink.href}
               title={this.resultadoLink.title}
               target={this.getLinkTarget(this.resultadoLink)}
+              aria-label={`${this.resultadoLink.label}: ${this.texto}`}
               rel="noreferrer">{this.resultadoLink.label}</a>
           )}
 
@@ -256,6 +262,7 @@ export class NotificacaoItem implements ComponentInterface {
               href={this.acompanharLink.href}
               title={this.acompanharLink.title}
               target={this.getLinkTarget(this.acompanharLink)}
+              aria-label={`Acompanhar: ${this.texto}`}
               rel="noreferrer">Acompanhar</a>
           )}
 
@@ -268,6 +275,7 @@ export class NotificacaoItem implements ComponentInterface {
               href={this.cancelamentoLink.href}
               title={this.cancelamentoLink.title}
               target={this.getLinkTarget(this.cancelamentoLink)}
+              aria-label={`Cancelar: ${this.texto}`}
               rel="noreferrer">Cancelar</a>
           )}
 

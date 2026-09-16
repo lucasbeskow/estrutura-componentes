@@ -93,14 +93,20 @@ As opções do menu podem ser configuradas através de algumas propriedades
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+Permite configurar opções de navegação nos modelos de menu horizontal e vertical.
+Possui áreas pré-definidas que permite compor as aplicações.
+
 ## Properties
 
-| Property       | Attribute       | Description                                                                                                             | Type          | Default     |
-| -------------- | --------------- | ----------------------------------------------------------------------------------------------------------------------- | ------------- | ----------- |
-| `banner`       | --              | Permite definir um banner que é exibido acima do menu                                                                   | `Banner`      | `undefined` |
-| `menuBgColor`  | `menu-bg-color` | Permite customizar a cor de fundo da barra do menu. Por padrão segue a cor da linha dos produtos.                       | `string`      | `'#142c48'` |
-| `menuVertical` | `menu-vertical` | Define se as opções do menu serão exibidas no formato "vertical", caso contrário serão exibidas no formato "horizontal" | `boolean`     | `false`     |
-| `opcoes`       | --              | Opções de navegação do menu                                                                                             | `OpcaoMenu[]` | `[]`        |
+| Property       | Attribute       | Description                                                                                                                                                | Type          | Default     |
+| -------------- | --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- | ----------- |
+| `banner`       | --              | Permite definir um banner que é exibido acima do menu                                                                                                      | `Banner`      | `undefined` |
+| `menuBgColor`  | `menu-bg-color` | Permite customizar a cor de fundo da barra do menu. Por padrão segue a cor da linha dos produtos.                                                          | `string`      | `undefined` |
+| `menuVertical` | `menu-vertical` | Define se as opções do menu serão exibidas no formato "vertical", caso contrário serão exibidas no formato "horizontal"                                    | `boolean`     | `false`     |
+| `opcoes`       | --              | Opções de navegação do menu                                                                                                                                | `OpcaoMenu[]` | `[]`        |
+| `opcoesHeader` | --              | Opções de navegação a serem exibidas no header, ao lado da marca. Funciona de forma independente da navegação principal, e somente se o menu for vertical. | `OpcaoMenu[]` | `[]`        |
 
 
 ## Events
@@ -118,6 +124,13 @@ As opções do menu podem ser configuradas através de algumas propriedades
 
 Define o estado de ativo para o badge no icone do item do menu
 
+#### Parameters
+
+| Name            | Type               | Description                               |
+| --------------- | ------------------ | ----------------------------------------- |
+| `identificador` | `string \| number` | Identificador do menu                     |
+| `ativo`         | `boolean`          | boolean que indica se deve ou não mostrar |
+
 #### Returns
 
 Type: `Promise<void>`
@@ -128,6 +141,13 @@ Type: `Promise<void>`
 
 Define o valor do contador de um item do menu
 
+#### Parameters
+
+| Name            | Type               | Description                   |
+| --------------- | ------------------ | ----------------------------- |
+| `identificador` | `string \| number` | Identificador do item do menu |
+| `valor`         | `number`           | Valor do contador             |
+
 #### Returns
 
 Type: `Promise<void>`
@@ -137,6 +157,12 @@ Type: `Promise<void>`
 ### `setMenuAtivo(identificador: IdentificadorOpcaoMenu) => Promise<void>`
 
 Define o estado de ativo para o menu do parâmetro
+
+#### Parameters
+
+| Name            | Type               | Description           |
+| --------------- | ------------------ | --------------------- |
+| `identificador` | `string \| number` | Identificador do menu |
 
 #### Returns
 

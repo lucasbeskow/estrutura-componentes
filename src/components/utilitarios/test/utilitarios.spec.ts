@@ -62,8 +62,8 @@ describe('utilitarios', () => {
     await page.waitForChanges();
 
     // Assert
-    const utilitarioButton: HTMLButtonElement = utilitarios.shadowRoot.querySelector('[slot=conteudo_painel_lateral] button.painel-utilitarios__card');
-    expect(utilitarioButton.classList.contains('painel-utilitarios__card--clickable')).toBeTruthy();
+    const utilitarioButton: HTMLButtonElement = utilitarios.shadowRoot.querySelector('[slot=conteudo_painel_lateral] button.bth__card');
+    expect(utilitarioButton.classList.contains('bth__card--clickable')).toBeTruthy();
     expect(utilitarioButton.textContent).toBe(utilitario.nome);
     expect(utilitarioButton.getAttribute('disabled')).toBeNull();
     expect(utilitarioButton.getAttribute('aria-disabled')).toBe('false');
@@ -84,8 +84,8 @@ describe('utilitarios', () => {
     await page.waitForChanges();
 
     // Assert
-    const utilitarioButton: HTMLButtonElement = utilitarios.shadowRoot.querySelector('[slot=conteudo_painel_lateral] button.painel-utilitarios__card');
-    expect(utilitarioButton.classList.contains('painel-utilitarios__card--disabled')).toBeTruthy();
+    const utilitarioButton: HTMLButtonElement = utilitarios.shadowRoot.querySelector('[slot=conteudo_painel_lateral] button.bth__card');
+    expect(utilitarioButton.classList.contains('bth__card--disabled')).toBeTruthy();
     expect(utilitarioButton.textContent).toBe(utilitario.nome);
     expect(utilitarioButton.getAttribute('disabled')).toBeDefined();
     expect(utilitarioButton.getAttribute('aria-disabled')).toBe('true');
@@ -104,11 +104,11 @@ describe('utilitarios', () => {
     utilitarios.utilitarios = [utilitario];
     await page.waitForChanges();
 
-    let onOpcaoUtilitarioSelecionada = jest.fn();
+    const onOpcaoUtilitarioSelecionada = jest.fn();
     utilitarios.addEventListener('opcaoUtilitarioSelecionada', onOpcaoUtilitarioSelecionada);
 
     // Act
-    const utilitarioButton: HTMLButtonElement = utilitarios.shadowRoot.querySelector('[slot=conteudo_painel_lateral] button.painel-utilitarios__card');
+    const utilitarioButton: HTMLButtonElement = utilitarios.shadowRoot.querySelector('[slot=conteudo_painel_lateral] button.bth__card');
     utilitarioButton.click();
     await page.waitForChanges();
 
@@ -130,11 +130,11 @@ describe('utilitarios', () => {
     utilitarios.utilitarios = [utilitario];
     await page.waitForChanges();
 
-    let onOpcaoUtilitarioSelecionada = jest.fn();
+    const onOpcaoUtilitarioSelecionada = jest.fn();
     utilitarios.addEventListener('opcaoUtilitarioSelecionada', onOpcaoUtilitarioSelecionada);
 
     // Act
-    const utilitarioButton: HTMLButtonElement = utilitarios.shadowRoot.querySelector('[slot=conteudo_painel_lateral] button.painel-utilitarios__card');
+    const utilitarioButton: HTMLButtonElement = utilitarios.shadowRoot.querySelector('[slot=conteudo_painel_lateral] button.bth__card');
     utilitarioButton.click();
     await page.waitForChanges();
 

@@ -67,10 +67,9 @@ describe('suporte', () => {
     await page.waitForChanges();
 
     // Assert
-    const blipChatButton: HTMLAnchorElement = suporte.shadowRoot.querySelector('[slot=conteudo_painel_lateral] a');
+    const blipChatButton: HTMLButtonElement = suporte.shadowRoot.querySelector('[slot=conteudo_painel_lateral] button');
     expect(blipChatButton.textContent).toBe('Suporte via chat');
     expect(blipChatButton.getAttribute('disabled')).toBeNull();
-    expect(blipChatButton.getAttribute('aria-disabled')).toBe('false');
     expect(blipChatButton.getAttribute('aria-label')).toBe('Acessar o chat do suporte');
 
     const iconeUtilitario: HTMLBthIconeElement = blipChatButton.querySelector('bth-icone');
@@ -87,7 +86,7 @@ describe('suporte', () => {
     await page.waitForChanges();
 
     // Assert
-    const blipChatButton: HTMLAnchorElement = suporte.shadowRoot.querySelector('[slot=conteudo_painel_lateral] a[title=\'Suporte via chat\']');
+    const blipChatButton: HTMLButtonElement = suporte.shadowRoot.querySelector('[slot=conteudo_painel_lateral] button[title=\'Suporte via chat\']');
     expect(blipChatButton).toBeNull();
   });
 
@@ -105,7 +104,7 @@ describe('suporte', () => {
     await page.waitForChanges();
 
     // Assert
-    const blipChatButton: HTMLAnchorElement = suporte.shadowRoot.querySelector('[slot=conteudo_painel_lateral] a[title=\'Suporte via chat\']');
+    const blipChatButton: HTMLButtonElement = suporte.shadowRoot.querySelector('[slot=conteudo_painel_lateral] button[title=\'Suporte via chat\']');
     const status: HTMLSpanElement = blipChatButton.querySelector('.status');
     expect(status.textContent).toBe('Online');
   });
@@ -124,7 +123,7 @@ describe('suporte', () => {
     await page.waitForChanges();
 
     // Assert
-    const blipChatButton: HTMLAnchorElement = suporte.shadowRoot.querySelector('[slot=conteudo_painel_lateral] a[title=\'Suporte via chat\']');
+    const blipChatButton: HTMLButtonElement = suporte.shadowRoot.querySelector('[slot=conteudo_painel_lateral] button[title=\'Suporte via chat\']');
     const status: HTMLSpanElement = blipChatButton.querySelector('.status');
     expect(status).toBeNull();
   });
@@ -143,7 +142,7 @@ describe('suporte', () => {
     await page.waitForChanges();
 
     // Assert
-    const blipChatButton: HTMLAnchorElement = suporte.shadowRoot.querySelector('[slot=conteudo_painel_lateral] a[title=\'Suporte via chat\']');
+    const blipChatButton: HTMLButtonElement = suporte.shadowRoot.querySelector('[slot=conteudo_painel_lateral] button[title=\'Suporte via chat\']');
     const badge = blipChatButton.querySelector('.badge');
     expect(badge.textContent).toBe('Novas mensagens');
   });

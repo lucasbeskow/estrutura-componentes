@@ -35,7 +35,7 @@ export class BthBusca implements ComponentInterface {
 
 
   private timeoutPesquisa;
-  private onInputSearch = async (event: KeyboardEvent) => {
+  private onInputSearch = async (event: InputEvent) => {
 
     this.termo = (event.target as HTMLInputElement).value;
 

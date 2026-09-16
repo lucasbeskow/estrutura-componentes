@@ -50,14 +50,14 @@ export class EmptyState implements ComponentInterface {
             {this.registros && ([
               <img
                 src="https://cdn.betha.cloud/plataforma/design/kare/framework/0.1.6/assets/images/records.svg"
-                alt="Ainda não há registros por aqui" />,
+                alt="" />,
               <h4>Ainda não há registros por aqui</h4>,
             ])}
 
             {this.registrosPesquisa && ([
               <img
                 src="https://cdn.betha.cloud/plataforma/design/kare/framework/0.1.6/assets/images/list.svg"
-                alt="Nenhum resultado encontrado. Os filtros ou a ortografia dos termos utilizados na pesquisa podem ser revisados." />,
+                alt="" />,
               <h4>Nenhum resultado encontrado para sua pesquisa</h4>,
               <p>
                 - Tente utilizar uma combinação diferente de filtros<br />
@@ -68,14 +68,14 @@ export class EmptyState implements ComponentInterface {
             {this.online && ([
               <img
                 src="https://cdn.betha.cloud/plataforma/design/kare/framework/0.1.6/assets/images/online.svg"
-                alt="Conexão com a Internet estável" />,
+                alt="" />,
               <h4>Sua conexão está estável</h4>,
             ])}
 
             {this.offline && ([
               <img
                 src="https://cdn.betha.cloud/plataforma/design/kare/framework/0.1.6/assets/images/offline.svg"
-                alt="Desconectado da Internet" />,
+                alt="" />,
               <h4>Você está offline</h4>,
               <p>Isso pode prejudicar as suas atividades no sistema</p>
             ])}
@@ -83,7 +83,7 @@ export class EmptyState implements ComponentInterface {
             {this.paginaNaoEncontrada && ([
               <img
                 src="https://cdn.betha.cloud/plataforma/design/kare/framework/0.1.6/assets/images/404.svg"
-                alt="Página não encontrada" />,
+                alt="" />,
               <h4>Ops! Ocorreu um erro</h4>,
               <p>A página que você tentou acessar não foi encontrada</p>
             ])}

@@ -69,6 +69,10 @@ As possibilidades são infinitas =)
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+Facilita a criação de Ferramentas para o menu. Abstrai comportamentos responsivos e controle do painel lateral.
+
 ## Properties
 
 | Property              | Attribute               | Description              | Type     | Default     |

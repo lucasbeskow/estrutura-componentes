@@ -4,7 +4,7 @@ import { setBethaEnvs as injectWindowBethaEnv } from '../../../../test/utils/spe
 import { Ajuda } from '../ajuda';
 
 function setupDefaultEnv() {
-  let env = {
+  const env = {
     suite: { 'central-de-ajuda': { v1: { 'host-redirecionamento': 'https://suporte.betha.cloud/' } } }
   };
 
@@ -35,7 +35,7 @@ describe('bth-ajuda', () => {
     await page.setContent('<bth-ajuda></bth-ajuda>');
 
     // Assert
-    let ajuda: HTMLBthAjudaElement = page.body.querySelector('bth-ajuda');
+    const ajuda: HTMLBthAjudaElement = page.body.querySelector('bth-ajuda');
     expect(ajuda.shadowRoot.querySelector('bth-menu-ferramenta').getAttribute('descricao')).toEqual('Ajuda');
     expect(ajuda.shadowRoot.querySelector('bth-menu-ferramenta').getAttribute('tituloPainelLateral')).toEqual('Ajuda');
     expect(ajuda.shadowRoot.querySelector('a').textContent).toMatch(/Central de Ajuda/);
@@ -44,13 +44,13 @@ describe('bth-ajuda', () => {
 
   it('obtem link da central de ajuda do env.js', async () => {
     // Arrange
-    let env = setupDefaultEnv();
+    const env = setupDefaultEnv();
 
     // Act
     await page.setContent('<bth-ajuda></bth-ajuda>');
 
     // Assert
-    let ajuda: HTMLBthAjudaElement = page.body.querySelector('bth-ajuda');
+    const ajuda: HTMLBthAjudaElement = page.body.querySelector('bth-ajuda');
     expect(ajuda.shadowRoot.querySelector('a').href).toEqual(env.suite['central-de-ajuda'].v1['host-redirecionamento']);
   });
 
@@ -62,7 +62,7 @@ describe('bth-ajuda', () => {
     await page.setContent(`<bth-ajuda central-ajuda-home="${centralAjudaHome}"></bth-ajuda>`);
 
     // Assert
-    let ajuda: HTMLBthAjudaElement = page.body.querySelector('bth-ajuda');
+    const ajuda: HTMLBthAjudaElement = page.body.querySelector('bth-ajuda');
     expect(ajuda.shadowRoot.querySelector('a').href).toEqual(centralAjudaHome);
   });
 
@@ -75,7 +75,7 @@ describe('bth-ajuda', () => {
     await page.setContent(`<bth-ajuda central-ajuda-home="${centralAjudaHome}"></bth-ajuda>`);
 
     // Assert
-    let ajuda: HTMLBthAjudaElement = page.body.querySelector('bth-ajuda');
+    const ajuda: HTMLBthAjudaElement = page.body.querySelector('bth-ajuda');
     expect(ajuda.shadowRoot.querySelector('a').href).toEqual(centralAjudaHome);
   });
 

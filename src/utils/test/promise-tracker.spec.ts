@@ -74,7 +74,7 @@ describe('Promise tracker', () => {
     expect(tracker).not.toBeNull();
     expect(isAtivo).toBeFalsy();
 
-    var promises = [getPromiseToBeFullfiled(200), getPromiseToBeFullfiled(150), getPromiseToBeFullfiled(650)];
+    const promises = [getPromiseToBeFullfiled(200), getPromiseToBeFullfiled(150), getPromiseToBeFullfiled(650)];
     tracker.addPromise(promises[0]);
     tracker.addPromise(promises[1]);
     tracker.addPromise(promises[2]);

@@ -1,4 +1,4 @@
-@import "../../../styles/normalize.scss";
+@use "../../../styles/normalize.scss";
 
 .menu-vertical__item {
   position: relative;
@@ -14,7 +14,7 @@
 
   &--active {
     background-color: var(--bth-app-gray-light-10);
-    > a {
+    > button {
       bth-icone,
       span {
         color: var(--bth-app-blue-dark-10);
@@ -48,7 +48,7 @@
   &--floating {
     background-color: var(--bth-app-gray-light-20);
     border-top: 0;
-    > a {
+    > button {
       > span {
         opacity: 0;
       }
@@ -62,15 +62,21 @@
           transition: opacity var(--bth-app-transition-delay) cubic-bezier(0.5, 0, 0.1, 1);
         }
       }
-      &:focus {
-        outline: 1px dotted var(--bth-app-gray-dark-30);
+      &:focus-visible {
+        outline: 2px solid var(--bth-app-gray-dark-30);
         outline-offset: -1px;
       }
     }
   }
 
-  a {
+  button {
     align-items: center;
+    border: 0;
+    background-color: transparent;
+    font-family: inherit;
+    font-size: inherit;
+    cursor: pointer;
+    text-align: left;
     display: flex;
     width: 100%;
     color: var(--bth-app-gray-dark-20);
@@ -87,8 +93,8 @@
       color: var(--bth-app-gray-dark-30);
     }
 
-    &:focus {
-      outline: 1px dotted var(--bth-app-gray-dark-30);
+    &:focus-visible {
+      outline: 2px solid var(--bth-app-gray-dark-30);
       outline-offset: -1px;
     }
 
@@ -126,13 +132,13 @@
 }
 
 .menu-vertical__submenu {
-  a {
+  button {
     height: 36px;
     padding: 12px 10px 12px 53px;
     cursor: pointer;
 
-    &:focus {
-      outline: 1px dotted var(--bth-app-gray-dark-30);
+    &:focus-visible {
+      outline: 2px solid var(--bth-app-gray-dark-30);
       outline-offset: -1px;
     }
   }
@@ -150,7 +156,7 @@
 
 .badge-vertical-floating {
   position: absolute;
-  background-color: var(--bth-app-red);
+  background-color: var(--bth-app-red-dark-20);
   color: var(--bth-app-gray-light-40);
   font-size: 10px;
   right: 5px;
@@ -162,7 +168,7 @@
 }
 .badge-icon {
   border-radius: 50%!important;
-  background-color: #dc3545!important;
+  background-color: var(--bth-app-red-dark-20) !important;
   padding: 0.25rem!important;
   border-color: #f8f9fa!important;
   border: 1px solid #dee2e6!important;
@@ -174,7 +180,7 @@
 
 @media (max-width: 991px) {
   .menu-vertical__item {
-    a {
+    button {
       height: 54px;
       font-size: 18px;
 

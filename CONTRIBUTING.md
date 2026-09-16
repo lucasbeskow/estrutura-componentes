@@ -6,8 +6,15 @@ Os componentes foram desenvolvidos utilizando tecnologia de [**Web Components**]
 
 Abaixo estão as ferramentas utilizadas e as versões recomendadas.
 
-- [**Node.js**](https://nodejs.org/en/) `v12.17` ou posterior
-- [**yarn**](https://classic.yarnpkg.com/en/) `v1.22` ou posterior
+- [**Node.js**](https://nodejs.org/en/) `v22` ou posterior
+- [**yarn**](https://yarnpkg.com/) `v4`, gerenciado pelo [**Corepack**](https://nodejs.org/api/corepack.html)
+
+O Corepack acompanha o Node.js e instala automaticamente a versão de yarn declarada
+no campo `packageManager` do `package.json`. Basta habilitá-lo uma vez:
+
+```bash
+corepack enable
+```
 
 ## Comandos
 

@@ -5,15 +5,19 @@ Item que representa uma opção do menu para navegação horizontal
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+Item que representa uma opção do menu para navegação horizontal
+
 ## Properties
 
-| Property          | Attribute          | Description                                                   | Type               | Default            |
-| ----------------- | ------------------ | ------------------------------------------------------------- | ------------------ | ------------------ |
-| `ativo`           | `ativo`            | Está ativo?                                                   | `boolean`          | `undefined`        |
-| `contador`        | `contador`         | Contador  Exibe o valor inforamdo em um badge próximo ao menu | `number`           | `undefined`        |
-| `descricao`       | `descricao`        | Descrição                                                     | `string`           | `undefined`        |
-| `identificador`   | `identificador`    | Identificador                                                 | `number \| string` | `undefined`        |
-| `possuiPermissao` | `possui-permissao` | Possui permissão?                                             | `boolean`          | `PERMISSAO_PADRAO` |
+| Property          | Attribute          | Description                                                   | Type               | Default     |
+| ----------------- | ------------------ | ------------------------------------------------------------- | ------------------ | ----------- |
+| `ativo`           | `ativo`            | Está ativo?                                                   | `boolean`          | `undefined` |
+| `contador`        | `contador`         | Contador  Exibe o valor inforamdo em um badge próximo ao menu | `number`           | `undefined` |
+| `descricao`       | `descricao`        | Descrição                                                     | `string`           | `undefined` |
+| `identificador`   | `identificador`    | Identificador                                                 | `number \| string` | `undefined` |
+| `possuiPermissao` | `possui-permissao` | Possui permissão?                                             | `boolean`          | `true`      |
 
 
 ## Events

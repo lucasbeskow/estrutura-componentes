@@ -23,7 +23,7 @@ describe('navbar-pill-group', () => {
 
     // Act
     const navBarGroup: HTMLBthNavbarPillGroupElement = page.doc.querySelector('bth-navbar-pill-group');
-    var conteudo = 'Conteúdo qualquer';
+    const conteudo = 'Conteúdo qualquer';
     navBarGroup.innerHTML = `<h1>${conteudo}</h1>`;
     await page.waitForChanges();
 
@@ -44,8 +44,9 @@ describe('navbar-pill-group', () => {
     // Assert
     expect(navBarGroup.descricao).toBe(descricao);
 
-    const nav = navBarGroup.shadowRoot.querySelector('nav');
-    expect(nav.getAttribute('aria-label')).toBe(`Navegação por filtros ${descricao.toLowerCase()}`);
+    const grupo = navBarGroup.shadowRoot.querySelector('.navbar-pill-group');
+    expect(grupo.getAttribute('role')).toBe('group');
+    expect(grupo.getAttribute('aria-label')).toBe(`Filtros ${descricao.toLowerCase()}`);
   });
 
 });

@@ -79,7 +79,7 @@ describe('novidade-item', () => {
     await page.waitForChanges();
 
     // Assert
-    expect(page.root.shadowRoot.querySelector('a[title="Marcar como não lida"]')).not.toBeNull();
+    expect(page.root.shadowRoot.querySelector('button[title="Marcar como não lida"]')).not.toBeNull();
   });
 
   it('exibe marcar como não lida para novidades lidas', async () => {
@@ -87,7 +87,7 @@ describe('novidade-item', () => {
     page.root.setAttribute('is-lida', 'false');
     await page.waitForChanges();
 
-    expect(page.root.shadowRoot.querySelector('a[title="Marcar como lida"]')).not.toBeNull();
+    expect(page.root.shadowRoot.querySelector('button[title="Marcar como lida"]')).not.toBeNull();
   });
 
   it('emite evento "novidadeLida" ao clicar no icone de uma novidade não lida', async () => {
@@ -95,8 +95,8 @@ describe('novidade-item', () => {
     page.root.setAttribute('is-lida', 'false');
     await page.waitForChanges();
 
-    const marcarLida: HTMLLinkElement = page.root.shadowRoot.querySelector('a[title="Marcar como lida"]');
-    let onNovidadeLida = jest.fn();
+    const marcarLida: HTMLButtonElement = page.root.shadowRoot.querySelector('button[title="Marcar como lida"]');
+    const onNovidadeLida = jest.fn();
     page.root.addEventListener('novidadeLida', onNovidadeLida);
     await page.waitForChanges();
 
@@ -116,8 +116,8 @@ describe('novidade-item', () => {
     page.root.setAttribute('is-lida', 'true');
     await page.waitForChanges();
 
-    const marcarNaoLida: HTMLLinkElement = page.root.shadowRoot.querySelector('a[title="Marcar como não lida"]');
-    let onNovidadeNaoLida = jest.fn();
+    const marcarNaoLida: HTMLButtonElement = page.root.shadowRoot.querySelector('button[title="Marcar como não lida"]');
+    const onNovidadeNaoLida = jest.fn();
     page.root.addEventListener('novidadeNaoLida', onNovidadeNaoLida);
     await page.waitForChanges();
 

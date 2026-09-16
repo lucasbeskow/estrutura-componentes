@@ -20,7 +20,7 @@ describe('icone', () => {
     await page.waitForChanges();
 
     // Assert
-    expect(page.root).toEqualLightHtml('<bth-icone aria-label="cloud" cor="inherit" icone="cloud" role="img" tamanho="inherit"></bth-icone>');
+    expect(page.root).toEqualLightHtml('<bth-icone aria-hidden="true" cor="inherit" icone="cloud" tamanho="inherit"></bth-icone>');
   });
 
   it('renderiza icone', async () => {
@@ -76,7 +76,7 @@ describe('icone', () => {
     expect(iconElement.style.fontSize).toEqual(tamanho);
   });
 
-  it('define aria-label default caso nao informado', async () => {
+  it('é decorativo caso aria-label nao seja informado', async () => {
     // Arrange
     await page.setContent('<bth-icone></bth-icone>');
 
@@ -86,7 +86,9 @@ describe('icone', () => {
     await page.waitForChanges();
 
     // Assert
-    expect(icone.getAttribute('aria-label')).toBe('cloud');
+    expect(icone.getAttribute('aria-label')).toBeNull();
+    expect(icone.getAttribute('aria-hidden')).toBe('true');
+    expect(icone.getAttribute('role')).toBeNull();
   });
 
   it('permite informar aria-label', async () => {
@@ -102,6 +104,8 @@ describe('icone', () => {
 
     // Assert
     expect(icone.getAttribute('aria-label')).toBe(ariaLabel);
+    expect(icone.getAttribute('role')).toBe('img');
+    expect(icone.getAttribute('aria-hidden')).toBeNull();
   });
 
 });

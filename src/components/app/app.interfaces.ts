@@ -16,11 +16,6 @@ export interface MenuBannerAlteradoEvent {
   possui: boolean
 }
 
-export interface ConteudoSinalizadoEvent {
-  possui: boolean;
-  origem: string;
-}
-
 export type IdentificadorOpcaoMenu = string | number;
 
 export interface OpcaoMenu {
@@ -32,10 +27,10 @@ export interface OpcaoMenu {
   submenus?: Array<OpcaoMenu>;
   possuiPermissao?: boolean;
   possuiBadgeIcone?: boolean;
+  isAtivo?: boolean;
 }
 
 export interface OpcaoMenuInterna extends OpcaoMenu {
-  isAtivo?: boolean;
   isRecolhido?: boolean;
   submenus?: Array<OpcaoMenuInterna>
 }

@@ -1,4 +1,6 @@
-@import "../../styles/normalize.scss";
+@use "sass:math";
+@use "../../styles/normalize.scss";
+@use "../../styles/mixins" as *;
 
 .app {
   display: grid;
@@ -22,6 +24,8 @@ slot[name="container_contexto"] {
   align-items: center;
   border-bottom: 1px solid var(--bth-app-gray-light-10);
   margin: 0 16px;
+
+  @include visibilidadeEstrutura($display: flex);
 }
 
 .banner {
@@ -50,7 +54,8 @@ slot[name="container_contexto"] {
     line-height: 1.5;
     margin: 0 4px;
     max-width: 95%;
-    > a {
+    > a,
+    > button {
       color: var(--bth-app-gray-dark-40);
       text-decoration: underline;
       margin-left: 24px;
@@ -134,11 +139,13 @@ slot[name="container_contexto"] {
   /**
    * @prop --bth-app-menu-bg-color: Cor de fundo do menu horizontal
    */
-  background-color: var(--bth-app-menu-bg-color, #142c48);
+  background-color: var(--bth-app-menu-bg-color);
   color: var(--bth-app-gray-light-40);
   height: 40px;
   grid-area: menu-horizontal;
   width: 100%;
+
+  @include visibilidadeEstrutura();
 
   &__link--disabled {
     opacity: 0.5;
@@ -171,13 +178,24 @@ slot[name="container_contexto"] {
 
       .menu-vertical__toggle {
         text-decoration: none;
-        padding: 13px 15px 9px 15px;
+        // Como <button> o elemento e um bloco: o padding vertical viraria
+        // altura e estouraria os 40px do menu. O alinhamento fica no flex.
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        padding: 0 15px;
+        border: 0;
+        background-color: transparent;
+        font-family: inherit;
+        font-size: inherit;
+        cursor: pointer;
         &:before {
           content: "\f035C";
           font-size: 20px;
           color: var(--bth-app-gray-light-40);
           font-family: var(--bth-app-font-family-icons);
-          line-height: 40px;
+          line-height: 1;
         }
 
         &:hover,
@@ -186,8 +204,8 @@ slot[name="container_contexto"] {
           text-decoration: none;
         }
 
-        &:focus {
-          outline: 1px dotted var(--bth-app-gray-light-10);
+        &:focus-visible {
+          outline: 2px solid var(--bth-app-gray-light-10);
           outline-offset: -2px;
         }
       }
@@ -201,10 +219,11 @@ slot[name="container_contexto"] {
         height: 100%;
         padding: 0;
 
-        > li {
+        > .menu-ferramentas__item {
           position: relative;
           padding: 0px 6px;
-          > a {
+          > a,
+          > button {
             text-decoration: none;
             > bth-icone {
               color: var(--bth-app-gray-light-40);
@@ -227,8 +246,8 @@ slot[name="container_contexto"] {
             text-decoration: none;
           }
 
-          &:focus {
-            outline: 1px dotted var(--bth-app-gray-dark-30);
+          &:focus-visible {
+            outline: 2px solid var(--bth-app-gray-light-40);
             outline-offset: -1px;
           }
         }
@@ -247,7 +266,7 @@ slot[name="container_contexto"] {
   text-align: center;
 
   &.badge-danger {
-    background-color: var(--bth-app-red);
+    background-color: var(--bth-app-red-dark-20);
     color: var(--bth-app-gray-light-40);
     &--notificacao-small {
       padding: 0 2px;
@@ -272,6 +291,8 @@ slot[name="container_contexto"] {
   height: calc(100vh - 40px);
   top: 40px;
 
+  @include visibilidadeEstrutura($display: flex);
+
   &__body {
     flex: 1;
     overflow-x: hidden;
@@ -295,8 +316,15 @@ slot[name="container_contexto"] {
   &__item {
     position: relative;
 
-    > a {
+    > a,
+    > button {
       align-items: center;
+      border: 0;
+      background-color: transparent;
+      font-family: inherit;
+      font-size: inherit;
+      text-align: left;
+      cursor: pointer;
       display: flex;
       width: 100%;
       color: var(--bth-app-gray-dark-20);
@@ -306,8 +334,8 @@ slot[name="container_contexto"] {
       overflow: hidden;
       padding: 0px 9px 0px 0px;
 
-      &:focus {
-        outline: 1px dotted var(--bth-app-gray-dark-30);
+      &:focus-visible {
+        outline: 2px solid var(--bth-app-gray-dark-30);
         outline-offset: -1px;
       }
 
@@ -343,7 +371,8 @@ slot[name="container_contexto"] {
     }
     &--active {
       background-color: var(--bth-app-gray-light-10);
-      > a {
+      > a,
+      > button {
         bth-icone,
         span {
           color: var(--bth-app-blue-dark-10);
@@ -370,7 +399,8 @@ slot[name="container_contexto"] {
     &--floating {
       background-color: var(--bth-app-gray-light-20);
       border-top: 0;
-      > a {
+      > a,
+      > button {
         > span {
           opacity: 0;
         }
@@ -424,7 +454,8 @@ slot[name="container_contexto"] {
   .menu-vertical {
     &__item {
       &--floating {
-        > a {
+        > a,
+        > button {
           > bth-icone:last-of-type {
             transform: rotate(0.1turn);
             transition: transform var(--bth-app-transition-delay) cubic-bezier(0.5, 0, 0.1, 1);
@@ -471,14 +502,16 @@ slot[name="container_contexto"] {
     &__item {
       .menu-vertical__list {
         .menu-vertical__item {
-          > a {
+          > a,
+          > button {
             height: 48px;
             font-size: 16px;
           }
         }
       }
 
-      > a {
+      > a,
+      > button {
         height: 54px;
         font-size: 18px;
         > bth-icone {
@@ -494,7 +527,8 @@ slot[name="container_contexto"] {
         &--floating {
           display: none;
         }
-        &--has-children > a {
+        &--has-children > a,
+        &--has-children > button {
           font-weight: var(--bth-app-font-weight-regular);
         }
       }
@@ -524,7 +558,7 @@ slot[name="container_contexto"] {
         display: block;
         display: -webkit-box;
         max-width: 100%;
-        min-height: ($font-size * $line-height * $lines-to-show)/2;
+        min-height: math.div($font-size * $line-height * $lines-to-show, 2);
         margin: 0 auto;
         font-size: $font-size;
         line-height: $line-height;
@@ -537,7 +571,8 @@ slot[name="container_contexto"] {
         white-space: unset;
       }
 
-      > a {
+      > a,
+      > button {
         vertical-align: top;
       }
     }
@@ -594,12 +629,13 @@ slot[name="container_contexto"] {
           display: none;
         }
         .menu-ferramentas {
-          > li {
+          > .menu-ferramentas__item {
             width: 47px;
             align-items: center;
             display: flex;
             justify-content: center;
-            > a {
+            > a,
+            > button {
               > bth-icone {
                 color: var(--bth-app-gray-light-40);
                 font-size: 18px;
@@ -610,6 +646,10 @@ slot[name="container_contexto"] {
             &:last-child {
               .menu-ferramentas__mobile-toggler {
                 padding: 0px 13px;
+                border: 0;
+                background-color: transparent;
+                font-family: inherit;
+                cursor: pointer;
 
                 &:before {
                   content: "\F01D9";

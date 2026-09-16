@@ -197,6 +197,23 @@ describe('notificacao-item', () => {
     expect(blocoDataHora.textContent).toBe(getDataHoraDescrita(dataHora));
   });
 
+  it('exibe data e hora através de data no formato ISO', async () => {
+    // Arrange
+    await page.setContent('<bth-notificacao-item></bth-notificacao-item>');
+
+    // Act
+    const notificacaoItem: HTMLBthNotificacaoItemElement = page.doc.querySelector('bth-notificacao-item');
+    const dataHora = '2026-06-15T14:56:10.207+00:00';
+    notificacaoItem.dataHora = dataHora;
+    await page.waitForChanges();
+
+    // Assert
+    expect(notificacaoItem.dataHora).toBe(dataHora);
+
+    const blocoDataHora = notificacaoItem.shadowRoot.querySelector('span.float-right');
+    expect(blocoDataHora.textContent).toBe(getDataHoraDescrita(dataHora));
+  });
+
   it('exibe progresso indeterminado (sem percentual)', async () => {
     // Arrange
     await page.setContent('<bth-notificacao-item></bth-notificacao-item>');
@@ -245,11 +262,11 @@ describe('notificacao-item', () => {
 
     await page.waitForChanges();
 
-    let onNotificacaoLida = jest.fn();
+    const onNotificacaoLida = jest.fn();
     page.root.addEventListener('notificacaoLida', onNotificacaoLida);
 
     // Act
-    const marcarComoLida: HTMLAnchorElement = notificacaoItem.shadowRoot.querySelector('.notificacao__body a');
+    const marcarComoLida: HTMLButtonElement = notificacaoItem.shadowRoot.querySelector('.notificacao__body button');
     marcarComoLida.click();
 
     await page.waitForChanges();
@@ -271,7 +288,7 @@ describe('notificacao-item', () => {
 
     await page.waitForChanges();
 
-    let onNotificacaoLida = jest.fn();
+    const onNotificacaoLida = jest.fn();
     page.root.addEventListener('notificacaoLida', onNotificacaoLida);
 
     // Act
@@ -305,11 +322,11 @@ describe('notificacao-item', () => {
 
     await page.waitForChanges();
 
-    let onNotificacaoLida = jest.fn();
+    const onNotificacaoLida = jest.fn();
     page.root.addEventListener('notificacaoLida', onNotificacaoLida);
 
     // Act
-    const marcarComoLida: HTMLAnchorElement = notificacaoItem.shadowRoot.querySelector('.notificacao__body a');
+    const marcarComoLida: HTMLButtonElement = notificacaoItem.shadowRoot.querySelector('.notificacao__body button');
     marcarComoLida.click();
 
     await page.waitForChanges();
@@ -335,11 +352,11 @@ describe('notificacao-item', () => {
 
     await page.waitForChanges();
 
-    let onNotificacaoNaoLida = jest.fn();
+    const onNotificacaoNaoLida = jest.fn();
     page.root.addEventListener('notificacaoNaoLida', onNotificacaoNaoLida);
 
     // Act
-    const marcarComoLida: HTMLAnchorElement = notificacaoItem.shadowRoot.querySelector('.notificacao__body a');
+    const marcarComoLida: HTMLButtonElement = notificacaoItem.shadowRoot.querySelector('.notificacao__body button');
     marcarComoLida.click();
 
     await page.waitForChanges();

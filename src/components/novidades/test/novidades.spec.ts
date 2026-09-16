@@ -149,14 +149,14 @@ describe('bth-novidades', () => {
     setFetchMockData([PAYLOAD]);
 
     await page.setContent(`<bth-novidades novidades-api="${API_HOST}"></bth-novidades>`);
-    let novidades: HTMLBthNovidadesElement = page.body.querySelector('bth-novidades');
+    const novidades: HTMLBthNovidadesElement = page.body.querySelector('bth-novidades');
     novidades.authorization = getMockAuthorization();
     await page.waitForChanges();
 
     // Act
-    let marcarTodas: HTMLLinkElement = novidades.shadowRoot.querySelector('.marcar-todas > a');
+    const marcarTodas: HTMLButtonElement = novidades.shadowRoot.querySelector('.marcar-todas > button');
 
-    let onNaoPossuiConteudoSinalizado = jest.fn();
+    const onNaoPossuiConteudoSinalizado = jest.fn();
     novidades.addEventListener('conteudoSinalizado', onNaoPossuiConteudoSinalizado);
 
     marcarTodas.click();
@@ -174,12 +174,12 @@ describe('bth-novidades', () => {
     setFetchMockData([PAYLOAD]);
 
     await page.setContent(`<bth-novidades novidades-api="${API_HOST}"></bth-novidades>`);
-    let novidades: HTMLBthNovidadesElement = page.body.querySelector('bth-novidades');
+    const novidades: HTMLBthNovidadesElement = page.body.querySelector('bth-novidades');
     novidades.authorization = getMockAuthorization();
     await page.waitForChanges();
 
     // Act
-    let marcarTodas: HTMLLinkElement = novidades.shadowRoot.querySelector('.marcar-todas > a');
+    const marcarTodas: HTMLButtonElement = novidades.shadowRoot.querySelector('.marcar-todas > button');
     marcarTodas.click();
 
     await page.waitForChanges();
@@ -290,7 +290,7 @@ describe('bth-novidades', () => {
 
     // Act
     await page.setContent(`<bth-novidades novidades-api="${API_HOST}"></bth-novidades>`);
-    let novidade: HTMLBthNovidadesElement = page.body.querySelector('bth-novidades');
+    const novidade: HTMLBthNovidadesElement = page.body.querySelector('bth-novidades');
     novidade.authorization = getMockAuthorization();
     await page.waitForChanges();
 
@@ -306,7 +306,7 @@ describe('bth-novidades', () => {
 
     // Act
     await page.setContent(`<bth-novidades novidades-api="${API_HOST}"></bth-novidades>`);
-    let novidades: HTMLBthNovidadesElement = page.body.querySelector('bth-novidades');
+    const novidades: HTMLBthNovidadesElement = page.body.querySelector('bth-novidades');
     novidades.authorization = getMockAuthorization();
     await page.waitForChanges();
 
@@ -326,8 +326,8 @@ describe('bth-novidades', () => {
     // Act
     await page.setContent(`<bth-novidades novidades-api="${API_HOST}"></bth-novidades>`);
 
-    let novidades: HTMLBthNovidadesElement = page.body.querySelector('bth-novidades');
-    let onPossuiConteudoSinalizado = jest.fn();
+    const novidades: HTMLBthNovidadesElement = page.body.querySelector('bth-novidades');
+    const onPossuiConteudoSinalizado = jest.fn();
     novidades.addEventListener('conteudoSinalizado', onPossuiConteudoSinalizado);
 
     novidades.authorization = getMockAuthorization();
@@ -346,8 +346,8 @@ describe('bth-novidades', () => {
 
     // Act
     await page.setContent(`<bth-novidades novidades-api="${API_HOST}"></bth-novidades>`);
-    let novidades: HTMLBthNovidadesElement = page.body.querySelector('bth-novidades');
-    let onNaoPossuiConteudoSinalizado = jest.fn();
+    const novidades: HTMLBthNovidadesElement = page.body.querySelector('bth-novidades');
+    const onNaoPossuiConteudoSinalizado = jest.fn();
     novidades.addEventListener('conteudoSinalizado', onNaoPossuiConteudoSinalizado);
 
     novidades.authorization = getMockAuthorization();
@@ -363,7 +363,7 @@ describe('bth-novidades', () => {
   it('abre url em nova janela ao receber evento de novidade lida', async () => {
     // Arrange
     await page.setContent(`<bth-novidades novidades-api="${API_HOST}"></bth-novidades>`);
-    let novidades: HTMLBthNovidadesElement = page.body.querySelector('bth-novidades');
+    const novidades: HTMLBthNovidadesElement = page.body.querySelector('bth-novidades');
     novidades.authorization = getMockAuthorization();
     await page.waitForChanges();
     const spy = jest.spyOn(window, 'open').mockImplementation();
@@ -384,10 +384,10 @@ describe('bth-novidades', () => {
     setFetchMockData([PAYLOAD]);
 
     await page.setContent(`<bth-novidades novidades-api="${API_HOST}"></bth-novidades>`);
-    let novidades: HTMLBthNovidadesElement = page.body.querySelector('bth-novidades');
+    const novidades: HTMLBthNovidadesElement = page.body.querySelector('bth-novidades');
     novidades.authorization = getMockAuthorization();
 
-    let onNaoPossuiConteudoSinalizado = jest.fn();
+    const onNaoPossuiConteudoSinalizado = jest.fn();
     novidades.addEventListener('conteudoSinalizado', onNaoPossuiConteudoSinalizado);
 
     await page.waitForChanges();
@@ -408,10 +408,10 @@ describe('bth-novidades', () => {
     setFetchMockData([PAYLOAD]);
 
     await page.setContent(`<bth-novidades novidades-api="${API_HOST}"></bth-novidades>`);
-    let novidades: HTMLBthNovidadesElement = page.body.querySelector('bth-novidades');
+    const novidades: HTMLBthNovidadesElement = page.body.querySelector('bth-novidades');
     novidades.authorization = getMockAuthorization();
 
-    let onPossuiConteudoSinalizado = jest.fn();
+    const onPossuiConteudoSinalizado = jest.fn();
     novidades.addEventListener('conteudoSinalizado', onPossuiConteudoSinalizado);
 
     await page.waitForChanges();

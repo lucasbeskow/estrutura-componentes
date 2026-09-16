@@ -1,4 +1,4 @@
-@import '../../styles/normalize.scss';
+@use '../../styles/normalize.scss';
 
 .perfil-usuario {
   div {
@@ -110,7 +110,15 @@
         background: var(--bth-app-gray-light-30);
       }
 
-      a {
+      a,
+      button {
+        border: 0;
+        background-color: transparent;
+        font-family: inherit;
+        font-size: inherit;
+        text-align: left;
+        cursor: pointer;
+        width: 100%;
         color: var(--bth-app-gray-dark-30);
         padding: 14px 12px;
         display: block;
@@ -151,7 +159,8 @@
     ul {
       li {
         font-size: 16px;
-        a {
+        a,
+        button {
           bth-icone {
             font-size: 20px;
           }

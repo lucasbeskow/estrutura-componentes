@@ -1,4 +1,4 @@
-@import '../../../styles/normalize.scss';
+@use '../../../styles/normalize.scss';
 
 .ferramenta-menu__desktop-toggler {
   display: flex;
@@ -10,7 +10,7 @@
     background-color: rgba(255, 255, 255, 0.2);
     --bth-app-menu-item-hover-color: #3A434D;
 
-    a:hover {
+    button:hover {
       --bth-app-menu-item-hover-color: #575F69 !important;
     }
   }
@@ -41,7 +41,14 @@
     height: 24px;
   }
 
-  a {
+  button {
+    // Sem display: flex. O <a> original era inline e o espaco em branco entre
+    // os dois slots contava na largura; flex o colapsaria e estreitaria o item.
+    border: 0;
+    background-color: transparent;
+    font-family: inherit;
+    font-size: inherit;
+    cursor: pointer;
     color: var(--bth-app-gray-light-40);
     text-decoration: none;
     padding: 7px 11px 8px 11px;
@@ -49,8 +56,8 @@
       background-color: rgba(255, 255, 255, 0.15);
       --bth-app-menu-item-hover-color: #2E3741;
     }
-    &:focus {
-      outline: 1px dotted var(--bth-app-gray-light-10);
+    &:focus-visible {
+      outline: 2px solid var(--bth-app-gray-light-10);
       outline-offset: -2px;
     }
   }
@@ -62,7 +69,13 @@
   align-items: center;
   border-bottom: 1px solid var(--bth-app-gray-light-10);
 
-  a {
+  button {
+    border: 0;
+    background-color: transparent;
+    font-family: inherit;
+    font-size: inherit;
+    text-align: left;
+    cursor: pointer;
     width: 100%;
     padding: 14px 12px;
     text-decoration: none;

@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="pt-br">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Guia de uso dos componentes fora do bth-app">
+
+    <title>Componentes</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/@mdi/font@7.4.47/css/materialdesignicons.min.css">
+    <link href="assets/fonts.css" rel="stylesheet">
+    <link rel="stylesheet" href="build/estrutura-componentes.css">
+
+    <style>
+      body {
+        margin: 0;
+        padding: 0 24px 96px;
+        font-family: var(--bth-app-font-family-primary);
+        color: var(--bth-app-gray-dark-30);
+        line-height: 1.6;
+      }
+
+      .pagina {
+        max-width: 860px;
+        margin: 0 auto;
+      }
+
+      header {
+        padding: 32px 0 8px;
+      }
+
+      h1 {
+        margin: 0 0 8px;
+        font-size: 28px;
+      }
+
+      h2 {
+        margin: 72px 0 8px;
+        font-size: 24px;
+        padding-bottom: 12px;
+        border-bottom: 2px solid var(--bth-app-gray-dark-30);
+      }
+
+      h3 {
+        margin: 48px 0 4px;
+        font-size: 19px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid var(--bth-app-gray-light-10);
+      }
+
+      /*
+       * Escopado aos filhos diretos: sem isso o estilo vaza para os <h4> que a
+       * pagina projeta nos slots dos componentes, como o cabecalho do
+       * bth-selecao-contexto.
+       */
+      .pagina > h4,
+      .indice h4 {
+        margin: 24px 0 8px;
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: var(--bth-app-gray-dark-10);
+      }
+
+      h5 {
+        margin: 20px 0 8px;
+        font-size: 15px;
+      }
+
+      p {
+        margin: 0 0 12px;
+      }
+
+      code {
+        background-color: var(--bth-app-gray-light-30);
+        border-radius: 4px;
+        padding: 1px 5px;
+        font-size: 13px;
+      }
+
+      pre {
+        background-color: #0f1b26;
+        color: #e6edf3;
+        border-radius: var(--bth-app-radius);
+        padding: 16px;
+        overflow-x: auto;
+        margin: 0 0 16px;
+      }
+
+      pre code {
+        background: none;
+        padding: 0;
+        color: inherit;
+        font-size: 13px;
+        line-height: 1.7;
+      }
+
+      .indice ul {
+        padding-left: 20px;
+        margin: 4px 0 12px;
+      }
+
+      .indice > ol {
+        padding-left: 20px;
+      }
+
+      .requisitos {
+        margin: 0 0 12px;
+        padding-left: 20px;
+      }
+
+      .nota {
+        border-left: 3px solid var(--bth-app-aqua);
+        background-color: var(--bth-app-aqua-light-20);
+        padding: 12px 16px;
+        margin: 0 0 16px;
+      }
+
+      .resultado {
+        border: 1px solid var(--bth-app-gray-light-10);
+        border-radius: var(--bth-app-radius);
+        padding: 16px;
+        margin-bottom: 8px;
+      }
+
+      .amostra {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 16px;
+      }
+
+      /*
+       * Unico requisito de layout das ferramentas: um container com altura
+       * definida. O bth-menu-ferramenta usa height 100% porque dentro do
+       * bth-app ele ocupa a barra horizontal de 40px.
+       */
+      .barra {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        height: 40px;
+        padding: 0 8px;
+        background-color: #091420;
+        border-radius: var(--bth-app-radius);
+      }
+
+      /* O menu vertical do shell usa fundo claro e largura fixa. */
+      .lista-vertical {
+        width: 230px;
+        background-color: var(--bth-app-gray-light-30);
+        border: 1px solid var(--bth-app-gray-light-10);
+        border-radius: var(--bth-app-radius);
+        overflow: hidden;
+      }
+
+      .log {
+        font-size: 13px;
+        color: var(--bth-app-gray-dark-20);
+        margin: 12px 0 0;
+      }
+
+      .log strong {
+        color: var(--bth-app-gray-dark-40);
+      }
+    </style>
+
+  </head>
+
+  <body>
+
+    <div class="pagina">
+
+      <header>
+        <nav><a href="/">&#8592; Voltar</a></nav>
+
+        <h1>Componentes</h1>
+        <p>
+          Guia de uso dos componentes sem o <code>bth-app</code>. Cada um traz o
+          codigo pronto para copiar e o resultado correspondente, renderizado
+          nesta propria pagina.
+        </p>
+      </header>
+
+      <div class="indice">
+        <h4>Nesta pagina</h4>
+        <ol>
+          <li><a href="#secao-preparacao">Preparacao</a></li>
+          <li>
+            <a href="#secao-comuns">Comuns</a>
+            <ul>
+              <li><a href="#secao-icone">bth-icone</a></li>
+              <li><a href="#secao-avatar">bth-avatar</a></li>
+              <li><a href="#secao-loader">bth-loader</a></li>
+              <li><a href="#secao-empty-state">bth-empty-state</a></li>
+              <li><a href="#secao-navbar-pill">bth-navbar-pill-group</a></li>
+              <li><a href="#secao-selecao-contexto">bth-selecao-contexto</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#secao-ferramentas">Ferramentas</a>
+            <ul>
+              <li><a href="#secao-utilitarios">bth-utilitarios</a></li>
+              <li><a href="#secao-ajuda">bth-ajuda</a></li>
+              <li><a href="#secao-conta-usuario">bth-conta-usuario</a></li>
+              <li><a href="#secao-suporte">bth-suporte</a></li>
+              <li><a href="#secao-novidades">bth-novidades</a></li>
+              <li><a href="#secao-notificacoes">bth-notificacoes</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#secao-estrutura">Estrutura</a>
+            <ul>
+              <li><a href="#secao-ferramenta-propria">Ferramenta propria</a></li>
+              <li><a href="#secao-painel">Painel lateral avulso</a></li>
+              <li><a href="#secao-itens-menu">Itens de menu</a></li>
+              <li><a href="#secao-fechamento">Fechamento dos paineis</a></li>
+            </ul>
+          </li>
+        </ol>
+      </div>
+
+      <h2 id="secao-preparacao">Preparacao</h2>
+      <p>Registre os componentes e importe os estilos e a fonte de icones.</p>
+
+      <h4>Codigo</h4>
+      <pre><code>&lt;link rel="stylesheet" href="https://unpkg.com/@mdi/font@7.4.47/css/materialdesignicons.min.css"&gt;
+&lt;link rel="stylesheet" href="https://unpkg.com/@betha-plataforma/estrutura-componentes/dist/estrutura-componentes/estrutura-componentes.css"&gt;
+
+&lt;script type="module" src="https://unpkg.com/@betha-plataforma/estrutura-componentes/dist/estrutura-componentes/estrutura-componentes.esm.js"&gt;&lt;/script&gt;</code></pre>
+
+      <div class="nota">
+        A fonte <strong>Material Design Icons</strong> e obrigatoria para o
+        <code>bth-icone</code> e para todo componente que exibe icones. Sem ela
+        os icones aparecem como caixas vazias.
+      </div>
+
+      <h5>Container das ferramentas</h5>
+      <p>
+        As ferramentas renderizam um <code>bth-menu-ferramenta</code>
+        internamente, que usa <code>height: 100%</code>. Por isso precisam de um
+        container com altura definida.
+      </p>
+
+      <pre><code>.barra {
+  display: flex;
+  align-items: center;
+  height: 40px;
+}</code></pre>
+
+      <h5>Autenticacao</h5>
+      <p>
+        Os componentes que consomem API recebem a autenticacao por
+        <strong>propriedade</strong>, nunca por atributo, porque o valor e um
+        objeto. Vale para <code>bth-suporte</code>, <code>bth-novidades</code>,
+        <code>bth-notificacoes</code> e <code>bth-marca-produto</code>.
+      </p>
+
+      <pre><code>const authorization = {
+  getAuthorization() {
+    return {
+      accessToken: '...',
+      accessId: '...',
+      userId: '...',
+      systemId: 78,
+      userAccess: '...'
+    };
+  },
+  handleUnauthorizedAccess() {
+    // renove o token e resolva a promise
+    return Promise.resolve();
+  }
+};</code></pre>
+
+      <div class="nota">
+        O painel lateral aberto pelas ferramentas usa
+        <code>position: fixed</code> com <code>top: 40px</code>, medida herdada
+        da barra horizontal do <code>bth-app</code>. Fora do shell o painel
+        funciona, mas sempre ancora a 40px do topo da viewport.
+      </div>
+
+      <h2 id="secao-comuns">Comuns</h2>
+      <p>
+        Componentes de uso geral. Nenhum depende do <code>bth-app</code> nem de
+        autenticacao.
+      </p>
+
+      <h3 id="secao-icone"><code>bth-icone</code></h3>
+      <p>Icone da biblioteca Material Design Icons. E a base visual dos demais componentes.</p>
+      <ul class="requisitos">
+        <li>Atributo <code>icone</code>, obrigatorio: o nome do icone sem o prefixo <code>mdi-</code>.</li>
+        <li>Atributos <code>tamanho</code> e <code>cor</code>, no mesmo formato de <code>font-size</code> e <code>color</code>. Por padrao herdam do contexto.</li>
+        <li>Atributo <code>aria-label</code>. Quando ausente, assume o nome do icone.</li>
+      </ul>
+
+      <h4>Codigo</h4>
+      <pre><code>&lt;bth-icone icone="cloud"&gt;&lt;/bth-icone&gt;
+&lt;bth-icone icone="cloud" tamanho="25px" cor="#f7932f"&gt;&lt;/bth-icone&gt;
+&lt;bth-icone icone="cloud" tamanho="2rem" cor="#df4661" aria-label="Servico contratado"&gt;&lt;/bth-icone&gt;</code></pre>
+
+      <h4>Resultado</h4>
+      <div class="resultado">
+        <div class="amostra">
+          <bth-icone icone="cloud"></bth-icone>
+          <bth-icone icone="cloud" tamanho="25px" cor="#f7932f"></bth-icone>
+          <bth-icone icone="cloud" tamanho="2rem" cor="#df4661" aria-label="Servico contratado"></bth-icone>
+        </div>
+      </div>
+
+      <h3 id="secao-avatar"><code>bth-avatar</code></h3>
+      <p>Representacao visual de uma pessoa ou entidade, a partir de imagem, iniciais ou icone.</p>
+      <ul class="requisitos">
+        <li>Uma das tres fontes de conteudo: <code>src</code>, <code>iniciais</code> ou <code>icone</code>.</li>
+        <li><code>tamanho</code> aceita <code>menor</code>, <code>pequeno</code>, <code>medio</code> ou <code>grande</code>. Use <code>dimensao</code> para um valor em pixels.</li>
+        <li><code>quadrado</code>, <code>borda</code>, <code>borda-tamanho</code>, <code>borda-raio</code> e <code>borda-cor</code> controlam a forma.</li>
+        <li><code>sub-icone</code> sobrepoe um indicador de status.</li>
+        <li>Emite <code>imageLoadError</code> quando a imagem de <code>src</code> falha. <strong>Nao ha fallback automatico</strong>: cabe ao host remover o <code>src</code> para o avatar cair nas iniciais ou no icone.</li>
+      </ul>
+
+      <h4>Codigo</h4>
+      <pre><code>&lt;bth-avatar src="https://exemplo.com/foto.png"&gt;&lt;/bth-avatar&gt;
+&lt;bth-avatar iniciais="Palavras Compostas"&gt;&lt;/bth-avatar&gt;
+&lt;bth-avatar icone="cloud" sub-icone="check-circle" sub-icone-title="Ativo"&gt;&lt;/bth-avatar&gt;
+&lt;bth-avatar iniciais="TX" tamanho="grande" quadrado&gt;&lt;/bth-avatar&gt;
+&lt;bth-avatar icone="cloud" borda borda-tamanho="2px" borda-cor="#7FAADC"&gt;&lt;/bth-avatar&gt;
+&lt;bth-avatar iniciais="TX" dimensao="64"&gt;&lt;/bth-avatar&gt;</code></pre>
+
+      <p>Fallback quando a imagem nao carrega:</p>
+
+      <pre><code>&lt;bth-avatar id="avatar" src="https://exemplo.com/foto.png" iniciais="TX"&gt;&lt;/bth-avatar&gt;
+
+&lt;script&gt;
+  document
+    .getElementById('avatar')
+    .addEventListener('imageLoadError', (event) =&gt; {
+      event.target.removeAttribute('src');
+    });
+&lt;/script&gt;</code></pre>
+
+      <h4>Resultado</h4>
+      <div class="resultado">
+        <h5>Por tamanho</h5>
+        <div class="amostra">
+          <bth-avatar iniciais="TX" tamanho="menor"></bth-avatar>
+          <bth-avatar iniciais="TX" tamanho="pequeno"></bth-avatar>
+          <bth-avatar iniciais="TX"></bth-avatar>
+          <bth-avatar iniciais="TX" tamanho="grande"></bth-avatar>
+          <bth-avatar iniciais="TX" dimensao="64"></bth-avatar>
+        </div>
+
+        <h5>Por fonte de conteudo</h5>
+        <div class="amostra">
+          <bth-avatar src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%237FAADC'/%3E%3Ccircle cx='32' cy='24' r='12' fill='%23fff'/%3E%3Cpath d='M8 64c0-13 11-20 24-20s24 7 24 20z' fill='%23fff'/%3E%3C/svg%3E" tamanho="grande"></bth-avatar>
+          <bth-avatar iniciais="Palavras Compostas" tamanho="grande"></bth-avatar>
+          <bth-avatar icone="cloud" tamanho="grande"></bth-avatar>
+        </div>
+
+        <h5>Falha ao carregar a imagem</h5>
+        <p>
+          O <code>src</code> abaixo aponta para um endereco inexistente de
+          proposito. O componente nao troca sozinho para as iniciais: quem faz
+          isso e o host, ao remover o <code>src</code> no
+          <code>imageLoadError</code>.
+        </p>
+        <div class="amostra">
+          <bth-avatar id="avatar-imagem" src="/imagem-inexistente.png" iniciais="TX" tamanho="grande"></bth-avatar>
+        </div>
+
+        <h5>Forma e status</h5>
+        <div class="amostra">
+          <bth-avatar iniciais="TX" tamanho="grande" quadrado></bth-avatar>
+          <bth-avatar icone="cloud" tamanho="grande" borda borda-tamanho="2px" borda-cor="#7FAADC"></bth-avatar>
+          <bth-avatar icone="cloud" tamanho="grande" sub-icone="check-circle" sub-icone-title="Ativo"></bth-avatar>
+        </div>
+
+        <p class="log"><strong>imageLoadError:</strong> <span id="log-avatar">aguardando</span></p>
+      </div>
+
+      <h3 id="secao-loader"><code>bth-loader</code></h3>
+      <p>Indicador de carregamento.</p>
+      <ul class="requisitos">
+        <li>Sem atributos, ocupa a largura disponivel e centraliza.</li>
+        <li>Com <code>inline</code>, acompanha o fluxo do texto.</li>
+      </ul>
+
+      <h4>Codigo</h4>
+      <pre><code>&lt;bth-loader inline&gt;&lt;/bth-loader&gt;
+
+&lt;bth-loader&gt;&lt;/bth-loader&gt;</code></pre>
+
+      <h4>Resultado</h4>
+      <div class="resultado">
+        <h5>Inline</h5>
+        <p>Carregando <bth-loader inline></bth-loader> aguarde.</p>
+
+        <h5>Centralizado</h5>
+        <bth-loader></bth-loader>
+      </div>
+
+      <h3 id="secao-empty-state"><code>bth-empty-state</code></h3>
+      <p>Estado vazio ilustrado, para listas sem resultado ou falhas de conexao.</p>
+      <ul class="requisitos">
+        <li>Atributo <code>show</code> controla a exibicao.</li>
+        <li>O tipo e escolhido por atributo: <code>registros</code>, <code>registros-pesquisa</code>, <code>online</code>, <code>offline</code> ou <code>pagina-nao-encontrada</code>.</li>
+        <li><code>pequeno</code> reduz a ilustracao, para uso dentro de paineis.</li>
+        <li>O conteudo do slot padrao substitui a mensagem.</li>
+      </ul>
+
+      <h4>Codigo</h4>
+      <pre><code>&lt;bth-empty-state show registros&gt;&lt;/bth-empty-state&gt;
+
+&lt;bth-empty-state show offline pequeno&gt;&lt;/bth-empty-state&gt;
+
+&lt;bth-empty-state show registros-pesquisa&gt;
+  Nenhum resultado para a busca informada.
+&lt;/bth-empty-state&gt;</code></pre>
+
+      <h4>Resultado</h4>
+      <div class="resultado">
+        <h5>Tipos, em tamanho reduzido</h5>
+        <div class="amostra">
+          <bth-empty-state show registros pequeno></bth-empty-state>
+          <bth-empty-state show registros-pesquisa pequeno></bth-empty-state>
+          <bth-empty-state show offline pequeno></bth-empty-state>
+          <bth-empty-state show pagina-nao-encontrada pequeno></bth-empty-state>
+        </div>
+
+        <h5>Com mensagem propria</h5>
+        <bth-empty-state show registros-pesquisa pequeno>
+          Nenhum resultado para a busca informada.
+        </bth-empty-state>
+      </div>
+
+      <h3 id="secao-navbar-pill"><code>bth-navbar-pill-group</code></h3>
+      <p>Grupo de filtros em formato de pilula, usado nos paineis de notificacoes e novidades.</p>
+      <ul class="requisitos">
+        <li>O grupo aceita <code>descricao</code>, usada para acessibilidade.</li>
+        <li>No item, <code>identificador</code> e o que viaja no evento.</li>
+        <li><code>icone</code> tem valor padrao <code>cloud-question</code>. Informe um icone proprio para cada filtro.</li>
+        <li><code>totalizador</code> so aparece quando diferente de zero. O <code>show-totalizador</code> ja vem ligado; use <code>show-totalizador="false"</code> para esconder.</li>
+        <li>Emite <code>navbarPillItemClicked</code> com <code>{ identificador }</code>. O estado ativo nao e automatico: o host controla o atributo <code>ativo</code>.</li>
+      </ul>
+
+      <div class="nota">
+        A <code>descricao</code> so fica visivel no item <strong>ativo</strong>.
+        Nos demais ela vira o <code>title</code> do link, exibido como dica ao
+        passar o mouse. E o comportamento esperado: a barra fica compacta e
+        apenas o filtro atual mostra o rotulo.
+      </div>
+
+      <h4>Codigo</h4>
+      <pre><code>&lt;bth-navbar-pill-group descricao="Filtros"&gt;
+  &lt;bth-navbar-pill-item identificador="todas" descricao="Todas" icone="format-list-bulleted" ativo&gt;&lt;/bth-navbar-pill-item&gt;
+  &lt;bth-navbar-pill-item identificador="nao-lidas" descricao="Nao lidas" icone="email-mark-as-unread" totalizador="7"&gt;&lt;/bth-navbar-pill-item&gt;
+&lt;/bth-navbar-pill-group&gt;
+
+&lt;script&gt;
+  document.addEventListener('navbarPillItemClicked', (event) =&gt; {
+    console.log(event.detail.identificador);
+  });
+&lt;/script&gt;</code></pre>
+
+      <h4>Resultado</h4>
+      <div class="resultado">
+        <p>Passe o mouse nos filtros inativos para ver a descricao como dica.</p>
+
+        <bth-navbar-pill-group descricao="Filtros">
+          <bth-navbar-pill-item identificador="todas" descricao="Todas" icone="format-list-bulleted" ativo></bth-navbar-pill-item>
+          <bth-navbar-pill-item identificador="nao-lidas" descricao="Nao lidas" icone="email-mark-as-unread" totalizador="7"></bth-navbar-pill-item>
+          <bth-navbar-pill-item identificador="progresso" descricao="Em progresso" icone="progress-clock"></bth-navbar-pill-item>
+        </bth-navbar-pill-group>
+
+        <p class="log"><strong>navbarPillItemClicked:</strong> <span id="log-pill">aguardando</span></p>
+      </div>
+
+      <h3 id="secao-selecao-contexto"><code>bth-selecao-contexto</code></h3>
+      <p>Lista pesquisavel para o usuario escolher um contexto, como entidade ou time.</p>
+      <ul class="requisitos">
+        <li>Propriedades <code>buscar</code> e <code>selecionar</code> sao <strong>funcoes</strong>, entao so podem ser definidas via JavaScript.</li>
+        <li><code>buscar</code> retorna uma <code>Promise</code> com a lista de itens; o componente exibe o carregamento enquanto ela nao resolve.</li>
+        <li>Cada item e <code>{ id, descricao }</code>, opcionalmente com <code>complemento</code>, <code>imagemAvatar</code>, <code>icone</code>, <code>iconeStatus</code> e <code>iconeStatusTitle</code>.</li>
+        <li>Atributo <code>placeholder-pesquisa</code> e slots <code>cabecalho</code>, <code>sem_resultado</code> e <code>rodape</code>.</li>
+      </ul>
+
+      <h4>Codigo</h4>
+      <pre><code>&lt;bth-selecao-contexto id="contexto" placeholder-pesquisa="Qual entidade voce busca?"&gt;
+  &lt;h4 slot="cabecalho"&gt;Selecione a entidade que deseja acessar&lt;/h4&gt;
+  &lt;div slot="rodape"&gt;&lt;a href="#"&gt;Gerenciar contextos&lt;/a&gt;&lt;/div&gt;
+&lt;/bth-selecao-contexto&gt;
+
+&lt;script&gt;
+  const contexto = document.getElementById('contexto');
+
+  contexto.buscar = () =&gt; fetch('/api/entidades').then((resposta) =&gt; resposta.json());
+
+  contexto.selecionar = (item) =&gt; {
+    console.log('Selecionado', item.id, item.descricao);
+  };
+&lt;/script&gt;</code></pre>
+
+      <h4>Resultado</h4>
+      <div class="resultado">
+        <bth-selecao-contexto id="contexto-entidades" placeholder-pesquisa="Qual entidade voce busca?">
+          <h4 slot="cabecalho">Selecione a entidade que deseja acessar</h4>
+
+          <h4 slot="sem_resultado">Nada encontrado</h4>
+          <span slot="sem_resultado">Revise os termos da busca.</span>
+
+          <div slot="rodape" style="text-align: right;">
+            <a href="#">Gerenciar contextos</a>
+          </div>
+        </bth-selecao-contexto>
+
+        <p class="log"><strong>selecionar:</strong> <span id="log-contexto">aguardando</span></p>
+      </div>
+
+      <h2 id="secao-ferramentas">Ferramentas</h2>
+      <p>
+        Ocupam a barra de ferramentas do shell. Cada uma abaixo esta isolada em
+        sua propria barra, sem nenhum <code>bth-app</code> na pagina.
+      </p>
+
+      <h3 id="secao-utilitarios"><code>bth-utilitarios</code></h3>
+      <p>Lista de atalhos para outras areas do produto.</p>
+      <ul class="requisitos">
+        <li>Propriedade <code>utilitarios</code>: array de <code>{ nome, icone, rota, possuiPermissao }</code>.</li>
+        <li>Emite <code>opcaoUtilitarioSelecionada</code> ao escolher um item.</li>
+      </ul>
+
+      <h4>Codigo</h4>
+      <pre><code>&lt;div class="barra"&gt;
+  &lt;bth-utilitarios id="utilitarios"&gt;&lt;/bth-utilitarios&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+  const utilitarios = document.getElementById('utilitarios');
+
+  utilitarios.utilitarios = [
+    { nome: 'Relatorios', icone: 'file-chart', rota: '#relatorios', possuiPermissao: true },
+    { nome: 'Importacoes', icone: 'database-import', rota: '#importacoes', possuiPermissao: true }
+  ];
+
+  utilitarios.addEventListener('opcaoUtilitarioSelecionada', (event) =&gt; {
+    console.log(event.detail.nome, event.detail.rota);
+  });
+&lt;/script&gt;</code></pre>
+
+      <h4>Resultado</h4>
+      <div class="resultado">
+        <div class="barra">
+          <bth-utilitarios id="utilitarios"></bth-utilitarios>
+        </div>
+        <p class="log"><strong>opcaoUtilitarioSelecionada:</strong> <span id="log-utilitarios">aguardando</span></p>
+      </div>
+
+      <h3 id="secao-ajuda"><code>bth-ajuda</code></h3>
+      <p>Atalho para a Central de Ajuda. E a ferramenta mais simples de usar fora do shell.</p>
+      <ul class="requisitos">
+        <li>Atributo <code>central-ajuda-home</code>, opcional. Sem ele o componente busca o endereco em <code>window.___bth.envs</code>, populado pelo <code>env.js</code>.</li>
+        <li>Nao exige autenticacao e nao emite eventos.</li>
+      </ul>
+
+      <h4>Codigo</h4>
+      <pre><code>&lt;div class="barra"&gt;
+  &lt;bth-ajuda central-ajuda-home="https://centraldeajuda.betha.com.br"&gt;&lt;/bth-ajuda&gt;
+&lt;/div&gt;</code></pre>
+
+      <h4>Resultado</h4>
+      <div class="resultado">
+        <div class="barra">
+          <bth-ajuda central-ajuda-home="https://centraldeajuda.betha.com.br"></bth-ajuda>
+        </div>
+      </div>
+
+      <h3 id="secao-conta-usuario"><code>bth-conta-usuario</code></h3>
+      <p>Dados do usuario logado e acesso a Central do Usuario.</p>
+      <ul class="requisitos">
+        <li>Atributos <code>usuario</code>, <code>nome</code> e <code>foto-url</code>.</li>
+        <li>Atributo <code>central-usuario-home</code>, opcional, tambem resolvido pelo <code>env.js</code>.</li>
+        <li>Emite <code>logout</code>. Fora do shell, cabe ao host encerrar a sessao.</li>
+      </ul>
+
+      <h4>Codigo</h4>
+      <pre><code>&lt;div class="barra"&gt;
+  &lt;bth-conta-usuario
+    id="conta-usuario"
+    usuario="lorem.ipsum"
+    nome="Lorem Ipsum"
+    foto-url="https://exemplo.com/foto.png"
+    central-usuario-home="https://e-gov.betha.com.br/centraldousuario"&gt;
+  &lt;/bth-conta-usuario&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+  document
+    .getElementById('conta-usuario')
+    .addEventListener('logout', () =&gt; {
+      // encerre a sessao da aplicacao
+    });
+&lt;/script&gt;</code></pre>
+
+      <h4>Resultado</h4>
+      <div class="resultado">
+        <div class="barra">
+          <bth-conta-usuario
+            id="conta-usuario"
+            usuario="lorem.ipsum"
+            nome="Lorem Ipsum"
+            foto-url="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%237FAADC'/%3E%3Ccircle cx='32' cy='24' r='12' fill='%23fff'/%3E%3Cpath d='M8 64c0-13 11-20 24-20s24 7 24 20z' fill='%23fff'/%3E%3C/svg%3E"
+            central-usuario-home="https://e-gov.betha.com.br/centraldousuario">
+          </bth-conta-usuario>
+        </div>
+        <p class="log"><strong>logout:</strong> <span id="log-logout">aguardando</span></p>
+      </div>
+
+      <h3 id="secao-suporte"><code>bth-suporte</code></h3>
+      <p>Canais de atendimento e chat de suporte.</p>
+      <ul class="requisitos">
+        <li>Atributo <code>atendimento</code> exibe os canais de contato.</li>
+        <li>Propriedade <code>authorization</code> para consultar as licencas do cliente.</li>
+        <li>Atributo <code>blip-chat</code> carrega o widget de chat externo. Nesse caso informe tambem a propriedade <code>blipChatUserInfo</code> com <code>{ id, nome, email }</code>.</li>
+        <li>Renderiza um rotulo de texto ao lado do icone. Reserve espaco na barra.</li>
+      </ul>
+
+      <h4>Codigo</h4>
+      <pre><code>&lt;div class="barra"&gt;
+  &lt;bth-suporte id="suporte" atendimento central-ajuda-home="https://centraldeajuda.betha.com.br"&gt;&lt;/bth-suporte&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+  document.getElementById('suporte').authorization = authorization;
+&lt;/script&gt;</code></pre>
+
+      <h4>Resultado</h4>
+      <div class="resultado">
+        <div class="barra">
+          <bth-suporte id="suporte" atendimento central-ajuda-home="https://centraldeajuda.betha.com.br"></bth-suporte>
+        </div>
+      </div>
+
+      <h3 id="secao-novidades"><code>bth-novidades</code></h3>
+      <p>Lista de novidades do produto, com controle de lidas e nao lidas.</p>
+      <ul class="requisitos">
+        <li>Propriedade <code>authorization</code>.</li>
+        <li>Atributo <code>novidades-api</code>, opcional, resolvido pelo <code>env.js</code> quando ausente.</li>
+        <li>Emite <code>conteudoSinalizado</code> quando ha novidades nao lidas. O contrato e exportado pelo pacote como <code>ConteudoSinalizadoEvent</code>.</li>
+      </ul>
+
+      <h4>Codigo</h4>
+      <pre><code>&lt;div class="barra"&gt;
+  &lt;bth-novidades id="novidades" novidades-api="https://exemplo.betha.cloud/avisos"&gt;&lt;/bth-novidades&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+  const novidades = document.getElementById('novidades');
+
+  novidades.authorization = authorization;
+
+  novidades.addEventListener('conteudoSinalizado', (event) =&gt; {
+    console.log(event.detail.origem, event.detail.possui);
+  });
+&lt;/script&gt;</code></pre>
+
+      <h4>Resultado</h4>
+      <div class="resultado">
+        <div class="barra">
+          <bth-novidades id="novidades"></bth-novidades>
+        </div>
+        <p class="log"><strong>conteudoSinalizado:</strong> <span id="log-novidades">aguardando dados da API</span></p>
+      </div>
+
+      <h3 id="secao-notificacoes"><code>bth-notificacoes</code></h3>
+      <p>Notificacoes em tempo real, via REST e websocket.</p>
+      <ul class="requisitos">
+        <li>Propriedade <code>authorization</code>.</li>
+        <li>Atributos <code>notificacoes-api</code> e <code>notificacoes-ws</code>, opcionais.</li>
+        <li>Emite <code>conteudoSinalizado</code>, <code>novaNotificacao</code> e <code>novaNotificacaoComLink</code>.</li>
+      </ul>
+
+      <h4>Codigo</h4>
+      <pre><code>&lt;div class="barra"&gt;
+  &lt;bth-notificacoes
+    id="notificacoes"
+    notificacoes-api="https://exemplo.betha.cloud/notifications"
+    notificacoes-ws="wss://exemplo.betha.cloud/notifications/v2/channel"&gt;
+  &lt;/bth-notificacoes&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+  const notificacoes = document.getElementById('notificacoes');
+
+  notificacoes.authorization = authorization;
+
+  notificacoes.addEventListener('novaNotificacaoComLink', (event) =&gt; {
+    console.log(event.detail);
+  });
+&lt;/script&gt;</code></pre>
+
+      <h4>Resultado</h4>
+      <div class="resultado">
+        <div class="barra">
+          <bth-notificacoes id="notificacoes"></bth-notificacoes>
+        </div>
+        <p class="log"><strong>conteudoSinalizado:</strong> <span id="log-notificacoes">aguardando dados da API</span></p>
+      </div>
+
+      <h2 id="secao-estrutura">Estrutura</h2>
+      <p>
+        Pecas do shell que tambem funcionam isoladas, para montar uma barra ou
+        um painel proprio.
+      </p>
+
+      <h3 id="secao-ferramenta-propria">Ferramenta propria</h3>
+      <p>
+        As ferramentas acima sao composicoes sobre o <code>bth-menu-ferramenta</code>,
+        que e generico: um icone que abre um painel lateral. Use-o para montar
+        uma ferramenta propria, com conteudo definido pela aplicacao.
+      </p>
+      <ul class="requisitos">
+        <li>Atributos <code>descricao</code> e <code>titulo-painel-lateral</code>.</li>
+        <li>Slots <code>menu_item_desktop</code>, <code>menu_item_mobile</code>, <code>menu_descricao_mobile</code> e <code>conteudo_painel_lateral</code>.</li>
+        <li>O <code>bth-menu-ferramenta-icone</code> aceita <code>icone</code>, <code>contador</code>, <code>status</code> e <code>mobile</code>.</li>
+      </ul>
+
+      <h4>Codigo</h4>
+      <pre><code>&lt;div class="barra"&gt;
+  &lt;bth-menu-ferramenta descricao="Meu recurso" titulo-painel-lateral="Meu recurso"&gt;
+    &lt;bth-menu-ferramenta-icone slot="menu_item_desktop" icone="cog" contador="3"&gt;&lt;/bth-menu-ferramenta-icone&gt;
+    &lt;bth-menu-ferramenta-icone slot="menu_item_mobile" icone="cog" contador="3" mobile&gt;&lt;/bth-menu-ferramenta-icone&gt;
+    &lt;span slot="menu_descricao_mobile"&gt;Meu recurso&lt;/span&gt;
+
+    &lt;section slot="conteudo_painel_lateral"&gt;
+      Conteudo definido pela aplicacao.
+    &lt;/section&gt;
+  &lt;/bth-menu-ferramenta&gt;
+&lt;/div&gt;</code></pre>
+
+      <h4>Resultado</h4>
+      <div class="resultado">
+        <div class="barra">
+          <bth-menu-ferramenta descricao="Meu recurso" titulo-painel-lateral="Meu recurso">
+            <bth-menu-ferramenta-icone slot="menu_item_desktop" icone="cog" contador="3"></bth-menu-ferramenta-icone>
+            <bth-menu-ferramenta-icone slot="menu_item_mobile" icone="cog" contador="3" mobile></bth-menu-ferramenta-icone>
+            <span slot="menu_descricao_mobile">Meu recurso</span>
+
+            <section slot="conteudo_painel_lateral" style="padding: 16px;">
+              <p>Conteudo definido inteiramente pelo host.</p>
+              <bth-empty-state show registros pequeno></bth-empty-state>
+            </section>
+          </bth-menu-ferramenta>
+        </div>
+      </div>
+
+      <h3 id="secao-painel">Painel lateral avulso</h3>
+      <p>O painel funciona sozinho, sem ferramenta alguma. O host controla a abertura.</p>
+      <ul class="requisitos">
+        <li>Propriedade <code>show</code> e atributo <code>titulo</code>.</li>
+        <li>Emite <code>painelLateralShow</code> ao abrir ou fechar.</li>
+        <li>Escuta <code>bannerAlterado</code> na janela para se reposicionar. Sem o shell esse evento nunca ocorre, e o painel mantem <code>top: 40px</code>.</li>
+      </ul>
+
+      <h4>Codigo</h4>
+      <pre><code>&lt;bth-menu-painel-lateral id="painel" titulo="Painel avulso"&gt;
+  &lt;section&gt;Conteudo do painel.&lt;/section&gt;
+&lt;/bth-menu-painel-lateral&gt;
+
+&lt;script&gt;
+  document.getElementById('painel').show = true;
+&lt;/script&gt;</code></pre>
+
+      <h4>Resultado</h4>
+      <div class="resultado">
+        <button type="button" id="abrir-painel">Abrir painel avulso</button>
+        <p class="log"><strong>painelLateralShow:</strong> <span id="log-painel">aguardando</span></p>
+      </div>
+
+      <bth-menu-painel-lateral id="painel-avulso" titulo="Painel avulso">
+        <section style="padding: 16px;">
+          <p>Este painel nao pertence a nenhuma ferramenta.</p>
+        </section>
+      </bth-menu-painel-lateral>
+
+      <h3 id="secao-itens-menu">Itens de menu</h3>
+      <p>
+        O <code>bth-menu-horizontal-item</code> e o <code>bth-menu-vertical-item</code>
+        sao apresentacionais. Dentro do shell quem monta a lista e o
+        <code>bth-app</code>, a partir da propriedade <code>opcoes</code>; fora
+        dele, o host escreve a lista e escuta os eventos de selecao.
+      </p>
+      <ul class="requisitos">
+        <li>O horizontal foi desenhado para fundo escuro, o vertical para fundo claro com largura fixa.</li>
+        <li>Emitem <code>menuHorizontalSelecionado</code> e <code>menuVerticalSelecionado</code>.</li>
+        <li>O estado ativo nao e automatico: o host controla o atributo <code>ativo</code> de cada item.</li>
+      </ul>
+
+      <h4>Codigo</h4>
+      <pre><code>&lt;div class="barra"&gt;
+  &lt;bth-menu-horizontal-item identificador="visao-geral" descricao="Visao geral" ativo&gt;&lt;/bth-menu-horizontal-item&gt;
+  &lt;bth-menu-horizontal-item identificador="relatorios" descricao="Relatorios" contador="4"&gt;&lt;/bth-menu-horizontal-item&gt;
+&lt;/div&gt;
+
+&lt;div class="lista-vertical"&gt;
+  &lt;bth-menu-vertical-item identificador="inicio" descricao="Inicio" icone="home" ativo&gt;&lt;/bth-menu-vertical-item&gt;
+  &lt;bth-menu-vertical-item identificador="cadastros" descricao="Cadastros" icone="folder" contador="12"&gt;&lt;/bth-menu-vertical-item&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+  document.addEventListener('menuVerticalSelecionado', (event) =&gt; {
+    console.log(event.detail.identificador, event.detail.identificadorPai);
+  });
+&lt;/script&gt;</code></pre>
+
+      <h4>Resultado</h4>
+      <div class="resultado">
+        <div class="barra" style="justify-content: flex-start; padding: 0;">
+          <bth-menu-horizontal-item identificador="visao-geral" descricao="Visao geral" ativo></bth-menu-horizontal-item>
+          <bth-menu-horizontal-item identificador="relatorios" descricao="Relatorios" contador="4"></bth-menu-horizontal-item>
+          <bth-menu-horizontal-item identificador="bloqueado" descricao="Sem permissao" possui-permissao="false"></bth-menu-horizontal-item>
+        </div>
+        <p class="log"><strong>menuHorizontalSelecionado:</strong> <span id="log-horizontal">aguardando</span></p>
+
+        <div class="lista-vertical" style="margin-top: 16px;">
+          <bth-menu-vertical-item identificador="inicio" descricao="Inicio" icone="home" ativo></bth-menu-vertical-item>
+          <bth-menu-vertical-item identificador="cadastros" descricao="Cadastros" icone="folder" contador="12"></bth-menu-vertical-item>
+          <bth-menu-vertical-item identificador="config" descricao="Configuracoes" icone="cog"></bth-menu-vertical-item>
+        </div>
+        <p class="log"><strong>menuVerticalSelecionado:</strong> <span id="log-vertical">aguardando</span></p>
+      </div>
+
+      <h3 id="secao-fechamento">Fechamento dos paineis</h3>
+      <p>
+        As ferramentas escutam <code>painelLateralShow</code> na janela para
+        fechar paineis sobrepostos. Dentro do shell quem coordena e o
+        <code>bth-app</code>; fora dele, o proprio host dispara o evento.
+      </p>
+
+      <h4>Codigo</h4>
+      <pre><code>window.dispatchEvent(new CustomEvent('painelLateralShow', {
+  detail: { show: false, fecharSobrepostos: true }
+}));</code></pre>
+
+      <h4>Resultado</h4>
+      <div class="resultado">
+        <p>Abra qualquer painel desta pagina e use o botao.</p>
+        <button type="button" id="fechar-paineis">Fechar paineis abertos</button>
+      </div>
+
+    </div>
+
+    <script src="https://variaveis.test.plataforma.betha.cloud/env.js" rel="noreferrer"></script>
+    <script type="module" src="/build/estrutura-componentes.esm.js"></script>
+
+    <script>
+      var authorization = {
+        getAuthorization: function () {
+          return {
+            accessId: '5e613debe191120137316351',
+            accessToken: '9b3bcbb1-aa52-4d0a-b97b-5561253da0f8',
+            userId: 'lorem.ipsum',
+            systemId: 78,
+            userAccess: 'j5q0gidi_is='
+          };
+        },
+        handleUnauthorizedAccess: function () {
+          return Promise.resolve();
+        }
+      };
+
+      function logar(id, texto) {
+        document.getElementById(id).textContent = texto;
+      }
+
+      // ----- Comuns -----
+
+      // O bth-avatar nao troca sozinho para as iniciais quando a imagem falha.
+      // Remover o src e o que faz o componente cair para o conteudo alternativo.
+      document.getElementById('avatar-imagem').addEventListener('imageLoadError', function (event) {
+        event.target.removeAttribute('src');
+        logar('log-avatar', 'src falhou; o host removeu o atributo e o avatar caiu para as iniciais');
+      });
+
+      document.addEventListener('navbarPillItemClicked', function (event) {
+        logar('log-pill', JSON.stringify(event.detail));
+      });
+
+      var entidades = [
+        {
+          id: 1,
+          descricao: 'Prefeitura Municipal de Criciuma',
+          complemento: 'Ultimo acesso em 27 de setembro',
+          iconeStatus: 'cloud',
+          iconeStatusTitle: 'Servico em nuvem'
+        },
+        { id: 2, descricao: 'Prefeitura Municipal de Ararangua', complemento: 'Ultimo acesso em 12 de agosto' },
+        { id: 3, descricao: 'Prefeitura Municipal de Tubarao', complemento: 'Licenca bloqueada', iconeStatus: 'lock', iconeStatusTitle: 'Licenca bloqueada' },
+        { id: 4, descricao: 'Camara Municipal de Icara' }
+      ];
+
+      var contexto = document.getElementById('contexto-entidades');
+
+      // A busca e assincrona de proposito: o componente exibe o carregamento
+      // enquanto a promise nao resolve.
+      contexto.buscar = function () {
+        return new Promise(function (resolve) {
+          setTimeout(function () {
+            resolve(entidades);
+          }, 1200);
+        });
+      };
+
+      contexto.selecionar = function (item) {
+        logar('log-contexto', 'id ' + item.id + ', "' + item.descricao + '"');
+      };
+
+      // ----- Ferramentas -----
+
+      document.getElementById('suporte').authorization = authorization;
+      document.getElementById('novidades').authorization = authorization;
+      document.getElementById('notificacoes').authorization = authorization;
+
+      document.getElementById('utilitarios').utilitarios = [
+        { nome: 'Relatorios', icone: 'file-chart', rota: '#relatorios', possuiPermissao: true },
+        { nome: 'Importacoes', icone: 'database-import', rota: '#importacoes', possuiPermissao: true }
+      ];
+
+      document.getElementById('utilitarios').addEventListener('opcaoUtilitarioSelecionada', function (event) {
+        logar('log-utilitarios', 'nome "' + event.detail.nome + '", rota "' + event.detail.rota + '"');
+      });
+
+      document.getElementById('conta-usuario').addEventListener('logout', function () {
+        logar('log-logout', 'usuario pediu para sair');
+      });
+
+      document.getElementById('novidades').addEventListener('conteudoSinalizado', function (event) {
+        logar('log-novidades', 'origem "' + event.detail.origem + '", possui conteudo: ' + event.detail.possui);
+      });
+
+      document.getElementById('notificacoes').addEventListener('conteudoSinalizado', function (event) {
+        logar('log-notificacoes', 'origem "' + event.detail.origem + '", possui conteudo: ' + event.detail.possui);
+      });
+
+      // ----- Estrutura -----
+
+      var painelAvulso = document.getElementById('painel-avulso');
+
+      document.getElementById('abrir-painel').addEventListener('click', function () {
+        painelAvulso.show = true;
+      });
+
+      painelAvulso.addEventListener('painelLateralShow', function (event) {
+        logar('log-painel', 'show: ' + event.detail.show);
+      });
+
+      document.addEventListener('menuHorizontalSelecionado', function (event) {
+        logar('log-horizontal', 'identificador "' + event.detail.identificador + '"');
+      });
+
+      document.addEventListener('menuVerticalSelecionado', function (event) {
+        logar('log-vertical', 'identificador "' + event.detail.identificador + '"');
+      });
+
+      document.getElementById('fechar-paineis').addEventListener('click', function () {
+        window.dispatchEvent(new CustomEvent('painelLateralShow', {
+          detail: { show: false, fecharSobrepostos: true }
+        }));
+      });
+    </script>
+
+  </body>
+
+</html>

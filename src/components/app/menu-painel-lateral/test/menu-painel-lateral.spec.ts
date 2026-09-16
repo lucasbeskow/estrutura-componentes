@@ -13,7 +13,9 @@ describe('bth-menu-painel-lateral', () => {
   });
 
   beforeEach(() => {
-    jest.useFakeTimers();
+    // Os fake timers "modern" do Jest 27 interceptam queueMicrotask e process.nextTick,
+    // usados pela fila de tarefas interna do Stencil, e travam o newSpecPage.
+    jest.useFakeTimers('legacy');
   });
 
   afterEach(() => {
@@ -27,14 +29,14 @@ describe('bth-menu-painel-lateral', () => {
 
     // Assert
     expect(page.root).toEqualHtml(`
-      <bth-menu-painel-lateral aria-expanded="false" aria-hidden="true" aria-label="Painel lateral">
+      <bth-menu-painel-lateral>
         <mock:shadow-root>
-          <div aria-expanded="false" aria-hidden="true" class="painel-lateral">
+          <div aria-hidden="true" aria-label="Painel lateral" aria-modal="false" class="painel-lateral" inert="" role="dialog">
             <header>
-              <button class="btn-back" title="Voltar">
+              <button aria-label="Voltar" class="btn-back" title="Voltar" type="button">
                 <bth-icone icone="arrow-left"></bth-icone>
               </button>
-              <button class="btn-close" title="Fechar todos">
+              <button aria-label="Fechar todos os paineis" class="btn-close" title="Fechar todos" type="button">
                 <bth-icone icone="close"></bth-icone>
               </button>
             </header>
@@ -55,14 +57,14 @@ describe('bth-menu-painel-lateral', () => {
 
     // Assert
     expect(page.root).toEqualHtml(`
-      <bth-menu-painel-lateral aria-expanded="true" aria-hidden="false" aria-label="Painel lateral" show="">
+      <bth-menu-painel-lateral show="">
         <mock:shadow-root>
-          <div aria-expanded="true" aria-hidden="false" class="painel-lateral painel-lateral--show">
+          <div aria-label="Painel lateral" aria-modal="false" class="painel-lateral painel-lateral--show" role="dialog">
             <header>
-              <button class="btn-back" title="Voltar">
+              <button aria-label="Voltar" class="btn-back" title="Voltar" type="button">
                 <bth-icone icone="arrow-left"></bth-icone>
               </button>
-              <button class="btn-close" title="Fechar todos">
+              <button aria-label="Fechar todos os paineis" class="btn-close" title="Fechar todos" type="button">
                 <bth-icone icone="close"></bth-icone>
               </button>
             </header>
@@ -178,7 +180,7 @@ describe('bth-menu-painel-lateral', () => {
 
     const menuPainelLateral: HTMLBthMenuPainelLateralElement = page.doc.querySelector('bth-menu-painel-lateral');
 
-    let onPainelLateralShow = jest.fn((data) => {
+    const onPainelLateralShow = jest.fn((data) => {
       // Assert
       expect(data.detail.show).toBeFalsy();
       expect(data.detail.fecharSobrepostos).toBeTruthy();
@@ -198,7 +200,7 @@ describe('bth-menu-painel-lateral', () => {
 
     // Act
     const menuPainelLateral: HTMLBthMenuPainelLateralElement = page.doc.querySelector('bth-menu-painel-lateral');
-    let onPainelLateralShow = jest.fn();
+    const onPainelLateralShow = jest.fn();
     menuPainelLateral.addEventListener('painelLateralShow', onPainelLateralShow);
 
     // 1. Fechado > Aberto
@@ -230,7 +232,7 @@ describe('bth-menu-painel-lateral', () => {
     // Arrange
     await page.setContent('<bth-menu-painel-lateral show></bth-menu-painel-lateral>');
 
-    let onPainelLateralShow = jest.fn();
+    const onPainelLateralShow = jest.fn();
     const menuPainelLateral: HTMLBthMenuPainelLateralElement = page.doc.querySelector('bth-menu-painel-lateral');
     menuPainelLateral.addEventListener('painelLateralShow', onPainelLateralShow);
 
@@ -250,7 +252,7 @@ describe('bth-menu-painel-lateral', () => {
     // Arrange
     await page.setContent('<bth-menu-painel-lateral show></bth-menu-painel-lateral>');
 
-    let onPainelLateralShow = jest.fn();
+    const onPainelLateralShow = jest.fn();
     const menuPainelLateral: HTMLBthMenuPainelLateralElement = page.doc.querySelector('bth-menu-painel-lateral');
     menuPainelLateral.addEventListener('painelLateralShow', onPainelLateralShow);
 

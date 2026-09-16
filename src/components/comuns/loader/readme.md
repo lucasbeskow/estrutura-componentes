@@ -24,6 +24,10 @@ O componente possui duas variações, sendo uma centralizada ao centro do bloco 
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+Loader padrão com efeitos de animações
+
 ## Properties
 
 | Property | Attribute | Description                 | Type      | Default |

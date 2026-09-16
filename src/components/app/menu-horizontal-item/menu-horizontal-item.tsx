@@ -58,23 +58,24 @@ export class MenuHorizontalItem {
     this.menuHorizontalSelecionado.emit({
       identificador: this.identificador
     });
-  }
+  };
 
   render() {
     return (
       <div class={`menu-horizontal__item ${this.ativo ? 'menu-horizontal__item--active' : ''}`}>
-        <a
-          href=""
+        <button
+          type="button"
           class={`${!this.possuiPermissao ? 'menu-horizontal__item--disabled' : ''}`}
           title={`${!this.possuiPermissao ? MSG_SEM_PERMISSAO_RECURSO : this.descricao}`}
           onClick={this.onClick}
           aria-disabled={`${!this.possuiPermissao}`}
+          aria-current={this.ativo ? 'page' : null}
           aria-label={`Navegar para ${this.descricao}`}
           tabindex={this.possuiPermissao ? 0 : -1}>
 
           <span>{this.descricao}</span>
           <BadgeContador valor={this.contador}></BadgeContador>
-        </a>
+        </button>
       </div>
     );
   }

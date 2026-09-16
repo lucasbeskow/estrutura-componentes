@@ -1,4 +1,4 @@
-@import "../../../styles/normalize.scss";
+@use "../../../styles/normalize.scss";
 
 .lista__item {
   display: flex;
@@ -29,7 +29,16 @@
     }
 
     .marcar-leitura__toggler {
-      width: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 0;
+      background-color: transparent;
+      font-family: inherit;
+      cursor: pointer;
+      // WCAG 2.5.5: alvo minimo de 44x44
+      min-width: 44px;
+      min-height: 44px;
       margin: 0px;
       padding: 0px;
 
@@ -71,7 +80,7 @@
     }
 
     a {
-      color: var(--bth-app-blue);
+      color: var(--bth-app-blue-dark-20);
       text-decoration: none;
       &:hover {
         color: var(--bth-app-blue-dark-10);

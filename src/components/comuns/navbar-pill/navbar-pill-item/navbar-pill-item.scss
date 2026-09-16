@@ -1,9 +1,9 @@
-@import "../../../../styles/normalize.scss";
+@use "../../../../styles/normalize.scss";
 
 .navbar-pill-item {
   white-space: nowrap;
   &--active {
-    a {
+    button {
       background-color: var(--bth-app-gray-light-10);
     }
   }
@@ -18,8 +18,13 @@
     border-left: none;
   }
 
-  a {
+  button {
     display: block;
+    width: 100%;
+    border: 0;
+    background-color: transparent;
+    font-family: inherit;
+    cursor: pointer;
     text-decoration: none;
     color: var(--bth-app-gray-dark-30);
     padding: 4px 0px;

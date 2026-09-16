@@ -19,6 +19,14 @@ coverage/
 node_modules/
 $RECYCLE.BIN/
 
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+.pnp.*
+
 .DS_Store
 Thumbs.db
 UserInterfaceState.xcuserstate

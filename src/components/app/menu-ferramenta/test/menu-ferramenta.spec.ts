@@ -6,7 +6,9 @@ import { MenuFerramenta } from '../menu-ferramenta';
 import { SLOT } from '../menu-ferramenta.constants';
 
 
-jest.useFakeTimers();
+// Os fake timers "modern" do Jest 27 interceptam queueMicrotask e process.nextTick,
+// usados pela fila de tarefas interna do Stencil, e travam o newSpecPage.
+jest.useFakeTimers('legacy');
 
 describe('bth-menu-ferramenta', () => {
   let page: SpecPage;
@@ -28,7 +30,7 @@ describe('bth-menu-ferramenta', () => {
 
   it('renderiza com contéudo de painel implementado', async () => {
     // Arrange
-    let conteudoPainelLateral = 'Este painel é para cenário de testes';
+    const conteudoPainelLateral = 'Este painel é para cenário de testes';
 
     // Act
     await page.setContent(`
@@ -52,9 +54,9 @@ describe('bth-menu-ferramenta', () => {
 
   it('renderiza com painel lateral que exibe o titulo', async () => {
     // Arrange
-    let descricaoPainelLateral = 'Painel de Testes';
-    let tituloPainelLateral = 'Titulo do Painel de Testes';
-    let conteudoPainelLateral = 'Este painel é para cenário de testes';
+    const descricaoPainelLateral = 'Painel de Testes';
+    const tituloPainelLateral = 'Titulo do Painel de Testes';
+    const conteudoPainelLateral = 'Este painel é para cenário de testes';
 
     // Act
     await page.setContent(`
@@ -75,7 +77,7 @@ describe('bth-menu-ferramenta', () => {
 
   it('renderiza o slot de menu para desktops', async () => {
     // Arrange
-    let menuItemDesktopText = 'menu item desktop text';
+    const menuItemDesktopText = 'menu item desktop text';
 
     // Act
     await page.setContent(`
@@ -101,8 +103,8 @@ describe('bth-menu-ferramenta', () => {
     setupMatchingMediaQuery(false);
 
     // Act
-    let menuItemMobileText = 'menu item mobile text';
-    let menuItemMobileDescricao = 'menu item desktop text';
+    const menuItemMobileText = 'menu item mobile text';
+    const menuItemMobileDescricao = 'menu item desktop text';
     await page.setContent(`
       <bth-menu-ferramenta>
         <i slot="${SLOT.MENU_ITEM_MOBILE}">${menuItemMobileText}</i>
@@ -195,8 +197,8 @@ describe('bth-menu-ferramenta', () => {
 
     // Act
     const menuFerramenta: HTMLBthMenuFerramentaElement = page.doc.querySelector('bth-menu-ferramenta');
-    const menuItemDesktopLink = menuFerramenta.shadowRoot.querySelector('a');
-    menuItemDesktopLink.click();
+    const menuItemDesktopBotao = menuFerramenta.shadowRoot.querySelector('button');
+    menuItemDesktopBotao.click();
     await page.waitForChanges();
 
     // Assert
@@ -218,8 +220,8 @@ describe('bth-menu-ferramenta', () => {
 
     // Act
     const menuFerramenta: HTMLBthMenuFerramentaElement = page.doc.querySelector('bth-menu-ferramenta');
-    const menuItemDesktopLink = menuFerramenta.shadowRoot.querySelector('a');
-    menuItemDesktopLink.click();
+    const menuItemDesktopBotao = menuFerramenta.shadowRoot.querySelector('button');
+    menuItemDesktopBotao.click();
     await page.waitForChanges();
 
     // Assert

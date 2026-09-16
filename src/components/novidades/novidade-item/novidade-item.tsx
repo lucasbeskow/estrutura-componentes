@@ -56,7 +56,7 @@ export class NovidadeItem implements ComponentInterface {
     }
 
     return this.onClick(event);
-  }
+  };
 
   private onClick = (event: UIEvent) => {
     event.preventDefault();
@@ -66,7 +66,7 @@ export class NovidadeItem implements ComponentInterface {
     } else {
       this.novidadeLida.emit({ id: this.identificador, url: this.url });
     }
-  }
+  };
 
   render() {
     return (
@@ -83,13 +83,19 @@ export class NovidadeItem implements ComponentInterface {
             <p class="message" title={this.mensagem}>{this.mensagem}</p>
           </section>
 
-          <a href="" class="marcar-leitura__toggler" onClick={this.onClick} title={this.isLida ? 'Marcar como não lida' : 'Marcar como lida'}>
+          <button
+            type="button"
+            class="marcar-leitura__toggler"
+            onClick={this.onClick}
+            title={this.isLida ? 'Marcar como não lida' : 'Marcar como lida'}
+            aria-label={`Marcar como ${this.isLida ? 'não lida' : 'lida'} a novidade: ${this.titulo}`}>
             <bth-icone icone={this.isLida ? 'email-open-outline' : 'email-outline'}></bth-icone>
-          </a>
+          </button>
         </div>
 
         <div class="lista__item--footer">
-          <a href={this.url} title="Mais detalhes" target="_blank" rel="noreferrer">Mais detalhes</a>
+          <a href={this.url} title="Mais detalhes" target="_blank" rel="noreferrer"
+            aria-label={`Mais detalhes sobre: ${this.titulo}`}>Mais detalhes</a>
           {this.dataHora && (<span class="float-right" title={getDataHoraDescrita(this.dataHora)}>{getDataHoraDescrita(this.dataHora)}</span>)}
         </div>
       </div>

@@ -77,11 +77,11 @@ describe('navbar-pill-item', () => {
 
     navbarPillItem.setAttribute('identificador', navbarPillItemId);
 
-    let onNavbarPillItemClicked = jest.fn();
+    const onNavbarPillItemClicked = jest.fn();
     navbarPillItem.addEventListener('navbarPillItemClicked', onNavbarPillItemClicked);
 
-    const navbarPillLink: HTMLAnchorElement = navbarPillItem.shadowRoot.querySelector('a');
-    navbarPillLink.click();
+    const navbarPillBotao: HTMLButtonElement = navbarPillItem.shadowRoot.querySelector('button');
+    navbarPillBotao.click();
     await page.waitForChanges();
 
     // Assert

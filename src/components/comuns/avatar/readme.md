@@ -69,6 +69,10 @@ Caso seja passado até 2 caracteres serão exibidos exatamente os caracteres inf
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+Este componente exibe um avatar
+
 ## Properties
 
 | Property        | Attribute         | Description                                                                                                                                          | Type                                          | Default     |

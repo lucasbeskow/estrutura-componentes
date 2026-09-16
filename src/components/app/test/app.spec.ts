@@ -2,9 +2,9 @@ import { newSpecPage, SpecPage } from '@stencil/core/testing';
 
 import { setupMatchingMediaQuery, setGlobalOrWindowProperty } from '../../../../test/utils/spec.helper';
 import { MSG_SEM_PERMISSAO_RECURSO } from '../../../global/constants';
+import { ConteudoSinalizadoEvent } from '../../../global/eventos.interfaces';
 import { App } from '../app';
 import { SLOT } from '../app.constants';
-import { ConteudoSinalizadoEvent } from '../app.interfaces';
 import { MenuHorizontalSelecionadoEvent } from '../menu-horizontal-item/menu-horizontal-item.interfaces';
 import { PainelLateralShowEvent } from '../menu-painel-lateral/menu-painel-lateral.interfaces';
 import { MenuVerticalItem } from '../menu-vertical-item/menu-vertical-item';
@@ -24,7 +24,7 @@ describe('app', () => {
     await page.setContent('<bth-app></bth-app>');
 
     // Assert
-    expect(page.root).toEqualLightHtml('<bth-app style="--bth-app-menu-bg-color: #142c48;"></bth-app>');
+    expect(page.root).toEqualLightHtml('<bth-app></bth-app>');
   });
 
   it('renderiza conteudo slot "menu_marca_produto"', async () => {
@@ -180,6 +180,41 @@ describe('app', () => {
     expect(menuVerticalItem.getAttribute('descricao')).toBe(app.opcoes[0].descricao);
   });
 
+  it('renderiza opções de navegação no header quando menu for vertical', async () => {
+    // Arrange
+    await page.setContent('<bth-app menu-vertical></bth-app>');
+
+    // Act
+    const app: HTMLBthAppElement = page.doc.querySelector('bth-app');
+    app.opcoes = [{ id: 1, descricao: 'Opção 1' }];
+    app.opcoesHeader = [{ id: 'relatorios', descricao: 'Relatórios', isAtivo: true }];
+    await page.waitForChanges();
+
+    // Assert
+    const navHeader: HTMLElement = app.shadowRoot.querySelector('#menu_header');
+    expect(navHeader).not.toBeNull();
+
+    const menuHeaderItem = navHeader.querySelector('bth-menu-horizontal-item');
+    expect(menuHeaderItem).not.toBeNull();
+    expect(menuHeaderItem.getAttribute('identificador')).toBe(app.opcoesHeader[0].id.toString());
+    expect(menuHeaderItem.getAttribute('descricao')).toBe(app.opcoesHeader[0].descricao);
+    expect(menuHeaderItem.getAttribute('ativo')).not.toBeNull();
+  });
+
+  it('não renderiza opções de navegação no header quando menu for horizontal', async () => {
+    // Arrange
+    await page.setContent('<bth-app></bth-app>'); // Sem 'menu-vertical'
+
+    // Act
+    const app: HTMLBthAppElement = page.doc.querySelector('bth-app');
+    app.opcoesHeader = [{ id: 'relatorios', descricao: 'Relatórios' }];
+    await page.waitForChanges();
+
+    // Assert
+    const navHeader: HTMLElement = app.shadowRoot.querySelector('#menu_header');
+    expect(navHeader).toBeNull();
+  });
+
   it('renderiza banner', async () => {
     // Arrange
     await page.setContent('<bth-app menu-vertical></bth-app>');
@@ -250,20 +285,6 @@ describe('app', () => {
 
     // Assert
     expect(app.style.getPropertyValue('--bth-app-menu-bg-color')).toBe(app.menuBgColor);
-  });
-
-  it('define cor da barra padrão caso "menuBgColor" não seja definido', async () => {
-    // Arrange
-    await page.setContent('<bth-app></bth-app>');
-
-    // Act
-    const app: HTMLBthAppElement = page.doc.querySelector('bth-app');
-    app.menuBgColor = undefined;
-    await page.waitForChanges();
-
-    // Assert
-    const corPadraoBetha = '#142c48';
-    expect(app.style.getPropertyValue('--bth-app-menu-bg-color')).toBe(corPadraoBetha);
   });
 
   it('recebe eventos de conteudo sinalizado no desktop', async () => {
@@ -640,8 +661,8 @@ describe('app', () => {
     // Assert antes
     expect(descritorFixar.textContent).toBe('Desafixar');
 
-    const linkFixar: HTMLAnchorElement = app.shadowRoot.querySelector('.menu-vertical__item--floating a');
-    linkFixar.click();
+    const botaoFixar: HTMLButtonElement = app.shadowRoot.querySelector('.menu-vertical__item--floating button');
+    botaoFixar.click();
 
     await page.waitForChanges();
 
@@ -661,14 +682,14 @@ describe('app', () => {
     ];
     await page.waitForChanges();
 
-    const alternarMenuVerticalLink: HTMLAnchorElement = app.shadowRoot.querySelector('.menu-vertical__toggle');
-    expect(alternarMenuVerticalLink.classList.contains('menu-vertical__toggle--opened')).toBeTruthy();
-    alternarMenuVerticalLink.click();
+    const alternarMenuVerticalBotao: HTMLButtonElement = app.shadowRoot.querySelector('.menu-vertical__toggle');
+    expect(alternarMenuVerticalBotao.classList.contains('menu-vertical__toggle--opened')).toBeTruthy();
+    alternarMenuVerticalBotao.click();
 
     await page.waitForChanges();
 
     // Assert depois
-    expect(alternarMenuVerticalLink.classList.contains('menu-vertical__toggle--opened')).toBeFalsy();
+    expect(alternarMenuVerticalBotao.classList.contains('menu-vertical__toggle--opened')).toBeFalsy();
 
     const asideMenuVertical: HTMLElement = app.shadowRoot.querySelector('.menu-vertical');
     expect(asideMenuVertical.classList.contains('menu-vertical--collapsed'));
@@ -686,7 +707,7 @@ describe('app', () => {
     // Act
     const app: HTMLBthAppElement = page.doc.querySelector('bth-app');
 
-    const alternarPainelFerramentas: HTMLAnchorElement = app.shadowRoot.querySelector('.menu-ferramentas__mobile-toggler');
+    const alternarPainelFerramentas: HTMLButtonElement = app.shadowRoot.querySelector('.menu-ferramentas__mobile-toggler');
     expect(alternarPainelFerramentas.classList.contains('menu-ferramentas__mobile-toggler--opened')).toBeFalsy();
     alternarPainelFerramentas.click();
 

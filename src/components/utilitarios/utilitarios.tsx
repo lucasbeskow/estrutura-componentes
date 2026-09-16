@@ -36,7 +36,7 @@ export class Utilitarios implements ComponentInterface {
     };
 
     this.opcaoUtilitarioSelecionada.emit(eventPayload);
-  }
+  };
 
   render() {
     return (
@@ -56,18 +56,17 @@ export class Utilitarios implements ComponentInterface {
                     <button
                       onClick={(event) => this.onClick(event, utilitario)}
                       class={`
-                          painel-utilitarios__card
-                          painel-utilitarios__card--bordered block-ellipsis
-                          ${utilitario.possuiPermissao ? 'painel-utilitarios__card--clickable' : 'painel-utilitarios__card--disabled'}
+                          bth__card 
+                          ${utilitario.possuiPermissao ? 'bth__card--clickable' : 'bth__card--disabled'}
                         `}
                       title={utilitario.possuiPermissao ? utilitario.nome : MSG_SEM_PERMISSAO_RECURSO}
                       aria-label={`Acessar o utilitário ${utilitario.nome}`}
                       aria-disabled={`${!utilitario.possuiPermissao}`}
                       disabled={!utilitario.possuiPermissao}>
 
-                      <bth-icone icone={utilitario.icone} title={utilitario.nome}></bth-icone>
+                      <bth-icone icone={utilitario.icone}></bth-icone>
 
-                      <span class="descricao block-ellipsis">{utilitario.nome}</span>
+                      <span class="descricao twoline-ellipsis">{utilitario.nome}</span>
                     </button>
                   </li>
                 );

@@ -139,11 +139,11 @@ describe('conta-usuario', () => {
     contaUsuario.setAttribute('usuario', usuario);
     contaUsuario.setAttribute('nome', nome);
 
-    let onLogout = jest.fn();
+    const onLogout = jest.fn();
     contaUsuario.addEventListener('logout', onLogout);
 
     // Act
-    const linkSair: HTMLAnchorElement = contaUsuario.shadowRoot.querySelector('[slot=conteudo_painel_lateral] a[title="Sair"]');
+    const linkSair: HTMLButtonElement = contaUsuario.shadowRoot.querySelector('[slot=conteudo_painel_lateral] button[title="Sair"]');
     linkSair.click();
     await page.waitForChanges();
 

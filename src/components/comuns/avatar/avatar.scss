@@ -1,4 +1,4 @@
-@import '../../../styles/normalize.scss';
+@use '../../../styles/normalize.scss';
 
 .avatar {
 
@@ -107,30 +107,30 @@
 
 .tx {
   &-pink {
-    color: var(--bth-app-pink-dark-30);
+    color: var(--bth-app-pink-dark-40);
   }
 
   &-purple {
-    color: var(--bth-app-purple-dark-30);
+    color: var(--bth-app-purple-dark-40);
   }
 
   &-green {
-    color: var(--bth-app-green-dark-30);
+    color: var(--bth-app-green-dark-40);
   }
 
   &-blue {
-    color: var(--bth-app-blue-dark-30);
+    color: var(--bth-app-blue-dark-40);
   }
 
   &-aqua {
-    color: var(--bth-app-aqua-dark-30);
+    color: var(--bth-app-aqua-dark-40);
   }
 
   &-orange {
-    color: var(--bth-app-orange-dark-30);
+    color: var(--bth-app-orange-dark-40);
   }
 
   &-yellow {
-    color: var(--bth-app-yellow-dark-30);
+    color: var(--bth-app-yellow-dark-40);
   }
 }

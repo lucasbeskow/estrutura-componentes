@@ -25,6 +25,10 @@ painelLateralEl.toggleAttribute('show');
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+Possibilita incluir conteúdo dinâmico em um painel lateral que sobrepõe o conteúdo da tela pela direita
+
 ## Properties
 
 | Property | Attribute | Description                          | Type      | Default     |
@@ -65,6 +69,12 @@ Type: `Promise<void>`
 ### `setShowComAnimacao(show: boolean) => Promise<void>`
 
 Alterna o estado em aberto do painel para o valor do parâmetro após um timeout padrão de interações
+
+#### Parameters
+
+| Name   | Type      | Description |
+| ------ | --------- | ----------- |
+| `show` | `boolean` |             |
 
 #### Returns
 

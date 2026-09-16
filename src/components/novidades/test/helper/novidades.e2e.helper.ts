@@ -33,8 +33,8 @@ export function selectFiltroLidas() {
   const navbarPillItens = novidades.shadowRoot.querySelectorAll('bth-navbar-pill-item');
   navbarPillItens.forEach(navbarPillItem => {
     if (navbarPillItem.descricao === 'Lidas') {
-      const link = navbarPillItem.shadowRoot.querySelector('a');
-      link.click();
+      const botao = navbarPillItem.shadowRoot.querySelector('button');
+      botao.click();
     }
   });
 }

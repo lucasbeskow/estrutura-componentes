@@ -1,9 +1,9 @@
 import { Component, ComponentInterface, h, forceUpdate, State, Prop, Watch, EventEmitter, Event, Listen } from '@stencil/core';
 
 import { isValidAuthorizationConfig } from '../../global/api';
+import { ConteudoSinalizadoEvent } from '../../global/eventos.interfaces';
 import { AuthorizationConfig } from '../../global/interfaces';
 import { isNill } from '../../utils/functions';
-import { ConteudoSinalizadoEvent } from '../app/app.interfaces';
 import { POLLING_INTERVAL } from './novidades.constants';
 import { FiltroNovidade, OpcaoFiltro, Novidade, NovidadeLeituraEvent } from './novidades.interfaces';
 import { NovidadesService } from './novidades.service';
@@ -26,7 +26,7 @@ export class Novidades implements ComponentInterface {
   @State() filtros: Array<OpcaoFiltro> = [
     { id: FiltroNovidade.NaoLida, descricao: 'Não lidas', icone: 'email-outline', ativo: true },
     { id: FiltroNovidade.Lida, descricao: 'Lidas', icone: 'email-open-outline' },
-  ]
+  ];
 
   @State() novidades: Novidade[] = [];
 
@@ -163,7 +163,7 @@ export class Novidades implements ComponentInterface {
 
     forceUpdate(this);
     this.atualizarIndicadorConteudoSinalizado();
-  }
+  };
 
   private atualizarIndicadorConteudoSinalizado() {
     const event: ConteudoSinalizadoEvent = {
@@ -283,7 +283,7 @@ export class Novidades implements ComponentInterface {
 
           {totalNaoLida !== 0 && this.isFiltroPorNaoLidas() && (
             <div class="marcar-todas">
-              <a href="" onClick={this.onClickMarcarTodasComoLidas}>Marcar todas como lidas</a>
+              <button type="button" onClick={this.onClickMarcarTodasComoLidas}>Marcar todas como lidas</button>
             </div>
           )}
 

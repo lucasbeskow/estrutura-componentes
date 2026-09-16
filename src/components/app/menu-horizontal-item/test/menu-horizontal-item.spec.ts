@@ -23,7 +23,7 @@ describe('bth-menu-horizontal-item', () => {
     await page.setContent('<bth-menu-horizontal-item></bth-menu-horizontal-item>');
 
     // Act
-    let descricaoOpcaoMenu = 'Opcão';
+    const descricaoOpcaoMenu = 'Opcão';
     const menuHorizontalItem: HTMLBthMenuHorizontalItemElement = page.doc.querySelector('bth-menu-horizontal-item');
     menuHorizontalItem.setAttribute('descricao', descricaoOpcaoMenu);
 
@@ -41,7 +41,7 @@ describe('bth-menu-horizontal-item', () => {
     await page.setContent('<bth-menu-horizontal-item></bth-menu-horizontal-item>');
 
     // Act
-    let contador = 99;
+    const contador = 99;
     const menuHorizontalItem: HTMLBthMenuHorizontalItemElement = page.doc.querySelector('bth-menu-horizontal-item');
     menuHorizontalItem.setAttribute('contador', contador.toString());
     await page.waitForChanges();
@@ -57,7 +57,7 @@ describe('bth-menu-horizontal-item', () => {
     await page.setContent('<bth-menu-horizontal-item></bth-menu-horizontal-item>');
 
     // Act
-    let contador = 100;
+    const contador = 100;
     const menuHorizontalItem: HTMLBthMenuHorizontalItemElement = page.doc.querySelector('bth-menu-horizontal-item');
     menuHorizontalItem.setAttribute('contador', contador.toString());
     await page.waitForChanges();
@@ -73,7 +73,7 @@ describe('bth-menu-horizontal-item', () => {
     await page.setContent('<bth-menu-horizontal-item></bth-menu-horizontal-item>');
 
     // Act
-    let possuiPermissao = false;
+    const possuiPermissao = false;
     const menuHorizontalItem: HTMLBthMenuHorizontalItemElement = page.doc.querySelector('bth-menu-horizontal-item');
     menuHorizontalItem.setAttribute('possui-permissao', possuiPermissao.toString());
     await page.waitForChanges();
@@ -81,7 +81,7 @@ describe('bth-menu-horizontal-item', () => {
     // Assert
     expect(menuHorizontalItem.possuiPermissao).toBe(possuiPermissao);
 
-    const link: HTMLAnchorElement = menuHorizontalItem.shadowRoot.querySelector('a');
+    const link: HTMLButtonElement = menuHorizontalItem.shadowRoot.querySelector('button');
     expect(link.classList.contains('menu-horizontal__item--disabled')).toBeTruthy();
     expect(link.title).toBe(MSG_SEM_PERMISSAO_RECURSO);
     expect(link.getAttribute('aria-disabled')).toBe('true');
@@ -95,7 +95,7 @@ describe('bth-menu-horizontal-item', () => {
     await page.setContent('<bth-menu-horizontal-item></bth-menu-horizontal-item>');
 
     // Act
-    let isAtivo = true;
+    const isAtivo = true;
     const menuHorizontalItem: HTMLBthMenuHorizontalItemElement = page.doc.querySelector('bth-menu-horizontal-item');
     menuHorizontalItem.setAttribute('ativo', isAtivo.toString());
     await page.waitForChanges();
@@ -115,11 +115,11 @@ describe('bth-menu-horizontal-item', () => {
     const menuOpcaoId = 'menu_opcao_id_1';
     menuHorizontalItem.setAttribute('identificador', menuOpcaoId);
 
-    let onMenuHorizontalSelecionado = jest.fn();
+    const onMenuHorizontalSelecionado = jest.fn();
     menuHorizontalItem.addEventListener('menuHorizontalSelecionado', onMenuHorizontalSelecionado);
 
     // Act
-    const link: HTMLAnchorElement = menuHorizontalItem.shadowRoot.querySelector('a');
+    const link: HTMLButtonElement = menuHorizontalItem.shadowRoot.querySelector('button');
     link.click();
 
     await page.waitForChanges();
@@ -138,11 +138,11 @@ describe('bth-menu-horizontal-item', () => {
     menuHorizontalItem.setAttribute('identificador', menuOpcaoId);
     menuHorizontalItem.setAttribute('possui-permissao', 'false');
 
-    let onMenuHorizontalSelecionado = jest.fn();
+    const onMenuHorizontalSelecionado = jest.fn();
     menuHorizontalItem.addEventListener('menuHorizontalSelecionado', onMenuHorizontalSelecionado);
 
     // Act
-    const link: HTMLAnchorElement = menuHorizontalItem.shadowRoot.querySelector('a');
+    const link: HTMLButtonElement = menuHorizontalItem.shadowRoot.querySelector('button');
     link.click();
 
     await page.waitForChanges();
