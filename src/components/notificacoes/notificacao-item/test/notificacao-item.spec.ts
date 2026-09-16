@@ -266,7 +266,7 @@ describe('notificacao-item', () => {
     page.root.addEventListener('notificacaoLida', onNotificacaoLida);
 
     // Act
-    const marcarComoLida: HTMLAnchorElement = notificacaoItem.shadowRoot.querySelector('.notificacao__body a');
+    const marcarComoLida: HTMLButtonElement = notificacaoItem.shadowRoot.querySelector('.notificacao__body button');
     marcarComoLida.click();
 
     await page.waitForChanges();
@@ -326,7 +326,7 @@ describe('notificacao-item', () => {
     page.root.addEventListener('notificacaoLida', onNotificacaoLida);
 
     // Act
-    const marcarComoLida: HTMLAnchorElement = notificacaoItem.shadowRoot.querySelector('.notificacao__body a');
+    const marcarComoLida: HTMLButtonElement = notificacaoItem.shadowRoot.querySelector('.notificacao__body button');
     marcarComoLida.click();
 
     await page.waitForChanges();
@@ -356,7 +356,7 @@ describe('notificacao-item', () => {
     page.root.addEventListener('notificacaoNaoLida', onNotificacaoNaoLida);
 
     // Act
-    const marcarComoLida: HTMLAnchorElement = notificacaoItem.shadowRoot.querySelector('.notificacao__body a');
+    const marcarComoLida: HTMLButtonElement = notificacaoItem.shadowRoot.querySelector('.notificacao__body button');
     marcarComoLida.click();
 
     await page.waitForChanges();
