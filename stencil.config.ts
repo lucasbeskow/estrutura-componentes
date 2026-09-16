@@ -14,7 +14,10 @@ export const config: Config = {
   },
   testing: {
     browserArgs: ['--no-sandbox', '--disable-setuid-sandbox'],
-    coveragePathIgnorePatterns: [".mock.ts", ".helper.ts"]
+    // "/node_modules/" e o padrao do Jest e precisa ser repetido: informar a
+    // lista sobrescreve o padrao, e instrumentar node_modules quebra a
+    // cobertura ao tentar parsear o bundle de testes do proprio Stencil.
+    coveragePathIgnorePatterns: ["/node_modules/", ".mock.ts", ".helper.ts"]
   },
   outputTargets: [
     {
