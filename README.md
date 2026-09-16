@@ -111,7 +111,12 @@ Exemplos podem ser encontrados em [betha-plataforma/exemplos](https://github.com
 
 ## Compatibilidade 📜
 
-Para entender melhor a abrangência de suporte entre navegadores, [consulte a tabela no site oficial do Stencil](https://stenciljs.com/docs/browser-support).
+Os componentes são distribuídos exclusivamente como **ES Modules** e exigem navegadores com suporte nativo a Custom Elements, o que abrange as versões atuais de Chrome, Edge, Firefox e Safari.
+
+O **Internet Explorer 11 não é suportado**. Versões anteriores desta biblioteca publicavam um _bundle_ adicional em ES5, carregado através do atributo `nomodule`. Esse _bundle_ deixou de existir: o Internet Explorer saiu de suporte em junho de 2022 e o StencilJS removeu a geração de código ES5.
+
+- [Entender o `type="module"` dos arquivos JavaScript](http://github.com/betha-plataforma/estrutura-componentes/tree/master/docs/importando-esmodules.md)
+- [Tabela de suporte entre navegadores do StencilJS](https://stenciljs.com/docs/browser-support)
 
 ## Dúvidas
 
