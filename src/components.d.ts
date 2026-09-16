@@ -994,6 +994,10 @@ export interface BthNovidadesCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBthNovidadesElement;
 }
+export interface BthPopoverCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBthPopoverElement;
+}
 export interface BthUtilitariosCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBthUtilitariosElement;
@@ -1378,7 +1382,18 @@ declare global {
         prototype: HTMLBthPesquisaElement;
         new (): HTMLBthPesquisaElement;
     };
+    interface HTMLBthPopoverElementEventMap {
+        "popoverToggled": any;
+    }
     interface HTMLBthPopoverElement extends Components.BthPopover, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLBthPopoverElementEventMap>(type: K, listener: (this: HTMLBthPopoverElement, ev: BthPopoverCustomEvent<HTMLBthPopoverElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLBthPopoverElementEventMap>(type: K, listener: (this: HTMLBthPopoverElement, ev: BthPopoverCustomEvent<HTMLBthPopoverElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBthPopoverElement: {
         prototype: HTMLBthPopoverElement;
@@ -2325,6 +2340,10 @@ declare namespace LocalJSX {
           * Conteudo do popover
          */
         "content"?: string;
+        /**
+          * É emitido ao abrir ou fechar o popover pelo acionador
+         */
+        "onPopoverToggled"?: (event: BthPopoverCustomEvent<any>) => void;
         /**
           * Posição do popover em relação ao trigger
           * @default 'bottom'

@@ -79,7 +79,7 @@ describe('brh-execucoes-download', () => {
   });
 
 
-  it('deve emitir evento errorClicked ao clicar no ícone de erro', async () => {
+  it('deve emitir evento errorClicked ao abrir o popover de erro', async () => {
     // Arrange
     await page.setContent('<bth-execucoes-download></bth-execucoes-download>');
     const element: HTMLBthExecucoesDownloadElement = page.root as HTMLBthExecucoesDownloadElement;
@@ -93,8 +93,8 @@ describe('brh-execucoes-download', () => {
     element.mensagemConclusao = 'Erro durante a execução';
     await page.waitForChanges();
 
-    const errorIcon = page.root?.shadowRoot?.querySelector('span[title="Exibir mensagem"]');
-    errorIcon?.dispatchEvent(new Event('click'));
+    const popover = page.root?.shadowRoot?.querySelector('bth-popover');
+    popover?.dispatchEvent(new CustomEvent('popoverToggled', { detail: { visivel: true } }));
 
     // Assert
     expect(spyErrorClicked).toHaveBeenCalled();

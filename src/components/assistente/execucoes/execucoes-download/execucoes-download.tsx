@@ -100,8 +100,11 @@ export class BthExecucoesDownload {
   * É emitido ao clicar
   */
   @Event() errorClicked: EventEmitter;
-  private onClick = (event: UIEvent) => {
-    event.preventDefault();
+  private onPopoverToggled = (event: CustomEvent) => {
+    if (!event.detail?.visivel) {
+      return;
+    }
+
     this.errorClicked.emit({
       identificador: this.execucaoId
     });
@@ -124,8 +127,8 @@ export class BthExecucoesDownload {
 
         {this.statusValor === 'CONCLUIDO' && this.conclusaoTipoValor === 'INTERROMPIDO' && (
 
-          <bth-popover position="left" content={this.mensagemConclusao}>
-            <span title='Exibir mensagem' slot='trigger' onClick={this.onClick}>
+          <bth-popover position="left" content={this.mensagemConclusao} onPopoverToggled={this.onPopoverToggled}>
+            <span title='Exibir mensagem' slot='trigger'>
               <bth-icone
                 icone='alert'
                 cor={getCssVariableValue('--bth-app-gray-dark-20')}

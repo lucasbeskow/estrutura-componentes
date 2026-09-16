@@ -13,12 +13,19 @@
 | `position` | `position` | Posição do popover em relação ao trigger | `string` | `'bottom'`  |
 
 
+## Events
+
+| Event            | Description                                           | Type               |
+| ---------------- | ----------------------------------------------------- | ------------------ |
+| `popoverToggled` | É emitido ao abrir ou fechar o popover pelo acionador | `CustomEvent<any>` |
+
+
 ## Slots
 
-| Slot        | Description |
-| ----------- | ----------- |
-| `"title"`   |             |
-| `"trigger"` |             |
+| Slot        | Description                            |
+| ----------- | -------------------------------------- |
+| `"title"`   | Titulo exibido no cabecalho do popover |
+| `"trigger"` | Acionador que abre e fecha o popover   |
 
 
 ## Dependencies

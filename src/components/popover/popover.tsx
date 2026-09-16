@@ -1,5 +1,9 @@
-import { Component, Prop, h, State, Listen, Element, Host } from '@stencil/core';
+import { Component, Prop, h, State, Listen, Element, Host, Event, EventEmitter } from '@stencil/core';
 
+/**
+ * @slot trigger - Acionador que abre e fecha o popover
+ * @slot title - Titulo exibido no cabecalho do popover
+ */
 @Component({
   tag: 'bth-popover',
   styleUrl: 'popover.scss',
@@ -20,9 +24,14 @@ export class BthPopover {
 
   @Element() el!: HTMLBthPopoverElement;
 
-  private togglePopover() {
+  /**
+  * É emitido ao abrir ou fechar o popover pelo acionador
+  */
+  @Event() popoverToggled: EventEmitter;
+  private togglePopover = () => {
     this.isVisible = !this.isVisible;
-  }
+    this.popoverToggled.emit({ visivel: this.isVisible });
+  };
 
   @Listen('click', { target: 'window' })
   handleClickOutside(event: Event) {
@@ -33,8 +42,19 @@ export class BthPopover {
   }
 
 
-  private copyContent() {
-    if (this.content) {
+  @Listen('keydown', { target: 'window' })
+  handleEscape(event: KeyboardEvent) {
+    if (this.isVisible && event.key === 'Escape') {
+      this.isVisible = false;
+    }
+  }
+
+  private temConteudo(): boolean {
+    return Boolean(this.content);
+  }
+
+  private copyContent = () => {
+    if (this.temConteudo()) {
       navigator.clipboard.writeText(this.content).then(() => {
         this.buttonText = 'COPIADO';
         this.buttonIcon = 'check-bold';
@@ -44,7 +64,7 @@ export class BthPopover {
         }, 2000);
       });
     }
-  }
+  };
 
 
   render() {
@@ -52,25 +72,29 @@ export class BthPopover {
       <Host>
         <div class="popover-container ">
 
-          <div class="popover-trigger" onClick={() => this.togglePopover()}>
+          <button
+            type="button"
+            class="popover-trigger"
+            aria-expanded={String(this.isVisible)}
+            onClick={this.togglePopover}>
             <slot name="trigger"></slot>
-          </div>
+          </button>
           {this.isVisible && (
             <div class={`popover-content popover-${this.position}`}>
               <span class="popover-header">
-                <button class="close-button" onClick={() => this.togglePopover()}><bth-icone icone="close"></bth-icone></button>
+                <button type="button" class="close-button" aria-label="Fechar" onClick={this.togglePopover}><bth-icone icone="close"></bth-icone></button>
                 <slot name="title"></slot>
               </span>
-              {!this.content && (
+              {!this.temConteudo() && (
                 <small><bth-loader></bth-loader></small>
               )}
-              {this.content && (
+              {this.temConteudo() && (
                 <code class="popover-body">
                   {this.content}
                 </code>
               )}
               <div class="popover-footer">
-                <button class='fa-copy' onClick={() => this.copyContent()}><i><bth-icone icone={this.buttonIcon}></bth-icone></i>{this.buttonText}</button>
+                <button type="button" class='fa-copy' onClick={this.copyContent}><i><bth-icone icone={this.buttonIcon}></bth-icone></i>{this.buttonText}</button>
               </div>
             </div>
           )}

@@ -32,7 +32,7 @@ describe('bth-popover', () => {
     // nunca aparece no caminho e o handleClickOutside fecharia o popover.
     const composedPath = jest.spyOn(Event.prototype, 'composedPath').mockReturnValue([component.el]);
 
-    const trigger = page.root.shadowRoot.querySelector('.popover-trigger') as HTMLDivElement;
+    const trigger = page.root.shadowRoot.querySelector('.popover-trigger') as HTMLButtonElement;
     trigger.click();
     await page.waitForChanges();
 
@@ -134,6 +134,46 @@ describe('bth-popover', () => {
 
     // Assert: Verifica se o popover foi fechado
     expect(component.isVisible).toBe(false);
+  });
+
+  it('deve fechar o popover com a tecla Escape', async () => {
+    // Arrange
+    await page.setContent('<bth-popover></bth-popover>');
+    const component = page.rootInstance as BthPopover;
+    component.isVisible = true;
+    await page.waitForChanges();
+
+    // Act
+    const escape = new KeyboardEvent('keydown', { key: 'Escape' });
+    window.dispatchEvent(escape);
+    await page.waitForChanges();
+
+    // Assert
+    expect(component.isVisible).toBe(false);
+  });
+
+
+
+  it('deve emitir popoverToggled ao acionar o popover', async () => {
+    // Arrange
+    await page.setContent('<bth-popover></bth-popover>');
+    const component = page.rootInstance as BthPopover;
+
+    const popoverToggled = jest.fn();
+    page.root.addEventListener('popoverToggled', popoverToggled);
+
+    // Act
+    const composedPath = jest.spyOn(Event.prototype, 'composedPath').mockReturnValue([component.el]);
+
+    const trigger = page.root.shadowRoot.querySelector('.popover-trigger') as HTMLButtonElement;
+    trigger.click();
+    await page.waitForChanges();
+
+    composedPath.mockRestore();
+
+    // Assert
+    expect(popoverToggled).toHaveBeenCalled();
+    expect(popoverToggled.mock.calls[0][0].detail).toStrictEqual({ visivel: true });
   });
 
 });
