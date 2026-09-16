@@ -9,7 +9,6 @@ describe('bth-popover', () => {
 
   beforeEach(async () => {
     page = await newSpecPage({ components: [BthPopover] });
-    jest.useFakeTimers();
   });
 
 
@@ -29,9 +28,15 @@ describe('bth-popover', () => {
     const component = page.rootInstance as BthPopover;
 
     //Act
+    // O composedPath do mock-doc nao atravessa o shadow root, entao o host
+    // nunca aparece no caminho e o handleClickOutside fecharia o popover.
+    const composedPath = jest.spyOn(Event.prototype, 'composedPath').mockReturnValue([component.el]);
+
     const trigger = page.root.shadowRoot.querySelector('.popover-trigger') as HTMLDivElement;
     trigger.click();
     await page.waitForChanges();
+
+    composedPath.mockRestore();
 
     // Assert
     expect(component.isVisible).toBe(true);
@@ -92,8 +97,12 @@ describe('bth-popover', () => {
 
     // Act
     const copyButton = page.root.shadowRoot.querySelector('.popover-footer button') as HTMLButtonElement;
+
+    // Os timers falsos ficam restritos ao trecho que avanca os 2000 ms: com
+    // eles ativos o waitForChanges do Stencil nunca resolve.
+    jest.useFakeTimers();
     copyButton.click();
-    await page.waitForChanges();
+    await Promise.resolve();
 
     // Assert
     expect(writeTextMock).toHaveBeenCalledWith('conteúdo de teste');
@@ -102,6 +111,7 @@ describe('bth-popover', () => {
 
     // Simula a espera de 2000 ms
     jest.advanceTimersByTime(2000);
+    jest.useRealTimers();
     await page.waitForChanges();
 
     expect(component.buttonText).toBe('COPIAR');
