@@ -36,7 +36,7 @@ export class Utilitarios implements ComponentInterface {
     };
 
     this.opcaoUtilitarioSelecionada.emit(eventPayload);
-  }
+  };
 
   render() {
     return (

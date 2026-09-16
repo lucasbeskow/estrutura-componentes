@@ -17,6 +17,18 @@ import { NovidadeLeituraEvent } from "./components/novidades/novidades.interface
 import { ItemSelecaoContexto } from "./components/comuns/selecao-contexto/selecao-contexto.interfaces";
 import { BlipChatUserInfo } from "./components/suporte/suporte.interfaces";
 import { OpcaoUtilitarioSelecionadaEvent, Utilitario } from "./components/utilitarios/utilitarios.interfaces";
+export { Banner, ConteudoSinalizadoEvent, IdentificadorOpcaoMenu, MenuBannerAlteradoEvent, OpcaoMenu, OpcaoMenuSelecionadaEvent } from "./components/app/app.interfaces";
+export { Tamanho } from "./components/comuns/avatar/avatar.interfaces";
+export { LogoutEvent } from "./components/conta-usuario/conta-usuario.interfaces";
+export { AuthorizationConfig } from "./global/interfaces";
+export { MenuHorizontalSelecionadoEvent } from "./components/app/menu-horizontal-item/menu-horizontal-item.interfaces";
+export { PainelLateralShowEvent } from "./components/app/menu-painel-lateral/menu-painel-lateral.interfaces";
+export { MenuVerticalSelecionadoEvent } from "./components/app/menu-vertical-item/menu-vertical-item.interfaces";
+export { NotificacaoComLinkEvent, NotificacaoEvent, NotificacaoLink, TipoNotificacao } from "./components/notificacoes/notificacoes.interfaces";
+export { NovidadeLeituraEvent } from "./components/novidades/novidades.interfaces";
+export { ItemSelecaoContexto } from "./components/comuns/selecao-contexto/selecao-contexto.interfaces";
+export { BlipChatUserInfo } from "./components/suporte/suporte.interfaces";
+export { OpcaoUtilitarioSelecionadaEvent, Utilitario } from "./components/utilitarios/utilitarios.interfaces";
 export namespace Components {
     interface BthAjuda {
         /**
@@ -39,14 +51,17 @@ export namespace Components {
         "menuBgColor": string;
         /**
           * Define se as opções do menu serão exibidas no formato "vertical", caso contrário serão exibidas no formato "horizontal"
+          * @default false
          */
         "menuVertical"?: boolean;
         /**
           * Opções de navegação do menu
+          * @default []
          */
         "opcoes"?: Array<OpcaoMenu>;
         /**
           * Opções de navegação a serem exibidas no header, ao lado da marca. Funciona de forma independente da navegação principal, e somente se o menu for vertical.
+          * @default []
          */
         "opcoesHeader"?: Array<OpcaoMenu>;
         /**
@@ -73,18 +88,22 @@ export namespace Components {
     interface BthAvatar {
         /**
           * Define se o avatar possui borda
+          * @default false
          */
         "borda"?: boolean;
         /**
           * Define a cor da borda
+          * @default 'white'
          */
         "bordaCor"?: string;
         /**
           * Define o raio da borda do avatar. Caso informado, sobrescreve o atributo utilitario 'quadrado'.
+          * @default '50%'
          */
         "bordaRaio"?: string;
         /**
           * Define o tamanho da borda
+          * @default '1px'
          */
         "bordaTamanho"?: string;
         /**
@@ -101,6 +120,7 @@ export namespace Components {
         "iniciais"?: string;
         /**
           * Define se o avatar terá suas bordas no formato quadrado.  Por padrão é redondo
+          * @default false
          */
         "quadrado"?: boolean;
         /**
@@ -113,10 +133,12 @@ export namespace Components {
         "subIcone"?: string;
         /**
           * Define o "title" do subícone
+          * @default ''
          */
         "subIconeTitle": string;
         /**
           * Define o tamanho conforme dimensões pre-definidas para o avatar.  Opções disponíveis: menor (24x24), pequeno (28x28), medio (48x48) e grande (94x94)
+          * @default 'medio'
          */
         "tamanho"?: Tamanho;
     }
@@ -145,30 +167,37 @@ export namespace Components {
     interface BthEmptyState {
         /**
           * Define se o empty state é para conexão offline
+          * @default false
          */
         "offline": boolean;
         /**
           * Define se o empty state é para conexão online
+          * @default false
          */
         "online": boolean;
         /**
           * Define se o empty state é para página não encontrada
+          * @default false
          */
         "paginaNaoEncontrada": boolean;
         /**
           * Define se o empty state é de tamanho pequeno
+          * @default false
          */
         "pequeno": boolean;
         /**
           * Define se o empty state é para registros
+          * @default false
          */
         "registros": boolean;
         /**
           * Define se o empty state é para registros com pesquisa
+          * @default false
          */
         "registrosPesquisa": boolean;
         /**
           * Define se o empty state está visível
+          * @default false
          */
         "show": boolean;
     }
@@ -179,6 +208,7 @@ export namespace Components {
         "ariaLabel": string | null;
         /**
           * Cor de preenchimento, no mesmo formato do `"color"` em CSS. Por padrão irá herdar do contexto inserido.
+          * @default 'inherit'
          */
         "cor"?: string;
         /**
@@ -187,6 +217,7 @@ export namespace Components {
         "icone": string;
         /**
           * Tamanho em pixels, no mesmo formato do `"font-size"` em CSS. Por padrão irá herdar do contexto inserido.
+          * @default 'inherit'
          */
         "tamanho": string;
     }
@@ -196,6 +227,7 @@ export namespace Components {
     interface BthLoader {
         /**
           * Define se o loader é inline
+          * @default false
          */
         "inline": boolean;
     }
@@ -214,6 +246,7 @@ export namespace Components {
         "authorization": AuthorizationConfig;
         /**
           * Define se o componente exibirá os produtos, condicionando a busca. Caso informado `false` não irá buscar por produtos.
+          * @default false
          */
         "exibirProdutos"?: boolean;
         /**
@@ -239,6 +272,7 @@ export namespace Components {
     interface BthMenuFerramenta {
         /**
           * Descrição
+          * @default ''
          */
         "descricao": string;
         /**
@@ -257,14 +291,17 @@ export namespace Components {
     interface BthMenuFerramentaIcone {
         /**
           * Valor que será exibido em uma "badge" próximo ao ícone
+          * @default 0
          */
         "contador": number;
         /**
           * Ícone conforme biblioteca `"Material Design Icons"`
+          * @default 'cloud'
          */
         "icone": string;
         /**
           * Define se a estilização é "mobile". Por padrão é "desktop".
+          * @default false
          */
         "mobile": boolean;
         /**
@@ -294,6 +331,7 @@ export namespace Components {
         "identificador": IdentificadorOpcaoMenu;
         /**
           * Possui permissão?
+          * @default true
          */
         "possuiPermissao": boolean;
     }
@@ -315,6 +353,7 @@ export namespace Components {
         "setShowComAnimacao": (show: boolean) => Promise<void>;
         /**
           * Estado de visibilidade
+          * @default false
          */
         "show": boolean;
         /**
@@ -360,6 +399,7 @@ export namespace Components {
         "possuiBadgeIcone": boolean;
         /**
           * Possui permissão?
+          * @default true
          */
         "possuiPermissao": boolean;
         /**
@@ -384,6 +424,7 @@ export namespace Components {
     interface BthNavbarPillItem {
         /**
           * Está ativo?
+          * @default false
          */
         "ativo": boolean;
         /**
@@ -392,6 +433,7 @@ export namespace Components {
         "descricao": string;
         /**
           * Ícone conforme biblioteca `"Material Design Icons"`
+          * @default 'cloud-question'
          */
         "icone": string;
         /**
@@ -400,10 +442,12 @@ export namespace Components {
         "identificador": any;
         /**
           * Exibir totalizador?
+          * @default true
          */
         "showTotalizador": boolean;
         /**
           * Totalizador
+          * @default 0
          */
         "totalizador": number;
     }
@@ -486,6 +530,7 @@ export namespace Components {
         "identificador": string;
         /**
           * Define se já está lida
+          * @default false
          */
         "isLida": boolean;
         /**
@@ -550,6 +595,7 @@ export namespace Components {
     interface BthSuporte {
         /**
           * Habilita ou desabilita o botão de abrir um chamado no atendimento
+          * @default false
          */
         "atendimento": boolean;
         /**
@@ -558,10 +604,12 @@ export namespace Components {
         "authorization": AuthorizationConfig;
         /**
           * Habilita ou desabilita o Blip Chat
+          * @default false
          */
         "blipChat": boolean;
         /**
           * Usar estilos que este componente fornece
+          * @default false
          */
         "blipChatCustomStyle": boolean;
         /**
@@ -578,6 +626,7 @@ export namespace Components {
         "centralAjudaHome"?: string;
         /**
           * Indica se a aplicação já possui botão flutuante
+          * @default false
          */
         "fabButton": boolean;
         /**
@@ -656,30 +705,65 @@ declare global {
         prototype: HTMLBthAjudaElement;
         new (): HTMLBthAjudaElement;
     };
+    interface HTMLBthAppElementEventMap {
+        "bannerAlterado": MenuBannerAlteradoEvent;
+        "opcaoMenuSelecionada": OpcaoMenuSelecionadaEvent;
+        "botaoBannerAcionado": void;
+    }
     /**
      * Permite configurar opções de navegação nos modelos de menu horizontal e vertical.
      * Possui áreas pré-definidas que permite compor as aplicações.
      */
     interface HTMLBthAppElement extends Components.BthApp, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLBthAppElementEventMap>(type: K, listener: (this: HTMLBthAppElement, ev: BthAppCustomEvent<HTMLBthAppElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLBthAppElementEventMap>(type: K, listener: (this: HTMLBthAppElement, ev: BthAppCustomEvent<HTMLBthAppElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBthAppElement: {
         prototype: HTMLBthAppElement;
         new (): HTMLBthAppElement;
     };
+    interface HTMLBthAvatarElementEventMap {
+        "imageLoadError": any;
+    }
     /**
      * Este componente exibe um avatar
      */
     interface HTMLBthAvatarElement extends Components.BthAvatar, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLBthAvatarElementEventMap>(type: K, listener: (this: HTMLBthAvatarElement, ev: BthAvatarCustomEvent<HTMLBthAvatarElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLBthAvatarElementEventMap>(type: K, listener: (this: HTMLBthAvatarElement, ev: BthAvatarCustomEvent<HTMLBthAvatarElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBthAvatarElement: {
         prototype: HTMLBthAvatarElement;
         new (): HTMLBthAvatarElement;
     };
+    interface HTMLBthContaUsuarioElementEventMap {
+        "logout": LogoutEvent;
+    }
     /**
      * Este componente exibe informações relacionadas ao usuário/conta logada
      * Este componente foi elaborado para comportar o slot "menu_ferramentas"
      */
     interface HTMLBthContaUsuarioElement extends Components.BthContaUsuario, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLBthContaUsuarioElementEventMap>(type: K, listener: (this: HTMLBthContaUsuarioElement, ev: BthContaUsuarioCustomEvent<HTMLBthContaUsuarioElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLBthContaUsuarioElementEventMap>(type: K, listener: (this: HTMLBthContaUsuarioElement, ev: BthContaUsuarioCustomEvent<HTMLBthContaUsuarioElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBthContaUsuarioElement: {
         prototype: HTMLBthContaUsuarioElement;
@@ -735,28 +819,61 @@ declare global {
         prototype: HTMLBthMenuFerramentaIconeElement;
         new (): HTMLBthMenuFerramentaIconeElement;
     };
+    interface HTMLBthMenuHorizontalItemElementEventMap {
+        "menuHorizontalSelecionado": MenuHorizontalSelecionadoEvent;
+    }
     /**
      * Item que representa uma opção do menu para navegação horizontal
      */
     interface HTMLBthMenuHorizontalItemElement extends Components.BthMenuHorizontalItem, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLBthMenuHorizontalItemElementEventMap>(type: K, listener: (this: HTMLBthMenuHorizontalItemElement, ev: BthMenuHorizontalItemCustomEvent<HTMLBthMenuHorizontalItemElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLBthMenuHorizontalItemElementEventMap>(type: K, listener: (this: HTMLBthMenuHorizontalItemElement, ev: BthMenuHorizontalItemCustomEvent<HTMLBthMenuHorizontalItemElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBthMenuHorizontalItemElement: {
         prototype: HTMLBthMenuHorizontalItemElement;
         new (): HTMLBthMenuHorizontalItemElement;
     };
+    interface HTMLBthMenuPainelLateralElementEventMap {
+        "painelLateralShow": PainelLateralShowEvent;
+    }
     /**
      * Possibilita incluir conteúdo dinâmico em um painel lateral que sobrepõe o conteúdo da tela pela direita
      */
     interface HTMLBthMenuPainelLateralElement extends Components.BthMenuPainelLateral, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLBthMenuPainelLateralElementEventMap>(type: K, listener: (this: HTMLBthMenuPainelLateralElement, ev: BthMenuPainelLateralCustomEvent<HTMLBthMenuPainelLateralElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLBthMenuPainelLateralElementEventMap>(type: K, listener: (this: HTMLBthMenuPainelLateralElement, ev: BthMenuPainelLateralCustomEvent<HTMLBthMenuPainelLateralElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBthMenuPainelLateralElement: {
         prototype: HTMLBthMenuPainelLateralElement;
         new (): HTMLBthMenuPainelLateralElement;
     };
+    interface HTMLBthMenuVerticalItemElementEventMap {
+        "menuVerticalSelecionado": MenuVerticalSelecionadoEvent;
+    }
     /**
      * Item que representa uma opção do menu para navegação vertical
      */
     interface HTMLBthMenuVerticalItemElement extends Components.BthMenuVerticalItem, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLBthMenuVerticalItemElementEventMap>(type: K, listener: (this: HTMLBthMenuVerticalItemElement, ev: BthMenuVerticalItemCustomEvent<HTMLBthMenuVerticalItemElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLBthMenuVerticalItemElementEventMap>(type: K, listener: (this: HTMLBthMenuVerticalItemElement, ev: BthMenuVerticalItemCustomEvent<HTMLBthMenuVerticalItemElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBthMenuVerticalItemElement: {
         prototype: HTMLBthMenuVerticalItemElement;
@@ -768,31 +885,90 @@ declare global {
         prototype: HTMLBthNavbarPillGroupElement;
         new (): HTMLBthNavbarPillGroupElement;
     };
+    interface HTMLBthNavbarPillItemElementEventMap {
+        "navbarPillItemClicked": any;
+    }
     interface HTMLBthNavbarPillItemElement extends Components.BthNavbarPillItem, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLBthNavbarPillItemElementEventMap>(type: K, listener: (this: HTMLBthNavbarPillItemElement, ev: BthNavbarPillItemCustomEvent<HTMLBthNavbarPillItemElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLBthNavbarPillItemElementEventMap>(type: K, listener: (this: HTMLBthNavbarPillItemElement, ev: BthNavbarPillItemCustomEvent<HTMLBthNavbarPillItemElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBthNavbarPillItemElement: {
         prototype: HTMLBthNavbarPillItemElement;
         new (): HTMLBthNavbarPillItemElement;
     };
+    interface HTMLBthNotificacaoItemElementEventMap {
+        "notificacaoLida": any;
+        "notificacaoNaoLida": any;
+    }
     interface HTMLBthNotificacaoItemElement extends Components.BthNotificacaoItem, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLBthNotificacaoItemElementEventMap>(type: K, listener: (this: HTMLBthNotificacaoItemElement, ev: BthNotificacaoItemCustomEvent<HTMLBthNotificacaoItemElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLBthNotificacaoItemElementEventMap>(type: K, listener: (this: HTMLBthNotificacaoItemElement, ev: BthNotificacaoItemCustomEvent<HTMLBthNotificacaoItemElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBthNotificacaoItemElement: {
         prototype: HTMLBthNotificacaoItemElement;
         new (): HTMLBthNotificacaoItemElement;
     };
+    interface HTMLBthNotificacoesElementEventMap {
+        "conteudoSinalizado": ConteudoSinalizadoEvent;
+        "novaNotificacao": NotificacaoEvent;
+        "novaNotificacaoComLink": NotificacaoComLinkEvent;
+    }
     interface HTMLBthNotificacoesElement extends Components.BthNotificacoes, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLBthNotificacoesElementEventMap>(type: K, listener: (this: HTMLBthNotificacoesElement, ev: BthNotificacoesCustomEvent<HTMLBthNotificacoesElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLBthNotificacoesElementEventMap>(type: K, listener: (this: HTMLBthNotificacoesElement, ev: BthNotificacoesCustomEvent<HTMLBthNotificacoesElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBthNotificacoesElement: {
         prototype: HTMLBthNotificacoesElement;
         new (): HTMLBthNotificacoesElement;
     };
+    interface HTMLBthNovidadeItemElementEventMap {
+        "novidadeLida": NovidadeLeituraEvent;
+        "novidadeNaoLida": NovidadeLeituraEvent;
+    }
     interface HTMLBthNovidadeItemElement extends Components.BthNovidadeItem, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLBthNovidadeItemElementEventMap>(type: K, listener: (this: HTMLBthNovidadeItemElement, ev: BthNovidadeItemCustomEvent<HTMLBthNovidadeItemElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLBthNovidadeItemElementEventMap>(type: K, listener: (this: HTMLBthNovidadeItemElement, ev: BthNovidadeItemCustomEvent<HTMLBthNovidadeItemElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBthNovidadeItemElement: {
         prototype: HTMLBthNovidadeItemElement;
         new (): HTMLBthNovidadeItemElement;
     };
+    interface HTMLBthNovidadesElementEventMap {
+        "conteudoSinalizado": ConteudoSinalizadoEvent;
+    }
     interface HTMLBthNovidadesElement extends Components.BthNovidades, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLBthNovidadesElementEventMap>(type: K, listener: (this: HTMLBthNovidadesElement, ev: BthNovidadesCustomEvent<HTMLBthNovidadesElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLBthNovidadesElementEventMap>(type: K, listener: (this: HTMLBthNovidadesElement, ev: BthNovidadesCustomEvent<HTMLBthNovidadesElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBthNovidadesElement: {
         prototype: HTMLBthNovidadesElement;
@@ -824,7 +1000,18 @@ declare global {
         prototype: HTMLBthSuporteElement;
         new (): HTMLBthSuporteElement;
     };
+    interface HTMLBthUtilitariosElementEventMap {
+        "opcaoUtilitarioSelecionada": OpcaoUtilitarioSelecionadaEvent;
+    }
     interface HTMLBthUtilitariosElement extends Components.BthUtilitarios, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLBthUtilitariosElementEventMap>(type: K, listener: (this: HTMLBthUtilitariosElement, ev: BthUtilitariosCustomEvent<HTMLBthUtilitariosElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLBthUtilitariosElementEventMap>(type: K, listener: (this: HTMLBthUtilitariosElement, ev: BthUtilitariosCustomEvent<HTMLBthUtilitariosElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBthUtilitariosElement: {
         prototype: HTMLBthUtilitariosElement;
@@ -857,6 +1044,8 @@ declare global {
     }
 }
 declare namespace LocalJSX {
+    type OneOf<K extends string, PropT, AttrT = PropT> = { [P in K]: PropT } & { [P in `attr:${K}`]?: never } | { [P in `attr:${K}`]: AttrT } & { [P in K]?: never };
+
     interface BthAjuda {
         /**
           * URL para a home da central de ajuda. Por padrão irá obter do env.js
@@ -878,6 +1067,7 @@ declare namespace LocalJSX {
         "menuBgColor"?: string;
         /**
           * Define se as opções do menu serão exibidas no formato "vertical", caso contrário serão exibidas no formato "horizontal"
+          * @default false
          */
         "menuVertical"?: boolean;
         /**
@@ -894,10 +1084,12 @@ declare namespace LocalJSX {
         "onOpcaoMenuSelecionada"?: (event: BthAppCustomEvent<OpcaoMenuSelecionadaEvent>) => void;
         /**
           * Opções de navegação do menu
+          * @default []
          */
         "opcoes"?: Array<OpcaoMenu>;
         /**
           * Opções de navegação a serem exibidas no header, ao lado da marca. Funciona de forma independente da navegação principal, e somente se o menu for vertical.
+          * @default []
          */
         "opcoesHeader"?: Array<OpcaoMenu>;
     }
@@ -907,18 +1099,22 @@ declare namespace LocalJSX {
     interface BthAvatar {
         /**
           * Define se o avatar possui borda
+          * @default false
          */
         "borda"?: boolean;
         /**
           * Define a cor da borda
+          * @default 'white'
          */
         "bordaCor"?: string;
         /**
           * Define o raio da borda do avatar. Caso informado, sobrescreve o atributo utilitario 'quadrado'.
+          * @default '50%'
          */
         "bordaRaio"?: string;
         /**
           * Define o tamanho da borda
+          * @default '1px'
          */
         "bordaTamanho"?: string;
         /**
@@ -939,6 +1135,7 @@ declare namespace LocalJSX {
         "onImageLoadError"?: (event: BthAvatarCustomEvent<any>) => void;
         /**
           * Define se o avatar terá suas bordas no formato quadrado.  Por padrão é redondo
+          * @default false
          */
         "quadrado"?: boolean;
         /**
@@ -951,10 +1148,12 @@ declare namespace LocalJSX {
         "subIcone"?: string;
         /**
           * Define o "title" do subícone
+          * @default ''
          */
         "subIconeTitle"?: string;
         /**
           * Define o tamanho conforme dimensões pre-definidas para o avatar.  Opções disponíveis: menor (24x24), pequeno (28x28), medio (48x48) e grande (94x94)
+          * @default 'medio'
          */
         "tamanho"?: Tamanho;
     }
@@ -987,30 +1186,37 @@ declare namespace LocalJSX {
     interface BthEmptyState {
         /**
           * Define se o empty state é para conexão offline
+          * @default false
          */
         "offline"?: boolean;
         /**
           * Define se o empty state é para conexão online
+          * @default false
          */
         "online"?: boolean;
         /**
           * Define se o empty state é para página não encontrada
+          * @default false
          */
         "paginaNaoEncontrada"?: boolean;
         /**
           * Define se o empty state é de tamanho pequeno
+          * @default false
          */
         "pequeno"?: boolean;
         /**
           * Define se o empty state é para registros
+          * @default false
          */
         "registros"?: boolean;
         /**
           * Define se o empty state é para registros com pesquisa
+          * @default false
          */
         "registrosPesquisa"?: boolean;
         /**
           * Define se o empty state está visível
+          * @default false
          */
         "show"?: boolean;
     }
@@ -1021,6 +1227,7 @@ declare namespace LocalJSX {
         "ariaLabel"?: string | null;
         /**
           * Cor de preenchimento, no mesmo formato do `"color"` em CSS. Por padrão irá herdar do contexto inserido.
+          * @default 'inherit'
          */
         "cor"?: string;
         /**
@@ -1029,6 +1236,7 @@ declare namespace LocalJSX {
         "icone": string;
         /**
           * Tamanho em pixels, no mesmo formato do `"font-size"` em CSS. Por padrão irá herdar do contexto inserido.
+          * @default 'inherit'
          */
         "tamanho"?: string;
     }
@@ -1038,6 +1246,7 @@ declare namespace LocalJSX {
     interface BthLoader {
         /**
           * Define se o loader é inline
+          * @default false
          */
         "inline"?: boolean;
     }
@@ -1056,6 +1265,7 @@ declare namespace LocalJSX {
         "authorization"?: AuthorizationConfig;
         /**
           * Define se o componente exibirá os produtos, condicionando a busca. Caso informado `false` não irá buscar por produtos.
+          * @default false
          */
         "exibirProdutos"?: boolean;
         /**
@@ -1081,6 +1291,7 @@ declare namespace LocalJSX {
     interface BthMenuFerramenta {
         /**
           * Descrição
+          * @default ''
          */
         "descricao"?: string;
         /**
@@ -1095,14 +1306,17 @@ declare namespace LocalJSX {
     interface BthMenuFerramentaIcone {
         /**
           * Valor que será exibido em uma "badge" próximo ao ícone
+          * @default 0
          */
         "contador"?: number;
         /**
           * Ícone conforme biblioteca `"Material Design Icons"`
+          * @default 'cloud'
          */
         "icone"?: string;
         /**
           * Define se a estilização é "mobile". Por padrão é "desktop".
+          * @default false
          */
         "mobile"?: boolean;
         /**
@@ -1136,6 +1350,7 @@ declare namespace LocalJSX {
         "onMenuHorizontalSelecionado"?: (event: BthMenuHorizontalItemCustomEvent<MenuHorizontalSelecionadoEvent>) => void;
         /**
           * Possui permissão?
+          * @default true
          */
         "possuiPermissao"?: boolean;
     }
@@ -1149,6 +1364,7 @@ declare namespace LocalJSX {
         "onPainelLateralShow"?: (event: BthMenuPainelLateralCustomEvent<PainelLateralShowEvent>) => void;
         /**
           * Estado de visibilidade
+          * @default false
          */
         "show"?: boolean;
         /**
@@ -1198,6 +1414,7 @@ declare namespace LocalJSX {
         "possuiBadgeIcone"?: boolean;
         /**
           * Possui permissão?
+          * @default true
          */
         "possuiPermissao"?: boolean;
         /**
@@ -1222,6 +1439,7 @@ declare namespace LocalJSX {
     interface BthNavbarPillItem {
         /**
           * Está ativo?
+          * @default false
          */
         "ativo"?: boolean;
         /**
@@ -1230,6 +1448,7 @@ declare namespace LocalJSX {
         "descricao"?: string;
         /**
           * Ícone conforme biblioteca `"Material Design Icons"`
+          * @default 'cloud-question'
          */
         "icone"?: string;
         /**
@@ -1242,10 +1461,12 @@ declare namespace LocalJSX {
         "onNavbarPillItemClicked"?: (event: BthNavbarPillItemCustomEvent<any>) => void;
         /**
           * Exibir totalizador?
+          * @default true
          */
         "showTotalizador"?: boolean;
         /**
           * Totalizador
+          * @default 0
          */
         "totalizador"?: number;
     }
@@ -1348,6 +1569,7 @@ declare namespace LocalJSX {
         "identificador"?: string;
         /**
           * Define se já está lida
+          * @default false
          */
         "isLida"?: boolean;
         /**
@@ -1424,6 +1646,7 @@ declare namespace LocalJSX {
     interface BthSuporte {
         /**
           * Habilita ou desabilita o botão de abrir um chamado no atendimento
+          * @default false
          */
         "atendimento"?: boolean;
         /**
@@ -1432,10 +1655,12 @@ declare namespace LocalJSX {
         "authorization"?: AuthorizationConfig;
         /**
           * Habilita ou desabilita o Blip Chat
+          * @default false
          */
         "blipChat"?: boolean;
         /**
           * Usar estilos que este componente fornece
+          * @default false
          */
         "blipChatCustomStyle"?: boolean;
         /**
@@ -1452,6 +1677,7 @@ declare namespace LocalJSX {
         "centralAjudaHome"?: string;
         /**
           * Indica se a aplicação já possui botão flutuante
+          * @default false
          */
         "fabButton"?: boolean;
         /**
@@ -1469,29 +1695,172 @@ declare namespace LocalJSX {
          */
         "utilitarios"?: Array<Utilitario>;
     }
+
+    interface BthAjudaAttributes {
+        "centralAjudaHome": string;
+    }
+    interface BthAppAttributes {
+        "menuVertical": boolean;
+        "menuBgColor": string;
+    }
+    interface BthAvatarAttributes {
+        "icone": string;
+        "subIcone": string;
+        "subIconeTitle": string;
+        "src": string;
+        "iniciais": string;
+        "tamanho": Tamanho;
+        "dimensao": number;
+        "quadrado": boolean;
+        "borda": boolean;
+        "bordaTamanho": string;
+        "bordaRaio": string;
+        "bordaCor": string;
+    }
+    interface BthContaUsuarioAttributes {
+        "centralUsuarioHome": string;
+        "fotoUrl": string;
+        "nome": string;
+        "usuario": string;
+    }
+    interface BthEmptyStateAttributes {
+        "show": boolean;
+        "registros": boolean;
+        "registrosPesquisa": boolean;
+        "online": boolean;
+        "offline": boolean;
+        "paginaNaoEncontrada": boolean;
+        "pequeno": boolean;
+    }
+    interface BthIconeAttributes {
+        "icone": string;
+        "tamanho": string;
+        "cor": string;
+        "ariaLabel": string | null;
+    }
+    interface BthLoaderAttributes {
+        "inline": boolean;
+    }
+    interface BthMarcaProdutoAttributes {
+        "produto": string;
+        "area": string;
+        "exibirProdutos": boolean;
+        "userAccountsApi": string;
+        "suiteHome": string;
+        "storeHome": string;
+    }
+    interface BthMenuFerramentaAttributes {
+        "descricao": string;
+        "tituloPainelLateral": string;
+    }
+    interface BthMenuFerramentaIconeAttributes {
+        "contador": number;
+        "icone": string;
+        "mobile": boolean;
+        "status": 'online' | 'offline' | undefined;
+    }
+    interface BthMenuHorizontalItemAttributes {
+        "ativo": boolean;
+        "contador": number;
+        "descricao": string;
+        "identificador": string;
+        "possuiPermissao": boolean;
+    }
+    interface BthMenuPainelLateralAttributes {
+        "show": boolean;
+        "titulo": string;
+    }
+    interface BthMenuVerticalItemAttributes {
+        "ativo": boolean;
+        "contador": number;
+        "possuiBadgeIcone": boolean;
+        "descricao": string;
+        "icone": string;
+        "identificador": string;
+        "identificadorPai": string;
+        "menuLateralRecolhido": boolean;
+        "possuiPermissao": boolean;
+        "recolhido": boolean;
+        "submenu": boolean;
+    }
+    interface BthNavbarPillGroupAttributes {
+        "descricao": string;
+    }
+    interface BthNavbarPillItemAttributes {
+        "identificador": string;
+        "descricao": string;
+        "ativo": boolean;
+        "icone": string;
+        "totalizador": number;
+        "showTotalizador": boolean;
+    }
+    interface BthNotificacaoItemAttributes {
+        "identificador": string;
+        "tipo": TipoNotificacao;
+        "texto": string;
+        "dataHora": string;
+        "origem": string;
+        "icone": string;
+        "possuiProgresso": boolean;
+        "percentualProgresso": number;
+        "status": string;
+        "prioridade": number;
+    }
+    interface BthNotificacoesAttributes {
+        "notificacoesApi": string;
+        "notificacoesWs": string;
+    }
+    interface BthNovidadeItemAttributes {
+        "identificador": string;
+        "titulo": string;
+        "mensagem": string;
+        "isLida": boolean;
+        "url": string;
+        "dataHora": string;
+    }
+    interface BthNovidadesAttributes {
+        "novidadesApi": string;
+    }
+    interface BthPesquisaAttributes {
+        "pesquisaApi": string;
+        "licencasApi": string;
+    }
+    interface BthSelecaoContextoAttributes {
+        "placeholderPesquisa": string;
+    }
+    interface BthSuporteAttributes {
+        "blipChat": boolean;
+        "blipChatCustomStyle": boolean;
+        "blipChatFabButtonColor": string;
+        "fabButton": boolean;
+        "centralAjudaHome": string;
+        "atendimento": boolean;
+        "licencasApi": string;
+    }
+
     interface IntrinsicElements {
-        "bth-ajuda": BthAjuda;
-        "bth-app": BthApp;
-        "bth-avatar": BthAvatar;
-        "bth-conta-usuario": BthContaUsuario;
-        "bth-empty-state": BthEmptyState;
-        "bth-icone": BthIcone;
-        "bth-loader": BthLoader;
-        "bth-marca-produto": BthMarcaProduto;
-        "bth-menu-ferramenta": BthMenuFerramenta;
-        "bth-menu-ferramenta-icone": BthMenuFerramentaIcone;
-        "bth-menu-horizontal-item": BthMenuHorizontalItem;
-        "bth-menu-painel-lateral": BthMenuPainelLateral;
-        "bth-menu-vertical-item": BthMenuVerticalItem;
-        "bth-navbar-pill-group": BthNavbarPillGroup;
-        "bth-navbar-pill-item": BthNavbarPillItem;
-        "bth-notificacao-item": BthNotificacaoItem;
-        "bth-notificacoes": BthNotificacoes;
-        "bth-novidade-item": BthNovidadeItem;
-        "bth-novidades": BthNovidades;
-        "bth-pesquisa": BthPesquisa;
-        "bth-selecao-contexto": BthSelecaoContexto;
-        "bth-suporte": BthSuporte;
+        "bth-ajuda": Omit<BthAjuda, keyof BthAjudaAttributes> & { [K in keyof BthAjuda & keyof BthAjudaAttributes]?: BthAjuda[K] } & { [K in keyof BthAjuda & keyof BthAjudaAttributes as `attr:${K}`]?: BthAjudaAttributes[K] } & { [K in keyof BthAjuda & keyof BthAjudaAttributes as `prop:${K}`]?: BthAjuda[K] };
+        "bth-app": Omit<BthApp, keyof BthAppAttributes> & { [K in keyof BthApp & keyof BthAppAttributes]?: BthApp[K] } & { [K in keyof BthApp & keyof BthAppAttributes as `attr:${K}`]?: BthAppAttributes[K] } & { [K in keyof BthApp & keyof BthAppAttributes as `prop:${K}`]?: BthApp[K] };
+        "bth-avatar": Omit<BthAvatar, keyof BthAvatarAttributes> & { [K in keyof BthAvatar & keyof BthAvatarAttributes]?: BthAvatar[K] } & { [K in keyof BthAvatar & keyof BthAvatarAttributes as `attr:${K}`]?: BthAvatarAttributes[K] } & { [K in keyof BthAvatar & keyof BthAvatarAttributes as `prop:${K}`]?: BthAvatar[K] };
+        "bth-conta-usuario": Omit<BthContaUsuario, keyof BthContaUsuarioAttributes> & { [K in keyof BthContaUsuario & keyof BthContaUsuarioAttributes]?: BthContaUsuario[K] } & { [K in keyof BthContaUsuario & keyof BthContaUsuarioAttributes as `attr:${K}`]?: BthContaUsuarioAttributes[K] } & { [K in keyof BthContaUsuario & keyof BthContaUsuarioAttributes as `prop:${K}`]?: BthContaUsuario[K] };
+        "bth-empty-state": Omit<BthEmptyState, keyof BthEmptyStateAttributes> & { [K in keyof BthEmptyState & keyof BthEmptyStateAttributes]?: BthEmptyState[K] } & { [K in keyof BthEmptyState & keyof BthEmptyStateAttributes as `attr:${K}`]?: BthEmptyStateAttributes[K] } & { [K in keyof BthEmptyState & keyof BthEmptyStateAttributes as `prop:${K}`]?: BthEmptyState[K] };
+        "bth-icone": Omit<BthIcone, keyof BthIconeAttributes> & { [K in keyof BthIcone & keyof BthIconeAttributes]?: BthIcone[K] } & { [K in keyof BthIcone & keyof BthIconeAttributes as `attr:${K}`]?: BthIconeAttributes[K] } & { [K in keyof BthIcone & keyof BthIconeAttributes as `prop:${K}`]?: BthIcone[K] } & OneOf<"icone", BthIcone["icone"], BthIconeAttributes["icone"]>;
+        "bth-loader": Omit<BthLoader, keyof BthLoaderAttributes> & { [K in keyof BthLoader & keyof BthLoaderAttributes]?: BthLoader[K] } & { [K in keyof BthLoader & keyof BthLoaderAttributes as `attr:${K}`]?: BthLoaderAttributes[K] } & { [K in keyof BthLoader & keyof BthLoaderAttributes as `prop:${K}`]?: BthLoader[K] };
+        "bth-marca-produto": Omit<BthMarcaProduto, keyof BthMarcaProdutoAttributes> & { [K in keyof BthMarcaProduto & keyof BthMarcaProdutoAttributes]?: BthMarcaProduto[K] } & { [K in keyof BthMarcaProduto & keyof BthMarcaProdutoAttributes as `attr:${K}`]?: BthMarcaProdutoAttributes[K] } & { [K in keyof BthMarcaProduto & keyof BthMarcaProdutoAttributes as `prop:${K}`]?: BthMarcaProduto[K] } & OneOf<"produto", BthMarcaProduto["produto"], BthMarcaProdutoAttributes["produto"]>;
+        "bth-menu-ferramenta": Omit<BthMenuFerramenta, keyof BthMenuFerramentaAttributes> & { [K in keyof BthMenuFerramenta & keyof BthMenuFerramentaAttributes]?: BthMenuFerramenta[K] } & { [K in keyof BthMenuFerramenta & keyof BthMenuFerramentaAttributes as `attr:${K}`]?: BthMenuFerramentaAttributes[K] } & { [K in keyof BthMenuFerramenta & keyof BthMenuFerramentaAttributes as `prop:${K}`]?: BthMenuFerramenta[K] };
+        "bth-menu-ferramenta-icone": Omit<BthMenuFerramentaIcone, keyof BthMenuFerramentaIconeAttributes> & { [K in keyof BthMenuFerramentaIcone & keyof BthMenuFerramentaIconeAttributes]?: BthMenuFerramentaIcone[K] } & { [K in keyof BthMenuFerramentaIcone & keyof BthMenuFerramentaIconeAttributes as `attr:${K}`]?: BthMenuFerramentaIconeAttributes[K] } & { [K in keyof BthMenuFerramentaIcone & keyof BthMenuFerramentaIconeAttributes as `prop:${K}`]?: BthMenuFerramentaIcone[K] };
+        "bth-menu-horizontal-item": Omit<BthMenuHorizontalItem, keyof BthMenuHorizontalItemAttributes> & { [K in keyof BthMenuHorizontalItem & keyof BthMenuHorizontalItemAttributes]?: BthMenuHorizontalItem[K] } & { [K in keyof BthMenuHorizontalItem & keyof BthMenuHorizontalItemAttributes as `attr:${K}`]?: BthMenuHorizontalItemAttributes[K] } & { [K in keyof BthMenuHorizontalItem & keyof BthMenuHorizontalItemAttributes as `prop:${K}`]?: BthMenuHorizontalItem[K] };
+        "bth-menu-painel-lateral": Omit<BthMenuPainelLateral, keyof BthMenuPainelLateralAttributes> & { [K in keyof BthMenuPainelLateral & keyof BthMenuPainelLateralAttributes]?: BthMenuPainelLateral[K] } & { [K in keyof BthMenuPainelLateral & keyof BthMenuPainelLateralAttributes as `attr:${K}`]?: BthMenuPainelLateralAttributes[K] } & { [K in keyof BthMenuPainelLateral & keyof BthMenuPainelLateralAttributes as `prop:${K}`]?: BthMenuPainelLateral[K] };
+        "bth-menu-vertical-item": Omit<BthMenuVerticalItem, keyof BthMenuVerticalItemAttributes> & { [K in keyof BthMenuVerticalItem & keyof BthMenuVerticalItemAttributes]?: BthMenuVerticalItem[K] } & { [K in keyof BthMenuVerticalItem & keyof BthMenuVerticalItemAttributes as `attr:${K}`]?: BthMenuVerticalItemAttributes[K] } & { [K in keyof BthMenuVerticalItem & keyof BthMenuVerticalItemAttributes as `prop:${K}`]?: BthMenuVerticalItem[K] };
+        "bth-navbar-pill-group": Omit<BthNavbarPillGroup, keyof BthNavbarPillGroupAttributes> & { [K in keyof BthNavbarPillGroup & keyof BthNavbarPillGroupAttributes]?: BthNavbarPillGroup[K] } & { [K in keyof BthNavbarPillGroup & keyof BthNavbarPillGroupAttributes as `attr:${K}`]?: BthNavbarPillGroupAttributes[K] } & { [K in keyof BthNavbarPillGroup & keyof BthNavbarPillGroupAttributes as `prop:${K}`]?: BthNavbarPillGroup[K] };
+        "bth-navbar-pill-item": Omit<BthNavbarPillItem, keyof BthNavbarPillItemAttributes> & { [K in keyof BthNavbarPillItem & keyof BthNavbarPillItemAttributes]?: BthNavbarPillItem[K] } & { [K in keyof BthNavbarPillItem & keyof BthNavbarPillItemAttributes as `attr:${K}`]?: BthNavbarPillItemAttributes[K] } & { [K in keyof BthNavbarPillItem & keyof BthNavbarPillItemAttributes as `prop:${K}`]?: BthNavbarPillItem[K] };
+        "bth-notificacao-item": Omit<BthNotificacaoItem, keyof BthNotificacaoItemAttributes> & { [K in keyof BthNotificacaoItem & keyof BthNotificacaoItemAttributes]?: BthNotificacaoItem[K] } & { [K in keyof BthNotificacaoItem & keyof BthNotificacaoItemAttributes as `attr:${K}`]?: BthNotificacaoItemAttributes[K] } & { [K in keyof BthNotificacaoItem & keyof BthNotificacaoItemAttributes as `prop:${K}`]?: BthNotificacaoItem[K] };
+        "bth-notificacoes": Omit<BthNotificacoes, keyof BthNotificacoesAttributes> & { [K in keyof BthNotificacoes & keyof BthNotificacoesAttributes]?: BthNotificacoes[K] } & { [K in keyof BthNotificacoes & keyof BthNotificacoesAttributes as `attr:${K}`]?: BthNotificacoesAttributes[K] } & { [K in keyof BthNotificacoes & keyof BthNotificacoesAttributes as `prop:${K}`]?: BthNotificacoes[K] };
+        "bth-novidade-item": Omit<BthNovidadeItem, keyof BthNovidadeItemAttributes> & { [K in keyof BthNovidadeItem & keyof BthNovidadeItemAttributes]?: BthNovidadeItem[K] } & { [K in keyof BthNovidadeItem & keyof BthNovidadeItemAttributes as `attr:${K}`]?: BthNovidadeItemAttributes[K] } & { [K in keyof BthNovidadeItem & keyof BthNovidadeItemAttributes as `prop:${K}`]?: BthNovidadeItem[K] };
+        "bth-novidades": Omit<BthNovidades, keyof BthNovidadesAttributes> & { [K in keyof BthNovidades & keyof BthNovidadesAttributes]?: BthNovidades[K] } & { [K in keyof BthNovidades & keyof BthNovidadesAttributes as `attr:${K}`]?: BthNovidadesAttributes[K] } & { [K in keyof BthNovidades & keyof BthNovidadesAttributes as `prop:${K}`]?: BthNovidades[K] };
+        "bth-pesquisa": Omit<BthPesquisa, keyof BthPesquisaAttributes> & { [K in keyof BthPesquisa & keyof BthPesquisaAttributes]?: BthPesquisa[K] } & { [K in keyof BthPesquisa & keyof BthPesquisaAttributes as `attr:${K}`]?: BthPesquisaAttributes[K] } & { [K in keyof BthPesquisa & keyof BthPesquisaAttributes as `prop:${K}`]?: BthPesquisa[K] };
+        "bth-selecao-contexto": Omit<BthSelecaoContexto, keyof BthSelecaoContextoAttributes> & { [K in keyof BthSelecaoContexto & keyof BthSelecaoContextoAttributes]?: BthSelecaoContexto[K] } & { [K in keyof BthSelecaoContexto & keyof BthSelecaoContextoAttributes as `attr:${K}`]?: BthSelecaoContextoAttributes[K] } & { [K in keyof BthSelecaoContexto & keyof BthSelecaoContextoAttributes as `prop:${K}`]?: BthSelecaoContexto[K] };
+        "bth-suporte": Omit<BthSuporte, keyof BthSuporteAttributes> & { [K in keyof BthSuporte & keyof BthSuporteAttributes]?: BthSuporte[K] } & { [K in keyof BthSuporte & keyof BthSuporteAttributes as `attr:${K}`]?: BthSuporteAttributes[K] } & { [K in keyof BthSuporte & keyof BthSuporteAttributes as `prop:${K}`]?: BthSuporte[K] };
         "bth-utilitarios": BthUtilitarios;
     }
 }
@@ -1499,71 +1868,71 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "bth-ajuda": LocalJSX.BthAjuda & JSXBase.HTMLAttributes<HTMLBthAjudaElement>;
+            "bth-ajuda": LocalJSX.IntrinsicElements["bth-ajuda"] & JSXBase.HTMLAttributes<HTMLBthAjudaElement>;
             /**
              * Permite configurar opções de navegação nos modelos de menu horizontal e vertical.
              * Possui áreas pré-definidas que permite compor as aplicações.
              */
-            "bth-app": LocalJSX.BthApp & JSXBase.HTMLAttributes<HTMLBthAppElement>;
+            "bth-app": LocalJSX.IntrinsicElements["bth-app"] & JSXBase.HTMLAttributes<HTMLBthAppElement>;
             /**
              * Este componente exibe um avatar
              */
-            "bth-avatar": LocalJSX.BthAvatar & JSXBase.HTMLAttributes<HTMLBthAvatarElement>;
+            "bth-avatar": LocalJSX.IntrinsicElements["bth-avatar"] & JSXBase.HTMLAttributes<HTMLBthAvatarElement>;
             /**
              * Este componente exibe informações relacionadas ao usuário/conta logada
              * Este componente foi elaborado para comportar o slot "menu_ferramentas"
              */
-            "bth-conta-usuario": LocalJSX.BthContaUsuario & JSXBase.HTMLAttributes<HTMLBthContaUsuarioElement>;
-            "bth-empty-state": LocalJSX.BthEmptyState & JSXBase.HTMLAttributes<HTMLBthEmptyStateElement>;
-            "bth-icone": LocalJSX.BthIcone & JSXBase.HTMLAttributes<HTMLBthIconeElement>;
+            "bth-conta-usuario": LocalJSX.IntrinsicElements["bth-conta-usuario"] & JSXBase.HTMLAttributes<HTMLBthContaUsuarioElement>;
+            "bth-empty-state": LocalJSX.IntrinsicElements["bth-empty-state"] & JSXBase.HTMLAttributes<HTMLBthEmptyStateElement>;
+            "bth-icone": LocalJSX.IntrinsicElements["bth-icone"] & JSXBase.HTMLAttributes<HTMLBthIconeElement>;
             /**
              * Loader padrão com efeitos de animações
              */
-            "bth-loader": LocalJSX.BthLoader & JSXBase.HTMLAttributes<HTMLBthLoaderElement>;
+            "bth-loader": LocalJSX.IntrinsicElements["bth-loader"] & JSXBase.HTMLAttributes<HTMLBthLoaderElement>;
             /**
              * Este componente exibe o logo da Betha e o nome do produto
              * Este componente foi elaborado para comportar o slot de "menu_marca_produto"
              */
-            "bth-marca-produto": LocalJSX.BthMarcaProduto & JSXBase.HTMLAttributes<HTMLBthMarcaProdutoElement>;
+            "bth-marca-produto": LocalJSX.IntrinsicElements["bth-marca-produto"] & JSXBase.HTMLAttributes<HTMLBthMarcaProdutoElement>;
             /**
              * Facilita a criação de Ferramentas para o menu. Abstrai comportamentos responsivos e controle do painel lateral.
              */
-            "bth-menu-ferramenta": LocalJSX.BthMenuFerramenta & JSXBase.HTMLAttributes<HTMLBthMenuFerramentaElement>;
+            "bth-menu-ferramenta": LocalJSX.IntrinsicElements["bth-menu-ferramenta"] & JSXBase.HTMLAttributes<HTMLBthMenuFerramentaElement>;
             /**
              * Abstrai a estilização de um ícone para menu-ferramenta.
              * Também implementa a possibilidade de exibição de um `badge` ao lado do ícone, através da propriedade `contador`.
              */
-            "bth-menu-ferramenta-icone": LocalJSX.BthMenuFerramentaIcone & JSXBase.HTMLAttributes<HTMLBthMenuFerramentaIconeElement>;
+            "bth-menu-ferramenta-icone": LocalJSX.IntrinsicElements["bth-menu-ferramenta-icone"] & JSXBase.HTMLAttributes<HTMLBthMenuFerramentaIconeElement>;
             /**
              * Item que representa uma opção do menu para navegação horizontal
              */
-            "bth-menu-horizontal-item": LocalJSX.BthMenuHorizontalItem & JSXBase.HTMLAttributes<HTMLBthMenuHorizontalItemElement>;
+            "bth-menu-horizontal-item": LocalJSX.IntrinsicElements["bth-menu-horizontal-item"] & JSXBase.HTMLAttributes<HTMLBthMenuHorizontalItemElement>;
             /**
              * Possibilita incluir conteúdo dinâmico em um painel lateral que sobrepõe o conteúdo da tela pela direita
              */
-            "bth-menu-painel-lateral": LocalJSX.BthMenuPainelLateral & JSXBase.HTMLAttributes<HTMLBthMenuPainelLateralElement>;
+            "bth-menu-painel-lateral": LocalJSX.IntrinsicElements["bth-menu-painel-lateral"] & JSXBase.HTMLAttributes<HTMLBthMenuPainelLateralElement>;
             /**
              * Item que representa uma opção do menu para navegação vertical
              */
-            "bth-menu-vertical-item": LocalJSX.BthMenuVerticalItem & JSXBase.HTMLAttributes<HTMLBthMenuVerticalItemElement>;
-            "bth-navbar-pill-group": LocalJSX.BthNavbarPillGroup & JSXBase.HTMLAttributes<HTMLBthNavbarPillGroupElement>;
-            "bth-navbar-pill-item": LocalJSX.BthNavbarPillItem & JSXBase.HTMLAttributes<HTMLBthNavbarPillItemElement>;
-            "bth-notificacao-item": LocalJSX.BthNotificacaoItem & JSXBase.HTMLAttributes<HTMLBthNotificacaoItemElement>;
-            "bth-notificacoes": LocalJSX.BthNotificacoes & JSXBase.HTMLAttributes<HTMLBthNotificacoesElement>;
-            "bth-novidade-item": LocalJSX.BthNovidadeItem & JSXBase.HTMLAttributes<HTMLBthNovidadeItemElement>;
-            "bth-novidades": LocalJSX.BthNovidades & JSXBase.HTMLAttributes<HTMLBthNovidadesElement>;
-            "bth-pesquisa": LocalJSX.BthPesquisa & JSXBase.HTMLAttributes<HTMLBthPesquisaElement>;
+            "bth-menu-vertical-item": LocalJSX.IntrinsicElements["bth-menu-vertical-item"] & JSXBase.HTMLAttributes<HTMLBthMenuVerticalItemElement>;
+            "bth-navbar-pill-group": LocalJSX.IntrinsicElements["bth-navbar-pill-group"] & JSXBase.HTMLAttributes<HTMLBthNavbarPillGroupElement>;
+            "bth-navbar-pill-item": LocalJSX.IntrinsicElements["bth-navbar-pill-item"] & JSXBase.HTMLAttributes<HTMLBthNavbarPillItemElement>;
+            "bth-notificacao-item": LocalJSX.IntrinsicElements["bth-notificacao-item"] & JSXBase.HTMLAttributes<HTMLBthNotificacaoItemElement>;
+            "bth-notificacoes": LocalJSX.IntrinsicElements["bth-notificacoes"] & JSXBase.HTMLAttributes<HTMLBthNotificacoesElement>;
+            "bth-novidade-item": LocalJSX.IntrinsicElements["bth-novidade-item"] & JSXBase.HTMLAttributes<HTMLBthNovidadeItemElement>;
+            "bth-novidades": LocalJSX.IntrinsicElements["bth-novidades"] & JSXBase.HTMLAttributes<HTMLBthNovidadesElement>;
+            "bth-pesquisa": LocalJSX.IntrinsicElements["bth-pesquisa"] & JSXBase.HTMLAttributes<HTMLBthPesquisaElement>;
             /**
              * Este componente permite compor uma lista de seleção de contexto.
              */
-            "bth-selecao-contexto": LocalJSX.BthSelecaoContexto & JSXBase.HTMLAttributes<HTMLBthSelecaoContextoElement>;
+            "bth-selecao-contexto": LocalJSX.IntrinsicElements["bth-selecao-contexto"] & JSXBase.HTMLAttributes<HTMLBthSelecaoContextoElement>;
             /**
              * Componente do menu Suporte com Blip Chat
              * @see https://gitlab.services.betha.cloud/ped/tecnologia/nlp/blip-webchat-loader
              * @see https://gitlab.services.betha.cloud/ped/suite/atendimento/components/suite-atendimento
              */
-            "bth-suporte": LocalJSX.BthSuporte & JSXBase.HTMLAttributes<HTMLBthSuporteElement>;
-            "bth-utilitarios": LocalJSX.BthUtilitarios & JSXBase.HTMLAttributes<HTMLBthUtilitariosElement>;
+            "bth-suporte": LocalJSX.IntrinsicElements["bth-suporte"] & JSXBase.HTMLAttributes<HTMLBthSuporteElement>;
+            "bth-utilitarios": LocalJSX.IntrinsicElements["bth-utilitarios"] & JSXBase.HTMLAttributes<HTMLBthUtilitariosElement>;
         }
     }
 }

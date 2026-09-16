@@ -135,7 +135,7 @@ export class MenuPainelLateral implements ComponentInterface {
     event.stopPropagation();
 
     this.show = !this.show;
-  }
+  };
 
   private onCloseAll = (event: UIEvent) => {
     event.stopPropagation();
@@ -143,7 +143,7 @@ export class MenuPainelLateral implements ComponentInterface {
     this.dispatchFecharTodosEvent();
 
     this.show = !this.show;
-  }
+  };
 
   private onMouseOver = (): void => {
     if (this.isDispositivoMovel) {
@@ -152,7 +152,7 @@ export class MenuPainelLateral implements ComponentInterface {
 
     this.cancelarAberturaComAnimacao();
     this.setShowComAnimacao(true);
-  }
+  };
 
   private onMouseLeave = (): void => {
     if (this.isDispositivoMovel) {
@@ -161,7 +161,7 @@ export class MenuPainelLateral implements ComponentInterface {
 
     this.cancelarAberturaComAnimacao();
     this.setShowComAnimacao(false);
-  }
+  };
 
   render() {
     return (

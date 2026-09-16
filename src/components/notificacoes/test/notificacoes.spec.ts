@@ -418,7 +418,7 @@ describe('notificacoes', () => {
     const spy = jest.spyOn(window, 'open').mockImplementation();
 
     await page.setContent('<bth-notificacoes></bth-notificacoes>');
-    let notificacoes: HTMLBthNovidadesElement = page.body.querySelector('bth-notificacoes');
+    const notificacoes: HTMLBthNovidadesElement = page.body.querySelector('bth-notificacoes');
     notificacoes.authorization = getMockAuthorization();
 
     const resultadoLink: NotificacaoLink = { href: 'https://www.google.com/', title: 'Visualizar resultado', label: 'Resultado', target: 'BLANK' };
@@ -493,7 +493,7 @@ describe('notificacoes', () => {
     const notificacoes: HTMLBthNotificacoesElement = page.doc.querySelector('bth-notificacoes');
     notificacoes.authorization = getMockAuthorization();
 
-    let onNaoPossuiConteudoSinalizado = jest.fn();
+    const onNaoPossuiConteudoSinalizado = jest.fn();
     notificacoes.addEventListener('conteudoSinalizado', onNaoPossuiConteudoSinalizado);
 
     setFiltroAtivo(notificacoes, TipoNotificacao.NaoLida);
@@ -521,7 +521,7 @@ describe('notificacoes', () => {
     const notificacoes: HTMLBthNotificacoesElement = page.doc.querySelector('bth-notificacoes');
     notificacoes.authorization = getMockAuthorization();
 
-    let onPossuiConteudoSinalizado = jest.fn();
+    const onPossuiConteudoSinalizado = jest.fn();
     notificacoes.addEventListener('conteudoSinalizado', onPossuiConteudoSinalizado);
 
     setFiltroAtivo(notificacoes, TipoNotificacao.Lida);

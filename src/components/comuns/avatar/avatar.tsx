@@ -113,7 +113,7 @@ export class Avatar implements ComponentInterface {
     }
 
     if (this.iniciais !== undefined) {
-      let color = this.getCorInicias();
+      const color = this.getCorInicias();
       return `bg-${color} tx-${color}`;
     }
 
@@ -158,7 +158,7 @@ export class Avatar implements ComponentInterface {
 
   private onImageLoadError = (event: Event): void => {
     this.imageLoadError.emit(event);
-  }
+  };
 
   private getContainerCustomStyles() {
     const containerStyles: any = {};

@@ -23,7 +23,7 @@ describe('navbar-pill-group', () => {
 
     // Act
     const navBarGroup: HTMLBthNavbarPillGroupElement = page.doc.querySelector('bth-navbar-pill-group');
-    var conteudo = 'Conteúdo qualquer';
+    const conteudo = 'Conteúdo qualquer';
     navBarGroup.innerHTML = `<h1>${conteudo}</h1>`;
     await page.waitForChanges();
 

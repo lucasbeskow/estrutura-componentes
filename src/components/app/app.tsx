@@ -168,7 +168,7 @@ export class App implements ComponentInterface {
 
   @Watch('banner')
   onChangeBanner() {
-    let event: MenuBannerAlteradoEvent = {
+    const event: MenuBannerAlteradoEvent = {
       possui: this.possuiBanner()
     };
 
@@ -560,7 +560,7 @@ export class App implements ComponentInterface {
     event.preventDefault();
 
     this.botaoBannerAcionado.emit();
-  }
+  };
 
   private renderBannerSection() {
     return (

@@ -124,6 +124,13 @@ Possui áreas pré-definidas que permite compor as aplicações.
 
 Define o estado de ativo para o badge no icone do item do menu
 
+#### Parameters
+
+| Name            | Type               | Description                               |
+| --------------- | ------------------ | ----------------------------------------- |
+| `identificador` | `string \| number` | Identificador do menu                     |
+| `ativo`         | `boolean`          | boolean que indica se deve ou não mostrar |
+
 #### Returns
 
 Type: `Promise<void>`
@@ -134,6 +141,13 @@ Type: `Promise<void>`
 
 Define o valor do contador de um item do menu
 
+#### Parameters
+
+| Name            | Type               | Description                   |
+| --------------- | ------------------ | ----------------------------- |
+| `identificador` | `string \| number` | Identificador do item do menu |
+| `valor`         | `number`           | Valor do contador             |
+
 #### Returns
 
 Type: `Promise<void>`
@@ -143,6 +157,12 @@ Type: `Promise<void>`
 ### `setMenuAtivo(identificador: IdentificadorOpcaoMenu) => Promise<void>`
 
 Define o estado de ativo para o menu do parâmetro
+
+#### Parameters
+
+| Name            | Type               | Description           |
+| --------------- | ------------------ | --------------------- |
+| `identificador` | `string \| number` | Identificador do menu |
 
 #### Returns
 

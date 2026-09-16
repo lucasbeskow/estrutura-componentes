@@ -14,6 +14,13 @@
 | `pesquisaApi`   | `pesquisa-api` | URL para a api de pesquisas. Por padrão irá obter do env.js.                                  | `string`              | `undefined` |
 
 
+## Slots
+
+| Slot | Description      |
+| ---- | ---------------- |
+|      | The default slot |
+
+
 ----------------------------------------------
 
 Esta documentação é gerada automáticamente pelo StencilJS =)

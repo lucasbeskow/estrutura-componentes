@@ -96,7 +96,7 @@ describe('novidade-item', () => {
     await page.waitForChanges();
 
     const marcarLida: HTMLLinkElement = page.root.shadowRoot.querySelector('a[title="Marcar como lida"]');
-    let onNovidadeLida = jest.fn();
+    const onNovidadeLida = jest.fn();
     page.root.addEventListener('novidadeLida', onNovidadeLida);
     await page.waitForChanges();
 
@@ -117,7 +117,7 @@ describe('novidade-item', () => {
     await page.waitForChanges();
 
     const marcarNaoLida: HTMLLinkElement = page.root.shadowRoot.querySelector('a[title="Marcar como não lida"]');
-    let onNovidadeNaoLida = jest.fn();
+    const onNovidadeNaoLida = jest.fn();
     page.root.addEventListener('novidadeNaoLida', onNovidadeNaoLida);
     await page.waitForChanges();
 

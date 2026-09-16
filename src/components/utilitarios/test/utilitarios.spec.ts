@@ -104,7 +104,7 @@ describe('utilitarios', () => {
     utilitarios.utilitarios = [utilitario];
     await page.waitForChanges();
 
-    let onOpcaoUtilitarioSelecionada = jest.fn();
+    const onOpcaoUtilitarioSelecionada = jest.fn();
     utilitarios.addEventListener('opcaoUtilitarioSelecionada', onOpcaoUtilitarioSelecionada);
 
     // Act
@@ -130,7 +130,7 @@ describe('utilitarios', () => {
     utilitarios.utilitarios = [utilitario];
     await page.waitForChanges();
 
-    let onOpcaoUtilitarioSelecionada = jest.fn();
+    const onOpcaoUtilitarioSelecionada = jest.fn();
     utilitarios.addEventListener('opcaoUtilitarioSelecionada', onOpcaoUtilitarioSelecionada);
 
     // Act

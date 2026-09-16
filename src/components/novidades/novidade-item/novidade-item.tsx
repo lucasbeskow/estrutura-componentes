@@ -56,7 +56,7 @@ export class NovidadeItem implements ComponentInterface {
     }
 
     return this.onClick(event);
-  }
+  };
 
   private onClick = (event: UIEvent) => {
     event.preventDefault();
@@ -66,7 +66,7 @@ export class NovidadeItem implements ComponentInterface {
     } else {
       this.novidadeLida.emit({ id: this.identificador, url: this.url });
     }
-  }
+  };
 
   render() {
     return (

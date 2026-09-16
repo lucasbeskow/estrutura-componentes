@@ -185,7 +185,7 @@ export class MarcaProduto implements ComponentInterface {
 
     this.cancelarTimeoutAtivo();
     this.alterarEstadoAberto(true);
-  }
+  };
 
   private onMouseLeaveMenuProduto = (): void => {
     if (this.isDispositivoMovel) {
@@ -194,7 +194,7 @@ export class MarcaProduto implements ComponentInterface {
 
     this.cancelarTimeoutAtivo();
     this.alterarEstadoAberto(false);
-  }
+  };
 
   private onMouseOverToggleProduto = (): void => {
     if (this.isDispositivoMovel) {
@@ -202,7 +202,7 @@ export class MarcaProduto implements ComponentInterface {
     }
 
     this.cancelarTimeoutAtivo();
-  }
+  };
 
   private onToggleAberto = (): void => {
     this.cancelarTimeoutAtivo();
@@ -216,23 +216,23 @@ export class MarcaProduto implements ComponentInterface {
     }
 
     this.isDropdownProdutosAberto = !this.isDropdownProdutosAberto;
-  }
+  };
 
   private onClickFechar = (event: UIEvent): void => {
     event.stopPropagation();
     event.preventDefault();
 
     this.isDropdownProdutosAberto = false;
-  }
+  };
 
   private openLink = (event: UIEvent, url: string): void => {
     event.preventDefault();
     window.open(url, '_blank');
-  }
+  };
 
   private getClassPorLinhaProduto = (product: Produto): string => {
     return product?.serviceLine?.abbreviation ?? '';
-  }
+  };
 
   render() {
     const contemProdutos = this.produtos && this.produtos.length > 0;

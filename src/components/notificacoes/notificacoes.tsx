@@ -40,11 +40,11 @@ export class Notificacoes implements ComponentInterface {
     { id: TipoNotificacao.NaoLida, icone: 'email-outline', descricao: 'Não lidas', ativo: true },
     { id: TipoNotificacao.Lida, icone: 'email-open-outline', descricao: 'Lidas' },
     { id: TipoNotificacao.Progresso, icone: 'clock-check-outline', descricao: 'Em andamento' },
-  ]
+  ];
 
   @State() notificacoesNaoLidas: Notificacao[] = [];
-  @State() notificacoesLidas: Notificacao[] = []
-  @State() notificacoesEmProgresso: Notificacao[] = []
+  @State() notificacoesLidas: Notificacao[] = [];
+  @State() notificacoesEmProgresso: Notificacao[] = [];
 
   @State() quantidadeTotalNaoLidas: number = 0;
   @State() quantidadeEmProgressoNaoLidas: number = 0;
@@ -285,9 +285,9 @@ export class Notificacoes implements ComponentInterface {
     if (!isNill(message.link)) {
 
       if (message.link.autoOpen) {
-        var auth = this.authorization.getAuthorization();
+        const auth = this.authorization.getAuthorization();
 
-        var timeout = message.systemId == null || (auth && message.systemId === auth.systemId)
+        const timeout = message.systemId == null || (auth && message.systemId === auth.systemId)
           ? 0
           : 3000;
 
@@ -295,7 +295,7 @@ export class Notificacoes implements ComponentInterface {
           this.notificacoesService.setRead(message.id)
             .then((res) => {
               if (res.status === 200) {
-                var target = '_blank';
+                let target = '_blank';
 
                 if (isNill(message.identifier) && message.identifier != '') {
                   target = message.identifier as string;
@@ -441,14 +441,14 @@ export class Notificacoes implements ComponentInterface {
       this.notificacoesService.clearUnreads();
       this.marcarTodasComoLida();
     }
-  }
+  };
 
   private carregarNotificacoesNaoLidas(): void {
     if (this.isConfiguracaoApiInconsistente()) {
       return;
     }
 
-    let promise = this.notificacoesService
+    const promise = this.notificacoesService
       .buscarNaoLidas(this.getPaginationQueryParams(this.notificacoesNaoLidas.length))
       .then(notificacoesNaoLidas => {
         this.carregouNaoLidas = true;
@@ -470,7 +470,7 @@ export class Notificacoes implements ComponentInterface {
       return;
     }
 
-    let promise = this.notificacoesService
+    const promise = this.notificacoesService
       .buscarLidas(this.getPaginationQueryParams(this.notificacoesLidas.length))
       .then(notificacoesLidas => {
         this.carregouLidas = true;
@@ -489,7 +489,7 @@ export class Notificacoes implements ComponentInterface {
       return;
     }
 
-    let promise = this.notificacoesService
+    const promise = this.notificacoesService
       .buscarEmProgresso(this.getPaginationQueryParams(this.notificacoesEmProgresso.length))
       .then(notificacoesEmProgresso => {
         this.carregouEmProgresso = true;
@@ -517,7 +517,7 @@ export class Notificacoes implements ComponentInterface {
       return _filtro;
     });
 
-    let filtroAtivo = this.getOpcaoFiltroAtivo();
+    const filtroAtivo = this.getOpcaoFiltroAtivo();
 
     if (!this.carregouLidas && filtroAtivo.id === TipoNotificacao.Lida) {
       this.carregarNotificacoesLidas();
@@ -584,7 +584,7 @@ export class Notificacoes implements ComponentInterface {
     if (isEnd) {
       this.carregarNotificacoes();
     }
-  }
+  };
 
   private carregarNotificacoes(): void {
     if (this.isBuscandoNotificacoes || this.isApiIndisponivel) {

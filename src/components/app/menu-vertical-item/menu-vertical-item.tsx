@@ -95,7 +95,7 @@ export class MenuVerticalItem implements ComponentInterface {
       identificador: this.identificador,
       identificadorPai: this.identificadorPai
     });
-  }
+  };
 
   render() {
     const possuiSubmenus = !isNill(this.submenus) && this.submenus.length > 0;

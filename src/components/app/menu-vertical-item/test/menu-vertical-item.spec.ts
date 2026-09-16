@@ -104,7 +104,7 @@ describe('bth-menu-vertical-item', () => {
 
     // Act
     const menuVerticalItem: HTMLBthMenuVerticalItemElement = page.doc.querySelector('bth-menu-vertical-item');
-    let valorContador = 37;
+    const valorContador = 37;
     menuVerticalItem.setAttribute('contador', valorContador.toString());
 
     await page.waitForChanges();
@@ -120,7 +120,7 @@ describe('bth-menu-vertical-item', () => {
 
     // Act
     const menuVerticalItem: HTMLBthMenuVerticalItemElement = page.doc.querySelector('bth-menu-vertical-item');
-    let valorContador = 100;
+    const valorContador = 100;
     menuVerticalItem.setAttribute('contador', valorContador.toString());
 
     await page.waitForChanges();
@@ -167,7 +167,7 @@ describe('bth-menu-vertical-item', () => {
     const menuVerticalItem: HTMLBthMenuVerticalItemElement = page.doc.querySelector('bth-menu-vertical-item');
     menuVerticalItem.setAttribute('identificador', menuOpcaoId);
 
-    let onMenuVerticalSelecionado = jest.fn();
+    const onMenuVerticalSelecionado = jest.fn();
     menuVerticalItem.addEventListener('menuVerticalSelecionado', onMenuVerticalSelecionado);
 
     await page.waitForChanges();
@@ -195,7 +195,7 @@ describe('bth-menu-vertical-item', () => {
     menuVerticalItem.setAttribute('identificador', menuOpcaoId);
     menuVerticalItem.setAttribute('possui-permissao', 'false');
 
-    let onMenuVerticalSelecionado = jest.fn();
+    const onMenuVerticalSelecionado = jest.fn();
     menuVerticalItem.addEventListener('menuVerticalSelecionado', onMenuVerticalSelecionado);
 
     await page.waitForChanges();

@@ -26,7 +26,7 @@ export class Novidades implements ComponentInterface {
   @State() filtros: Array<OpcaoFiltro> = [
     { id: FiltroNovidade.NaoLida, descricao: 'Não lidas', icone: 'email-outline', ativo: true },
     { id: FiltroNovidade.Lida, descricao: 'Lidas', icone: 'email-open-outline' },
-  ]
+  ];
 
   @State() novidades: Novidade[] = [];
 
@@ -163,7 +163,7 @@ export class Novidades implements ComponentInterface {
 
     forceUpdate(this);
     this.atualizarIndicadorConteudoSinalizado();
-  }
+  };
 
   private atualizarIndicadorConteudoSinalizado() {
     const event: ConteudoSinalizadoEvent = {

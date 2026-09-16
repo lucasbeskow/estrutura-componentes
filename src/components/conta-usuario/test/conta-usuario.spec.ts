@@ -139,7 +139,7 @@ describe('conta-usuario', () => {
     contaUsuario.setAttribute('usuario', usuario);
     contaUsuario.setAttribute('nome', nome);
 
-    let onLogout = jest.fn();
+    const onLogout = jest.fn();
     contaUsuario.addEventListener('logout', onLogout);
 
     // Act

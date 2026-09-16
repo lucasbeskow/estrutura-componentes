@@ -23,7 +23,7 @@ export class ContaUsuario implements ComponentInterface {
   /**
    * URL para home da Central de Usuários. Por padrão irá obter do env.js.
    */
-  @Prop() readonly centralUsuarioHome?: string
+  @Prop() readonly centralUsuarioHome?: string;
 
   /**
    * URL para foto de avatar do usuário
@@ -70,7 +70,7 @@ export class ContaUsuario implements ComponentInterface {
 
   private onImageLoadError = (): void => {
     this.erroCarregarFotoAvatar = true;
-  }
+  };
 
   private getUrlImagemPerfil() {
     if (isNill(this.fotoUrl) || this.erroCarregarFotoAvatar) {

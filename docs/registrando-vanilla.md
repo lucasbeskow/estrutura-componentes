@@ -17,9 +17,8 @@ A maneira mais simples de importar é através das tags `link` e `script` no ind
 <body>
   <!-- ... -->
   <script type="module" src="[LIBS_PROJETO]/@betha-plataforma/estrutura-componentes/dist/estrutura-componentes/estrutura-componentes.esm.js"></script>
-  <script nomodule src="[LIBS_PROJETO]/@betha-plataforma/estrutura-componentes/dist/estrutura-componentes/estrutura-componentes.js"></script>
   <!-- ... -->
 </body>
 ```
 
-> ℹ️ [Entender o type="module" e nomodule dos arquivos JavaScript](./docs/importando-esmodules.md)
+> ℹ️ [Entender o type="module" dos arquivos JavaScript](./docs/importando-esmodules.md)

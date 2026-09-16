@@ -262,7 +262,7 @@ describe('notificacao-item', () => {
 
     await page.waitForChanges();
 
-    let onNotificacaoLida = jest.fn();
+    const onNotificacaoLida = jest.fn();
     page.root.addEventListener('notificacaoLida', onNotificacaoLida);
 
     // Act
@@ -288,7 +288,7 @@ describe('notificacao-item', () => {
 
     await page.waitForChanges();
 
-    let onNotificacaoLida = jest.fn();
+    const onNotificacaoLida = jest.fn();
     page.root.addEventListener('notificacaoLida', onNotificacaoLida);
 
     // Act
@@ -322,7 +322,7 @@ describe('notificacao-item', () => {
 
     await page.waitForChanges();
 
-    let onNotificacaoLida = jest.fn();
+    const onNotificacaoLida = jest.fn();
     page.root.addEventListener('notificacaoLida', onNotificacaoLida);
 
     // Act
@@ -352,7 +352,7 @@ describe('notificacao-item', () => {
 
     await page.waitForChanges();
 
-    let onNotificacaoNaoLida = jest.fn();
+    const onNotificacaoNaoLida = jest.fn();
     page.root.addEventListener('notificacaoNaoLida', onNotificacaoNaoLida);
 
     // Act

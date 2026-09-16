@@ -54,6 +54,13 @@ Variações
 | `show`                | `show`                  | Define se o empty state está visível                  | `boolean` | `false` |
 
 
+## Slots
+
+| Slot | Description      |
+| ---- | ---------------- |
+|      | The default slot |
+
+
 ## Dependencies
 
 ### Used by

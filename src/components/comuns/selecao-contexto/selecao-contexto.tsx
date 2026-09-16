@@ -99,7 +99,7 @@ export class SelecaoContexto implements ComponentInterface {
       });
 
     this.tracker.addPromise(promise);
-  }
+  };
 
   private configurarPresencaSemResultado(): void {
     this.possuiSlotSemResultadoDeclarado = this.el.querySelector('[slot="sem_resultado"]') !== null;
@@ -108,22 +108,22 @@ export class SelecaoContexto implements ComponentInterface {
   private onSelecionar = (event: UIEvent, item: ItemSelecaoContexto): void => {
     event.preventDefault();
     this.selecionar(item);
-  }
+  };
 
   private onInputSearch = (event: UIEvent): void => {
     this.termoPesquisa = (event.target as HTMLInputElement).value;
 
     this.itensFiltrados = this.itens
       .filter(item => item.descricao && item.descricao.toUpperCase().includes(this.termoPesquisa.toUpperCase()));
-  }
+  };
 
   private possuiImagemAvatar = (item: ItemSelecaoContexto): boolean => {
     return item.imagemAvatar !== undefined;
-  }
+  };
 
   private possuiIcone = (item: ItemSelecaoContexto): boolean => {
     return item.icone !== undefined;
-  }
+  };
 
   private getTipoEmptyState = (): any => {
     if (this.possuiSlotSemResultadoDeclarado) {
@@ -135,7 +135,7 @@ export class SelecaoContexto implements ComponentInterface {
     }
 
     return { registros: true };
-  }
+  };
 
   private isElementLink = (element: Element) => element.tagName === 'A';
 

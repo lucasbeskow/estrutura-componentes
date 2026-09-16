@@ -1,19 +1,26 @@
 # Importando ES Modules
 
-O StencilJS gera automaticamente diferentes _bundles_ em seu processo de build, gerando código para navegadores mais modernos, mas também para navegadores legados (IE11).
-
-A vantagem desta técnica é permitir importar somente os arquivos mais otimizados em navegadores mais novos e importar os _polyfills_ necessários somente em navegadores mais antigos.
+Os componentes são distribuídos exclusivamente como **ES Modules**, carregados através do
+atributo [`type="module"`](https://developer.mozilla.org/docs/Web/HTML/Element/script#module).
 
 ```html
-<!-- JavaScript atual e otimizado, com funcionalidades como ES Modules, Dynamic Imports, async/await, Classes, etc -->
-<script type="module" src="script.esm.js"></script>
-
-<!-- JavaScript compatível com ES5 contendo todos os polyfills necessários -->
-<script nomodule src="script.js"></script>
+<script type="module" src="estrutura-componentes.esm.js"></script>
 ```
 
-No _snippet_ o script que possui o [atributo nomodule](https://html.spec.whatwg.org/multipage/scripting.html#attr-script-nomodule) não é executado quando o browser já suporta scripts `type="module"`, sendo executado somente em browsers mais antigos que não suportam o `type="module"`.
+O StencilJS divide o _bundle_ em vários arquivos e carrega sob demanda apenas os componentes
+efetivamente usados na página, através de _dynamic imports_.
+
+## Navegadores suportados
+
+São suportados os navegadores que implementam ES Modules e Custom Elements nativamente,
+o que abrange todas as versões atuais de Chrome, Edge, Firefox e Safari.
+
+O Internet Explorer 11 **não é suportado**. Até a versão `1.x` desta biblioteca era publicado
+um _bundle_ adicional em ES5, carregado via atributo `nomodule`, para atender navegadores
+legados. Esse _bundle_ foi descontinuado: o Internet Explorer saiu de suporte em junho de 2022
+e o StencilJS removeu a geração de código ES5.
 
 Mais informações em:
 
 - [Output Targets - Differential Bundling](https://stenciljs.com/docs/output-targets#differential-bundling)
+- [Browser Support](https://stenciljs.com/docs/browser-support)

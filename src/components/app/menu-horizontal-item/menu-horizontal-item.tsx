@@ -58,7 +58,7 @@ export class MenuHorizontalItem {
     this.menuHorizontalSelecionado.emit({
       identificador: this.identificador
     });
-  }
+  };
 
   render() {
     return (

@@ -70,6 +70,12 @@ Type: `Promise<void>`
 
 Alterna o estado em aberto do painel para o valor do parâmetro após um timeout padrão de interações
 
+#### Parameters
+
+| Name   | Type      | Description |
+| ------ | --------- | ----------- |
+| `show` | `boolean` |             |
+
 #### Returns
 
 Type: `Promise<void>`

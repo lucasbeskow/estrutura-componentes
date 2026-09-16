@@ -45,9 +45,8 @@ yarn add @betha-plataforma/estrutura-componentes
 
 ```html
 <script type="module" src="https://unpkg.com/@betha-plataforma/estrutura-componentes/dist/estrutura-componentes/estrutura-componentes.esm.js"></script>
-<script nomodule src="https://unpkg.com/@betha-plataforma/estrutura-componentes/dist/estrutura-componentes/estrutura-componentes.js"></script>
 
-<!-- ... ou caso queira suportar somente navegadores modernos -->
+<!-- ... ou registrando os componentes manualmente -->
 <script type="module">
   import { defineCustomElements } from 'https://unpkg.com/@betha-plataforma/estrutura-componentes/loader/index.es2017.js';
   defineCustomElements();

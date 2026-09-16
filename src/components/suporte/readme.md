@@ -31,6 +31,12 @@ Componente do menu Suporte com Blip Chat
 Método para testar recebimento de uma mensagem do window para definir o badge de mensagens não vistas,
 através de um evento do tipo 'BLIP_WEBCHAT_NOTIFICATION' emitido pelo loader do Blip Chat
 
+#### Parameters
+
+| Name   | Type  | Description |
+| ------ | ----- | ----------- |
+| `data` | `any` |             |
+
 #### Returns
 
 Type: `Promise<void>`

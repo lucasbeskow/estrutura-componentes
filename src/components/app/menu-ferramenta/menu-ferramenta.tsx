@@ -80,7 +80,7 @@ export class MenuFerramenta implements ComponentInterface {
   private onToggleEstadoAberto = (event: UIEvent) => {
     event.preventDefault();
     this.alternarExibicaoPainelLateral();
-  }
+  };
 
   private onPainelLateralShow = (event: CustomEvent<PainelLateralShowEvent>) => {
     if (this.isDispositivoMovel) {
@@ -98,17 +98,17 @@ export class MenuFerramenta implements ComponentInterface {
     } else {
       desktopToggler.classList.remove('ferramenta-menu__desktop-toggler--active');
     }
-  }
+  };
 
   private onMouseOverToggle = (): void => {
     const painelLateral: HTMLBthMenuPainelLateralElement = this.el.shadowRoot.querySelector('bth-menu-painel-lateral');
     painelLateral.cancelarAberturaComAnimacao();
-  }
+  };
 
   private onMouseLeaveToggle = (): void => {
     const painelLateral: HTMLBthMenuPainelLateralElement = this.el.shadowRoot.querySelector('bth-menu-painel-lateral');
     painelLateral.setShowComAnimacao(false);
-  }
+  };
 
   render() {
     if (!this.possuiConteudoPainelLateralDeclarado) {

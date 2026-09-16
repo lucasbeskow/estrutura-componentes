@@ -93,7 +93,7 @@ export class NotificacaoItem implements ComponentInterface {
     }
 
     return this.onClick(event);
-  }
+  };
 
   private onClick = (event: UIEvent) => {
     event.preventDefault();
@@ -114,7 +114,7 @@ export class NotificacaoItem implements ComponentInterface {
     }
 
     this.notificacaoLida.emit(payload);
-  }
+  };
 
   private isLida(): boolean {
     return this.tipo === TipoNotificacao.Lida;

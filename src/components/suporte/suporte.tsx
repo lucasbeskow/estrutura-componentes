@@ -171,12 +171,12 @@ export class Suporte implements ComponentInterface {
     if (!isNill(blipChatElement)) {
       blipChatElement.click();
     }
-  }
+  };
 
   private initBlipChat = () => {
     this.setupBlipChat(this.blipChatUserInfo);
     window.addEventListener('message', this.handleBlipChatEvents);
-  }
+  };
 
   private checkBlipChat() {
     this.blipChatStatus = this.isBlipChatOnline() ? 'online' : 'offline';
@@ -187,7 +187,7 @@ export class Suporte implements ComponentInterface {
     if (this.blipChatCustomStyle) {
       this.setupBlipChatStyles();
     }
-  }
+  };
 
   private setupBlipChatScript = (blipChatUserInfo: BlipChatUserInfo) => {
     const script = document.createElement('script');
@@ -204,7 +204,7 @@ export class Suporte implements ComponentInterface {
       }
     };
     script.onload = () => window.postMessage(JSON.stringify({ event: 'BLIP_WEBCHAT', userInfo }), '*');
-  }
+  };
 
   private setupBlipChatStyles = () => {
     const style = document.createElement('style');
@@ -236,7 +236,7 @@ export class Suporte implements ComponentInterface {
     style.setAttribute('type', 'text/css');
     style.appendChild(textCss);
     document.head.appendChild(style);
-  }
+  };
 
   private handleBlipChatEvents = (event) => {
     if (!event.data || typeof event.data !== 'string' || !event.data.startsWith('{')) {
@@ -253,7 +253,7 @@ export class Suporte implements ComponentInterface {
     } catch (err) {
       console.error(err);
     }
-  }
+  };
 
   private isBlipChatOnline = () => {
     if (this.blipChat) {
@@ -265,7 +265,7 @@ export class Suporte implements ComponentInterface {
       }
     }
     return false;
-  }
+  };
 
   private isBetween8h30mAnd12h = (hours, minutes) => (((hours == 8 && minutes >= 30) || (hours >= 9)) && hours <= 11);
   private isBetween13h30mAnd18h = (hours, minutes) => (((hours == 13 && minutes >= 30) || (hours >= 14)) && hours <= 17);
@@ -286,7 +286,7 @@ export class Suporte implements ComponentInterface {
       }
     });
 
-  }
+  };
 
   private getLicencasApi(): string {
     if (!isNill(this.licencasApi)) {

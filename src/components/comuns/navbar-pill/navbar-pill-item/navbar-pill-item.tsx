@@ -48,7 +48,7 @@ export class NavbarPillItem implements ComponentInterface {
     this.navbarPillItemClicked.emit({
       identificador: this.identificador
     });
-  }
+  };
 
   render() {
     return (

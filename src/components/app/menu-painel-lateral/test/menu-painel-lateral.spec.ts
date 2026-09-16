@@ -13,7 +13,9 @@ describe('bth-menu-painel-lateral', () => {
   });
 
   beforeEach(() => {
-    jest.useFakeTimers();
+    // Os fake timers "modern" do Jest 27 interceptam queueMicrotask e process.nextTick,
+    // usados pela fila de tarefas interna do Stencil, e travam o newSpecPage.
+    jest.useFakeTimers('legacy');
   });
 
   afterEach(() => {
@@ -178,7 +180,7 @@ describe('bth-menu-painel-lateral', () => {
 
     const menuPainelLateral: HTMLBthMenuPainelLateralElement = page.doc.querySelector('bth-menu-painel-lateral');
 
-    let onPainelLateralShow = jest.fn((data) => {
+    const onPainelLateralShow = jest.fn((data) => {
       // Assert
       expect(data.detail.show).toBeFalsy();
       expect(data.detail.fecharSobrepostos).toBeTruthy();
@@ -198,7 +200,7 @@ describe('bth-menu-painel-lateral', () => {
 
     // Act
     const menuPainelLateral: HTMLBthMenuPainelLateralElement = page.doc.querySelector('bth-menu-painel-lateral');
-    let onPainelLateralShow = jest.fn();
+    const onPainelLateralShow = jest.fn();
     menuPainelLateral.addEventListener('painelLateralShow', onPainelLateralShow);
 
     // 1. Fechado > Aberto
@@ -230,7 +232,7 @@ describe('bth-menu-painel-lateral', () => {
     // Arrange
     await page.setContent('<bth-menu-painel-lateral show></bth-menu-painel-lateral>');
 
-    let onPainelLateralShow = jest.fn();
+    const onPainelLateralShow = jest.fn();
     const menuPainelLateral: HTMLBthMenuPainelLateralElement = page.doc.querySelector('bth-menu-painel-lateral');
     menuPainelLateral.addEventListener('painelLateralShow', onPainelLateralShow);
 
@@ -250,7 +252,7 @@ describe('bth-menu-painel-lateral', () => {
     // Arrange
     await page.setContent('<bth-menu-painel-lateral show></bth-menu-painel-lateral>');
 
-    let onPainelLateralShow = jest.fn();
+    const onPainelLateralShow = jest.fn();
     const menuPainelLateral: HTMLBthMenuPainelLateralElement = page.doc.querySelector('bth-menu-painel-lateral');
     menuPainelLateral.addEventListener('painelLateralShow', onPainelLateralShow);
 
