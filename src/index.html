@@ -38,6 +38,53 @@
         align-items: center;
       }
 
+      /* Modal xl: mesma largura do .modal-xl do Bootstrap, sem depender dele */
+      .modal-xl {
+        width: 1140px;
+        max-width: calc(100vw - 2rem);
+        height: 80vh;
+        max-height: calc(100vh - 2rem);
+        padding: 0;
+        border: 0;
+        border-radius: 4px;
+        box-shadow: 0 4px 24px rgba(0, 0, 0, .2);
+        font-family: sans-serif;
+      }
+
+      .modal-xl::backdrop {
+        background-color: rgba(0, 0, 0, .4);
+      }
+
+      .modal-xl__cabecalho {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 12px 16px;
+        border-bottom: 1px solid var(--bth-app-gray-light-10);
+      }
+
+      .modal-xl__cabecalho h2 {
+        font-size: 16px;
+      }
+
+      .modal-xl__fechar {
+        appearance: none;
+        display: inline-flex;
+        align-items: center;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        background: none;
+        color: var(--bth-app-gray-dark-20);
+        cursor: pointer;
+      }
+
+      .modal-xl__corpo {
+        height: calc(100% - 50px);
+        padding: 16px;
+        overflow-y: auto;
+      }
+
       /*bth-app {*/
       /*  --bth-app-carta-servicos-display: none;*/
       /*  --bth-app-carta-servicos-visibility: hidden;*/
@@ -141,6 +188,10 @@
         <h2>Bagde em ícones de Menu</h2>
         <p>Nas opções dos menus, há a possibilidade de adicionar um badge no  <a href="#" class="link" id="linkBadge">ícone</a> para indicar uma novidade ou pendência</p>
 
+        <h2>Assistente</h2>
+        <p>O <a href="#" class="link" id="linkAssistente">assistente de extensões</a> lista relatórios e scripts com busca, filtros, tags e o histórico de
+          execuções. Abre em uma modal xl.</p>
+
         <h2>Componentes</h2>
         <p>O <a href="/componentes.html">guia de componentes</a> documenta cada um com código de exemplo e demonstração, usados fora do <code>bth-app</code>.</p>
       </section>
@@ -148,6 +199,24 @@
       <bth-pesquisa slot="container_aplicacao"></bth-pesquisa>
 
     </bth-app>
+
+    <!-- Assistente em modal xl -->
+    <dialog id="modalAssistente" class="modal-xl" aria-labelledby="tituloAssistente">
+      <header class="modal-xl__cabecalho">
+        <h2 id="tituloAssistente">Assistente</h2>
+        <button type="button" id="fecharAssistente" class="modal-xl__fechar" aria-label="Fechar">
+          <bth-icone icone="close" tamanho="20px"></bth-icone>
+        </button>
+      </header>
+
+      <div class="modal-xl__corpo">
+        <!--
+          O endereço da api pode ser fixado com assistente-api; por padrão obtém do env.js
+          > assistente-api="https://plataforma-extensoes.test.plataforma.betha.cloud"
+        -->
+        <bth-assistente id="assistente"></bth-assistente>
+      </div>
+    </dialog>
 
     <!-- Exemplo importando env.js -->
 <!--    <script src="https://suite.cloud.betha.com.br/env.js" rel="noreferrer"></script>-->
@@ -393,6 +462,35 @@
       }
       var pesquisa = document.querySelector('bth-pesquisa');
       pesquisa.authorization = authorization;
+    </script>
+
+    <!-- ASSISTENTE -->
+    <script>
+      var assistente = document.querySelector('#assistente');
+      assistente.authorization = {
+        getAuthorization: getAuthorization,
+        handleUnauthorizedAccess: handleUnauthorizedAccess,
+      };
+
+      var modalAssistente = document.querySelector('#modalAssistente');
+
+      document
+        .querySelector('#linkAssistente')
+        .addEventListener('click', function (event) {
+          event.preventDefault();
+          modalAssistente.showModal();
+        });
+
+      document
+        .querySelector('#fecharAssistente')
+        .addEventListener('click', function () {
+          modalAssistente.close();
+        });
+
+      // Devolve o foco ao acionador, inclusive quando a modal fecha com Escape
+      modalAssistente.addEventListener('close', function () {
+        document.querySelector('#linkAssistente').focus();
+      });
     </script>
 
     <!-- SUPORTE -->
