@@ -118,6 +118,7 @@ export class MenuVerticalItem implements ComponentInterface {
           aria-haspopup={`${possuiSubmenus}`}
           aria-expanded={`${possuiSubmenus && !(this.recolhido || this.menuLateralRecolhido)}`}
           aria-disabled={`${!this.possuiPermissao}`}
+          aria-current={this.ativo && !possuiSubmenus ? 'page' : null}
           aria-label={possuiSubmenus ? `Expandir ${this.descricao}` : `Navegar para ${this.descricao}`}
           tabindex={this.possuiPermissao ? 0 : -1}>
           <div class="icon-container">

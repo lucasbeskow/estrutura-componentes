@@ -52,12 +52,12 @@ export class NavbarPillItem implements ComponentInterface {
 
   render() {
     return (
-      <div role="menuitem" class={`navbar-pill-item ${this.ativo ? 'navbar-pill-item--active' : ''}`}>
-        <a href="" title={this.descricao} onClick={this.onClick}>
+      <div class={`navbar-pill-item ${this.ativo ? 'navbar-pill-item--active' : ''}`}>
+        <button type="button" title={this.descricao} onClick={this.onClick} aria-pressed={`${this.ativo}`}>
           <bth-icone icone={this.icone}></bth-icone>
           <span class={`descricao ${this.ativo ? 'descricao--show' : ''}`}>{this.descricao}</span>
           {this.showTotalizador && this.totalizador !== 0 && (<span class="totalizador">({this.totalizador})</span>)}
-        </a>
+        </button>
       </div>
     );
   }

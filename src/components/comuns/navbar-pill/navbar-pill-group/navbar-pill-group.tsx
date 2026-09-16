@@ -14,11 +14,9 @@ export class NavbarPillGroup implements ComponentInterface {
 
   render() {
     return (
-      <nav aria-label={`Navegação por filtros ${this.descricao?.toLowerCase()}`}>
-        <div class="navbar-pill-group" role="menubar">
-          <slot />
-        </div>
-      </nav>
+      <div class="navbar-pill-group" role="group" aria-label={`Filtros ${this.descricao?.toLowerCase()}`}>
+        <slot />
+      </div>
     );
   }
 

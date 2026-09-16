@@ -69,6 +69,7 @@ export class MenuHorizontalItem {
           title={`${!this.possuiPermissao ? MSG_SEM_PERMISSAO_RECURSO : this.descricao}`}
           onClick={this.onClick}
           aria-disabled={`${!this.possuiPermissao}`}
+          aria-current={this.ativo ? 'page' : null}
           aria-label={`Navegar para ${this.descricao}`}
           tabindex={this.possuiPermissao ? 0 : -1}>
 

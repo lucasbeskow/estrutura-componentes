@@ -25,6 +25,7 @@ export class MenuFerramenta implements ComponentInterface {
   @State() possuiConteudoPainelLateralDeclarado: boolean = false;
   @State() possuiMenuItemDesktopDeclarado: boolean = false;
   @State() possuiMenuItemMobileDeclarado: boolean = false;
+  @State() isPainelLateralAberto: boolean = false;
 
   /**
    * Descrição
@@ -83,6 +84,8 @@ export class MenuFerramenta implements ComponentInterface {
   };
 
   private onPainelLateralShow = (event: CustomEvent<PainelLateralShowEvent>) => {
+    this.isPainelLateralAberto = event.detail.show;
+
     if (this.isDispositivoMovel) {
       return;
     }
@@ -114,7 +117,7 @@ export class MenuFerramenta implements ComponentInterface {
     if (!this.possuiConteudoPainelLateralDeclarado) {
       return (
         <Host>
-          <div class="ferramenta-menu__desktop-toggler" title={this.descricao} aria-haspopup="false">
+          <div class="ferramenta-menu__desktop-toggler" title={this.descricao}>
             <slot name={SLOT.MENU_ITEM_DESKTOP}></slot>
             <slot name={SLOT.MENU_DESCRICAO_DESKTOP}></slot>
           </div>
@@ -125,25 +128,32 @@ export class MenuFerramenta implements ComponentInterface {
     return (
       <Host>
         {this.isDispositivoMovel && this.possuiMenuItemMobileDeclarado && (
-          <div class="ferramenta-menu__mobile-toggler" title={this.descricao} aria-haspopup="true">
-            <a href="" onClick={this.onToggleEstadoAberto} aria-label={`Acessar o painel da ferramenta de ${this.descricao}`} >
+          <div class="ferramenta-menu__mobile-toggler" title={this.descricao}>
+            <button
+              type="button"
+              onClick={this.onToggleEstadoAberto}
+              aria-haspopup="dialog"
+              aria-expanded={`${this.isPainelLateralAberto}`}
+              aria-label={`Acessar o painel da ferramenta de ${this.descricao}`}>
               <slot name={SLOT.MENU_ITEM_MOBILE}></slot>
               <slot name={SLOT.MENU_DESCRICAO_MOBILE}></slot>
-            </a>
+            </button>
           </div>
         )}
 
         {!this.isDispositivoMovel && this.possuiMenuItemDesktopDeclarado && (
-          <div class="ferramenta-menu__desktop-toggler" title={this.descricao} aria-haspopup="true">
-            <a
-              href=""
+          <div class="ferramenta-menu__desktop-toggler" title={this.descricao}>
+            <button
+              type="button"
               onClick={this.onToggleEstadoAberto}
               onMouseLeave={this.onMouseLeaveToggle}
               onMouseOver={this.onMouseOverToggle}
+              aria-haspopup="dialog"
+              aria-expanded={`${this.isPainelLateralAberto}`}
               aria-label={`Acessar o painel da ferramenta de ${this.descricao}`}>
               <slot name={SLOT.MENU_DESCRICAO_DESKTOP}></slot>
               <slot name={SLOT.MENU_ITEM_DESKTOP}></slot>
-            </a>
+            </button>
           </div>
         )}
 

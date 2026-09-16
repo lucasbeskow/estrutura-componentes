@@ -68,6 +68,15 @@ export class MenuPainelLateral implements ComponentInterface {
     this.menuPossuiBanner = event.detail.possui;
   }
 
+  @Listen('keydown', { target: 'window' })
+  onWindowKeyDown(event: KeyboardEvent): void {
+    if (event.key !== 'Escape' || !this.show) {
+      return;
+    }
+
+    this.fecharPaineisAbertos();
+  }
+
   @Listen('painelLateralShow', { target: 'window' })
   onPainelLateralShow(event: CustomEvent<PainelLateralShowEvent>): void {
     // Fecha o painel atual caso receba evento de outro painel lateral abrindo
@@ -165,20 +174,24 @@ export class MenuPainelLateral implements ComponentInterface {
 
   render() {
     return (
-      <Host aria-hidden={`${!this.show}`} aria-expanded={`${this.show}`} aria-label={`${this.titulo ?? 'Painel lateral'}`}>
+      <Host>
         <div
+          role="dialog"
+          aria-modal="false"
+          aria-label={`${this.titulo ?? 'Painel lateral'}`}
           class={`painel-lateral ${this.menuPossuiBanner ? 'painel-lateral--banner' : ''} ${this.show ? 'painel-lateral--show' : ''}`}
           onMouseLeave={this.onMouseLeave}
           onMouseOver={this.onMouseOver}
-          aria-hidden={`${!this.show}`}
-          aria-expanded={`${this.show}`}>
+          // O painel fechado permanece na arvore por causa da animacao; "inert" o
+          // retira da ordem de foco e da arvore de acessibilidade enquanto isso
+          {...(this.show ? {} : { inert: true, 'aria-hidden': 'true' })}>
 
           <header>
-            <button class="btn-back" onClick={this.onToggleShow} title="Voltar">
+            <button type="button" class="btn-back" onClick={this.onToggleShow} title="Voltar" aria-label="Voltar">
               <bth-icone icone="arrow-left"></bth-icone>
             </button>
             {this.titulo && (<h3>{this.titulo}</h3>)}
-            <button class="btn-close" onClick={this.onCloseAll} title="Fechar todos">
+            <button type="button" class="btn-close" onClick={this.onCloseAll} title="Fechar todos" aria-label="Fechar todos os paineis">
               <bth-icone icone="close"></bth-icone>
             </button>
           </header>

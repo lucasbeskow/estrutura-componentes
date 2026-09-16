@@ -44,8 +44,9 @@ describe('navbar-pill-group', () => {
     // Assert
     expect(navBarGroup.descricao).toBe(descricao);
 
-    const nav = navBarGroup.shadowRoot.querySelector('nav');
-    expect(nav.getAttribute('aria-label')).toBe(`Navegação por filtros ${descricao.toLowerCase()}`);
+    const grupo = navBarGroup.shadowRoot.querySelector('.navbar-pill-group');
+    expect(grupo.getAttribute('role')).toBe('group');
+    expect(grupo.getAttribute('aria-label')).toBe(`Filtros ${descricao.toLowerCase()}`);
   });
 
 });

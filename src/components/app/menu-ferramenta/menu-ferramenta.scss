@@ -41,7 +41,13 @@
     height: 24px;
   }
 
-  a {
+  button {
+    display: flex;
+    align-items: center;
+    border: 0;
+    background-color: transparent;
+    font-family: inherit;
+    cursor: pointer;
     color: var(--bth-app-gray-light-40);
     text-decoration: none;
     padding: 7px 11px 8px 11px;
@@ -62,7 +68,13 @@
   align-items: center;
   border-bottom: 1px solid var(--bth-app-gray-light-10);
 
-  a {
+  button {
+    display: flex;
+    align-items: center;
+    border: 0;
+    background-color: transparent;
+    font-family: inherit;
+    cursor: pointer;
     width: 100%;
     padding: 14px 12px;
     text-decoration: none;

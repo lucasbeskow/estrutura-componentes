@@ -626,11 +626,10 @@ export class App implements ComponentInterface {
                 class="menu-horizontal__item menu-horizontal__item--has-list"
                 aria-label="Navegação do header">
 
-                <ul role="menubar" class="menu-horizontal__list" aria-label="Navegação do header">
+                <ul class="menu-horizontal__list">
                   {this.opcoesHeaderInternas.map((opcao, index) => (
-                    <li role="none" key={`header_${index}`}>
+                    <li key={`header_${index}`}>
                       <bth-menu-horizontal-item
-                        role="menuitem"
                         id={`menu_header_item_${index}`}
                         identificador={opcao.id}
                         descricao={opcao.descricao}
@@ -651,13 +650,11 @@ export class App implements ComponentInterface {
               aria-hidden={`${!this.possuiNavegacaoHorizontal()}`}>
 
               {this.possuiNavegacaoHorizontal() && (
-                <ul role="menubar" class="menu-horizontal__list" aria-label="Navegação do menu horizontal">
+                <ul class="menu-horizontal__list">
                   {this.possuiNavegacaoHorizontal() && this.opcoesMenu.map((opcao, index) => (
-                    <li role="none">
+                    <li key={`horizontal_${index}`}>
                       <bth-menu-horizontal-item
-                        role="menuitem"
                         id={`menu_horizontal_item_${index}`}
-                        key={index}
                         identificador={opcao.id}
                         descricao={opcao.descricao}
                         contador={opcao.contador}
@@ -726,13 +723,11 @@ export class App implements ComponentInterface {
         onMouseLeave={this.onMouseLeaveMenuVertical}>
 
         <nav class="menu-vertical__body" aria-label="Opções de navegação do menu vertical">
-          <ul role="menubar" class="menu-vertical__list">
+          <ul class="menu-vertical__list">
             {this.opcoesMenu.map((opcao, index) => (
-              <li role="none">
+              <li key={`vertical_${index}`}>
                 <bth-menu-vertical-item
-                  role="menuitem"
                   id={`menu_vertical_item_${index}`}
-                  key={index}
                   identificador={opcao.id}
                   descricao={opcao.descricao}
                   icone={opcao.icone}

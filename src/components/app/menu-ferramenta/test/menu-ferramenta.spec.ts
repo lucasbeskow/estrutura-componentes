@@ -197,8 +197,8 @@ describe('bth-menu-ferramenta', () => {
 
     // Act
     const menuFerramenta: HTMLBthMenuFerramentaElement = page.doc.querySelector('bth-menu-ferramenta');
-    const menuItemDesktopLink = menuFerramenta.shadowRoot.querySelector('a');
-    menuItemDesktopLink.click();
+    const menuItemDesktopBotao = menuFerramenta.shadowRoot.querySelector('button');
+    menuItemDesktopBotao.click();
     await page.waitForChanges();
 
     // Assert
@@ -220,8 +220,8 @@ describe('bth-menu-ferramenta', () => {
 
     // Act
     const menuFerramenta: HTMLBthMenuFerramentaElement = page.doc.querySelector('bth-menu-ferramenta');
-    const menuItemDesktopLink = menuFerramenta.shadowRoot.querySelector('a');
-    menuItemDesktopLink.click();
+    const menuItemDesktopBotao = menuFerramenta.shadowRoot.querySelector('button');
+    menuItemDesktopBotao.click();
     await page.waitForChanges();
 
     // Assert
