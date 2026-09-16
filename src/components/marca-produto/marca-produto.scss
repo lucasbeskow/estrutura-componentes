@@ -53,6 +53,19 @@ a:hover {
     background-color: var(--bth-app-brand-navy);
   }
 
+  .marca-produto__toggler {
+    border: 0;
+    margin: 0;
+    color: inherit;
+    font-family: inherit;
+    cursor: pointer;
+
+    &:focus-visible {
+      outline: 2px solid var(--bth-app-gray-light-40);
+      outline-offset: 2px;
+    }
+  }
+
   .marca-produto span {
     padding-top: 1px;
   }

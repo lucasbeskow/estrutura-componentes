@@ -84,16 +84,19 @@
           z-index: 1;
         }
 
-        a {
+        button {
           display: flex;
           align-items: center;
           flex-direction: row;
           cursor: pointer;
+          border: 0;
           border-radius: 2px;
           background-color: var(--bth-app-gray-light-30);
           width: 100%;
           padding: 12px;
+          text-align: left;
           text-decoration: none;
+          font-family: inherit;
           color: var(--bth-app-gray-dark-30);
           outline: none;
 
@@ -114,8 +117,9 @@
             }
           }
 
-          &:focus {
-            box-shadow: inset 0 0 0 1px var(--bth-app-blue);
+          &:focus-visible {
+            outline: 2px solid var(--bth-app-blue-dark-10);
+            outline-offset: -2px;
           }
 
           &:hover {

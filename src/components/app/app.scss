@@ -178,6 +178,10 @@ slot[name="container_contexto"] {
       .menu-vertical__toggle {
         text-decoration: none;
         padding: 13px 15px 9px 15px;
+        border: 0;
+        background-color: transparent;
+        font-family: inherit;
+        cursor: pointer;
         &:before {
           content: "\f035C";
           font-size: 20px;
@@ -210,7 +214,8 @@ slot[name="container_contexto"] {
         > li {
           position: relative;
           padding: 0px 6px;
-          > a {
+          > a,
+          > button {
             text-decoration: none;
             > bth-icone {
               color: var(--bth-app-gray-light-40);
@@ -618,6 +623,10 @@ slot[name="container_contexto"] {
             &:last-child {
               .menu-ferramentas__mobile-toggler {
                 padding: 0px 13px;
+                border: 0;
+                background-color: transparent;
+                font-family: inherit;
+                cursor: pointer;
 
                 &:before {
                   content: "\F01D9";

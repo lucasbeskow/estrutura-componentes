@@ -599,18 +599,17 @@ export class App implements ComponentInterface {
 
             {this.possuiNavegacaoVertical() && (
               <div class="menu-horizontal__item">
-                <a
-                  role="button"
-                  href=""
+                <button
+                  type="button"
                   class={`menu-vertical__toggle ${!this.isMenuVerticalRecolhido ? 'menu-vertical__toggle--opened' : ''}`}
                   title="Alternar exibição do menu lateral"
                   onClick={this.onClickBotaoMenu}
                   onMouseLeave={this.onMouseLeaveBotaoMenu}
                   onMouseOver={this.onMouseOverBotaoMenu}
                   aria-expanded={`${!this.isMenuVerticalRecolhido}`}
-                  aria-pressed={`${!this.isMenuVerticalRecolhido}`}
+                  aria-controls="menu_vertical"
                   aria-label="Alternar exibição do menu lateral">
-                </a>
+                </button>
               </div>
             )}
 
@@ -676,21 +675,20 @@ export class App implements ComponentInterface {
                 {!this.isDispositivoMovel && (<slot name={SLOT.FERRAMENTAS} />)}
 
                 {this.isDispositivoMovel && this.possuiSlotFerramentas() && (
-                  <li role="none">
-                    <a
-                      role="button"
-                      href=""
+                  <li>
+                    <button
+                      type="button"
                       class={`menu-ferramentas__mobile-toggler ${this.isPainelFerramentasDispositivoMovelAberto ? 'menu-ferramentas__mobile-toggler--opened' : ''}`}
                       onClick={this.onTogglePainelFerramentas}
                       title="Alternar exibição painel de ferramentas"
                       aria-expanded={`${this.isPainelFerramentasDispositivoMovelAberto}`}
-                      aria-pressed={`${this.isPainelFerramentasDispositivoMovelAberto}`}
+                      aria-controls="menu_ferramentas_mobile"
                       aria-label="Alternar exibição painel de ferramentas">
 
                       {this.possuiSinalizacaoPendente && !this.isPainelFerramentasDispositivoMovelAberto && (
                         <span class="badge badge-danger badge-danger--notificacao-small"></span>
                       )}
-                    </a>
+                    </button>
                   </li>
                 )}
               </nav>
@@ -699,6 +697,7 @@ export class App implements ComponentInterface {
 
           {this.isDispositivoMovel && (
             <nav
+              id="menu_ferramentas_mobile"
               class={`menu-ferramentas__mobile
                   ${this.isPainelFerramentasDispositivoMovelAberto ? 'menu-ferramentas__mobile--show' : ''}
                   ${this.possuiBanner() ? 'menu-ferramentas__mobile--banner' : ''}`
@@ -718,6 +717,7 @@ export class App implements ComponentInterface {
 
     return (
       <aside
+        id="menu_vertical"
         class={`menu-vertical ${this.isMenuVerticalFlutuando ? ' menu-vertical--floating' : ''}
           ${this.isMenuVerticalRecolhido ? ' menu-vertical--collapsed' : ''}
           ${!this.isMenuVerticalFlutuando && !this.isMenuVerticalAberto && !this.isMenuVerticalRecolhido ? ' menu-vertical--collapsed menu-vertical--collapsed-hover' : ''}

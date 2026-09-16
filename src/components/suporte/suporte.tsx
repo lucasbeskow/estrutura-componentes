@@ -113,36 +113,33 @@ export class Suporte implements ComponentInterface {
         <div slot="conteudo_painel_lateral" class="suporte">
           <ul>
             { this.blipChat && (<li>
-              <a class="bth__card bth__card--clickable" onClick={this.onSuporteViaChatClick}
+              <button type="button" class="bth__card bth__card--clickable" onClick={this.onSuporteViaChatClick}
                 title="Suporte via chat"
-                aria-label="Acessar o chat do suporte"
-                aria-disabled="false">
+                aria-label="Acessar o chat do suporte">
                 <div class="chat-status">
-                  <bth-icone icone="message-outline" title="Chat"></bth-icone>
+                  <bth-icone icone="message-outline"></bth-icone>
                   { this.blipChatStatus == 'online' && this.blipChatCounter == 0
                   && (<span class="badge status status--success">Online</span>)}
                   { this.blipChatCounter > 0
                   && (<span class="badge status status--danger">Novas mensagens</span>) }
                 </div>
                 <span class="descricao twoline-ellipsis">Suporte via chat</span>
-              </a>
+              </button>
             </li>)}
             <li>
               <a class="bth__card bth__card--clickable" href={this.getCentralAjudaHome()} target="_blank" rel="noreferrer" title="Central de ajuda"
-                aria-label="Acessar a Central de ajuda"
-                aria-disabled="false">
-                <bth-icone icone="help-circle-outline" title="Chat"></bth-icone>
+                aria-label="Acessar a Central de ajuda">
+                <bth-icone icone="help-circle-outline"></bth-icone>
                 <span class="descricao twoline-ellipsis">Central de ajuda</span>
               </a>
             </li>
             { this.atendimento && (<li>
-              <a class="bth__card bth__card--clickable" onClick={this.onAtendimentoClick}
+              <button type="button" class="bth__card bth__card--clickable" onClick={this.onAtendimentoClick}
                 title="Abrir um chamado"
-                aria-label="Abrir um chamado"
-                aria-disabled="false">
-                <bth-icone icone="plus-thick" title="Plus"></bth-icone>
+                aria-label="Abrir um chamado">
+                <bth-icone icone="plus-thick"></bth-icone>
                 <span class="descricao twoline-ellipsis">Abrir um chamado</span>
-              </a>
+              </button>
             </li>)}
           </ul>
         </div>

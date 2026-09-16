@@ -1,4 +1,4 @@
-import { Component, Listen, State, h, Prop, Watch, ComponentInterface } from '@stencil/core';
+import { Component, Element, Listen, State, h, Prop, Watch, ComponentInterface } from '@stencil/core';
 
 import { Api, isValidAuthorizationConfig } from '../../global/api';
 import { TIMEOUT_INTERACOES } from '../../global/constants';
@@ -18,6 +18,8 @@ import { Produto } from './marca-produto.interfaces';
   shadow: true
 })
 export class MarcaProduto implements ComponentInterface {
+
+  @Element() el!: HTMLBthMarcaProdutoElement;
 
   private activeTimeoutHandler: number;
 
@@ -204,6 +206,20 @@ export class MarcaProduto implements ComponentInterface {
     this.cancelarTimeoutAtivo();
   };
 
+  private onKeyDown = (event: KeyboardEvent): void => {
+    if (event.key !== 'Escape' || !this.isDropdownProdutosAberto) {
+      return;
+    }
+
+    event.stopPropagation();
+
+    this.cancelarTimeoutAtivo();
+    this.isDropdownProdutosAberto = false;
+
+    const toggler: HTMLButtonElement = this.el.shadowRoot.querySelector('.marca-produto__toggler');
+    toggler?.focus();
+  };
+
   private onToggleAberto = (): void => {
     this.cancelarTimeoutAtivo();
 
@@ -241,12 +257,24 @@ export class MarcaProduto implements ComponentInterface {
       <section
         class={`marca-produto ${this.abbreviation} ${this.isDropdownProdutosAberto ? 'marca-produto--active' : ''}`}
         onClick={this.onToggleAberto}
+        onKeyDown={this.onKeyDown}
         onMouseLeave={this.onMouseLeaveMenuProduto}
-        onMouseOver={this.onMouseOverToggleProduto}
-        aria-expanded={`${this.isDropdownProdutosAberto}`}
-        aria-controls="marca_produto_detalhes">
+        onMouseOver={this.onMouseOverToggleProduto}>
 
-        <header id="produto_description" title={this.produto}>{this.produto}</header>
+        {this.exibirProdutos ? (
+          <button
+            type="button"
+            id="produto_description"
+            class="marca-produto__toggler"
+            title={this.produto}
+            aria-haspopup="true"
+            aria-expanded={`${this.isDropdownProdutosAberto}`}
+            aria-controls="marca_produto_detalhes">
+            {this.produto}
+          </button>
+        ) : (
+          <header id="produto_description" title={this.produto}>{this.produto}</header>
+        )}
 
         {this.exibirProdutos && (
           <div

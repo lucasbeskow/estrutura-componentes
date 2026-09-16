@@ -137,7 +137,7 @@ export class SelecaoContexto implements ComponentInterface {
     return { registros: true };
   };
 
-  private isElementLink = (element: Element) => element.tagName === 'A';
+  private isElementItem = (element: Element) => element.tagName === 'BUTTON';
 
   private isElementInput = (element: Element) => element.tagName === 'INPUT';
 
@@ -156,7 +156,7 @@ export class SelecaoContexto implements ComponentInterface {
       }
     }
 
-    if (this.isElementLink(activeElement)) {
+    if (this.isElementItem(activeElement)) {
       if (isNill(activeElement.parentNode)) {
         return;
       }
@@ -170,19 +170,19 @@ export class SelecaoContexto implements ComponentInterface {
   private handleArrowUp() {
     const activeElement = this.el.shadowRoot.activeElement;
 
-    if (activeElement.getAttribute('tabindex') === '1') {
+    if (!this.isElementItem(activeElement) || isNill(activeElement.parentNode)) {
+      return;
+    }
+
+    const previousListItem = activeElement.parentNode.previousSibling as HTMLElement;
+
+    // Do primeiro item o foco retorna para o campo de pesquisa
+    if (isNill(previousListItem)) {
       this.el.shadowRoot.querySelector('input').focus();
+      return;
     }
 
-    if (this.isElementLink(activeElement)) {
-      if (isNill(activeElement.parentNode)) {
-        return;
-      }
-
-      const previousListItem = activeElement.parentNode.previousSibling as HTMLElement;
-
-      this.setFocusListItem(previousListItem);
-    }
+    this.setFocusListItem(previousListItem);
   }
 
   private setFocusListItem(listItem: HTMLElement) {
@@ -190,7 +190,7 @@ export class SelecaoContexto implements ComponentInterface {
       return;
     }
 
-    const listItemFocusableElement = listItem.querySelector('a');
+    const listItemFocusableElement = listItem.querySelector('button');
 
     if (isNill(listItemFocusableElement)) {
       return;
@@ -212,7 +212,6 @@ export class SelecaoContexto implements ComponentInterface {
                 type="text"
                 class="form-control"
                 placeholder={this.placeholderPesquisa ?? 'Digite os termos para pesquisar'}
-                tabindex="1"
                 value={this.termoPesquisa}
                 onInput={this.onInputSearch}
                 disabled={this.isBuscandoItens}
@@ -233,9 +232,9 @@ export class SelecaoContexto implements ComponentInterface {
 
             {!this.isBuscandoItens && (
               <ul id="lista-contexto">
-                {this.itensFiltrados.map((item, index) => (
-                  <li key={item.id} onClick={event => this.onSelecionar(event, item)}>
-                    <a href="" tabindex={index + 1}>
+                {this.itensFiltrados.map(item => (
+                  <li key={item.id}>
+                    <button type="button" onClick={event => this.onSelecionar(event, item)}>
                       {this.possuiImagemAvatar(item) && (
                         <bth-avatar
                           src={item.imagemAvatar}
@@ -267,7 +266,7 @@ export class SelecaoContexto implements ComponentInterface {
                         <h4 title={item.descricao}>{item.descricao}</h4>
                         <p title={item.complemento}>{item.complemento}</p>
                       </section>
-                    </a>
+                    </button>
                   </li>
                 ))}
               </ul>

@@ -682,14 +682,14 @@ describe('app', () => {
     ];
     await page.waitForChanges();
 
-    const alternarMenuVerticalLink: HTMLAnchorElement = app.shadowRoot.querySelector('.menu-vertical__toggle');
-    expect(alternarMenuVerticalLink.classList.contains('menu-vertical__toggle--opened')).toBeTruthy();
-    alternarMenuVerticalLink.click();
+    const alternarMenuVerticalBotao: HTMLButtonElement = app.shadowRoot.querySelector('.menu-vertical__toggle');
+    expect(alternarMenuVerticalBotao.classList.contains('menu-vertical__toggle--opened')).toBeTruthy();
+    alternarMenuVerticalBotao.click();
 
     await page.waitForChanges();
 
     // Assert depois
-    expect(alternarMenuVerticalLink.classList.contains('menu-vertical__toggle--opened')).toBeFalsy();
+    expect(alternarMenuVerticalBotao.classList.contains('menu-vertical__toggle--opened')).toBeFalsy();
 
     const asideMenuVertical: HTMLElement = app.shadowRoot.querySelector('.menu-vertical');
     expect(asideMenuVertical.classList.contains('menu-vertical--collapsed'));
@@ -707,7 +707,7 @@ describe('app', () => {
     // Act
     const app: HTMLBthAppElement = page.doc.querySelector('bth-app');
 
-    const alternarPainelFerramentas: HTMLAnchorElement = app.shadowRoot.querySelector('.menu-ferramentas__mobile-toggler');
+    const alternarPainelFerramentas: HTMLButtonElement = app.shadowRoot.querySelector('.menu-ferramentas__mobile-toggler');
     expect(alternarPainelFerramentas.classList.contains('menu-ferramentas__mobile-toggler--opened')).toBeFalsy();
     alternarPainelFerramentas.click();
 
