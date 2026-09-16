@@ -178,17 +178,24 @@ slot[name="container_contexto"] {
 
       .menu-vertical__toggle {
         text-decoration: none;
-        padding: 13px 15px 9px 15px;
+        // Como <button> o elemento e um bloco: o padding vertical viraria
+        // altura e estouraria os 40px do menu. O alinhamento fica no flex.
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        padding: 0 15px;
         border: 0;
         background-color: transparent;
         font-family: inherit;
+        font-size: inherit;
         cursor: pointer;
         &:before {
           content: "\f035C";
           font-size: 20px;
           color: var(--bth-app-gray-light-40);
           font-family: var(--bth-app-font-family-icons);
-          line-height: 40px;
+          line-height: 1;
         }
 
         &:hover,
