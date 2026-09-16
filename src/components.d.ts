@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { Banner, ConteudoSinalizadoEvent, IdentificadorOpcaoMenu, MenuBannerAlteradoEvent, OpcaoMenu, OpcaoMenuSelecionadaEvent } from "./components/app/app.interfaces";
+import { Banner, IdentificadorOpcaoMenu, MenuBannerAlteradoEvent, OpcaoMenu, OpcaoMenuSelecionadaEvent } from "./components/app/app.interfaces";
 import { Tamanho } from "./components/comuns/avatar/avatar.interfaces";
 import { LogoutEvent } from "./components/conta-usuario/conta-usuario.interfaces";
 import { AuthorizationConfig } from "./global/interfaces";
@@ -13,11 +13,12 @@ import { MenuHorizontalSelecionadoEvent } from "./components/app/menu-horizontal
 import { PainelLateralShowEvent } from "./components/app/menu-painel-lateral/menu-painel-lateral.interfaces";
 import { MenuVerticalSelecionadoEvent } from "./components/app/menu-vertical-item/menu-vertical-item.interfaces";
 import { NotificacaoComLinkEvent, NotificacaoEvent, NotificacaoLink, TipoNotificacao } from "./components/notificacoes/notificacoes.interfaces";
+import { ConteudoSinalizadoEvent } from "./global/eventos.interfaces";
 import { NovidadeLeituraEvent } from "./components/novidades/novidades.interfaces";
 import { ItemSelecaoContexto } from "./components/comuns/selecao-contexto/selecao-contexto.interfaces";
 import { BlipChatUserInfo } from "./components/suporte/suporte.interfaces";
 import { OpcaoUtilitarioSelecionadaEvent, Utilitario } from "./components/utilitarios/utilitarios.interfaces";
-export { Banner, ConteudoSinalizadoEvent, IdentificadorOpcaoMenu, MenuBannerAlteradoEvent, OpcaoMenu, OpcaoMenuSelecionadaEvent } from "./components/app/app.interfaces";
+export { Banner, IdentificadorOpcaoMenu, MenuBannerAlteradoEvent, OpcaoMenu, OpcaoMenuSelecionadaEvent } from "./components/app/app.interfaces";
 export { Tamanho } from "./components/comuns/avatar/avatar.interfaces";
 export { LogoutEvent } from "./components/conta-usuario/conta-usuario.interfaces";
 export { AuthorizationConfig } from "./global/interfaces";
@@ -25,6 +26,7 @@ export { MenuHorizontalSelecionadoEvent } from "./components/app/menu-horizontal
 export { PainelLateralShowEvent } from "./components/app/menu-painel-lateral/menu-painel-lateral.interfaces";
 export { MenuVerticalSelecionadoEvent } from "./components/app/menu-vertical-item/menu-vertical-item.interfaces";
 export { NotificacaoComLinkEvent, NotificacaoEvent, NotificacaoLink, TipoNotificacao } from "./components/notificacoes/notificacoes.interfaces";
+export { ConteudoSinalizadoEvent } from "./global/eventos.interfaces";
 export { NovidadeLeituraEvent } from "./components/novidades/novidades.interfaces";
 export { ItemSelecaoContexto } from "./components/comuns/selecao-contexto/selecao-contexto.interfaces";
 export { BlipChatUserInfo } from "./components/suporte/suporte.interfaces";

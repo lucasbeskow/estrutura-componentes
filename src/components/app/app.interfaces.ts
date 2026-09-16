@@ -16,11 +16,6 @@ export interface MenuBannerAlteradoEvent {
   possui: boolean
 }
 
-export interface ConteudoSinalizadoEvent {
-  possui: boolean;
-  origem: string;
-}
-
 export type IdentificadorOpcaoMenu = string | number;
 
 export interface OpcaoMenu {

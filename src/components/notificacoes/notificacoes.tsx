@@ -1,10 +1,10 @@
 import { Component, Listen, State, Event, h, Watch, Element, EventEmitter, Prop, ComponentInterface } from '@stencil/core';
 
 import { isValidAuthorizationConfig, PaginationQueryParams } from '../../global/api';
+import { ConteudoSinalizadoEvent } from '../../global/eventos.interfaces';
 import { AuthorizationConfig } from '../../global/interfaces';
 import { isNill } from '../../utils/functions';
 import { PromiseTracker } from '../../utils/promise-tracker';
-import { ConteudoSinalizadoEvent } from '../app/app.interfaces';
 import { LIMITE_PAGINACAO, MessageType, ReadAction } from './notificacoes.constants';
 import { TipoNotificacao, OpcaoFiltro, Notificacao, NotificacaoLeituraEvent, NotificacaoComLinkEvent, NotificacaoEvent, NotificacaoWebsocketMessage } from './notificacoes.interfaces';
 import { NotificacoesService } from './notificacoes.service';

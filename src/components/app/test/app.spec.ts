@@ -2,9 +2,9 @@ import { newSpecPage, SpecPage } from '@stencil/core/testing';
 
 import { setupMatchingMediaQuery, setGlobalOrWindowProperty } from '../../../../test/utils/spec.helper';
 import { MSG_SEM_PERMISSAO_RECURSO } from '../../../global/constants';
+import { ConteudoSinalizadoEvent } from '../../../global/eventos.interfaces';
 import { App } from '../app';
 import { SLOT } from '../app.constants';
-import { ConteudoSinalizadoEvent } from '../app.interfaces';
 import { MenuHorizontalSelecionadoEvent } from '../menu-horizontal-item/menu-horizontal-item.interfaces';
 import { PainelLateralShowEvent } from '../menu-painel-lateral/menu-painel-lateral.interfaces';
 import { MenuVerticalItem } from '../menu-vertical-item/menu-vertical-item';

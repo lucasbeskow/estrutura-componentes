@@ -1,9 +1,9 @@
 import { Component, ComponentInterface, h, forceUpdate, State, Prop, Watch, EventEmitter, Event, Listen } from '@stencil/core';
 
 import { isValidAuthorizationConfig } from '../../global/api';
+import { ConteudoSinalizadoEvent } from '../../global/eventos.interfaces';
 import { AuthorizationConfig } from '../../global/interfaces';
 import { isNill } from '../../utils/functions';
-import { ConteudoSinalizadoEvent } from '../app/app.interfaces';
 import { POLLING_INTERVAL } from './novidades.constants';
 import { FiltroNovidade, OpcaoFiltro, Novidade, NovidadeLeituraEvent } from './novidades.interfaces';
 import { NovidadesService } from './novidades.service';

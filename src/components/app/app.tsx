@@ -1,9 +1,10 @@
 import { Host, Component, Element, State, Listen, Method, Prop, h, Event, EventEmitter, Watch, ComponentInterface, } from '@stencil/core';
 
 import { TIMEOUT_INTERACOES, MSG_SEM_PERMISSAO_RECURSO, } from '../../global/constants';
+import { ConteudoSinalizadoEvent } from '../../global/eventos.interfaces';
 import { isNill, isDispositivoMovel } from '../../utils/functions';
 import { SLOT, LOCAL_STORAGE_KEY } from './app.constants';
-import { OpcaoMenu, LocalStorageState, IdentificadorOpcaoMenu, Banner, MenuBannerAlteradoEvent, OpcaoMenuSelecionadaEvent, OpcaoMenuInterna, ConteudoSinalizadoEvent } from './app.interfaces';
+import { OpcaoMenu, LocalStorageState, IdentificadorOpcaoMenu, Banner, MenuBannerAlteradoEvent, OpcaoMenuSelecionadaEvent, OpcaoMenuInterna } from './app.interfaces';
 import { MenuHorizontalSelecionadoEvent } from './menu-horizontal-item/menu-horizontal-item.interfaces';
 import { PainelLateralShowEvent } from './menu-painel-lateral/menu-painel-lateral.interfaces';
 import { MenuVerticalSelecionadoEvent } from './menu-vertical-item/menu-vertical-item.interfaces';
