@@ -1,5 +1,6 @@
-@import "../../styles/normalize.scss";
-@import "../../styles/mixins";
+@use "sass:math";
+@use "../../styles/normalize.scss";
+@use "../../styles/mixins" as *;
 
 .app {
   display: grid;
@@ -531,7 +532,7 @@ slot[name="container_contexto"] {
         display: block;
         display: -webkit-box;
         max-width: 100%;
-        min-height: ($font-size * $line-height * $lines-to-show)/2;
+        min-height: math.div($font-size * $line-height * $lines-to-show, 2);
         margin: 0 auto;
         font-size: $font-size;
         line-height: $line-height;
