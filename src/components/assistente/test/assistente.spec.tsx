@@ -7,7 +7,7 @@ import { AssistenteService } from '../assistente.service';
 import { API_HOST, tagsMock, extensoesMock } from './helper/assistente.helper';
 
 function getAuthorization(page: SpecPage) {
-  let assistente: HTMLBthAssistenteElement = page.body.querySelector('bth-assistente');
+  const assistente: HTMLBthAssistenteElement = page.body.querySelector('bth-assistente');
   assistente.authorization = getMockAuthorization();
 }
 
@@ -102,7 +102,7 @@ describe('BthAssistente', () => {
     });
     await page.setContent(`<bth-assistente assistente-api="${API_HOST}"></bth-assistente>`);
     const component = page.rootInstance as BthAssistente;
-    let assistente: HTMLBthAssistenteElement = page.body.querySelector('bth-assistente');
+    const assistente: HTMLBthAssistenteElement = page.body.querySelector('bth-assistente');
     getAuthorization(page);
 
     // Act
@@ -122,7 +122,7 @@ describe('BthAssistente', () => {
     });
     await page.setContent(`<bth-assistente assistente-api="${API_HOST}"></bth-assistente>`);
     const component = page.rootInstance as BthAssistente;
-    let assistente: HTMLBthAssistenteElement = page.body.querySelector('bth-assistente');
+    const assistente: HTMLBthAssistenteElement = page.body.querySelector('bth-assistente');
     getAuthorization(page);
 
     // Act
@@ -144,7 +144,7 @@ describe('BthAssistente', () => {
 
     // Act
     await page.waitForChanges();
-    let assistente: HTMLBthAssistenteElement = page.body.querySelector('bth-assistente');
+    const assistente: HTMLBthAssistenteElement = page.body.querySelector('bth-assistente');
     assistente.dispatchEvent(new CustomEvent('tagClicked', { detail: { identificador: 'Tag 1' } }));
 
     // Assert
@@ -164,7 +164,7 @@ describe('BthAssistente', () => {
 
     // Act
     await page.waitForChanges();
-    let assistente: HTMLBthAssistenteElement = page.body.querySelector('bth-assistente');
+    const assistente: HTMLBthAssistenteElement = page.body.querySelector('bth-assistente');
     assistente.dispatchEvent(new CustomEvent('tagClicked', { detail: { identificador: 'Tag 2' } }));
 
     // Assert
@@ -230,7 +230,7 @@ describe('BthAssistente', () => {
   it('define lista conforme recebido por evento "navbarPillItemClicked"', async () => {
     // Arrange
     await page.setContent(`<bth-assistente assistente-api="${API_HOST}"></bth-assistente>`);
-    let assistente: HTMLBthAssistenteElement = page.body.querySelector('bth-assistente');
+    const assistente: HTMLBthAssistenteElement = page.body.querySelector('bth-assistente');
     assistente.authorization = getMockAuthorization();
     const component = page.rootInstance as BthAssistente;
 
@@ -248,7 +248,7 @@ describe('BthAssistente', () => {
   it('define pasta conforme recebido por evento "navbarPillItemClicked"', async () => {
     // Arrange
     await page.setContent(`<bth-assistente assistente-api="${API_HOST}"></bth-assistente>`);
-    let assistente: HTMLBthAssistenteElement = page.body.querySelector('bth-assistente');
+    const assistente: HTMLBthAssistenteElement = page.body.querySelector('bth-assistente');
     assistente.authorization = getMockAuthorization();
     const component = page.rootInstance as BthAssistente;
 
@@ -271,7 +271,7 @@ describe('BthAssistente', () => {
     await page.waitForChanges();
 
     // Act
-    let assistente: HTMLBthAssistenteElement = page.body.querySelector('bth-assistente');
+    const assistente: HTMLBthAssistenteElement = page.body.querySelector('bth-assistente');
     assistente.dispatchEvent(new CustomEvent('favClicked', { detail: { identificador: '1' } }));
     await page.waitForChanges();
 
@@ -291,7 +291,7 @@ describe('BthAssistente', () => {
     await page.waitForChanges();
 
     // Act
-    let assistente: HTMLBthAssistenteElement = page.body.querySelector('bth-assistente');
+    const assistente: HTMLBthAssistenteElement = page.body.querySelector('bth-assistente');
     assistente.dispatchEvent(new CustomEvent('favClicked', { detail: { identificador: '2' } }));
     await page.waitForChanges();
 
@@ -315,7 +315,7 @@ describe('BthAssistente', () => {
     await page.waitForChanges();
 
     // Act
-    let assistente: HTMLBthAssistenteElement = page.body.querySelector('bth-assistente');
+    const assistente: HTMLBthAssistenteElement = page.body.querySelector('bth-assistente');
     assistente.dispatchEvent(new CustomEvent('favClicked', { detail: { identificador: '2' } }));
     await page.waitForChanges();
 
@@ -332,7 +332,7 @@ describe('BthAssistente', () => {
     await page.waitForChanges();
 
     // Act
-    let assistente: HTMLBthAssistenteElement = page.body.querySelector('bth-assistente');
+    const assistente: HTMLBthAssistenteElement = page.body.querySelector('bth-assistente');
     assistente.dispatchEvent(new CustomEvent('buscaSubmit', { detail: { termo: 'Extensao 1' } }));
     await page.waitForChanges();
 
@@ -351,7 +351,7 @@ describe('BthAssistente', () => {
 
     // Act
     await page.waitForChanges();
-    let assistente: HTMLBthAssistenteElement = page.body.querySelector('bth-assistente');
+    const assistente: HTMLBthAssistenteElement = page.body.querySelector('bth-assistente');
     assistente.dispatchEvent(new CustomEvent('tagClicked', { detail: { identificador: 'Ver todas as tags' } }));
     await page.waitForChanges();
     // Assert

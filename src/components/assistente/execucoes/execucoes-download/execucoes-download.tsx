@@ -105,7 +105,7 @@ export class BthExecucoesDownload {
     this.errorClicked.emit({
       identificador: this.execucaoId
     });
-  }
+  };
 
 
   render() {

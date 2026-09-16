@@ -39,13 +39,13 @@ describe('busca', () => {
     const busca: HTMLBthBuscaElement = page.doc.querySelector('bth-busca');
     const termo = 'teste';
 
-    let onbuscaSubmit = jest.fn();
+    const onbuscaSubmit = jest.fn();
     busca.addEventListener('buscaSubmit', onbuscaSubmit);
 
     const buscaInput: HTMLInputElement = busca.shadowRoot.querySelector('input');
     buscaInput.value = termo;
 
-    const cancel: HTMLAnchorElement = busca.shadowRoot.querySelector('a');
+    const cancel: HTMLButtonElement = busca.shadowRoot.querySelector('button');
     cancel.click();
   
     await page.waitForChanges();

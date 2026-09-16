@@ -1,12 +1,12 @@
 import { newSpecPage, SpecPage } from '@stencil/core/testing';
 
 import { getMockAuthorization } from '../../../../global/test/helper/api.helper';
-import { API_HOST, execucoesMock, conclusaoMock } from './helper/execucoes.helper';
 import { BthExecucoes } from '../execucoes';
 import { ExecucoesService } from '../execucoes.service';
+import { API_HOST, execucoesMock, conclusaoMock } from './helper/execucoes.helper';
 
 function getAuthorization(page: SpecPage) {
-  let execucoesElement: HTMLBthExecucoesElement = page.body.querySelector('bth-execucoes');
+  const execucoesElement: HTMLBthExecucoesElement = page.body.querySelector('bth-execucoes');
   execucoesElement.authorization = getMockAuthorization();
 }
 
@@ -84,7 +84,7 @@ describe('bth-execucoes', () => {
 
     // Act
     await page.waitForChanges();
-    let element: HTMLBthExecucoesElement = page.body.querySelector('bth-execucoes');
+    const element: HTMLBthExecucoesElement = page.body.querySelector('bth-execucoes');
     element.dispatchEvent(new CustomEvent('errorClicked', { detail: { identificador: '1' } }));
     await page.waitForChanges();
 

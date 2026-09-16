@@ -34,6 +34,16 @@
   }
 
   .icone{
+    appearance: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: none;
+    font: inherit;
+    cursor: pointer;
     position: absolute;
     top: 0;
     right: 0;

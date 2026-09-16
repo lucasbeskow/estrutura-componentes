@@ -23,7 +23,7 @@ export class BthBusca implements ComponentInterface {
     this.buscaSubmit.emit({
       termo: this.termo
     });
-  }
+  };
 
   @Listen('keydown')
   handleKeyDown(event: KeyboardEvent) {
@@ -52,14 +52,13 @@ export class BthBusca implements ComponentInterface {
     
     this.buscar();
 
-  }
+  };
 
-  private cancelSearch = (event: UIEvent) =>{
-    event.preventDefault();
+  private cancelSearch = () => {
     clearTimeout(this.timeoutPesquisa);
     this.termo = '';
     this.buscar();
-  }
+  };
 
   render() {
     return (
@@ -68,14 +67,17 @@ export class BthBusca implements ComponentInterface {
           type="text"
           class="form-control"
           placeholder="Digite os termos para pesquisar"
-          tabindex="1"
           value={this.termo}
           onInput={this.onInputSearch}
           aria-label="Digite os termos para pesquisar" />
           
-        <a class="icone" href="" onClick={this.cancelSearch}>
+        <button
+          type="button"
+          class="icone"
+          aria-label={this.termo ? 'Limpar a busca' : 'Pesquisar'}
+          onClick={this.cancelSearch}>
           <bth-icone tamanho='22px' icone={this.termo ? 'close' : 'magnify'}></bth-icone>
-        </a>
+        </button>
 
       </div>
     );

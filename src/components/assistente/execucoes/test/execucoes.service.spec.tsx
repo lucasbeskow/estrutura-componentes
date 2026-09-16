@@ -1,5 +1,4 @@
 import { setupTestingEnvs, setupFetchMock, setFetchMockData, setFetchMockStatus } from '../../../../../test/utils/spec.helper';
-
 import { getMockAuthorization } from '../../../../global/test/helper/api.helper';
 import { ExecucoesService } from '../execucoes.service';
 

@@ -58,12 +58,12 @@ export class BthAssistente implements ComponentInterface {
     { id: TipoExtensao.relatorio, icone: this.icones[TipoExtensao.relatorio], descricao: 'Relatórios', ativo: true },
     { id: TipoExtensao.script, icone: this.icones[TipoExtensao.script], descricao: 'Scripts', ativo: false },
     { id: TipoExtensao.all, icone: this.icones[TipoExtensao.all], descricao: 'Favoritos', ativo: false },
-  ]
+  ];
 
   @State() visualizacao: Array<OpcaoFiltro> = [
     { id: TipoVisualizacao.lista, icone: this.icones[TipoVisualizacao.lista], descricao: 'Lista', ativo: true },
     { id: TipoVisualizacao.pasta, icone: this.icones[TipoVisualizacao.pasta], descricao: 'Pasta', ativo: false },
-  ]
+  ];
 
   /**
   * Configuração de autorização. É necessária para o componente poder realizar autentizar com os serviços.
@@ -354,7 +354,7 @@ export class BthAssistente implements ComponentInterface {
 
     this.paginationControl.offset++;
     this.getExtensoes();
-  }
+  };
 
   private prevPage = () => {
 
@@ -362,7 +362,7 @@ export class BthAssistente implements ComponentInterface {
 
     this.paginationControl.offset--;
     this.getExtensoes();
-  }
+  };
 
 
   render() {

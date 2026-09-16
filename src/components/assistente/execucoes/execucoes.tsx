@@ -42,7 +42,7 @@ export class BthExecucoes implements ComponentInterface{
   @State() filtros: Array<OpcaoFiltro> = [
     { id: TipoExecucao.minhas, icone: '', descricao: 'Minhas', ativo: false },
     { id: TipoExecucao.todas, icone: '', descricao: 'Todos', ativo: false }
-  ]
+  ];
 
 
 
@@ -189,7 +189,7 @@ export class BthExecucoes implements ComponentInterface{
 
   private getFiltersParams(){
 
-    let filter:Array<any> = [];
+    const filter:Array<any> = [];
 
     filter.push(`artefato.id = "${this.execucaoId}"`);
     filter.push('artefatoInfo.disponivel = \'S\'');
@@ -242,14 +242,14 @@ export class BthExecucoes implements ComponentInterface{
     this.execucoesUsuario = false;
     this.resetPagination();
     this.getExecucoes();
-  }
+  };
 
   private onClickUser= (event: UIEvent): void => {
     event.preventDefault();
     this.execucoesUsuario = true;
     this.resetPagination();
     this.getExecucoes();
-  }
+  };
 
   private resetPagination(): void {
     this.paginationControl.offset = 1;
@@ -262,7 +262,7 @@ export class BthExecucoes implements ComponentInterface{
 
     this.paginationControl.offset++;
     this.getExecucoes();
-  }
+  };
 
   private prevPage = (): void =>{
     if (this.paginationControl.offset === 1) {
@@ -271,7 +271,7 @@ export class BthExecucoes implements ComponentInterface{
 
     this.paginationControl.offset--;
     this.getExecucoes();
-  }
+  };
 
   private getConclusao(execucaoId: string) {
     const execucao = this.execucoes.find(e => e.id === execucaoId);

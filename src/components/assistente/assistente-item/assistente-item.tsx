@@ -50,9 +50,9 @@ export class BthAssistenteItem {
   @State() showDetalhesExecucoes: boolean = false;
 
 
-  private showExecucoes() {
+  private showExecucoes = () => {
     this.showDetalhesExecucoes = !this.showDetalhesExecucoes;
-  }
+  };
 
 
   render() {
@@ -67,7 +67,7 @@ export class BthAssistenteItem {
           </div>
 
           <div>
-            <a href="">{this.descricao}</a>
+            <span class="descricao">{this.descricao}</span>
 
             {this.tags.map((tag) => {
               return (
@@ -78,12 +78,12 @@ export class BthAssistenteItem {
           </div>
 
           <div class="actions">
-            <a href="" onClick={(e: UIEvent) => { e.preventDefault();  this.showExecucoes(); }}>
+            <button type="button" aria-expanded={String(this.showDetalhesExecucoes)} onClick={this.showExecucoes}>
               <small><bth-icone icone="history"></bth-icone> Recentes</small>
-            </a>
-            <a href="" onClick={(e: UIEvent) => { e.preventDefault(); }}>
+            </button>
+            <button type="button">
               <small><bth-icone icone="play"></bth-icone> Executar</small>
-            </a>
+            </button>
           </div>
 
 

@@ -124,10 +124,10 @@ describe('tag', () => {
 
     tag.setAttribute('descricao', tagId);
 
-    let tagClicked = jest.fn();
+    const tagClicked = jest.fn();
     tag.addEventListener('tagClicked', tagClicked);
 
-    const tagLink: HTMLAnchorElement = tag.shadowRoot.querySelector('a');
+    const tagLink: HTMLButtonElement = tag.shadowRoot.querySelector('button');
     tagLink.click();
     await page.waitForChanges();
 
@@ -149,11 +149,13 @@ describe('tag', () => {
     tag.setAttribute('descricao', tagId);
     tag.setAttribute('lock', 'true');
 
-    let tagClicked = jest.fn();
+    const tagClicked = jest.fn();
     tag.addEventListener('tagClicked', tagClicked);
 
-    const tagLink: HTMLAnchorElement = tag.shadowRoot.querySelector('a');
-    tagLink.click();
+    await page.waitForChanges();
+
+    const tagLock: HTMLSpanElement = tag.shadowRoot.querySelector('.tag');
+    tagLock.click();
     await page.waitForChanges();
 
     // Assert

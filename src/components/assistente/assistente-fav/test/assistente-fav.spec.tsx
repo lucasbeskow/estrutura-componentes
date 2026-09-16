@@ -60,7 +60,7 @@ describe('bth-assistente-fav', () => {
 
     element.setAttribute('identificador', favId);
 
-    let favClicked = jest.fn();
+    const favClicked = jest.fn();
     element.addEventListener('favClicked', favClicked);
 
     const block: HTMLBthIconeElement = element.shadowRoot.querySelector('bth-icone');

@@ -29,7 +29,7 @@ export class BthAssistenteFav {
     this.favClicked.emit({
       identificador: this.identificador
     });
-  }
+  };
 
   render() {
     return (

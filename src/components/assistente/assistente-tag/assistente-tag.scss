@@ -1,6 +1,14 @@
 @import "../../../styles/normalize.scss";
 
 .tag{
+  appearance: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
   color: var(--bth-app-blue);
   text-decoration: none;
 
