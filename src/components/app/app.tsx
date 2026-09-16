@@ -671,7 +671,7 @@ export class App implements ComponentInterface {
                 {!this.isDispositivoMovel && (<slot name={SLOT.FERRAMENTAS} />)}
 
                 {this.isDispositivoMovel && this.possuiSlotFerramentas() && (
-                  <li>
+                  <div class="menu-ferramentas__item">
                     <button
                       type="button"
                       class={`menu-ferramentas__mobile-toggler ${this.isPainelFerramentasDispositivoMovelAberto ? 'menu-ferramentas__mobile-toggler--opened' : ''}`}
@@ -685,7 +685,7 @@ export class App implements ComponentInterface {
                         <span class="badge badge-danger badge-danger--notificacao-small"></span>
                       )}
                     </button>
-                  </li>
+                  </div>
                 )}
               </nav>
             </section>

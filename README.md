@@ -118,6 +118,42 @@ O **Internet Explorer 11 não é suportado**. Versões anteriores desta bibliote
 - [Entender o `type="module"` dos arquivos JavaScript](http://github.com/betha-plataforma/estrutura-componentes/tree/master/docs/importando-esmodules.md)
 - [Tabela de suporte entre navegadores do StencilJS](https://stenciljs.com/docs/browser-support)
 
+## Acessibilidade ♿
+
+Os componentes seguem **WCAG 2.2 níveis A e AA**. O nível AAA é atendido em parte: operação por teclado, movimento reduzido, localização e finalidade de link estão cobertos; contraste ampliado está quase completo. O que falta, e o porquê, está em [AUDITORIA_A11Y_WCAG_AAA.md](http://github.com/betha-plataforma/estrutura-componentes/tree/master/AUDITORIA_A11Y_WCAG_AAA.md).
+
+O que a biblioteca garante:
+
+- **Teclado**: todo controle é focável e operável por <kbd>Enter</kbd> e <kbd>Espaço</kbd>, sem depender do mouse. <kbd>Esc</kbd> fecha painéis laterais e o menu de produtos. Nos cartões de notificação e de novidade, o clique no corpo é atalho de mouse: toda ação também está em um controle focável dentro do cartão.
+- **Contraste**: todo texto e todo componente de interface cumprem o mínimo de AA (4,5:1 e 3:1). Badges, iniciais de avatar e texto de link chegam a 7:1, o exigido por AAA. Quatro pares ainda ficam entre 4,5:1 e 7:1 — texto e item ativo do menu vertical, banner de erro e textos secundários — porque escurecê-los altera o visual do menu.
+- **Foco visível**: contorno sólido de 2px em `:focus-visible`, com cor adequada ao fundo claro ou escuro.
+- **Movimento**: animações e transições respeitam `prefers-reduced-motion: reduce`.
+- **Leitor de tela**: papéis e estados ARIA coerentes, item de menu atual com `aria-current="page"`, ícones decorativos fora da árvore de acessibilidade.
+
+O que fica a cargo da aplicação hospedeira:
+
+- `lang` e `dir` no `<html>`, e um `<title>` descritivo por página.
+- A hierarquia de títulos do documento. Os componentes usam `h3` a `h5` internamente, sem saber em que nível foram montados.
+- O conteúdo passado por _slot_: rótulos, textos alternativos e a ordem de leitura dentro dele.
+- Um link para pular a navegação, já que a estrutura de menus vem antes do conteúdo.
+
+### Mudanças da versão 2.0.0
+
+Se você estilizava ou consultava o interior dos componentes, três pontos mudaram:
+
+- **`bth-icone` agora é decorativo por padrão.** Sem `aria-label` explícito, o ícone recebe `aria-hidden="true"` e fica fora da árvore de acessibilidade. Antes o rótulo era derivado do nome do ícone, o que fazia leitores de tela anunciarem termos técnicos em inglês. Informe `aria-label` apenas quando o ícone carregar informação que não está no texto ao redor.
+- **Acionadores que não navegam viraram `<button>`.** Itens de menu, filtros e alternadores eram `<a href="">`. Tags, propriedades e nomes de evento não mudaram, mas seletores CSS e consultas ao _shadow DOM_ que buscavam `a` precisam buscar `button`.
+- **Novos tokens de cor.** Foram criados `--bth-app-red-dark-20`, `--bth-app-green-dark-20` e `--bth-app-blue-dark-20`, além de `--bth-app-<cor>-dark-40` para as sete cores de avatar. Nenhum token existente mudou de valor.
+
+### Verificando
+
+```bash
+yarn lint      # eslint-plugin-jsx-a11y
+yarn test.a11y # axe-core sobre os componentes
+```
+
+A varredura com `axe` cobre o que é verificável por máquina. Os critérios que dependem de julgamento humano são revisados na auditoria.
+
 ## Dúvidas
 
 Possíveis dúvidas foram esclarecidas [nesta documentação](http://github.com/betha-plataforma/estrutura-componentes/tree/master/docs/FAQ.md)

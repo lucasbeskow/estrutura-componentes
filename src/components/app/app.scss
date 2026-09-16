@@ -219,7 +219,7 @@ slot[name="container_contexto"] {
         height: 100%;
         padding: 0;
 
-        > li {
+        > .menu-ferramentas__item {
           position: relative;
           padding: 0px 6px;
           > a,
@@ -629,7 +629,7 @@ slot[name="container_contexto"] {
           display: none;
         }
         .menu-ferramentas {
-          > li {
+          > .menu-ferramentas__item {
             width: 47px;
             align-items: center;
             display: flex;

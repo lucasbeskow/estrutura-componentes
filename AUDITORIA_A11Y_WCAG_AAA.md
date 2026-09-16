@@ -12,14 +12,14 @@ Os níveis A e AA aparecem no relatório porque nível AAA os pressupõe: uma fa
 |---|---|---|---|
 | Bloqueante (nível A) | 8 | 8 | 0 |
 | Alta (nível AA) | 4 | 4 | 0 |
-| AAA específico | 10 | 6 | 4 |
+| AAA específico | 10 | 5 | 5 |
 | Processo/ferramental | 2 | 2 | 0 |
 
 Conclusão do levantamento inicial: o projeto **não atingia WCAG AAA** e tampouco o **nível A**. Os bloqueadores eram operação por teclado (controles clicáveis que não recebiam foco), o padrão ARIA de menu aplicado sem o comportamento de teclado correspondente, e `tabindex` positivo.
 
-**Estado atual:** os níveis A e AA estão corrigidos e cobertos por verificação automatizada. Restam quatro itens de AAA que exigem decisão de produto ou API nova — estão listados em [Pendências](#h-pendencias).
+**Estado atual:** os níveis A e AA estão corrigidos e cobertos por verificação automatizada. Os itens de AAA em aberto exigem decisão de produto, decisão visual ou API nova — estão listados em [Pendências](#h-pendencias).
 
-Cada item abaixo está marcado com ✅ (corrigido) ou ⏳ (em aberto).
+Cada item abaixo está marcado com ✅ (corrigido), 🟡 (parcial) ou ⏳ (em aberto).
 
 ---
 
@@ -117,7 +117,7 @@ Ocorrências: `src/components/app/app.scss:256`–`257` (`.badge-danger`), `src/
 
 ## C. Critérios específicos de AAA
 
-### ✅ C1. Contraste ampliado 7:1 — 1.4.6
+### 🟡 C1. Contraste ampliado 7:1 — 1.4.6 (parcial)
 
 Pares que passam em AA e falham em AAA:
 
@@ -132,7 +132,16 @@ Pares que passam em AA e falham em AAA:
 
 Passam em AAA: branco sobre `menu-bg` (17,19), `gray-dark-30` sobre branco (15,52), banner de aviso (9,56) e de info (9,38).
 
-Correção mínima para AAA: escurecer `--bth-app-blue` de `#3374db` para algo próximo de `#1f56ab` (≥7:1 sobre branco) e promover `gray-dark-10`/`gray-dark-20` para `gray-dark-30` em texto.
+**Estado após as correções.** O texto de link passou a usar `--bth-app-blue-dark-20` (7,25:1) e as badges e iniciais de avatar ganharam variantes que atingem 7:1. **Quatro pares continuam entre 4,5:1 e 7:1** — todos cumprem AA, nenhum cumpre AAA:
+
+| Par | Razão | Onde |
+|---|---|---|
+| `gray-dark-20` sobre `gray-light-30` | **6,42** | texto do item de menu vertical, `app.scss:310` |
+| `blue-dark-10` sobre `gray-light-10` | **4,95** | item de menu vertical ativo, `app.scss:357` |
+| `gray-dark-30` sobre `red-light-20` | **6,91** | banner de erro, `app.scss:101` |
+| `gray-dark-10` sobre branco | **4,60** | textos secundários |
+
+Fechar esses quatro muda a cor do texto do menu vertical inteiro e do banner de erro, o que é decisão visual, não correção pontual. Por isso o item fica parcial: promover `gray-dark-10`/`gray-dark-20` para `gray-dark-30` em texto e `blue-dark-10` para `blue-dark-20` no item ativo resolve, ao custo de um menu visivelmente mais escuro.
 
 ### ⏳ C2. Apresentação visual — 1.4.8
 
@@ -233,7 +242,7 @@ Aplicado em cinco commits, sem mudança de contrato público: tags, propriedades
 | A6 | `aria-pressed` substituído por `aria-controls` nos togglers. `aria-expanded` removido do `role="banner"`, que não o suporta. |
 | A7 | `aria-haspopup="dialog"` movido para o próprio acionador, com `aria-expanded` acompanhando o estado real do painel. |
 | A8, D3 | `bth-icone` é decorativo sem `aria-label` explícito. Ilustrações de `bth-empty-state` com `alt=""`. |
-| B1, B2, C1 | Novos tokens `--bth-app-{red,green,blue}-dark-20` (7:1 com branco) e `--bth-app-<cor>-dark-40` para as iniciais do avatar. `silver !important` eliminado. |
+| B1, B2 | Novos tokens `--bth-app-{red,green,blue}-dark-20` (7:1 com branco) e `--bth-app-<cor>-dark-40` para as iniciais do avatar. `silver !important` eliminado. Cobre AA por completo e parte de AAA (ver C1). |
 | B3 | Foco passa a ser `outline: 2px solid` em `:focus-visible`, com cor adequada ao fundo escuro do menu. |
 | B4, C6 | `aria-current="page"` no item de menu ativo; `aria-pressed` no filtro ativo. |
 | C5 | `@media (prefers-reduced-motion: reduce)` no `normalize` usado por todos os shadow roots. |
@@ -249,6 +258,10 @@ Verificação: `yarn lint` sem erros, `yarn test` com 299 testes passando, inclu
 ## G. Pendências
 
 Os quatro itens abaixo continuam em aberto porque dependem de decisão de produto ou de API nova, não de correção pontual.
+
+### 🟡 C1 — Contraste ampliado (1.4.6)
+
+Badges, iniciais de avatar e texto de link já atingem 7:1. Restam quatro pares entre 4,5:1 e 7:1, listados em C1: texto e item ativo do menu vertical, banner de erro e textos secundários. Fechá-los escurece o menu de forma perceptível, então é decisão visual.
 
 ### ⏳ C2 — Apresentação visual (1.4.8)
 
